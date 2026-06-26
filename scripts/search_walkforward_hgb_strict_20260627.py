@@ -102,13 +102,13 @@ def main() -> None:
             "best_signals_sha256": _sha256(OUT_DIR / "best_signals.csv") if payload else None,
         },
         "files": {
-            "summary": str(OUT_DIR / "summary.json"),
-            "scan": str(OUT_DIR / "scan.csv"),
-            "folds": str(OUT_DIR / "folds.csv"),
-            "best_signals": str(OUT_DIR / "best_signals.csv") if payload else None,
-            "best_equity": str(OUT_DIR / "best_equity.csv") if payload else None,
-            "best_monthly": str(OUT_DIR / "best_monthly.csv") if payload else None,
-            "best_yearly": str(OUT_DIR / "best_yearly.csv") if payload else None,
+            "summary": "artifacts/walkforward_hgb_strict_20260627/summary.json",
+            "scan": "artifacts/walkforward_hgb_strict_20260627/scan.csv",
+            "folds": "artifacts/walkforward_hgb_strict_20260627/folds.csv",
+            "best_signals": "artifacts/walkforward_hgb_strict_20260627/best_signals.csv" if payload else None,
+            "best_equity": "artifacts/walkforward_hgb_strict_20260627/best_equity.csv" if payload else None,
+            "best_monthly": "artifacts/walkforward_hgb_strict_20260627/best_monthly.csv" if payload else None,
+            "best_yearly": "artifacts/walkforward_hgb_strict_20260627/best_yearly.csv" if payload else None,
         },
     }
     _write_json(OUT_DIR / "summary.json", summary)

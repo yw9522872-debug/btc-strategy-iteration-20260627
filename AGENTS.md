@@ -21,6 +21,7 @@
 ## GitHub 与 GPT Pro 协作
 
 - 本项目身份：`C:\Users\WHR\Documents\策略迭代`，BTC 15m 策略迭代研究。
+- GitHub 仓库：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`。
 - GitHub 仓库只用于同步本项目文件和给 GPT Pro 读取，不要混用其他项目或其他 Codex 线程的仓库。
 - 给 GPT Pro 的问题开头必须同时写本地路径和 GitHub 仓库 URL。
 - GPT Pro 优先阅读 `GPT_PRO_REVIEW_BRIEF.md`，再看 `AGENTS.md`、`scripts/` 和 `artifacts/*/summary.json`。

@@ -3,6 +3,7 @@
 Project identity:
 
 - Local path: `C:\Users\WHR\Documents\策略迭代`
+- GitHub repository: `https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
 - GitHub purpose: BTC strategy iteration research only.
 - Do not mix this repository with other Codex/Chrome/GPT Pro threads.
 - If discussing this repo in ChatGPT, start the prompt with this local path and the GitHub repository URL.
@@ -42,12 +43,24 @@ Important current results:
   - Z-score / RSI / trend rule scan from a worker.
   - Review this file before suggesting extensions.
 
+- `artifacts/walkforward_hgb_strict_20260627/summary.json`
+  - Strict monthly expanding walk-forward HGB.
+  - Training rows require label availability before the prediction month starts.
+  - `hard_pass_rows = 0`.
+
+- `artifacts/expert_pool_bounds_20260627/summary.json`
+  - Expert-pool upper-bound and strict selector tests.
+  - Monthly posthoc oracle can pass, but `strict_no_future = false`.
+  - Best strict tradeable selector still fails; `strict_pass_rows = 0`.
+
 Useful source files:
 
 - `scripts/search_ultimate_monthly_20260626.py`
 - `scripts/search_hgb_upper_bound_20260626.py`
 - `scripts/search_online_expert_pool_20260627.py`
 - `scripts/search_zscore_rsi_trend_20260627.py`
+- `scripts/search_walkforward_hgb_strict_20260627.py`
+- `scripts/analyze_expert_pool_bounds_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
 What advice is needed:

@@ -1,6 +1,6 @@
 {
   "status": "walkforward_hgb_strict_ready",
-  "generated_at": "2026-06-26T18:15:37.880738+00:00",
+  "generated_at": "2026-06-26T18:17:50.187112+00:00",
   "research_only": true,
   "strict_no_future_function": true,
   "strict_training_rule": "For each prediction month, training uses only rows i where i+horizon <= month_start_index, so each future-return label is already fully known at decision time.",
@@ -517,17 +517,17 @@
     }
   ],
   "hashes": {
-    "script_sha256": "fe5f217965c9e9196c52a5458cda33457cb3ae9f7cadef7124bacfdc9fbf41fb",
+    "script_sha256": "796f80987e649b6adfbdc166e21937d2fd9beb1dc05c2a9594bcc45e05426341",
     "feature_frame_sha256": "999d287fc48e90f01411a3e300ab7d458321ce772dd9b95d09497de280e65292",
     "best_signals_sha256": "752b772f8e31a4d613b5247b5505c271a20606f5f12a0036fb9036efda6b0323"
   },
   "files": {
-    "summary": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\walkforward_hgb_strict_20260627\\summary.json",
-    "scan": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\walkforward_hgb_strict_20260627\\scan.csv",
-    "folds": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\walkforward_hgb_strict_20260627\\folds.csv",
-    "best_signals": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\walkforward_hgb_strict_20260627\\best_signals.csv",
-    "best_equity": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\walkforward_hgb_strict_20260627\\best_equity.csv",
-    "best_monthly": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\walkforward_hgb_strict_20260627\\best_monthly.csv",
-    "best_yearly": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\walkforward_hgb_strict_20260627\\best_yearly.csv"
+    "summary": "artifacts/walkforward_hgb_strict_20260627/summary.json",
+    "scan": "artifacts/walkforward_hgb_strict_20260627/scan.csv",
+    "folds": "artifacts/walkforward_hgb_strict_20260627/folds.csv",
+    "best_signals": "artifacts/walkforward_hgb_strict_20260627/best_signals.csv",
+    "best_equity": "artifacts/walkforward_hgb_strict_20260627/best_equity.csv",
+    "best_monthly": "artifacts/walkforward_hgb_strict_20260627/best_monthly.csv",
+    "best_yearly": "artifacts/walkforward_hgb_strict_20260627/best_yearly.csv"
   }
 }

@@ -637,14 +637,14 @@ def _summary(
             "feature_frame_sha256": _sha256(source_pool.FEATURE_FRAME),
         },
         "files": {
-            "summary": str(OUT_DIR / "summary.json"),
-            "report": str(OUT_DIR / "report.md"),
-            "static_scan": str(OUT_DIR / "static_single_expert_scan.csv"),
-            "selector_scan": str(OUT_DIR / "selector_bounds_scan.csv"),
-            "monthly_oracle_yearly": str(OUT_DIR / "monthly_posthoc_best_oracle_yearly.csv"),
-            "monthly_oracle_monthly": str(OUT_DIR / "monthly_posthoc_best_oracle_monthly.csv"),
-            "best_strict_yearly": str(OUT_DIR / "best_strict_tradeable_yearly.csv") if best_strict_payload else None,
-            "best_strict_monthly": str(OUT_DIR / "best_strict_tradeable_monthly.csv") if best_strict_payload else None,
+            "summary": _relpath(OUT_DIR / "summary.json"),
+            "report": _relpath(OUT_DIR / "report.md"),
+            "static_scan": _relpath(OUT_DIR / "static_single_expert_scan.csv"),
+            "selector_scan": _relpath(OUT_DIR / "selector_bounds_scan.csv"),
+            "monthly_oracle_yearly": _relpath(OUT_DIR / "monthly_posthoc_best_oracle_yearly.csv"),
+            "monthly_oracle_monthly": _relpath(OUT_DIR / "monthly_posthoc_best_oracle_monthly.csv"),
+            "best_strict_yearly": _relpath(OUT_DIR / "best_strict_tradeable_yearly.csv") if best_strict_payload else None,
+            "best_strict_monthly": _relpath(OUT_DIR / "best_strict_tradeable_monthly.csv") if best_strict_payload else None,
         },
     }
 
@@ -736,6 +736,10 @@ def _sort_ascending() -> list[bool]:
 
 def _write_json(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(_json_ready(payload), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def _relpath(path: Path) -> str:
+    return str(path.relative_to(ROOT)).replace("\\", "/")
 
 
 def _json_ready(value: Any) -> Any:
