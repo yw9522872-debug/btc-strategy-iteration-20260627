@@ -19,9 +19,10 @@
 1. `AGENTS.md`
 2. `STRATEGY_0.md`
 3. `STRATEGY_1_CANDIDATE.md`
-4. `CURRENT_STRATEGY_FREEZE.md`
-5. `GPT_PRO_REVIEW_BRIEF.md`
-6. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+4. `STRATEGY_1B_CANDIDATE.md`
+5. `CURRENT_STRATEGY_FREEZE.md`
+6. `GPT_PRO_REVIEW_BRIEF.md`
+7. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -60,6 +61,18 @@
 - 注意：它还不是固化版；固定信号 `ret_state 64/100` 仍来自前期历史研究。
 - 另一个更自由的测试 `artifacts/strategy_1_walkforward_20260627/summary.json` 失败：2025 `-22.09%`，说明信号自由滚动选会追错参数。
 
+## 1号B策略候选
+
+- 候选编号：`strategy_1b_expanded_controls_20260627`
+- 定位文件：`STRATEGY_1B_CANDIDATE.md`
+- 脚本：`scripts/search_strategy_1b_expanded_controls_20260627.py`
+- 结果：`artifacts/strategy_1b_expanded_controls_20260627/summary.json`
+- 2025：`+419.18%`，交易 `150` 次，最大回撤 `-31.28%`
+- 2026：`+199.48%`，交易 `74` 次，最大回撤 `-26.09%`
+- 每个评估月份都盈利，最低月交易次数 `12`
+- 相对 0号：2025/2026收益更高，2025回撤更小，但 2026 回撤更大。
+- 风险：固定信号仍来自前期研究；会选到 `12x` 杠杆；开平合计手续费压到 `0.4%` 会失败。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -94,9 +107,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 2. NEXT_CHAT_HANDOFF.md
 3. STRATEGY_0.md
 4. STRATEGY_1_CANDIDATE.md
-5. CURRENT_STRATEGY_FREEZE.md
-6. GPT_PRO_REVIEW_BRIEF.md
-7. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+5. STRATEGY_1B_CANDIDATE.md
+6. CURRENT_STRATEGY_FREEZE.md
+7. GPT_PRO_REVIEW_BRIEF.md
+8. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 

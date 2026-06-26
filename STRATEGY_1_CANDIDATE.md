@@ -2,6 +2,8 @@
 
 本文件用于定位当前 1号策略候选。它还不是固化版。
 
+更新：目前更强的候选见 `STRATEGY_1B_CANDIDATE.md`。
+
 ## 身份
 
 - 候选编号：`strategy_1_candidate_20260627`

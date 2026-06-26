@@ -91,6 +91,15 @@ Important current results:
   - Script: `scripts/search_strategy_1_candidate_20260627.py`.
   - Output: `artifacts/strategy_1_candidate_20260627/summary.json`.
 
+- `STRATEGY_1B_CANDIDATE.md`
+  - Stronger Strategy 1B candidate pointer.
+  - Candidate id: `strategy_1b_expanded_controls_20260627`.
+  - Script: `scripts/search_strategy_1b_expanded_controls_20260627.py`.
+  - Output: `artifacts/strategy_1b_expanded_controls_20260627/summary.json`.
+  - Result: 2025 return 419.18%; 2026 return 199.48%; no losing evaluated months; minimum monthly orders 12.
+  - Versus Strategy 0: higher 2025 and 2026 return, lower 2025 max drawdown (-31.28% vs -48.53%), but worse 2026 max drawdown (-26.09% vs -18.21%).
+  - Stress: base cost and extra 1-bar delay pass; round-trip cost 0.4% fails. It is cost-sensitive and can select 12x leverage.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -109,6 +118,7 @@ Useful source files:
 - `scripts/validate_profit_lock_walkforward_20260627.py`
 - `scripts/search_strategy_1_candidate_20260627.py`
 - `scripts/search_strategy_1_walkforward_20260627.py`
+- `scripts/search_strategy_1b_expanded_controls_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
 What advice is needed:

@@ -1,0 +1,70 @@
+{
+  "status": "strategy_1b_stress_ready",
+  "rows": [
+    {
+      "cost_per_side": 0.001,
+      "round_trip_cost": 0.002,
+      "extra_delay_bars": 0,
+      "return_2025_pct": 419.1756764328229,
+      "return_2026_pct": 199.47868694231556,
+      "losing_eval_months": 0,
+      "min_monthly_return_pct": 2.11521764757987,
+      "min_monthly_orders": 12,
+      "max_drawdown_pct": -31.281874597645963,
+      "orders": 224,
+      "hard_pass": true
+    },
+    {
+      "cost_per_side": 0.0015,
+      "round_trip_cost": 0.003,
+      "extra_delay_bars": 0,
+      "return_2025_pct": 513.44004918656,
+      "return_2026_pct": 174.35549427015945,
+      "losing_eval_months": 0,
+      "min_monthly_return_pct": 4.260202261341517,
+      "min_monthly_orders": 12,
+      "max_drawdown_pct": -33.91029416307706,
+      "orders": 226,
+      "hard_pass": true
+    },
+    {
+      "cost_per_side": 0.002,
+      "round_trip_cost": 0.004,
+      "extra_delay_bars": 0,
+      "return_2025_pct": -47.25682051319083,
+      "return_2026_pct": 116.29916846370527,
+      "losing_eval_months": 2,
+      "min_monthly_return_pct": -89.03082355960656,
+      "min_monthly_orders": 11,
+      "max_drawdown_pct": -92.6779376361904,
+      "orders": 268,
+      "hard_pass": false
+    },
+    {
+      "cost_per_side": 0.001,
+      "round_trip_cost": 0.002,
+      "extra_delay_bars": 1,
+      "return_2025_pct": 565.5736140288349,
+      "return_2026_pct": 191.977167151556,
+      "losing_eval_months": 0,
+      "min_monthly_return_pct": 0.3858435235377211,
+      "min_monthly_orders": 12,
+      "max_drawdown_pct": -37.58622329706316,
+      "orders": 224,
+      "hard_pass": true
+    },
+    {
+      "cost_per_side": 0.0015,
+      "round_trip_cost": 0.003,
+      "extra_delay_bars": 1,
+      "return_2025_pct": -54.334718412833574,
+      "return_2026_pct": 168.3026406658224,
+      "losing_eval_months": 2,
+      "min_monthly_return_pct": -87.78518140577155,
+      "min_monthly_orders": 11,
+      "max_drawdown_pct": -92.09826182108583,
+      "orders": 268,
+      "hard_pass": false
+    }
+  ]
+}
