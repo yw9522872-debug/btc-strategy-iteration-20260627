@@ -18,6 +18,8 @@
 - 历史回测中每个月都盈利。
 - 每个月交易次数最低 10 次。
 
+当前已固化研究版：`monthly_profit_lock_research_freeze_20260627`，见 `CURRENT_STRATEGY_FREEZE.md` 和 `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`。以后改参数、手续费、规则或数据时，不要覆盖这个固化版，要另起新版本。
+
 ## GitHub 与 GPT Pro 协作
 
 - 本项目身份：`C:\Users\WHR\Documents\策略迭代`，BTC 15m 策略迭代研究。

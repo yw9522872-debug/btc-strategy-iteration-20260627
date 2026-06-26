@@ -1,0 +1,79 @@
+{
+  "freeze_id": "monthly_profit_lock_research_freeze_20260627",
+  "version": "v1.0-research-freeze",
+  "frozen_at": "2026-06-27T03:10:00+08:00",
+  "source_commit": "0c69585abdd8a3918aefa2e69819d5b37d33ce01",
+  "github_repository": "https://github.com/yw9522872-debug/btc-strategy-iteration-20260627",
+  "research_only": true,
+  "live_trading_enabled": false,
+  "instrument": "BTCUSDT",
+  "bar_interval": "15m",
+  "strategy_name": "monthly_profit_lock",
+  "signal_rule": {
+    "family": "ret_state",
+    "window_bars": 64,
+    "threshold_bps": 100.0,
+    "direction": "long when 64-bar return >= +100 bps; short when 64-bar return <= -100 bps; otherwise flat",
+    "timing": "signal uses closed bar t and earlier; position participates from bar t+1"
+  },
+  "execution_assumptions": {
+    "leverage": 8.0,
+    "cost_per_side": 0.001,
+    "round_trip_open_close_cost": 0.002,
+    "slippage": "included only through the fixed cost model above",
+    "funding": "not modeled"
+  },
+  "monthly_controls": {
+    "minimum_monthly_orders": 10,
+    "lock_log_return": 0.04,
+    "lock_rule": "after current month has at least 10 real orders and current month net log return reaches 0.04, go flat until next month",
+    "quota_arm_log_return": 0.12,
+    "quota_leverage": 0.1,
+    "quota_rule": "if current month net log return reaches 0.12 before 10 orders are complete, reduce exposure to 0.1x until 10 orders are complete"
+  },
+  "locked_validation": {
+    "source_summary": "artifacts/monthly_profit_lock_20260627/summary.json",
+    "source_validation": "artifacts/profit_lock_overfit_validation_20260627/summary.json",
+    "2025": {
+      "return_pct": 326.2588596118197,
+      "win_rate_pct_original_bar_basis": 50.0,
+      "orders": 148,
+      "max_drawdown_pct": -48.53023120883241,
+      "losing_months": 0,
+      "min_monthly_return_pct": 7.377379776521598,
+      "min_monthly_orders": 12
+    },
+    "2026": {
+      "return_pct": 106.92515992630081,
+      "win_rate_pct_original_bar_basis": 50.660450660450664,
+      "orders": 72,
+      "max_drawdown_pct": -18.20982112031009,
+      "losing_months": 0,
+      "min_monthly_return_pct": 7.554180764773766,
+      "min_monthly_orders": 12,
+      "data_scope": "available local data through 2026-06-19 23:45 UTC"
+    }
+  },
+  "risk_flags": {
+    "strict_no_future_execution": true,
+    "posthoc_parameter_selection": true,
+    "overfit_risk": "high",
+    "out_of_sample_2024_selection_passed_2025_2026_target": false,
+    "not_a_live_guarantee": true
+  },
+  "locked_files": {
+    "signals": "artifacts/monthly_profit_lock_20260627/best_signals.csv",
+    "equity": "artifacts/monthly_profit_lock_20260627/best_equity.csv",
+    "monthly": "artifacts/monthly_profit_lock_20260627/best_monthly.csv",
+    "yearly": "artifacts/monthly_profit_lock_20260627/best_yearly.csv",
+    "source_script": "scripts/search_monthly_profit_lock_20260627.py",
+    "overfit_validation_script": "scripts/validate_profit_lock_overfit_20260627.py"
+  },
+  "hashes": {
+    "source_script_sha256": "193e3dd06230bfa66c329013a03776894d05c179f5fa10192a2ab15e2164bef0",
+    "source_pool_script_sha256": "5ab0349458bf8c5ee46962882f05b7b0cf3a7d49829c7c158f1b232caf2469d3",
+    "feature_frame_sha256": "999d287fc48e90f01411a3e300ab7d458321ce772dd9b95d09497de280e65292",
+    "best_signals_sha256": "20b718fe081b497bda315f840dc75bf3b03f192ead2aad9dbbc560e3d7097c24"
+  },
+  "change_policy": "Do not edit this frozen strategy in place. Any parameter, rule, data, or cost change must create a new freeze_id and new artifact directory."
+}

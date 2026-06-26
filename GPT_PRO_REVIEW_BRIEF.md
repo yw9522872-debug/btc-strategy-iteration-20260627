@@ -21,6 +21,12 @@ Hard requirements:
 
 Important current results:
 
+- `CURRENT_STRATEGY_FREEZE.md`
+  - Current frozen research candidate.
+  - Machine-readable freeze file: `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`.
+  - Freeze id: `monthly_profit_lock_research_freeze_20260627`.
+  - Do not edit this frozen strategy in place; create a new freeze id for parameter, rule, cost, or data changes.
+
 - `artifacts/event_entry_v2_alpha_source_robustness_review_20260625/summary.json`
   - Existing robust static candidate has 2025 and 2026 returns above 100%.
   - It fails the new task because it has losing months and too few trades.
