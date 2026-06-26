@@ -1,5 +1,7 @@
 # 当前策略固化版
 
+策略编号：`0号策略`
+
 固化编号：`monthly_profit_lock_research_freeze_20260627`
 
 GitHub 仓库：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
@@ -7,6 +9,8 @@ GitHub 仓库：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260
 源提交：`0c69585abdd8a3918aefa2e69819d5b37d33ce01`
 
 这个版本只是研究策略，不是实盘策略，不会下单。
+
+这个版本是项目的永久基准版。以后任何优化都要另起新编号和新目录，不能覆盖 0号策略。
 
 ## 固定规则
 

@@ -22,10 +22,11 @@ Hard requirements:
 Important current results:
 
 - `CURRENT_STRATEGY_FREEZE.md`
-  - Current frozen research candidate.
+  - Strategy 0 / current frozen research candidate.
+  - Human-readable Strategy 0 pointer: `STRATEGY_0.md`.
   - Machine-readable freeze file: `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`.
   - Freeze id: `monthly_profit_lock_research_freeze_20260627`.
-  - Do not edit this frozen strategy in place; create a new freeze id for parameter, rule, cost, or data changes.
+  - Do not edit Strategy 0 in place; create a new strategy number, artifact directory, and freeze id for parameter, rule, cost, or data changes.
 
 - `artifacts/event_entry_v2_alpha_source_robustness_review_20260625/summary.json`
   - Existing robust static candidate has 2025 and 2026 returns above 100%.
@@ -77,6 +78,24 @@ Important current results:
   - Fixed hard-pass candidate June combined result after the fetch: +18.10%, 12 orders. New post-local segment had 0 orders and 0.00% return because the monthly lock was already flat.
   - Interpretation: no obvious execution-time future function was found, but overfit risk remains high. Treat the historical hard pass as a research artifact, not a robust strategy.
 
+- `artifacts/profit_lock_walkforward_20260627/summary.json`
+  - New strict expanding walk-forward check for the fixed `ret_state` expert only (`window=64`, `threshold_bps=100`).
+  - For each evaluated month, lock/quota/leverage parameters are selected using only `2024-01` through the month before the evaluated month.
+  - Local feature-frame result: 2025 return 171.35%; 2026 return 126.55%; no losing evaluated months; minimum monthly orders 12.
+  - Important caveat: the fixed expert/window/threshold still comes from earlier historical research, so this is a stronger validation artifact, not a fully independent live-ready strategy.
+
+- `STRATEGY_1_CANDIDATE.md`
+  - Current Strategy 1 candidate pointer.
+  - Candidate id: `strategy_1_candidate_20260627`.
+  - Results: 2025 return 171.35%; 2026 return 126.55%; no losing evaluated months; minimum monthly orders 12.
+  - Script: `scripts/search_strategy_1_candidate_20260627.py`.
+  - Output: `artifacts/strategy_1_candidate_20260627/summary.json`.
+
+- `artifacts/strategy_1_walkforward_20260627/summary.json`
+  - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
+  - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
+  - Interpretation: freely selecting the signal from a larger pool made the walk-forward selector chase a poor 64/200 setting in 2025, so it is useful as a negative result.
+
 Useful source files:
 
 - `scripts/search_ultimate_monthly_20260626.py`
@@ -87,6 +106,9 @@ Useful source files:
 - `scripts/analyze_expert_pool_bounds_20260627.py`
 - `scripts/search_monthly_profit_lock_20260627.py`
 - `scripts/validate_profit_lock_overfit_20260627.py`
+- `scripts/validate_profit_lock_walkforward_20260627.py`
+- `scripts/search_strategy_1_candidate_20260627.py`
+- `scripts/search_strategy_1_walkforward_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
 What advice is needed:

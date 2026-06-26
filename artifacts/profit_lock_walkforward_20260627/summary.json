@@ -1,0 +1,177 @@
+{
+  "status": "profit_lock_walkforward_ready",
+  "generated_at": "2026-06-26T19:24:40.005623+00:00",
+  "research_only": true,
+  "strict_no_future_selection": true,
+  "not_a_freeze": true,
+  "selection_rule": "For each evaluated month, select lock/quota/leverage parameters using only months from 2024-01 through the month before the evaluated month.",
+  "expert": {
+    "family": "ret_state",
+    "window": 64,
+    "threshold_bps": 100.0
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "candidate_count": 570,
+  "eval_month_count": 18,
+  "row": {
+    "hard_pass": true,
+    "return_2025_pct": 171.35167498350725,
+    "return_2026_pct": 126.54925837621155,
+    "min_required_year_return_pct": 126.54925837621155,
+    "min_monthly_return_pct": 1.0520745198137282,
+    "losing_eval_months": 0,
+    "min_monthly_orders": 12,
+    "total_return_pct": 514.7452072665634,
+    "max_drawdown_pct": -24.013636095491787,
+    "annualized_sharpe": 2.4335885059258233,
+    "exposure_pct": 23.095794392523363,
+    "turnover": 698.0,
+    "orders": 226,
+    "win_rate_pct": 50.19389647614231,
+    "profit_factor": 1.100535534547525
+  },
+  "yearly": [
+    {
+      "year": "2025",
+      "log_return": 0.9982454872809969,
+      "compounded_return_pct": 171.35167498350725,
+      "months": 12,
+      "losing_months": 0,
+      "min_monthly_return_pct": 1.0520745198137282,
+      "min_monthly_orders": 12,
+      "orders_sum": 152,
+      "max_drawdown_pct": -24.013636095491787
+    },
+    {
+      "year": "2026",
+      "log_return": 0.817792211565125,
+      "compounded_return_pct": 126.54925837621155,
+      "months": 6,
+      "losing_months": 0,
+      "min_monthly_return_pct": 2.6358162207531732,
+      "min_monthly_orders": 12,
+      "orders_sum": 74,
+      "max_drawdown_pct": -19.419284318939955
+    }
+  ],
+  "monthly": [
+    {
+      "month": "2025-01",
+      "return_pct": 7.702199508275354,
+      "orders": 14,
+      "drawdown_pct": -10.371724283829021
+    },
+    {
+      "month": "2025-02",
+      "return_pct": 4.203952494794327,
+      "orders": 12,
+      "drawdown_pct": -2.9072921447164446
+    },
+    {
+      "month": "2025-03",
+      "return_pct": 1.0520745198137282,
+      "orders": 12,
+      "drawdown_pct": -7.030805819886687
+    },
+    {
+      "month": "2025-04",
+      "return_pct": 10.424896106266491,
+      "orders": 16,
+      "drawdown_pct": -24.013636095491787
+    },
+    {
+      "month": "2025-05",
+      "return_pct": 16.7398381247011,
+      "orders": 12,
+      "drawdown_pct": -8.300326339119902
+    },
+    {
+      "month": "2025-06",
+      "return_pct": 6.0010966527897835,
+      "orders": 12,
+      "drawdown_pct": -17.503048652842466
+    },
+    {
+      "month": "2025-07",
+      "return_pct": 3.6748029813642447,
+      "orders": 12,
+      "drawdown_pct": -11.82386014501321
+    },
+    {
+      "month": "2025-08",
+      "return_pct": 4.867560109438873,
+      "orders": 12,
+      "drawdown_pct": -12.436437468723305
+    },
+    {
+      "month": "2025-09",
+      "return_pct": 2.5059726416508665,
+      "orders": 14,
+      "drawdown_pct": -18.23306127817419
+    },
+    {
+      "month": "2025-10",
+      "return_pct": 8.675305119078613,
+      "orders": 12,
+      "drawdown_pct": -13.3300646806502
+    },
+    {
+      "month": "2025-11",
+      "return_pct": 19.03168831828217,
+      "orders": 12,
+      "drawdown_pct": -10.460062602419463
+    },
+    {
+      "month": "2025-12",
+      "return_pct": 21.457698872428498,
+      "orders": 12,
+      "drawdown_pct": -12.246046161418878
+    },
+    {
+      "month": "2026-01",
+      "return_pct": 7.823136861593438,
+      "orders": 12,
+      "drawdown_pct": -19.419284318939955
+    },
+    {
+      "month": "2026-02",
+      "return_pct": 2.6358162207531732,
+      "orders": 14,
+      "drawdown_pct": -14.614686152097322
+    },
+    {
+      "month": "2026-03",
+      "return_pct": 17.185103345710683,
+      "orders": 12,
+      "drawdown_pct": -11.973711933955721
+    },
+    {
+      "month": "2026-04",
+      "return_pct": 11.412657803341641,
+      "orders": 12,
+      "drawdown_pct": -8.703577666366202
+    },
+    {
+      "month": "2026-05",
+      "return_pct": 10.263349360014317,
+      "orders": 12,
+      "drawdown_pct": -10.321939550620861
+    },
+    {
+      "month": "2026-06",
+      "return_pct": 42.20459160555387,
+      "orders": 12,
+      "drawdown_pct": -17.883147216688865
+    }
+  ],
+  "files": {
+    "summary": "artifacts/profit_lock_walkforward_20260627/summary.json",
+    "walkforward_selections": "artifacts/profit_lock_walkforward_20260627/walkforward_selections.csv",
+    "walkforward_equity": "artifacts/profit_lock_walkforward_20260627/walkforward_equity.csv",
+    "walkforward_monthly": "artifacts/profit_lock_walkforward_20260627/walkforward_monthly.csv",
+    "walkforward_yearly": "artifacts/profit_lock_walkforward_20260627/walkforward_yearly.csv"
+  }
+}

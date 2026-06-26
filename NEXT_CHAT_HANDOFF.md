@@ -10,18 +10,22 @@
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
 - 当前固化策略源提交：`0c69585`
+- 0号策略定位文件：`STRATEGY_0.md`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
 ## 必读文件
 
 1. `AGENTS.md`
-2. `CURRENT_STRATEGY_FREEZE.md`
-3. `GPT_PRO_REVIEW_BRIEF.md`
-4. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+2. `STRATEGY_0.md`
+3. `STRATEGY_1_CANDIDATE.md`
+4. `CURRENT_STRATEGY_FREEZE.md`
+5. `GPT_PRO_REVIEW_BRIEF.md`
+6. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
+- 策略编号：`0号策略`
 - 固化编号：`monthly_profit_lock_research_freeze_20260627`
 - 品种：`BTCUSDT`
 - 周期：`15m`
@@ -44,22 +48,36 @@
 
 胜率口径是“持仓中的 15分钟K线正收益占比”，不是严格单笔完整交易胜率。
 
+## 1号策略候选
+
+- 候选编号：`strategy_1_candidate_20260627`
+- 定位文件：`STRATEGY_1_CANDIDATE.md`
+- 脚本：`scripts/search_strategy_1_candidate_20260627.py`
+- 结果：`artifacts/strategy_1_candidate_20260627/summary.json`
+- 2025：`+171.35%`，交易 `152` 次，最大回撤 `-24.01%`
+- 2026：`+126.55%`，交易 `74` 次，最大回撤 `-19.42%`
+- 每个评估月份都盈利，最低月交易次数 `12`
+- 注意：它还不是固化版；固定信号 `ret_state 64/100` 仍来自前期历史研究。
+- 另一个更自由的测试 `artifacts/strategy_1_walkforward_20260627/summary.json` 失败：2025 `-22.09%`，说明信号自由滚动选会追错参数。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
 - 参数是事后从历史中挑出来的，过拟合风险高。
 - 已做过更严格检查：用 2024 年选参数，再测 2025/2026，没有达到每年 100%。
+- 本轮新增 `artifacts/profit_lock_walkforward_20260627/summary.json`：固定老信号 `ret_state window=64 threshold=100`，但每个月只用前面月份选择锁利/补交易/杠杆参数。这个检查在本地特征数据上通过：2025 `+171.35%`，2026 `+126.55%`，无亏损评估月份，最低月交易次数 `12`。注意：固定信号本身仍来自历史研究，所以还不能说完全不过拟合。
 - 2026 主结果用本地数据到 `2026-06-19 23:45 UTC`。
 - 另有 Binance 补测到 `2026-06-26 18:30 UTC`，补测后 6 月已锁利空仓。
 - 本项目只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。
 
 ## 下一轮建议
 
-当前固化版不要覆盖。下一轮如果继续做，只能另起新版本，例如：
+0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
 - 做更严格的 walk-forward / out-of-sample 验证；
 - 降低过拟合风险；
 - 补最新数据后复测；
+- 对 `profit_lock_walkforward_20260627` 做二次检查：尤其检查固定 `ret_state 64/100` 信号是否也能用更早数据独立选出来；
 - 重新设计更稳健的非事后选参规则；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
@@ -74,14 +92,18 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 请先阅读：
 1. AGENTS.md
 2. NEXT_CHAT_HANDOFF.md
-3. CURRENT_STRATEGY_FREEZE.md
-4. GPT_PRO_REVIEW_BRIEF.md
-5. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+3. STRATEGY_0.md
+4. STRATEGY_1_CANDIDATE.md
+5. CURRENT_STRATEGY_FREEZE.md
+6. GPT_PRO_REVIEW_BRIEF.md
+7. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
 当前已有固化研究版：
 monthly_profit_lock_research_freeze_20260627
+
+这一版已经定位为 0号策略，必须永久保留。后续优化必须另起新编号、新文件夹，不能覆盖 0号策略。
 
 它的历史结果：
 2025 收益 +326.26%，胜率 50.00%，交易次数 148，最大回撤 -48.53%。
@@ -92,7 +114,7 @@ monthly_profit_lock_research_freeze_20260627
 但参数是历史事后挑出来的，过拟合风险高。
 2024 选参再测 2025/2026 没达到每年 100%。
 
-后续如果继续开发，不能覆盖当前固化版，必须另起新版本。
+后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。
 
 请用中文、通俗的话和我沟通。

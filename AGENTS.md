@@ -18,7 +18,9 @@
 - 历史回测中每个月都盈利。
 - 每个月交易次数最低 10 次。
 
-当前已固化研究版：`monthly_profit_lock_research_freeze_20260627`，见 `CURRENT_STRATEGY_FREEZE.md` 和 `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`。以后改参数、手续费、规则或数据时，不要覆盖这个固化版，要另起新版本。
+当前已固化研究版定位为 `0号策略`：`monthly_profit_lock_research_freeze_20260627`，见 `STRATEGY_0.md`、`CURRENT_STRATEGY_FREEZE.md` 和 `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`。以后改参数、手续费、规则或数据时，不要覆盖这个固化版，要另起新编号、新文件夹。
+
+0号策略是永久保留的基准策略。后续优化要复制或另开目录，例如 `artifacts/strategy_1_.../`，不能在 0号策略原目录里直接覆盖。
 
 ## GitHub 与 GPT Pro 协作
 
