@@ -1,0 +1,183 @@
+{
+  "status": "event_entry_v2_alpha_source_scan_ready",
+  "generated_at": "2026-06-24T23:27:39.624488+00:00",
+  "research_only": true,
+  "execution_ready": false,
+  "execution_ready_source": false,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "live_actions_taken": false,
+  "entry_capable": false,
+  "candidate_ready": false,
+  "return_gate_candidate_found": true,
+  "return_gate_and_drawdown_review_candidate_found": true,
+  "downstream_rebuild_allowed": false,
+  "live_promotion": "LIVE_PROMOTION_NO_GO",
+  "contract_schema": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_contract_freeze_decision_20260625\\event_entry_v2_contract_schema.json",
+  "source_feature_frame": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_fullscan\\event_entry_best_signals.csv",
+  "source_forbidden_columns_dropped": [
+    "target_position",
+    "component",
+    "event_entry_reason",
+    "exit_overlay_reason",
+    "time_stop_reason"
+  ],
+  "non_oracle_claim": "The scan uses closed-bar price/indicator columns only. Legacy target, component, and reason labels are dropped before rule generation.",
+  "scan_rows": 2534,
+  "passing_candidates": 47,
+  "passing_candidates_with_drawdown_review_floor": 6,
+  "best_candidate": {
+    "candidate_id": "alpha_gap_adx_regime_momentum_824339506a_lev3.0",
+    "family": "gap_adx_regime",
+    "mode": "momentum",
+    "leverage": 3.0,
+    "total_return_pct": 6226.49381922394,
+    "annualized_sharpe": 2.633822731586398,
+    "max_drawdown_pct": -69.29299113795602,
+    "exposure_pct": 95.24486681465038,
+    "turnover": 9.0,
+    "trade_count": 2,
+    "win_rate_pct": 50.01395919060971,
+    "profit_factor": 1.0200048042484609,
+    "return_2025_pct": 265.7550880607302,
+    "return_2026_pct": 162.45484661874713,
+    "min_required_year_return_pct": 162.45484661874713,
+    "yearly_return_gate_pass": true,
+    "drawdown_review_gate_pass": true,
+    "active_rows": 82384,
+    "segments": 2,
+    "trigger_rows": 5300,
+    "params_json": "{\"adx_min\": 36.0, \"family\": \"gap_adx_regime\", \"gap_min\": 50.0, \"mode\": \"momentum\"}",
+    "formal_return_2025_pct": 248.19574984259222,
+    "formal_return_2026_pct": 168.64159871516227,
+    "formal_yearly_return_gate_pass": true
+  },
+  "best_by_return_gate": {
+    "candidate_id": "alpha_gap_adx_regime_momentum_824339506a_lev8.0",
+    "family": "gap_adx_regime",
+    "mode": "momentum",
+    "leverage": 8.0,
+    "total_return_pct": 6354695.337437128,
+    "annualized_sharpe": 2.6338227315863985,
+    "max_drawdown_pct": -95.70826031963627,
+    "exposure_pct": 95.24486681465038,
+    "turnover": 24.0,
+    "trade_count": 2,
+    "win_rate_pct": 50.01395919060971,
+    "profit_factor": 1.020004804248461,
+    "return_2025_pct": 3075.7112214042654,
+    "return_2026_pct": 1210.6264416574545,
+    "min_required_year_return_pct": 1210.6264416574545,
+    "yearly_return_gate_pass": true,
+    "drawdown_review_gate_pass": false,
+    "active_rows": 82384,
+    "segments": 2,
+    "trigger_rows": 5300,
+    "params_json": "{\"adx_min\": 36.0, \"family\": \"gap_adx_regime\", \"gap_min\": 50.0, \"mode\": \"momentum\"}"
+  },
+  "best_stats": {
+    "total_return_pct": 6226.49381922394,
+    "annualized_sharpe": 2.6338075064294877,
+    "max_drawdown_pct": -69.29299113795602,
+    "exposure_pct": 95.24486681465038,
+    "turnover": 9.0,
+    "trade_count": 2,
+    "win_rate_pct": 50.01395919060971,
+    "profit_factor": 1.0200048042484609
+  },
+  "best_yearly": [
+    {
+      "year": "2024",
+      "compounded_return_pct": 558.731270516744,
+      "months": 12,
+      "losing_months": 4,
+      "entries": 1,
+      "exits": 0,
+      "min_monthly_return_pct": -38.265297343023974,
+      "max_drawdown_pct": -69.29299113795602
+    },
+    {
+      "year": "2025",
+      "compounded_return_pct": 248.19574984259222,
+      "months": 12,
+      "losing_months": 3,
+      "entries": 1,
+      "exits": 1,
+      "min_monthly_return_pct": -44.33143240154115,
+      "max_drawdown_pct": -67.885857427182
+    },
+    {
+      "year": "2026",
+      "compounded_return_pct": 168.64159871516227,
+      "months": 6,
+      "losing_months": 2,
+      "entries": 0,
+      "exits": 0,
+      "min_monthly_return_pct": -29.213413952499923,
+      "max_drawdown_pct": -61.349797531088925
+    }
+  ],
+  "best_monthly_summary": {
+    "months": 30,
+    "losing_months": 9,
+    "worst_month": "2025-02",
+    "worst_month_return_pct": -44.33143240154115,
+    "best_month": "2024-11",
+    "best_month_return_pct": 156.45820629320127
+  },
+  "cost": {
+    "fee_bps": 4.0,
+    "slippage_bps": 2.0,
+    "leverage_grid": [
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      8.0
+    ],
+    "bars_per_year": 175200,
+    "return_timing": "position decided at bar t participates in bar t+1 return"
+  },
+  "yearly_return_gate": {
+    "backtest_start": "2024-01-01",
+    "required_return_pct": 100.0,
+    "required_years": [
+      "2025",
+      "2026"
+    ],
+    "decision_rule": "Reject as final if either 2025 or 2026 return is below 100%."
+  },
+  "drawdown_review_floor": {
+    "max_drawdown_pct_must_be_at_least": -75.0,
+    "purpose": "Review floor for choosing the next alpha source candidate, not a live approval rule."
+  },
+  "assessment": "This scan searches for a fresh closed-bar alpha source after coarse state-combiner and low-frequency quality/cooldown scans failed. It can identify an alpha direction, but it does not create a live source or unblock downstream lineage.",
+  "hard_veto": [
+    "research_scan_only_not_live_source",
+    "entry_capable_false",
+    "downstream_rebuild_not_allowed",
+    "monthly_meta_late_era_rebuild_not_run",
+    "observe_paper_mock_acceptance_not_run",
+    "explicit_user_live_confirmation_missing",
+    "LIVE_PROMOTION_NO_GO",
+    "return_gate_pass_is_alpha_source_only_not_promotion",
+    "drawdown_and_robustness_review_still_required"
+  ],
+  "hashes": {
+    "script_sha256": "3f0b0fdf3870b0db64f130f2b4b9b790e7e4c8047b25a6b55072dd6cb4a5e326",
+    "feature_frame_sha256": "999d287fc48e90f01411a3e300ab7d458321ce772dd9b95d09497de280e65292",
+    "contract_schema_sha256": "f0330a7e64f724f0b85a744326872baacdcc5de29a4964c41079fa22c6446424",
+    "best_selected_signals_sha256": "0bcc11a06fa71a8af0f7148c162cfa0f0dde7799c3ea419fcface0dce391d25c"
+  },
+  "files": {
+    "summary": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\summary.json",
+    "report": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\report.md",
+    "alpha_source_scan": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\alpha_source_scan.csv",
+    "best_selected_signals": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\best_selected_signals.csv",
+    "best_equity": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\best_equity.csv",
+    "best_monthly": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\best_monthly.csv",
+    "best_yearly": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\best_yearly.csv"
+  }
+}

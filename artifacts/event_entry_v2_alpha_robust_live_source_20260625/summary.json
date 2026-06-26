@@ -1,0 +1,53 @@
+{
+  "status": "event_entry_v2_alpha_robust_live_source_ready",
+  "generated_at": "2026-06-25T14:44:46.442238+00:00",
+  "research_only": true,
+  "preflight_only": true,
+  "execution_ready_source": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "live_actions_taken": false,
+  "secret_access": false,
+  "live_supervisor_touched": false,
+  "symbol": "BTCUSDT",
+  "category": "linear",
+  "source_strategy": "event_entry_v2_alpha_robust_static",
+  "base_params": {
+    "adx_min": 36.0,
+    "family": "gap_adx_regime",
+    "gap_min": 50.0,
+    "mode": "momentum"
+  },
+  "server_now": "2026-06-25 14:42:45.612000+00:00",
+  "closed_bar_grace_seconds": 180,
+  "latest_closed_15m": "2026-06-25 14:15:00+00:00",
+  "latest_signal": {
+    "timestamp": "2026-06-25 14:30:00+00:00",
+    "close": 59292.8,
+    "target_position": -1.0,
+    "component": "v2_alpha_robust_static",
+    "action": "hold",
+    "confidence": 0.6,
+    "long_edge": 0.0,
+    "strategy_stop_price": null,
+    "stop_loss_source": "emergency_fallback_required",
+    "strategy_stop_active": false,
+    "strategy_stop_state": "alpha_robust_source_has_no_strategy_stop_metadata"
+  },
+  "trigger_rows": 5360,
+  "parity": {
+    "historical_present": true,
+    "overlap_rows": 86496,
+    "target_mismatch_rows": 0,
+    "target_mismatch_pct": 0.0
+  },
+  "hard_veto": [],
+  "lineage_note": "Fresh public-data replay of the alpha_robust root input. This is one root input for long_crowding, not a complete long_crowding live source.",
+  "files": {
+    "selected_target": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_robust_live_source_20260625\\selected_target.csv",
+    "selected_target_tail": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_robust_live_source_20260625\\selected_target_tail.csv",
+    "live_source_signal": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_robust_live_source_20260625\\live_source_signal.csv",
+    "summary": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_robust_live_source_20260625\\summary.json",
+    "report": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_robust_live_source_20260625\\report.md"
+  }
+}

@@ -1,0 +1,482 @@
+{
+  "status": "zscore_rsi_trend_search_ready",
+  "generated_at": "2026-06-26T18:16:24.952722+00:00",
+  "research_only": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002,
+    "note": "0.1% per side; a flip from long to short counts as close+open."
+  },
+  "no_future_function_claim": "Rolling median and z-score use pandas rolling windows ending at the current closed bar. The chosen signal at bar t is applied as active position from bar t+1.",
+  "dropped_forbidden_columns": [
+    "target_position",
+    "component",
+    "event_entry_reason",
+    "exit_overlay_reason",
+    "time_stop_reason"
+  ],
+  "forbidden_columns_policy": "Dropped input columns matching target_position/component/*reason*/action/confidence and avoided them in outputs.",
+  "scan_rows": 3456,
+  "hard_pass_rows": 0,
+  "monthly_order_gate_pass_rows": 1680,
+  "best_candidate": {
+    "candidate_id": "zscore_rsi_breakout_ema_gap_50_49eea50ac1_lev2",
+    "family": "breakout",
+    "hard_pass": false,
+    "yearly_return_gate_pass": false,
+    "monthly_profit_gate_pass": false,
+    "monthly_order_gate_pass": true,
+    "leverage": 2.0,
+    "return_2025_pct": -68.65902617863713,
+    "return_2026_pct": -31.603080139672212,
+    "min_required_year_return_pct": -68.65902617863713,
+    "min_monthly_return_pct": -25.509685112456747,
+    "losing_eval_months": 13,
+    "min_monthly_orders": 34,
+    "total_return_pct": -94.37053529678154,
+    "max_drawdown_pct": -95.11863969251252,
+    "annualized_sharpe": -2.3971486350069573,
+    "exposure_pct": 14.261931187569369,
+    "turnover": 2552.0,
+    "orders": 1276,
+    "segments": 638,
+    "win_rate_pct": 47.98962386511025,
+    "profit_factor": 0.9451166855583591,
+    "params_json": "{\"family\": \"breakout\", \"hold_bars\": 16, \"leverage\": 2.0, \"rsi_high\": 65.0, \"rsi_low\": 35.0, \"trend\": {\"adx_min\": null, \"gap_min_bps\": 50.0, \"mode\": \"ema_gap\"}, \"z_threshold\": 2.0, \"z_window\": 192}"
+  },
+  "best_monthly": [
+    {
+      "month": "2024-01",
+      "log_return": 0.0,
+      "first_equity": 1.0,
+      "last_equity": 1.0,
+      "min_drawdown": 0.0,
+      "turnover": 0.0,
+      "orders": 0,
+      "return_pct": 0.0,
+      "drawdown_pct": 0.0
+    },
+    {
+      "month": "2024-02",
+      "log_return": -0.0020946348814922574,
+      "first_equity": 1.0,
+      "last_equity": 0.9979075573352527,
+      "min_drawdown": -0.12364907942489467,
+      "turnover": 60.0,
+      "orders": 30,
+      "return_pct": -0.2092442664747285,
+      "drawdown_pct": -12.364907942489467
+    },
+    {
+      "month": "2024-03",
+      "log_return": -0.14849758022789594,
+      "first_equity": 0.9979075573352527,
+      "last_equity": 0.860198403060064,
+      "min_drawdown": -0.24607271332293712,
+      "turnover": 114.0,
+      "orders": 57,
+      "return_pct": -13.799790698340663,
+      "drawdown_pct": -24.607271332293713
+    },
+    {
+      "month": "2024-04",
+      "log_return": -0.35957994085908734,
+      "first_equity": 0.8569950686320874,
+      "last_equity": 0.6003922088124666,
+      "min_drawdown": -0.5074461240876492,
+      "turnover": 94.0,
+      "orders": 47,
+      "return_pct": -30.203054704980214,
+      "drawdown_pct": -50.74461240876492
+    },
+    {
+      "month": "2024-05",
+      "log_return": -0.04339148507452333,
+      "first_equity": 0.6003922088124666,
+      "last_equity": 0.5748974275064128,
+      "min_drawdown": -0.5167569831174443,
+      "turnover": 72.0,
+      "orders": 36,
+      "return_pct": -4.246354454945478,
+      "drawdown_pct": -51.67569831174443
+    },
+    {
+      "month": "2024-06",
+      "log_return": -0.0627375656243027,
+      "first_equity": 0.5748974275064128,
+      "last_equity": 0.5399378672633081,
+      "min_drawdown": -0.5474656999824055,
+      "turnover": 76.0,
+      "orders": 38,
+      "return_pct": -6.0810082930341185,
+      "drawdown_pct": -54.746569998240545
+    },
+    {
+      "month": "2024-07",
+      "log_return": 0.10275836675495972,
+      "first_equity": 0.5399378672633081,
+      "last_equity": 0.5983718832864346,
+      "min_drawdown": -0.5446041184371972,
+      "turnover": 94.0,
+      "orders": 47,
+      "return_pct": 10.822359305766271,
+      "drawdown_pct": -54.460411843719726
+    },
+    {
+      "month": "2024-08",
+      "log_return": -0.2230456668073534,
+      "first_equity": 0.5964947154138645,
+      "last_equity": 0.4787443659918828,
+      "min_drawdown": -0.5839948746547041,
+      "turnover": 106.0,
+      "orders": 53,
+      "return_pct": -19.992168856183923,
+      "drawdown_pct": -58.399487465470415
+    },
+    {
+      "month": "2024-09",
+      "log_return": -0.012565951872946329,
+      "first_equity": 0.4787443659918828,
+      "last_equity": 0.47276612712534577,
+      "min_drawdown": -0.5850780926453074,
+      "turnover": 82.0,
+      "orders": 41,
+      "return_pct": -1.2487329963979943,
+      "drawdown_pct": -58.50780926453074
+    },
+    {
+      "month": "2024-10",
+      "log_return": -0.04380769777644224,
+      "first_equity": 0.47449737326896163,
+      "last_equity": 0.45250242516806377,
+      "min_drawdown": -0.6145551452217988,
+      "turnover": 106.0,
+      "orders": 53,
+      "return_pct": -4.2862000457806415,
+      "drawdown_pct": -61.455514522179875
+    },
+    {
+      "month": "2024-11",
+      "log_return": -0.13676275122647166,
+      "first_equity": 0.45250242516806377,
+      "last_equity": 0.39466226403092847,
+      "min_drawdown": -0.6581422096551062,
+      "turnover": 92.0,
+      "orders": 46,
+      "return_pct": -12.782287545896109,
+      "drawdown_pct": -65.81422096551061
+    },
+    {
+      "month": "2024-12",
+      "log_return": -0.40734464971438505,
+      "first_equity": 0.39466226403092847,
+      "last_equity": 0.26261411770387816,
+      "min_drawdown": -0.7710109771602699,
+      "turnover": 108.0,
+      "orders": 54,
+      "return_pct": -33.458518424934105,
+      "drawdown_pct": -77.10109771602698
+    },
+    {
+      "month": "2025-01",
+      "log_return": -0.16714247314611677,
+      "first_equity": 0.26261411770387816,
+      "last_equity": 0.22219230564064957,
+      "min_drawdown": -0.8083765776933172,
+      "turnover": 94.0,
+      "orders": 47,
+      "return_pct": -15.392094079575703,
+      "drawdown_pct": -80.83765776933171
+    },
+    {
+      "month": "2025-02",
+      "log_return": 0.023188069250959696,
+      "first_equity": 0.22133179277181664,
+      "last_equity": 0.2274047155200325,
+      "min_drawdown": -0.8289787636317285,
+      "turnover": 90.0,
+      "orders": 45,
+      "return_pct": 2.3459002616467606,
+      "drawdown_pct": -82.89787636317286
+    },
+    {
+      "month": "2025-03",
+      "log_return": -0.29450107056299263,
+      "first_equity": 0.2274047155200325,
+      "last_equity": 0.16939448865999415,
+      "min_drawdown": -0.8527340933210623,
+      "turnover": 68.0,
+      "orders": 34,
+      "return_pct": -25.509685112456737,
+      "drawdown_pct": -85.27340933210623
+    },
+    {
+      "month": "2025-04",
+      "log_return": -0.1049012874233925,
+      "first_equity": 0.16939448865999415,
+      "last_equity": 0.15252506753087616,
+      "min_drawdown": -0.8676429298949638,
+      "turnover": 72.0,
+      "orders": 36,
+      "return_pct": -9.958659967372373,
+      "drawdown_pct": -86.76429298949638
+    },
+    {
+      "month": "2025-05",
+      "log_return": -0.08573819956694965,
+      "first_equity": 0.15252506753087616,
+      "last_equity": 0.1399927674528428,
+      "min_drawdown": -0.8772485687360657,
+      "turnover": 88.0,
+      "orders": 44,
+      "return_pct": -8.216551076429713,
+      "drawdown_pct": -87.72485687360657
+    },
+    {
+      "month": "2025-06",
+      "log_return": -0.05974067218577733,
+      "first_equity": 0.1399927674528428,
+      "last_equity": 0.13187441761591281,
+      "min_drawdown": -0.8852880714418131,
+      "turnover": 68.0,
+      "orders": 34,
+      "return_pct": -5.799120900774346,
+      "drawdown_pct": -88.52880714418131
+    },
+    {
+      "month": "2025-07",
+      "log_return": 0.010697934785666007,
+      "first_equity": 0.13187441761591281,
+      "last_equity": 0.13329277475449178,
+      "min_drawdown": -0.8858451147944731,
+      "turnover": 74.0,
+      "orders": 37,
+      "return_pct": 1.0755362292551363,
+      "drawdown_pct": -88.58451147944731
+    },
+    {
+      "month": "2025-08",
+      "log_return": -0.04891934571786706,
+      "first_equity": 0.1343333981518241,
+      "last_equity": 0.1269291018091367,
+      "min_drawdown": -0.8888913677253542,
+      "turnover": 110.0,
+      "orders": 55,
+      "return_pct": -4.774206971891248,
+      "drawdown_pct": -88.88913677253541
+    },
+    {
+      "month": "2025-09",
+      "log_return": -0.17871363095031917,
+      "first_equity": 0.12667549729456784,
+      "last_equity": 0.10615656643044542,
+      "min_drawdown": -0.9083362774675994,
+      "turnover": 76.0,
+      "orders": 38,
+      "return_pct": -16.365463146448334,
+      "drawdown_pct": -90.83362774675993
+    },
+    {
+      "month": "2025-10",
+      "log_return": 0.027255562602741597,
+      "first_equity": 0.10615656643044542,
+      "last_equity": 0.10908971409168612,
+      "min_drawdown": -0.9069646836716742,
+      "turnover": 80.0,
+      "orders": 40,
+      "return_pct": 2.763039310584303,
+      "drawdown_pct": -90.69646836716741
+    },
+    {
+      "month": "2025-11",
+      "log_return": -0.015032649163858285,
+      "first_equity": 0.10908971409168612,
+      "last_equity": 0.1074620712355573,
+      "min_drawdown": -0.9143001381697035,
+      "turnover": 112.0,
+      "orders": 56,
+      "return_pct": -1.4920222953029083,
+      "drawdown_pct": -91.43001381697034
+    },
+    {
+      "month": "2025-12",
+      "log_return": -0.26669611467109394,
+      "first_equity": 0.1074620712355573,
+      "last_equity": 0.08230582188077985,
+      "min_drawdown": -0.9277229995882702,
+      "turnover": 68.0,
+      "orders": 34,
+      "return_pct": -23.40942163643529,
+      "drawdown_pct": -92.77229995882702
+    },
+    {
+      "month": "2026-01",
+      "log_return": 0.07310651551699685,
+      "first_equity": 0.08230582188077985,
+      "last_equity": 0.08854831723051002,
+      "min_drawdown": -0.9353764070763728,
+      "turnover": 84.0,
+      "orders": 42,
+      "return_pct": 7.584512501158902,
+      "drawdown_pct": -93.53764070763728
+    },
+    {
+      "month": "2026-02",
+      "log_return": 0.00982179248527978,
+      "first_equity": 0.08854831723051002,
+      "last_equity": 0.08942230546686421,
+      "min_drawdown": -0.9258046716684792,
+      "turnover": 96.0,
+      "orders": 48,
+      "return_pct": 0.9870184591741937,
+      "drawdown_pct": -92.58046716684792
+    },
+    {
+      "month": "2026-03",
+      "log_return": -0.09685528980150329,
+      "first_equity": 0.08942230546686421,
+      "last_equity": 0.08116749532327242,
+      "min_drawdown": -0.9287226230314918,
+      "turnover": 96.0,
+      "orders": 48,
+      "return_pct": -9.231265175389048,
+      "drawdown_pct": -92.87226230314917
+    },
+    {
+      "month": "2026-04",
+      "log_return": -0.03116080162369076,
+      "first_equity": 0.08116749532327242,
+      "last_equity": 0.07867725159663193,
+      "min_drawdown": -0.9329008479810939,
+      "turnover": 88.0,
+      "orders": 44,
+      "return_pct": -3.0680307636981485,
+      "drawdown_pct": -93.29008479810939
+    },
+    {
+      "month": "2026-05",
+      "log_return": -0.12383187201401515,
+      "first_equity": 0.07867725159663193,
+      "last_equity": 0.06951358419301878,
+      "min_drawdown": -0.9404841942804583,
+      "turnover": 108.0,
+      "orders": 54,
+      "return_pct": -11.647162575778447,
+      "drawdown_pct": -94.04841942804583
+    },
+    {
+      "month": "2026-06",
+      "log_return": -0.21092273821835,
+      "first_equity": 0.06951358419301878,
+      "last_equity": 0.056294647032184536,
+      "min_drawdown": -0.9511863969251252,
+      "turnover": 76.0,
+      "orders": 38,
+      "return_pct": -19.01633661145945,
+      "drawdown_pct": -95.11863969251252
+    }
+  ],
+  "best_yearly": [
+    {
+      "year": "2024",
+      "log_return": -1.3370695573099405,
+      "compounded_return_pct": -73.73858822961216,
+      "months": 12,
+      "losing_months": 11,
+      "min_monthly_return_pct": -33.458518424934105,
+      "orders_min": 0,
+      "orders_sum": 502,
+      "max_drawdown_pct": -77.10109771602698
+    },
+    {
+      "year": "2025",
+      "log_return": -1.160243876749,
+      "compounded_return_pct": -68.65902617863712,
+      "months": 12,
+      "losing_months": 9,
+      "min_monthly_return_pct": -25.509685112456737,
+      "orders_min": 34,
+      "orders_sum": 500,
+      "max_drawdown_pct": -92.77229995882702
+    },
+    {
+      "year": "2026",
+      "log_return": -0.3798423936552826,
+      "compounded_return_pct": -31.6030801396722,
+      "months": 6,
+      "losing_months": 4,
+      "min_monthly_return_pct": -19.01633661145945,
+      "orders_min": 38,
+      "orders_sum": 274,
+      "max_drawdown_pct": -95.11863969251252
+    }
+  ],
+  "requirements": {
+    "return_2025_pct_gt": 100.0,
+    "return_2026_pct_gt": 100.0,
+    "every_eval_month_return_gt_0": true,
+    "min_monthly_orders": 10,
+    "eval_note": "2026 means available 2026 data in the file."
+  },
+  "grid": {
+    "z_windows": [
+      48,
+      96,
+      192
+    ],
+    "z_thresholds": [
+      1.0,
+      1.5,
+      2.0
+    ],
+    "rsi_pairs": [
+      [
+        35.0,
+        65.0
+      ],
+      [
+        40.0,
+        60.0
+      ]
+    ],
+    "hold_bars": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "leverage_grid": [
+      2.0,
+      4.0,
+      6.0,
+      8.0,
+      10.0,
+      12.0
+    ],
+    "families": [
+      "mean_reversion",
+      "breakout"
+    ],
+    "trend_filters": [
+      "none",
+      "ema_gap",
+      "ema_gap_adx"
+    ]
+  },
+  "hashes": {
+    "script_sha256": "a649d492f1e6cfca0695d6f44c8d205456c81cb4dddeb9a47f5ec81ea3399e1c",
+    "feature_frame_sha256": "999d287fc48e90f01411a3e300ab7d458321ce772dd9b95d09497de280e65292",
+    "best_signals_sha256": "0cf387559c55392c15eb12443a3c31c3d245217f93284db5732f01ba14239971"
+  },
+  "files": {
+    "summary": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\zscore_rsi_trend_20260627\\summary.json",
+    "report": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\zscore_rsi_trend_20260627\\report.md",
+    "scan": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\zscore_rsi_trend_20260627\\scan.csv",
+    "best_signals": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\zscore_rsi_trend_20260627\\best_signals.csv",
+    "best_equity": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\zscore_rsi_trend_20260627\\best_equity.csv",
+    "best_monthly": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\zscore_rsi_trend_20260627\\best_monthly.csv",
+    "best_yearly": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\zscore_rsi_trend_20260627\\best_yearly.csv"
+  }
+}

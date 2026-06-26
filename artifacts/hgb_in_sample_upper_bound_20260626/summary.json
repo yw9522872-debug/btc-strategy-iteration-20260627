@@ -1,0 +1,354 @@
+{
+  "status": "hgb_in_sample_upper_bound_ready",
+  "generated_at": "2026-06-26T17:12:23.852994+00:00",
+  "research_only": true,
+  "strict_no_future_training": false,
+  "label_leakage_warning": "This upper-bound model is trained on the full 2024-2026 sample using future horizon returns, then evaluated on the same sample. It is not a valid walk-forward/no-future training result.",
+  "signal_timing": "Prediction at bar t uses bar-t closed features; target participates from bar t+1.",
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "dropped_forbidden_columns": [
+    "target_position",
+    "component",
+    "event_entry_reason",
+    "exit_overlay_reason",
+    "time_stop_reason"
+  ],
+  "scan_rows": 36,
+  "hard_pass_rows": 26,
+  "best_candidate": {
+    "candidate_id": "hgb_upper_bound_h64_909790841b",
+    "horizon": 64,
+    "threshold": 0.00047352258656228993,
+    "hard_pass": true,
+    "return_2025_pct": 11267.598862917794,
+    "return_2026_pct": 1425.0739713712055,
+    "min_required_year_return_pct": 1425.0739713712055,
+    "min_monthly_return_pct": 19.74617315834695,
+    "losing_eval_months": 0,
+    "min_monthly_orders": 14,
+    "total_return_pct": 99611288.63028742,
+    "max_drawdown_pct": -10.548788379897434,
+    "orders": 1233,
+    "turnover": 1233.0
+  },
+  "best_monthly": [
+    {
+      "month": "2024-01",
+      "log_return": 0.5998243756252858,
+      "orders": 41,
+      "turnover": 41.0,
+      "min_drawdown": -0.062142465899511334,
+      "return_pct": 82.17988200145345,
+      "drawdown_pct": -6.214246589951133
+    },
+    {
+      "month": "2024-02",
+      "log_return": 0.4796440512289462,
+      "orders": 30,
+      "turnover": 30.0,
+      "min_drawdown": -0.06177722058782187,
+      "return_pct": 61.54992648612869,
+      "drawdown_pct": -6.177722058782187
+    },
+    {
+      "month": "2024-03",
+      "log_return": 0.6907081499375882,
+      "orders": 42,
+      "turnover": 42.0,
+      "min_drawdown": -0.09530263922831284,
+      "return_pct": 99.51278827921179,
+      "drawdown_pct": -9.530263922831283
+    },
+    {
+      "month": "2024-04",
+      "log_return": 0.7710394949689976,
+      "orders": 54,
+      "turnover": 54.0,
+      "min_drawdown": -0.06567480703688788,
+      "return_pct": 116.20124872118444,
+      "drawdown_pct": -6.567480703688789
+    },
+    {
+      "month": "2024-05",
+      "log_return": 0.44981130616330783,
+      "orders": 46,
+      "turnover": 46.0,
+      "min_drawdown": -0.03951120567922928,
+      "return_pct": 56.801628256516466,
+      "drawdown_pct": -3.9511205679229278
+    },
+    {
+      "month": "2024-06",
+      "log_return": 0.2722894282175526,
+      "orders": 42,
+      "turnover": 42.0,
+      "min_drawdown": -0.06514587861944354,
+      "return_pct": 31.29669560094337,
+      "drawdown_pct": -6.514587861944355
+    },
+    {
+      "month": "2024-07",
+      "log_return": 0.5586166671178661,
+      "orders": 44,
+      "turnover": 44.0,
+      "min_drawdown": -0.04639530995981411,
+      "return_pct": 74.82524117405576,
+      "drawdown_pct": -4.639530995981412
+    },
+    {
+      "month": "2024-08",
+      "log_return": 0.7062284293936305,
+      "orders": 46,
+      "turnover": 46.0,
+      "min_drawdown": -0.10548788379897434,
+      "return_pct": 102.63343653353449,
+      "drawdown_pct": -10.548788379897434
+    },
+    {
+      "month": "2024-09",
+      "log_return": 0.4300321133400596,
+      "orders": 58,
+      "turnover": 58.0,
+      "min_drawdown": -0.05525700321019911,
+      "return_pct": 53.7306890814564,
+      "drawdown_pct": -5.525700321019911
+    },
+    {
+      "month": "2024-10",
+      "log_return": 0.3111754588220595,
+      "orders": 36,
+      "turnover": 36.0,
+      "min_drawdown": -0.0410234615116849,
+      "return_pct": 36.50287065045617,
+      "drawdown_pct": -4.10234615116849
+    },
+    {
+      "month": "2024-11",
+      "log_return": 0.5830627759939391,
+      "orders": 42,
+      "turnover": 42.0,
+      "min_drawdown": -0.058912961678301845,
+      "return_pct": 79.151705199211,
+      "drawdown_pct": -5.891296167830184
+    },
+    {
+      "month": "2024-12",
+      "log_return": 0.5012044185511315,
+      "orders": 44,
+      "turnover": 44.0,
+      "min_drawdown": -0.05555793518699703,
+      "return_pct": 65.07082175018057,
+      "drawdown_pct": -5.555793518699703
+    },
+    {
+      "month": "2025-01",
+      "log_return": 0.653305090449465,
+      "orders": 50,
+      "turnover": 50.0,
+      "min_drawdown": -0.06573350764144092,
+      "return_pct": 92.18823385720812,
+      "drawdown_pct": -6.5733507641440925
+    },
+    {
+      "month": "2025-02",
+      "log_return": 0.4197754312063318,
+      "orders": 46,
+      "turnover": 46.0,
+      "min_drawdown": -0.0629715373026074,
+      "return_pct": 52.16198089223369,
+      "drawdown_pct": -6.2971537302607405
+    },
+    {
+      "month": "2025-03",
+      "log_return": 0.7420146636305542,
+      "orders": 48,
+      "turnover": 48.0,
+      "min_drawdown": -0.05457037087014194,
+      "return_pct": 110.01623759697563,
+      "drawdown_pct": -5.457037087014194
+    },
+    {
+      "month": "2025-04",
+      "log_return": 0.4733853747320998,
+      "orders": 42,
+      "turnover": 42.0,
+      "min_drawdown": -0.04243749397262553,
+      "return_pct": 60.54199520620891,
+      "drawdown_pct": -4.243749397262553
+    },
+    {
+      "month": "2025-05",
+      "log_return": 0.34354980693444276,
+      "orders": 44,
+      "turnover": 44.0,
+      "min_drawdown": -0.031276404751725884,
+      "return_pct": 40.994374570976476,
+      "drawdown_pct": -3.1276404751725884
+    },
+    {
+      "month": "2025-06",
+      "log_return": 0.25476898162335765,
+      "orders": 44,
+      "turnover": 44.0,
+      "min_drawdown": -0.05090559561520014,
+      "return_pct": 29.016353495710455,
+      "drawdown_pct": -5.090559561520013
+    },
+    {
+      "month": "2025-07",
+      "log_return": 0.23165291555396486,
+      "orders": 30,
+      "turnover": 30.0,
+      "min_drawdown": -0.04961015611625674,
+      "return_pct": 26.068208973911887,
+      "drawdown_pct": -4.961015611625674
+    },
+    {
+      "month": "2025-08",
+      "log_return": 0.24147607492147596,
+      "orders": 38,
+      "turnover": 38.0,
+      "min_drawdown": -0.046286601355321366,
+      "return_pct": 27.312699488982517,
+      "drawdown_pct": -4.628660135532137
+    },
+    {
+      "month": "2025-09",
+      "log_return": 0.2283254200487788,
+      "orders": 40,
+      "turnover": 40.0,
+      "min_drawdown": -0.03798884449937301,
+      "return_pct": 25.649414729602427,
+      "drawdown_pct": -3.798884449937301
+    },
+    {
+      "month": "2025-10",
+      "log_return": 0.42402028619834425,
+      "orders": 44,
+      "turnover": 44.0,
+      "min_drawdown": -0.06426680571810983,
+      "return_pct": 52.80925926590545,
+      "drawdown_pct": -6.426680571810984
+    },
+    {
+      "month": "2025-11",
+      "log_return": 0.41148214443515596,
+      "orders": 30,
+      "turnover": 30.0,
+      "min_drawdown": -0.05323277551512229,
+      "return_pct": 50.90527625784183,
+      "drawdown_pct": -5.323277551512229
+    },
+    {
+      "month": "2025-12",
+      "log_return": 0.309596006919078,
+      "orders": 38,
+      "turnover": 38.0,
+      "min_drawdown": -0.05160379551649308,
+      "return_pct": 36.2874411067317,
+      "drawdown_pct": -5.160379551649308
+    },
+    {
+      "month": "2026-01",
+      "log_return": 0.44500815383307885,
+      "orders": 36,
+      "turnover": 36.0,
+      "min_drawdown": -0.042303150491210806,
+      "return_pct": 56.05029198611196,
+      "drawdown_pct": -4.230315049121081
+    },
+    {
+      "month": "2026-02",
+      "log_return": 0.8435868437512728,
+      "orders": 46,
+      "turnover": 46.0,
+      "min_drawdown": -0.09199970491786846,
+      "return_pct": 132.469034157827,
+      "drawdown_pct": -9.199970491786846
+    },
+    {
+      "month": "2026-03",
+      "log_return": 0.6883327038626286,
+      "orders": 40,
+      "turnover": 40.0,
+      "min_drawdown": -0.03628649835859954,
+      "return_pct": 99.03941886374153,
+      "drawdown_pct": -3.628649835859954
+    },
+    {
+      "month": "2026-04",
+      "log_return": 0.18020409286826602,
+      "orders": 38,
+      "turnover": 38.0,
+      "min_drawdown": -0.055823499361758566,
+      "return_pct": 19.74617315834695,
+      "drawdown_pct": -5.582349936175857
+    },
+    {
+      "month": "2026-05",
+      "log_return": 0.206979390927617,
+      "orders": 40,
+      "turnover": 40.0,
+      "min_drawdown": -0.05987328218469501,
+      "return_pct": 22.9957223242107,
+      "drawdown_pct": -5.987328218469501
+    },
+    {
+      "month": "2026-06",
+      "log_return": 0.3605168224513726,
+      "orders": 14,
+      "turnover": 14.0,
+      "min_drawdown": -0.04951024767238843,
+      "return_pct": 43.40703828400261,
+      "drawdown_pct": -4.951024767238843
+    }
+  ],
+  "best_yearly": [
+    {
+      "year": "2024",
+      "compounded_return_pct": 57357.846601311976,
+      "months": 12,
+      "losing_months": 0,
+      "min_monthly_return_pct": 31.29669560094337,
+      "min_monthly_orders": 30,
+      "orders": 525,
+      "max_drawdown_pct": -10.548788379897434
+    },
+    {
+      "year": "2025",
+      "compounded_return_pct": 11267.598862917805,
+      "months": 12,
+      "losing_months": 0,
+      "min_monthly_return_pct": 25.649414729602427,
+      "min_monthly_orders": 30,
+      "orders": 494,
+      "max_drawdown_pct": -6.5733507641440925
+    },
+    {
+      "year": "2026",
+      "compounded_return_pct": 1425.0739713712055,
+      "months": 6,
+      "losing_months": 0,
+      "min_monthly_return_pct": 19.74617315834695,
+      "min_monthly_orders": 14,
+      "orders": 214,
+      "max_drawdown_pct": -9.199970491786846
+    }
+  ],
+  "hashes": {
+    "script_sha256": "f1e675640ab7d4c5a3b7a81faf0fea5e833b81369a95a227bd292c6bd1347422",
+    "feature_frame_sha256": "999d287fc48e90f01411a3e300ab7d458321ce772dd9b95d09497de280e65292",
+    "best_signals_sha256": "9add0c4355ca63a8e4f838647f8ca2883bbbe7a750eec00af194bf58a5ab2b3e"
+  },
+  "files": {
+    "summary": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\hgb_in_sample_upper_bound_20260626\\summary.json",
+    "scan": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\hgb_in_sample_upper_bound_20260626\\scan.csv",
+    "best_signals": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\hgb_in_sample_upper_bound_20260626\\best_signals.csv",
+    "best_equity": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\hgb_in_sample_upper_bound_20260626\\best_equity.csv",
+    "best_monthly": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\hgb_in_sample_upper_bound_20260626\\best_monthly.csv",
+    "best_yearly": "C:\\Users\\WHR\\Documents\\策略迭代\\artifacts\\hgb_in_sample_upper_bound_20260626\\best_yearly.csv"
+  }
+}

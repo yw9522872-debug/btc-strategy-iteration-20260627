@@ -1,0 +1,172 @@
+{
+  "status": "event_entry_v2_alpha_source_robustness_review_ready",
+  "generated_at": "2026-06-24T23:36:28.779665+00:00",
+  "research_only": true,
+  "execution_ready": false,
+  "execution_ready_source": false,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "live_actions_taken": false,
+  "entry_capable": false,
+  "candidate_ready": false,
+  "downstream_rebuild_allowed": false,
+  "live_promotion": "LIVE_PROMOTION_NO_GO",
+  "alpha_summary": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_scan_20260625\\summary.json",
+  "base_candidate": {
+    "candidate_id": "alpha_gap_adx_regime_momentum_824339506a_lev3.0",
+    "family": "gap_adx_regime",
+    "mode": "momentum",
+    "leverage": 3.0,
+    "total_return_pct": 6226.49381922394,
+    "annualized_sharpe": 2.633822731586398,
+    "max_drawdown_pct": -69.29299113795602,
+    "exposure_pct": 95.24486681465038,
+    "turnover": 9.0,
+    "trade_count": 2,
+    "win_rate_pct": 50.01395919060971,
+    "profit_factor": 1.0200048042484609,
+    "return_2025_pct": 265.7550880607302,
+    "return_2026_pct": 162.45484661874713,
+    "min_required_year_return_pct": 162.45484661874713,
+    "yearly_return_gate_pass": true,
+    "drawdown_review_gate_pass": true,
+    "active_rows": 82384,
+    "segments": 2,
+    "trigger_rows": 5300,
+    "params_json": "{\"adx_min\": 36.0, \"family\": \"gap_adx_regime\", \"gap_min\": 50.0, \"mode\": \"momentum\"}",
+    "formal_return_2025_pct": 248.19574984259222,
+    "formal_return_2026_pct": 168.64159871516227,
+    "formal_yearly_return_gate_pass": true
+  },
+  "base_params": {
+    "adx_min": 36.0,
+    "family": "gap_adx_regime",
+    "gap_min": 50.0,
+    "mode": "momentum"
+  },
+  "review_rows": 109,
+  "yearly_gate_pass_variants": 23,
+  "lower_drawdown_yearly_gate_pass_variants": 5,
+  "best_variant": {
+    "variant_id": "alpha_robust_static_a742e1d0c3_lev2.2",
+    "variant_kind": "static",
+    "leverage": 2.2,
+    "total_return_pct": 1993.4034292614904,
+    "annualized_sharpe": 2.633807506429488,
+    "max_drawdown_pct": -57.92983869640362,
+    "exposure_pct": 95.24486681465038,
+    "turnover": 6.6000000000000005,
+    "trade_count": 2,
+    "win_rate_pct": 50.01395919060971,
+    "profit_factor": 1.020004804248461,
+    "return_2025_pct": 149.65324085613253,
+    "return_2026_pct": 106.40825380994343,
+    "min_required_year_return_pct": 106.40825380994343,
+    "yearly_return_gate_pass": true,
+    "drawdown_improved_vs_base": true,
+    "drawdown_improvement_pct_points": 11.363152441552401,
+    "active_rows": 82384,
+    "segments": 2,
+    "trigger_rows": 5300,
+    "losing_months": 9,
+    "worst_month_return_pct": -34.92002648000604,
+    "params_json": "{\"scale_source\": \"base_alpha\"}"
+  },
+  "best_yearly": [
+    {
+      "year": "2024",
+      "compounded_return_pct": 298.4612308666958,
+      "months": 12,
+      "losing_months": 4,
+      "entries": 1,
+      "exits": 0,
+      "min_monthly_return_pct": -29.791741941165395,
+      "max_drawdown_pct": -57.92983869640362
+    },
+    {
+      "year": "2025",
+      "compounded_return_pct": 149.65324085613253,
+      "months": 12,
+      "losing_months": 3,
+      "entries": 1,
+      "exits": 1,
+      "min_monthly_return_pct": -34.92002648000604,
+      "max_drawdown_pct": -56.5245609899256
+    },
+    {
+      "year": "2026",
+      "compounded_return_pct": 106.40825380994343,
+      "months": 6,
+      "losing_months": 2,
+      "entries": 0,
+      "exits": 0,
+      "min_monthly_return_pct": -22.38171498761169,
+      "max_drawdown_pct": -50.1982465693569
+    }
+  ],
+  "best_monthly_summary": {
+    "months": 30,
+    "losing_months": 9,
+    "worst_month": "2025-02",
+    "worst_month_return_pct": -34.92002648000604,
+    "best_month": "2024-11",
+    "best_month_return_pct": 99.50119754861386,
+    "best_month_share_of_positive_month_returns_pct": 17.484987838691467
+  },
+  "cost_stress_summary": {
+    "rows": 4,
+    "passing_rows": 4,
+    "worst_2025_return_pct": 147.03077362966553,
+    "worst_2026_return_pct": 106.40825380994343,
+    "worst_max_drawdown_pct": -57.92983869640362
+  },
+  "yearly_return_gate": {
+    "backtest_start": "2024-01-01",
+    "required_return_pct": 100.0,
+    "required_years": [
+      "2025",
+      "2026"
+    ],
+    "decision_rule": "Reject as final if either 2025 or latest available 2026 YTD return is below 100%."
+  },
+  "lineage_audit": {
+    "source_forbidden_columns_dropped": [
+      "target_position",
+      "component",
+      "event_entry_reason",
+      "exit_overlay_reason",
+      "time_stop_reason"
+    ],
+    "saved_best_target_recompute_mismatches": 0,
+    "return_timing": "position decided at bar t participates in bar t+1 return",
+    "closed_bar_feature_source": "C:\\Users\\WHR\\Documents\\量化策略\\scripts\\scan_event_entry_v2_alpha_source_20260625.py"
+  },
+  "assessment": "This review tests sizing and simple causal risk filters around the first closed-bar alpha source that cleared the 2025/2026 yearly return gate. It does not promote the candidate or rebuild downstream lineage.",
+  "hard_veto": [
+    "research_review_only_not_live_source",
+    "entry_capable_false",
+    "downstream_rebuild_not_allowed",
+    "monthly_meta_late_era_rebuild_not_run",
+    "observe_paper_mock_acceptance_not_run",
+    "explicit_user_live_confirmation_missing",
+    "LIVE_PROMOTION_NO_GO",
+    "lower_drawdown_variant_is_research_only",
+    "walk_forward_and_no_lookahead_audit_not_sufficient_for_promotion"
+  ],
+  "hashes": {
+    "script_sha256": "c1f00f07ab30f6e92599fe7cb3f661246d281bb70006fceb6f6df4a1e476c6e5",
+    "alpha_script_sha256": "3f0b0fdf3870b0db64f130f2b4b9b790e7e4c8047b25a6b55072dd6cb4a5e326",
+    "alpha_summary_sha256": "d2614f94634e557fc6ff75766e9bd00aa044222a61ef650bd8195a8974c21eba",
+    "best_variant_signals_sha256": "17eb7c8fd347dd4e7b96972c4ff6bf1e738dcf382ad9fe0291b69f0c3144cb11"
+  },
+  "files": {
+    "summary": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\summary.json",
+    "report": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\report.md",
+    "variant_review": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\variant_review.csv",
+    "cost_stress": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\cost_stress.csv",
+    "best_variant_signals": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\best_variant_signals.csv",
+    "best_variant_equity": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\best_variant_equity.csv",
+    "best_variant_monthly": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\best_variant_monthly.csv",
+    "best_variant_yearly": "C:\\Users\\WHR\\Documents\\量化策略\\artifacts\\event_entry_v2_alpha_source_robustness_review_20260625\\best_variant_yearly.csv"
+  }
+}

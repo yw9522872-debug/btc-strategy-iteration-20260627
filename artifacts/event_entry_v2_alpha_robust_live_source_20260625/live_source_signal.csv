@@ -1,0 +1,2 @@
+timestamp,close,target_position,component,action,confidence,long_edge,strategy_stop_price,stop_loss_source,strategy_stop_active,strategy_stop_state
+2026-06-25 14:30:00+00:00,59292.8,-1.0,v2_alpha_robust_static,hold,0.6,0.0,,emergency_fallback_required,False,alpha_robust_source_has_no_strategy_stop_metadata

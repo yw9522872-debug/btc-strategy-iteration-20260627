@@ -1,0 +1,75 @@
+{
+  "contract_id": "event_entry_v2_non_oracle_contract_20260625",
+  "version": "v2.0-research-freeze",
+  "frozen_at": "2026-06-24T22:32:39.514530+00:00",
+  "purpose": "Define the minimum non-oracle event_entry v2 contract before any monthly/meta/late-era rebuild. This is a research contract, not a live source.",
+  "allowed_inputs": [
+    "closed OHLCV bars",
+    "features computed only from closed bars at or before the decision timestamp",
+    "documented market-data basis",
+    "documented fee, slippage, funding, leverage, and return timing assumptions"
+  ],
+  "forbidden_inputs": [
+    "legacy reference target_position labels",
+    "final component labels used as builder inputs",
+    "replayed fullscan rows as a forward builder",
+    "future bars or same-bar lookahead",
+    "live account state, open orders, supervisor state, secrets, keys, tokens, or .env values"
+  ],
+  "required_signal_schema": [
+    "timestamp",
+    "target_position",
+    "component",
+    "entry_reason",
+    "exit_reason",
+    "action",
+    "confidence",
+    "data_basis",
+    "candidate_version"
+  ],
+  "minimum_validation_gates": {
+    "non_oracle_gate": [
+      "builder code regenerates signals from closed bars",
+      "no reference label, final label, or replay artifact is used as an input",
+      "timestamps are sorted, unique, timezone-aware, and bar-close aligned"
+    ],
+    "economic_gate": [
+      "evaluation starts no earlier than 2024-01-01",
+      "2025 return is at least 100.0%",
+      "2026 return is at least 100.0% on latest available YTD closed-bar data until full 2026 is complete",
+      "fee, slippage, funding, leverage, and return timing are locked before comparison"
+    ],
+    "lineage_gate": [
+      "fresh selected_signals are produced from the v2 builder",
+      "fresh regime_stack is rebuilt from v2 selected_signals",
+      "fresh monthly_activity replay/builder is rebuilt from the new lineage",
+      "fresh meta_feature_pool_robust selected_signals, walk_forward_predictions, candidate_segment_index, and candidate_trade_dataset are rebuilt",
+      "fresh late_era_walk_forward_anchor is rebuilt from the fresh robust pool"
+    ],
+    "live_gate": [
+      "observe-only source is built and validated",
+      "paper/mock execution acceptance passes",
+      "non-overlap, stop, kill-switch, and reconciliation acceptance pass",
+      "explicit user confirmation is present before any live switch"
+    ]
+  },
+  "yearly_return_gate": {
+    "backtest_start": "2024-01-01",
+    "required_return_pct": 100.0,
+    "required_years": [
+      "2025",
+      "2026"
+    ],
+    "required_year_scopes": {
+      "2025": "full calendar year when full 2025 data is available",
+      "2026": "year-to-date through the latest available closed bar until full 2026 is complete"
+    }
+  },
+  "candidate_design_guidance": [
+    "use a stateful primary/supplement combiner rather than one-shot threshold overlays",
+    "test primary continuation or re-entry as a separate state machine, not as direct reference-row patching",
+    "test supplement dip/reversion as its own closed-bar rule family",
+    "keep breakout20 as at most one component because standalone breakout v0 was rejected economically",
+    "only rebuild downstream after a candidate passes non-oracle, row, economic, and lineage gates"
+  ]
+}
