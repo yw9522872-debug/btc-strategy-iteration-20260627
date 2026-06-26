@@ -1,0 +1,369 @@
+{
+  "status": "profit_lock_overfit_validation_ready",
+  "generated_at": "2026-06-26T18:56:14.604953+00:00",
+  "research_only": true,
+  "fixed_params": {
+    "expert_family": "ret_state",
+    "window": 64,
+    "threshold_bps": 100.0,
+    "leverage": 8.0,
+    "lock_log": 0.04,
+    "quota_arm_log": 0.12,
+    "quota_leverage": 0.1
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "fixed_full_history": {
+    "row": {
+      "hard_pass": true,
+      "return_2025_pct": 326.2588596118197,
+      "return_2026_pct": 106.92515992630076,
+      "min_required_year_return_pct": 106.92515992630076,
+      "min_monthly_return_pct": 7.377379776521598,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 12,
+      "total_return_pct": 2219.979002982439,
+      "max_drawdown_pct": -51.91828127264655,
+      "annualized_sharpe": 1.4356889176028078,
+      "exposure_pct": 20.486496485386606,
+      "turnover": 1238.4,
+      "orders": 376,
+      "win_rate_pct": 49.966139954853276,
+      "profit_factor": 1.09844129457953
+    },
+    "yearly": [
+      {
+        "year": "2024",
+        "log_return": 0.9670796051320921,
+        "compounded_return_pct": 163.02518580772008,
+        "months": 12,
+        "losing_months": 1,
+        "min_monthly_return_pct": -8.505927841711614,
+        "min_monthly_orders": 12,
+        "orders_sum": 156,
+        "max_drawdown_pct": -51.91828127264655
+      },
+      {
+        "year": "2025",
+        "log_return": 1.4498766274066968,
+        "compounded_return_pct": 326.2588596118197,
+        "months": 12,
+        "losing_months": 0,
+        "min_monthly_return_pct": 7.377379776521598,
+        "min_monthly_orders": 12,
+        "orders_sum": 148,
+        "max_drawdown_pct": -48.53023120883241
+      },
+      {
+        "year": "2026",
+        "log_return": 0.7271869956539201,
+        "compounded_return_pct": 106.92515992630081,
+        "months": 6,
+        "losing_months": 0,
+        "min_monthly_return_pct": 7.554180764773766,
+        "min_monthly_orders": 12,
+        "orders_sum": 72,
+        "max_drawdown_pct": -18.20982112031009
+      }
+    ],
+    "eval_months": [
+      {
+        "month": "2025-01",
+        "return_pct": 7.377379776521598,
+        "orders": 12
+      },
+      {
+        "month": "2025-02",
+        "return_pct": 11.799351404383064,
+        "orders": 12
+      },
+      {
+        "month": "2025-03",
+        "return_pct": 18.467542451487606,
+        "orders": 12
+      },
+      {
+        "month": "2025-04",
+        "return_pct": 13.000294497871746,
+        "orders": 12
+      },
+      {
+        "month": "2025-05",
+        "return_pct": 10.862732840060385,
+        "orders": 12
+      },
+      {
+        "month": "2025-06",
+        "return_pct": 14.527285022520054,
+        "orders": 16
+      },
+      {
+        "month": "2025-07",
+        "return_pct": 13.55167769744332,
+        "orders": 12
+      },
+      {
+        "month": "2025-08",
+        "return_pct": 13.619358547768833,
+        "orders": 12
+      },
+      {
+        "month": "2025-09",
+        "return_pct": 11.479675384222322,
+        "orders": 12
+      },
+      {
+        "month": "2025-10",
+        "return_pct": 11.488648016433611,
+        "orders": 12
+      },
+      {
+        "month": "2025-11",
+        "return_pct": 14.880855836544814,
+        "orders": 12
+      },
+      {
+        "month": "2025-12",
+        "return_pct": 13.4038861841979,
+        "orders": 12
+      },
+      {
+        "month": "2026-01",
+        "return_pct": 12.201752580225754,
+        "orders": 12
+      },
+      {
+        "month": "2026-02",
+        "return_pct": 10.88620426964846,
+        "orders": 12
+      },
+      {
+        "month": "2026-03",
+        "return_pct": 7.554180764773766,
+        "orders": 12
+      },
+      {
+        "month": "2026-04",
+        "return_pct": 11.77653474476028,
+        "orders": 12
+      },
+      {
+        "month": "2026-05",
+        "return_pct": 14.973784024919489,
+        "orders": 12
+      },
+      {
+        "month": "2026-06",
+        "return_pct": 20.325971847000936,
+        "orders": 12
+      }
+    ]
+  },
+  "within_expert_selected_on_2024": {
+    "selected_params": {
+      "leverage": 6.0,
+      "lock_log": 0.04,
+      "quota_arm_log": 0.04,
+      "quota_leverage": 0.25,
+      "selection_2024": {
+        "return_pct": 107.20587782865358,
+        "losing_months": 0,
+        "min_month_return_pct": 4.791369199423512,
+        "min_orders": 12
+      }
+    },
+    "selection_note": "Only the fixed ret_state expert was considered; lock/quota parameters were selected by 2024 metrics, then evaluated on 2025/2026.",
+    "result": {
+      "row": {
+        "hard_pass": false,
+        "return_2025_pct": 88.37935768791934,
+        "return_2026_pct": 41.66296659084006,
+        "min_required_year_return_pct": 41.66296659084006,
+        "min_monthly_return_pct": 1.0520745198137282,
+        "losing_eval_months": 0,
+        "min_monthly_orders": 12,
+        "total_return_pct": 452.95745151834126,
+        "max_drawdown_pct": -34.17384154367081,
+        "annualized_sharpe": 1.3675579524684602,
+        "exposure_pct": 20.064511653718093,
+        "turnover": 888.0,
+        "orders": 378,
+        "win_rate_pct": 49.85306828003458,
+        "profit_factor": 1.109610195147503
+      },
+      "yearly": [
+        {
+          "year": "2024",
+          "log_return": 0.7285426918937828,
+          "compounded_return_pct": 107.20587782865358,
+          "months": 12,
+          "losing_months": 0,
+          "min_monthly_return_pct": 4.791369199423512,
+          "min_monthly_orders": 12,
+          "orders_sum": 154,
+          "max_drawdown_pct": -34.17384154367081
+        },
+        {
+          "year": "2025",
+          "log_return": 0.6332876037390158,
+          "compounded_return_pct": 88.37935768791935,
+          "months": 12,
+          "losing_months": 0,
+          "min_monthly_return_pct": 1.0520745198137282,
+          "min_monthly_orders": 12,
+          "orders_sum": 150,
+          "max_drawdown_pct": -12.575273991948265
+        },
+        {
+          "year": "2026",
+          "log_return": 0.3482805757448247,
+          "compounded_return_pct": 41.66296659084006,
+          "months": 6,
+          "losing_months": 0,
+          "min_monthly_return_pct": 2.0984659701003716,
+          "min_monthly_orders": 12,
+          "orders_sum": 74,
+          "max_drawdown_pct": -9.752524373534033
+        }
+      ],
+      "eval_months": [
+        {
+          "month": "2025-01",
+          "return_pct": 7.702199508275354,
+          "orders": 14
+        },
+        {
+          "month": "2025-02",
+          "return_pct": 4.203952494794327,
+          "orders": 12
+        },
+        {
+          "month": "2025-03",
+          "return_pct": 1.0520745198137282,
+          "orders": 12
+        },
+        {
+          "month": "2025-04",
+          "return_pct": 6.068933372992702,
+          "orders": 16
+        },
+        {
+          "month": "2025-05",
+          "return_pct": 6.227505543770584,
+          "orders": 12
+        },
+        {
+          "month": "2025-06",
+          "return_pct": 1.571940986758813,
+          "orders": 12
+        },
+        {
+          "month": "2025-07",
+          "return_pct": 3.3627244946227153,
+          "orders": 12
+        },
+        {
+          "month": "2025-08",
+          "return_pct": 2.857632360181217,
+          "orders": 12
+        },
+        {
+          "month": "2025-09",
+          "return_pct": 6.421725747523643,
+          "orders": 12
+        },
+        {
+          "month": "2025-10",
+          "return_pct": 6.4495138602712165,
+          "orders": 12
+        },
+        {
+          "month": "2025-11",
+          "return_pct": 5.999104059519733,
+          "orders": 12
+        },
+        {
+          "month": "2025-12",
+          "return_pct": 13.685147873777881,
+          "orders": 12
+        },
+        {
+          "month": "2026-01",
+          "return_pct": 5.86960278609463,
+          "orders": 12
+        },
+        {
+          "month": "2026-02",
+          "return_pct": 6.079012808284889,
+          "orders": 14
+        },
+        {
+          "month": "2026-03",
+          "return_pct": 7.864812009346145,
+          "orders": 12
+        },
+        {
+          "month": "2026-04",
+          "return_pct": 2.0984659701003716,
+          "orders": 12
+        },
+        {
+          "month": "2026-05",
+          "return_pct": 4.996206399697356,
+          "orders": 12
+        },
+        {
+          "month": "2026-06",
+          "return_pct": 9.089503061704086,
+          "orders": 12
+        }
+      ]
+    }
+  },
+  "latest_binance_validation": {
+    "status": "ok",
+    "source": "https://api.binance.com/api/v3/klines or https://data-api.binance.vision/api/v3/klines",
+    "local_end": "2026-06-19T23:45:00+00:00",
+    "fetched_rows": 2475,
+    "combined_rows_from_2026_06_01": 2475,
+    "latest_timestamp": "2026-06-26T18:30:00+00:00",
+    "june_combined_return_pct": 18.104011759479178,
+    "june_combined_orders": 12,
+    "new_segment": {
+      "start": "2026-06-20T00:00:00+00:00",
+      "end": "2026-06-26T18:30:00+00:00",
+      "bars": 651,
+      "log_return": 0.0,
+      "return_pct": 0.0,
+      "orders": 0
+    },
+    "row": {
+      "hard_pass": false,
+      "return_2025_pct": null,
+      "return_2026_pct": 18.104011759479178,
+      "min_required_year_return_pct": -999.0,
+      "min_monthly_return_pct": 18.104011759479178,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 12,
+      "total_return_pct": 18.1040117594792,
+      "max_drawdown_pct": -9.813001643643272,
+      "annualized_sharpe": 4.117452068690887,
+      "exposure_pct": 20.12121212121212,
+      "turnover": 17.0,
+      "orders": 12,
+      "win_rate_pct": 56.22489959839358,
+      "profit_factor": 1.3634261337889721
+    }
+  },
+  "files": {
+    "summary": "artifacts/profit_lock_overfit_validation_20260627/summary.json",
+    "fixed_monthly": "artifacts/profit_lock_overfit_validation_20260627/fixed_monthly.csv",
+    "fixed_yearly": "artifacts/profit_lock_overfit_validation_20260627/fixed_yearly.csv",
+    "selected_on_2024_monthly": "artifacts/profit_lock_overfit_validation_20260627/selected_on_2024_monthly.csv",
+    "selected_on_2024_yearly": "artifacts/profit_lock_overfit_validation_20260627/selected_on_2024_yearly.csv",
+    "latest_combined_monthly": "artifacts/profit_lock_overfit_validation_20260627/latest_combined_monthly.csv",
+    "latest_new_segment": "artifacts/profit_lock_overfit_validation_20260627/latest_new_segment.csv"
+  }
+}

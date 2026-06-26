@@ -62,6 +62,15 @@ Important current results:
   - 2025 return: 326.26%; 2026 return: 106.93%; worst evaluated month: +7.38%; minimum monthly orders: 12.
   - Important caveat: parameter selection is posthoc research selection over the historical file. This is not a live guarantee.
 
+- `artifacts/profit_lock_overfit_validation_20260627/summary.json`
+  - Fixed historical hard-pass parameters still reproduce the historical hard pass.
+  - Fixed-parameter full-history result: 2025 return 326.26%; 2026 return 106.93%; worst evaluated month +7.38%; minimum monthly orders 12.
+  - A stricter within-expert check selected lock/quota parameters using only 2024, then evaluated 2025/2026.
+  - The 2024-selected parameters did not meet the target: 2025 return 88.38%; 2026 return 41.66%; no losing evaluated months; minimum monthly orders 12.
+  - Latest Binance 15m fetch extended June 2026 from local end 2026-06-19 23:45 UTC to 2026-06-26 18:30 UTC.
+  - Fixed hard-pass candidate June combined result after the fetch: +18.10%, 12 orders. New post-local segment had 0 orders and 0.00% return because the monthly lock was already flat.
+  - Interpretation: no obvious execution-time future function was found, but overfit risk remains high. Treat the historical hard pass as a research artifact, not a robust strategy.
+
 Useful source files:
 
 - `scripts/search_ultimate_monthly_20260626.py`
@@ -71,6 +80,7 @@ Useful source files:
 - `scripts/search_walkforward_hgb_strict_20260627.py`
 - `scripts/analyze_expert_pool_bounds_20260627.py`
 - `scripts/search_monthly_profit_lock_20260627.py`
+- `scripts/validate_profit_lock_overfit_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
 What advice is needed:
