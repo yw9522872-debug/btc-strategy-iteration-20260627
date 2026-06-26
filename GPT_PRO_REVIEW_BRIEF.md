@@ -53,6 +53,15 @@ Important current results:
   - Monthly posthoc oracle can pass, but `strict_no_future = false`.
   - Best strict tradeable selector still fails; `strict_pass_rows = 0`.
 
+- `artifacts/monthly_profit_lock_20260627/summary.json`
+  - First historical hard-pass candidate found.
+  - `hard_pass_rows = 24`.
+  - Best candidate: fixed `ret_state` expert, window 64, threshold 100 bps, leverage 8.
+  - Causal monthly lock: after at least 10 real orders and current month net return reaches lock, go flat for the rest of the month.
+  - Causal quota-completion mode: after current month log return reaches 0.12 but before 10 orders are complete, reduce notional exposure to 0.1x until the 10-order quota is met.
+  - 2025 return: 326.26%; 2026 return: 106.93%; worst evaluated month: +7.38%; minimum monthly orders: 12.
+  - Important caveat: parameter selection is posthoc research selection over the historical file. This is not a live guarantee.
+
 Useful source files:
 
 - `scripts/search_ultimate_monthly_20260626.py`
@@ -61,6 +70,7 @@ Useful source files:
 - `scripts/search_zscore_rsi_trend_20260627.py`
 - `scripts/search_walkforward_hgb_strict_20260627.py`
 - `scripts/analyze_expert_pool_bounds_20260627.py`
+- `scripts/search_monthly_profit_lock_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
 What advice is needed:
