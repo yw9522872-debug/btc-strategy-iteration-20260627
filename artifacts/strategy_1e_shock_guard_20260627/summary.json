@@ -1,0 +1,389 @@
+{
+  "status": "strategy_1e_shock_guard_ready",
+  "strategy_id": "strategy_1e_shock_guard_20260627",
+  "generated_at": "2026-06-26T21:48:57.367106+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "strict_no_future_function": true,
+  "base": "strategy_1d_trend_guard_20260627",
+  "change": "Tighten the strong-trend guard to 350 bps / ADX 30, keep weak-zone new trades tiny, and add a closed-bar adverse-shock guard to reduce position after a large hit.",
+  "rules": {
+    "base_signal": {
+      "family": "ret_state",
+      "window_bars": 64,
+      "threshold_bps": 100.0
+    },
+    "leverage_cap": 8.0,
+    "strong_trend_guard": {
+      "trend_gap_bps": 350.0,
+      "adx_min": 30.0,
+      "conflict_before_10_orders": "use trend side at 0.25x",
+      "conflict_after_10_orders": "flat"
+    },
+    "weak_trend_guard": {
+      "weak_when": "ADX < 30.0 and abs(trend_gap) < 300.0",
+      "new_or_reverse_trade_leverage": 0.1
+    },
+    "adverse_shock_guard": {
+      "trigger": "active_position * current_bar_log_return <= -0.06",
+      "cooldown_bars": 1,
+      "cooldown_leverage": 0.1,
+      "timing": "the shock is known at bar t close and only changes target position for bar t+1"
+    },
+    "post_lock_runner": {
+      "runner_leverage": 0.25,
+      "runner_side": "same strong trend side as the strong trend guard"
+    },
+    "timing": "all signal inputs use closed bar t data; active_position participates from bar t+1"
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "row": {
+    "hard_pass": true,
+    "return_2025_pct": 412.05570181711283,
+    "return_2026_pct": 257.43541356723665,
+    "min_required_year_return_pct": 257.43541356723665,
+    "min_monthly_return_pct": 4.488453572042084,
+    "losing_eval_months": 0,
+    "min_monthly_orders": 11,
+    "total_return_pct": 1730.268415484618,
+    "max_drawdown_pct": -29.403117070591435,
+    "exposure_pct": 30.478971962616825,
+    "turnover": 887.9,
+    "orders": 256
+  },
+  "diagnostics": {
+    "strong_trend_reverse_active_bars": 1,
+    "strong_trend_reverse_big_active_bars": 1,
+    "weak_trend_order_events": 95,
+    "weak_trend_big_order_events": 0,
+    "adverse_shock_cut_events": 1,
+    "guard_reason_counts": {
+      "post_lock_flat": 35706,
+      "main": 12838,
+      "post_lock_runner": 1693,
+      "strong_conflict_small_trend": 1037,
+      "weak_new_order_small": 84,
+      "adverse_shock_cut": 1,
+      "shock_cooldown_small": 1
+    }
+  },
+  "yearly": [
+    {
+      "year": "2025",
+      "log_return": 1.633263225745478,
+      "compounded_return_pct": 412.05570181711283,
+      "months": 12,
+      "losing_months": 0,
+      "min_monthly_return_pct": 4.488453572042084,
+      "min_monthly_orders": 11,
+      "orders_sum": 176,
+      "max_drawdown_pct": -29.403117070591435
+    },
+    {
+      "year": "2026",
+      "log_return": 1.2737844984743565,
+      "compounded_return_pct": 257.43541356723665,
+      "months": 6,
+      "losing_months": 0,
+      "min_monthly_return_pct": 11.180210507278998,
+      "min_monthly_orders": 11,
+      "orders_sum": 80,
+      "max_drawdown_pct": -29.25249695229707
+    }
+  ],
+  "monthly": [
+    {
+      "month": "2025-01",
+      "return_pct": 5.8786004289359095,
+      "orders": 12,
+      "drawdown_pct": -17.55076110748066
+    },
+    {
+      "month": "2025-02",
+      "return_pct": 11.151919570872604,
+      "orders": 13,
+      "drawdown_pct": -7.5779835449208965
+    },
+    {
+      "month": "2025-03",
+      "return_pct": 41.674435365841475,
+      "orders": 11,
+      "drawdown_pct": -28.61659204543453
+    },
+    {
+      "month": "2025-04",
+      "return_pct": 18.587389323439197,
+      "orders": 24,
+      "drawdown_pct": -29.403117070591435
+    },
+    {
+      "month": "2025-05",
+      "return_pct": 16.886922212283007,
+      "orders": 14,
+      "drawdown_pct": -11.86645560128654
+    },
+    {
+      "month": "2025-06",
+      "return_pct": 12.774910799730277,
+      "orders": 12,
+      "drawdown_pct": -18.152758837682757
+    },
+    {
+      "month": "2025-07",
+      "return_pct": 8.297277334787822,
+      "orders": 14,
+      "drawdown_pct": -12.66719108852319
+    },
+    {
+      "month": "2025-08",
+      "return_pct": 9.528515109034807,
+      "orders": 12,
+      "drawdown_pct": -9.124752489812204
+    },
+    {
+      "month": "2025-09",
+      "return_pct": 4.488453572042084,
+      "orders": 14,
+      "drawdown_pct": -22.27604026224147
+    },
+    {
+      "month": "2025-10",
+      "return_pct": 10.200316529664066,
+      "orders": 24,
+      "drawdown_pct": -17.782653140380155
+    },
+    {
+      "month": "2025-11",
+      "return_pct": 21.31839031822469,
+      "orders": 14,
+      "drawdown_pct": -12.249554718788513
+    },
+    {
+      "month": "2025-12",
+      "return_pct": 18.56625752733738,
+      "orders": 12,
+      "drawdown_pct": -11.25111849935163
+    },
+    {
+      "month": "2026-01",
+      "return_pct": 11.180210507278998,
+      "orders": 13,
+      "drawdown_pct": -20.989094466236903
+    },
+    {
+      "month": "2026-02",
+      "return_pct": 29.48412488516268,
+      "orders": 11,
+      "drawdown_pct": -24.42711463198597
+    },
+    {
+      "month": "2026-03",
+      "return_pct": 23.563737138798956,
+      "orders": 12,
+      "drawdown_pct": -29.25249695229707
+    },
+    {
+      "month": "2026-04",
+      "return_pct": 20.37212847218268,
+      "orders": 20,
+      "drawdown_pct": -11.229497873015347
+    },
+    {
+      "month": "2026-05",
+      "return_pct": 14.259335126106066,
+      "orders": 12,
+      "drawdown_pct": -9.50269055650088
+    },
+    {
+      "month": "2026-06",
+      "return_pct": 46.09820947192284,
+      "orders": 12,
+      "drawdown_pct": -21.13058144879909
+    }
+  ],
+  "stress": [
+    {
+      "cost_per_side": 0.001,
+      "round_trip_cost": 0.002,
+      "extra_delay_bars": 0,
+      "hard_pass": true,
+      "return_2025_pct": 412.05570181711283,
+      "return_2026_pct": 257.43541356723665,
+      "min_required_year_return_pct": 257.43541356723665,
+      "min_monthly_return_pct": 4.488453572042084,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 11,
+      "total_return_pct": 1730.268415484618,
+      "max_drawdown_pct": -29.403117070591435,
+      "exposure_pct": 30.478971962616825,
+      "turnover": 887.9,
+      "orders": 256,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 95,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 1,
+      "guard_reason_counts": {
+        "post_lock_flat": 35706,
+        "main": 12838,
+        "post_lock_runner": 1693,
+        "strong_conflict_small_trend": 1037,
+        "weak_new_order_small": 84,
+        "adverse_shock_cut": 1,
+        "shock_cooldown_small": 1
+      }
+    },
+    {
+      "cost_per_side": 0.0015,
+      "round_trip_cost": 0.003,
+      "extra_delay_bars": 0,
+      "hard_pass": true,
+      "return_2025_pct": 373.7380733210096,
+      "return_2026_pct": 197.05693383059946,
+      "min_required_year_return_pct": 197.05693383059946,
+      "min_monthly_return_pct": 3.1873775787282455,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 11,
+      "total_return_pct": 1307.271794995544,
+      "max_drawdown_pct": -31.421025582351103,
+      "exposure_pct": 30.903426791277262,
+      "turnover": 935.5,
+      "orders": 258,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 96,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 1,
+      "guard_reason_counts": {
+        "post_lock_flat": 35488,
+        "main": 13055,
+        "post_lock_runner": 1693,
+        "strong_conflict_small_trend": 1037,
+        "weak_new_order_small": 85,
+        "adverse_shock_cut": 1,
+        "shock_cooldown_small": 1
+      }
+    },
+    {
+      "cost_per_side": 0.002,
+      "round_trip_cost": 0.004,
+      "extra_delay_bars": 0,
+      "hard_pass": true,
+      "return_2025_pct": 300.37959266864067,
+      "return_2026_pct": 203.58863551802403,
+      "min_required_year_return_pct": 203.58863551802403,
+      "min_monthly_return_pct": 4.419706549261426,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 11,
+      "total_return_pct": 1115.5069422753506,
+      "max_drawdown_pct": -41.084754089150785,
+      "exposure_pct": 31.275311526479747,
+      "turnover": 993.5,
+      "orders": 260,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 96,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 1,
+      "guard_reason_counts": {
+        "post_lock_flat": 35297,
+        "main": 13246,
+        "post_lock_runner": 1693,
+        "strong_conflict_small_trend": 1037,
+        "weak_new_order_small": 85,
+        "adverse_shock_cut": 1,
+        "shock_cooldown_small": 1
+      }
+    },
+    {
+      "cost_per_side": 0.001,
+      "round_trip_cost": 0.002,
+      "extra_delay_bars": 1,
+      "hard_pass": true,
+      "return_2025_pct": 370.67746761315084,
+      "return_2026_pct": 282.46551693561054,
+      "min_required_year_return_pct": 282.46551693561054,
+      "min_monthly_return_pct": 7.787881524054163,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 11,
+      "total_return_pct": 1700.179009606084,
+      "max_drawdown_pct": -33.51202492292508,
+      "exposure_pct": 30.73792834890966,
+      "turnover": 876.1,
+      "orders": 258,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 96,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 1,
+      "guard_reason_counts": {
+        "post_lock_flat": 35573,
+        "main": 12971,
+        "post_lock_runner": 1691,
+        "strong_conflict_small_trend": 1038,
+        "weak_new_order_small": 85,
+        "adverse_shock_cut": 1,
+        "shock_cooldown_small": 1
+      }
+    },
+    {
+      "cost_per_side": 0.0015,
+      "round_trip_cost": 0.003,
+      "extra_delay_bars": 1,
+      "hard_pass": true,
+      "return_2025_pct": 382.8990933112787,
+      "return_2026_pct": 240.27105491372507,
+      "min_required_year_return_pct": 240.27105491372507,
+      "min_monthly_return_pct": 5.2058742203324515,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 11,
+      "total_return_pct": 1543.1658389790944,
+      "max_drawdown_pct": -35.41248632108414,
+      "exposure_pct": 30.759345794392523,
+      "turnover": 912.1,
+      "orders": 258,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 96,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 1,
+      "guard_reason_counts": {
+        "post_lock_flat": 35562,
+        "main": 12982,
+        "post_lock_runner": 1691,
+        "strong_conflict_small_trend": 1038,
+        "weak_new_order_small": 85,
+        "adverse_shock_cut": 1,
+        "shock_cooldown_small": 1
+      }
+    }
+  ],
+  "risk_flags": {
+    "fixed_signal_still_from_prior_research": true,
+    "uses_strategy_1b_selected_controls": true,
+    "trend_and_shock_guard_choice_is_posthoc_research": true,
+    "not_a_live_guarantee": true
+  },
+  "hashes": {
+    "script_sha256": "78451ca306c4bb2c3ec96face1fe9a39373d032153dc742f442f742522b4702c",
+    "feature_frame_sha256": "999d287fc48e90f01411a3e300ab7d458321ce772dd9b95d09497de280e65292",
+    "signals_sha256": "7192b9bc5f17d36aa46f9a3400be35cd46ab8c7bc87a64a29d4ffdcb6040a04f"
+  },
+  "files": {
+    "summary": "artifacts/strategy_1e_shock_guard_20260627/summary.json",
+    "report": "artifacts/strategy_1e_shock_guard_20260627/report.md",
+    "selections": "artifacts/strategy_1e_shock_guard_20260627/strategy_1e_selections.csv",
+    "signals": "artifacts/strategy_1e_shock_guard_20260627/strategy_1e_signals.csv",
+    "equity": "artifacts/strategy_1e_shock_guard_20260627/strategy_1e_equity.csv",
+    "monthly": "artifacts/strategy_1e_shock_guard_20260627/strategy_1e_monthly.csv",
+    "yearly": "artifacts/strategy_1e_shock_guard_20260627/strategy_1e_yearly.csv",
+    "stress": "artifacts/strategy_1e_shock_guard_20260627/strategy_1e_stress.csv",
+    "charts": [
+      "artifacts/strategy_1e_shock_guard_20260627/strategy1e_trades_2025.png",
+      "artifacts/strategy_1e_shock_guard_20260627/strategy1e_trades_2026.png"
+    ]
+  }
+}

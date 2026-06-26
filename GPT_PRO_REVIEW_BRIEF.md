@@ -109,6 +109,26 @@ Important current results:
   - Result: 2025 return 503.36%; 2026 return 199.61%; no losing evaluated months; minimum monthly orders 12; max drawdown -31.28%.
   - Stress: base cost, 0.3% round-trip cost, and extra 1-bar delay pass; 0.4% round-trip cost fails. It remains cost-sensitive.
 
+- `STRATEGY_1F_CANDIDATE.md`
+  - Strategy 1F candidate addressing the chart critique that Strategy 1B/1C still take large opposite trades in strong trends and open large trades in weak trend zones.
+  - Candidate id: `strategy_1f_selective_runner_20260627`.
+  - Script: `scripts/search_strategy_1f_selective_runner_20260627.py`.
+  - Output: `artifacts/strategy_1f_selective_runner_20260627/summary.json`.
+  - Result: 2025 return 433.74%; 2026 return 260.59%; no losing evaluated months; minimum monthly orders 11; max drawdown -29.40%.
+  - Diagnostics: strong-trend reverse big active bars = 1; weak-trend big order events = 0.
+  - Stress: base cost, 0.3% round-trip cost, 0.4% round-trip cost, extra 1-bar delay, and 0.3% + 1-bar delay all pass.
+  - Interpretation: currently the more robust Strategy 1 candidate, but still posthoc research and not a live guarantee.
+
+- `STRATEGY_1G_CANDIDATE.md`
+  - Strategy 1G candidate keeps the 1F logic but lowers main leverage cap from 8x to 7x.
+  - Candidate id: `strategy_1g_cap7_selective_runner_20260627`.
+  - Script: `scripts/search_strategy_1g_cap7_selective_runner_20260627.py`.
+  - Output: `artifacts/strategy_1g_cap7_selective_runner_20260627/summary.json`.
+  - Result: 2025 return 471.14%; 2026 return 246.16%; no losing evaluated months; minimum monthly orders 11; max drawdown -28.67%.
+  - Diagnostics: strong-trend reverse big active bars = 1; weak-trend big order events = 0.
+  - Stress: base cost, 0.3% round-trip cost, and extra 1-bar delay pass; 0.4% round-trip cost and 0.3% + 1-bar delay fail.
+  - Interpretation: stronger under the fixed 0.2% fee backtest, but less robust than 1F under stress.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.

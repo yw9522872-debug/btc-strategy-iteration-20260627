@@ -21,9 +21,11 @@
 3. `STRATEGY_1_CANDIDATE.md`
 4. `STRATEGY_1B_CANDIDATE.md`
 5. `STRATEGY_1C_CANDIDATE.md`
-6. `CURRENT_STRATEGY_FREEZE.md`
-7. `GPT_PRO_REVIEW_BRIEF.md`
-8. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+6. `STRATEGY_1F_CANDIDATE.md`
+7. `STRATEGY_1G_CANDIDATE.md`
+8. `CURRENT_STRATEGY_FREEZE.md`
+9. `GPT_PRO_REVIEW_BRIEF.md`
+10. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -86,6 +88,38 @@
 - 改进点：针对图上“月度锁利后错过大趋势”的问题，锁利后只在强趋势条件下用 `0.25x` 小仓位继续跟随。
 - 风险：固定信号仍来自前期研究；趋势跟随规则是本轮看图后追加的研究规则；开平合计手续费压到 `0.4%` 会失败。
 
+## 1号F策略候选
+
+- 候选编号：`strategy_1f_selective_runner_20260627`
+- 定位文件：`STRATEGY_1F_CANDIDATE.md`
+- 脚本：`scripts/search_strategy_1f_selective_runner_20260627.py`
+- 结果：`artifacts/strategy_1f_selective_runner_20260627/summary.json`
+- 图片：
+  - `artifacts/strategy_1f_selective_runner_20260627/strategy1f_trades_2025.png`
+  - `artifacts/strategy_1f_selective_runner_20260627/strategy1f_trades_2026.png`
+- 2025：`+433.74%`，交易 `158` 次，最大回撤 `-29.40%`
+- 2026：`+260.59%`，交易 `72` 次，最大回撤 `-29.25%`
+- 每个评估月份都盈利，最低月交易次数 `11`
+- 诊断：强趋势反向大仓仅 `1` 根 15分钟K线；弱趋势区大仓开单 `0` 次。
+- 压力测试：开平合计 `0.3%`、`0.4%`、信号晚 1 根K线、`0.3% + 晚1根` 都通过。
+- 当前判断：比 1B/1C 图形更干净，是更稳的 1号候选。
+
+## 1号G策略候选
+
+- 候选编号：`strategy_1g_cap7_selective_runner_20260627`
+- 定位文件：`STRATEGY_1G_CANDIDATE.md`
+- 脚本：`scripts/search_strategy_1g_cap7_selective_runner_20260627.py`
+- 结果：`artifacts/strategy_1g_cap7_selective_runner_20260627/summary.json`
+- 图片：
+  - `artifacts/strategy_1g_cap7_selective_runner_20260627/strategy1g_trades_2025.png`
+  - `artifacts/strategy_1g_cap7_selective_runner_20260627/strategy1g_trades_2026.png`
+- 2025：`+471.14%`，交易 `160` 次，最大回撤 `-27.87%`
+- 2026：`+246.16%`，交易 `72` 次，最大回撤 `-28.67%`
+- 每个评估月份都盈利，最低月交易次数 `11`
+- 诊断：强趋势反向大仓仅 `1` 根 15分钟K线；弱趋势区大仓开单 `0` 次。
+- 压力测试：开平合计 `0.3%` 和信号晚 1 根K线通过；开平合计 `0.4%`、`0.3% + 晚1根` 失败。
+- 当前判断：固定 `0.2%` 手续费下，1G 数字更漂亮；如果更重视压力测试，1F 更稳。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -105,6 +139,7 @@
 - 补最新数据后复测；
 - 对 `profit_lock_walkforward_20260627` 做二次检查：尤其检查固定 `ret_state 64/100` 信号是否也能用更早数据独立选出来；
 - 重新设计更稳健的非事后选参规则；
+- 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -122,9 +157,11 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 4. STRATEGY_1_CANDIDATE.md
 5. STRATEGY_1B_CANDIDATE.md
 6. STRATEGY_1C_CANDIDATE.md
-7. CURRENT_STRATEGY_FREEZE.md
-8. GPT_PRO_REVIEW_BRIEF.md
-9. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+7. STRATEGY_1F_CANDIDATE.md
+8. STRATEGY_1G_CANDIDATE.md
+9. CURRENT_STRATEGY_FREEZE.md
+10. GPT_PRO_REVIEW_BRIEF.md
+11. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
