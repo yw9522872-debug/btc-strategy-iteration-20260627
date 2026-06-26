@@ -1,0 +1,281 @@
+{
+  "status": "strategy_1c_trend_runner_ready",
+  "strategy_id": "strategy_1c_trend_runner_20260627",
+  "generated_at": "2026-06-26T21:17:21.287862+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "strict_no_future_function": true,
+  "base": "strategy_1b_expanded_controls_20260627",
+  "change": "After the monthly lock is reached, do not always stay flat. If a strong trend is visible using closed-bar trend_gap/adx data, keep a small 0.25x trend-runner position.",
+  "trend_runner": {
+    "trend_gap_bps": 350.0,
+    "trend_adx_min": 30.0,
+    "runner_leverage": 0.25,
+    "timing": "trend side is computed from closed bar t data and participates from bar t+1 via active_position"
+  },
+  "expert": {
+    "family": "ret_state",
+    "window": 64,
+    "threshold_bps": 100.0
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "row": {
+    "hard_pass": true,
+    "return_2025_pct": 503.3553082878282,
+    "return_2026_pct": 199.60831853078088,
+    "min_required_year_return_pct": 199.60831853078088,
+    "min_monthly_return_pct": 7.5664965833874165,
+    "losing_eval_months": 0,
+    "min_monthly_orders": 12,
+    "total_return_pct": 1707.7026939273733,
+    "max_drawdown_pct": -31.281874597645974,
+    "exposure_pct": 28.773364485981308,
+    "turnover": 1101.0,
+    "orders": 262
+  },
+  "yearly": [
+    {
+      "year": "2025",
+      "log_return": 1.7973360715168956,
+      "compounded_return_pct": 503.3553082878282,
+      "months": 12,
+      "losing_months": 0,
+      "min_monthly_return_pct": 7.5664965833874165,
+      "min_monthly_orders": 12,
+      "orders_sum": 180,
+      "max_drawdown_pct": -31.281874597645974
+    },
+    {
+      "year": "2026",
+      "log_return": 1.0973058307260648,
+      "compounded_return_pct": 199.60831853078088,
+      "months": 6,
+      "losing_months": 0,
+      "min_monthly_return_pct": 8.668753071838875,
+      "min_monthly_orders": 12,
+      "orders_sum": 82,
+      "max_drawdown_pct": -26.09134181364241
+    }
+  ],
+  "monthly": [
+    {
+      "month": "2025-01",
+      "return_pct": 15.99763778920349,
+      "orders": 14,
+      "drawdown_pct": -19.667721921460334
+    },
+    {
+      "month": "2025-02",
+      "return_pct": 8.957859473035757,
+      "orders": 13,
+      "drawdown_pct": -5.730060813285586
+    },
+    {
+      "month": "2025-03",
+      "return_pct": 25.06616470834193,
+      "orders": 13,
+      "drawdown_pct": -13.340085011908487
+    },
+    {
+      "month": "2025-04",
+      "return_pct": 15.260887209002028,
+      "orders": 24,
+      "drawdown_pct": -31.281874597645974
+    },
+    {
+      "month": "2025-05",
+      "return_pct": 21.539811837481903,
+      "orders": 14,
+      "drawdown_pct": -16.691292090795372
+    },
+    {
+      "month": "2025-06",
+      "return_pct": 12.933145750728436,
+      "orders": 12,
+      "drawdown_pct": -16.644486072274777
+    },
+    {
+      "month": "2025-07",
+      "return_pct": 8.802172334563574,
+      "orders": 14,
+      "drawdown_pct": -15.572353464943156
+    },
+    {
+      "month": "2025-08",
+      "return_pct": 7.5664965833874165,
+      "orders": 12,
+      "drawdown_pct": -17.757405190220844
+    },
+    {
+      "month": "2025-09",
+      "return_pct": 8.89339789233954,
+      "orders": 12,
+      "drawdown_pct": -10.666630514414354
+    },
+    {
+      "month": "2025-10",
+      "return_pct": 12.321841117163569,
+      "orders": 26,
+      "drawdown_pct": -17.58433189445059
+    },
+    {
+      "month": "2025-11",
+      "return_pct": 23.224642411315322,
+      "orders": 14,
+      "drawdown_pct": -13.326852886581431
+    },
+    {
+      "month": "2025-12",
+      "return_pct": 36.78098736154165,
+      "orders": 12,
+      "drawdown_pct": -12.246046161418878
+    },
+    {
+      "month": "2026-01",
+      "return_pct": 13.383547852564437,
+      "orders": 13,
+      "drawdown_pct": -26.09134181364241
+    },
+    {
+      "month": "2026-02",
+      "return_pct": 8.668753071838875,
+      "orders": 13,
+      "drawdown_pct": -20.97991889739572
+    },
+    {
+      "month": "2026-03",
+      "return_pct": 24.913793010034556,
+      "orders": 12,
+      "drawdown_pct": -14.589684172923455
+    },
+    {
+      "month": "2026-04",
+      "return_pct": 14.185142633679227,
+      "orders": 20,
+      "drawdown_pct": -12.414269152362255
+    },
+    {
+      "month": "2026-05",
+      "return_pct": 14.965621735293855,
+      "orders": 12,
+      "drawdown_pct": -10.32193955062083
+    },
+    {
+      "month": "2026-06",
+      "return_pct": 48.289757260531175,
+      "orders": 12,
+      "drawdown_pct": -24.8068314898231
+    }
+  ],
+  "stress": [
+    {
+      "cost_per_side": 0.001,
+      "round_trip_cost": 0.002,
+      "extra_delay_bars": 0,
+      "hard_pass": true,
+      "return_2025_pct": 503.3553082878282,
+      "return_2026_pct": 199.60831853078088,
+      "min_required_year_return_pct": 199.60831853078088,
+      "min_monthly_return_pct": 7.5664965833874165,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 12,
+      "total_return_pct": 1707.7026939273733,
+      "max_drawdown_pct": -31.281874597645974,
+      "exposure_pct": 28.773364485981308,
+      "turnover": 1101.0,
+      "orders": 262
+    },
+    {
+      "cost_per_side": 0.0015,
+      "round_trip_cost": 0.003,
+      "extra_delay_bars": 0,
+      "hard_pass": true,
+      "return_2025_pct": 393.13692863645275,
+      "return_2026_pct": 174.1999140371567,
+      "min_required_year_return_pct": 174.1999140371567,
+      "min_monthly_return_pct": 4.6054843196311035,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 12,
+      "total_return_pct": 1252.1810344066314,
+      "max_drawdown_pct": -33.91029416307706,
+      "exposure_pct": 29.07710280373832,
+      "turnover": 1191.0,
+      "orders": 264
+    },
+    {
+      "cost_per_side": 0.002,
+      "round_trip_cost": 0.004,
+      "extra_delay_bars": 0,
+      "hard_pass": false,
+      "return_2025_pct": -50.47260306606469,
+      "return_2026_pct": 133.87007877294798,
+      "min_required_year_return_pct": -50.47260306606469,
+      "min_monthly_return_pct": -89.03082355960656,
+      "losing_eval_months": 2,
+      "min_monthly_orders": 11,
+      "total_return_pct": 15.829762223585075,
+      "max_drawdown_pct": -92.6779376361904,
+      "exposure_pct": 33.237928348909655,
+      "turnover": 1692.0,
+      "orders": 304
+    },
+    {
+      "cost_per_side": 0.001,
+      "round_trip_cost": 0.002,
+      "extra_delay_bars": 1,
+      "hard_pass": true,
+      "return_2025_pct": 611.6469766298829,
+      "return_2026_pct": 191.426621562033,
+      "min_required_year_return_pct": 191.426621562033,
+      "min_monthly_return_pct": 1.838080997503333,
+      "losing_eval_months": 0,
+      "min_monthly_orders": 12,
+      "total_return_pct": 1973.9287414408209,
+      "max_drawdown_pct": -37.58622329706316,
+      "exposure_pct": 28.779205607476637,
+      "turnover": 1121.0,
+      "orders": 262
+    },
+    {
+      "cost_per_side": 0.0015,
+      "round_trip_cost": 0.003,
+      "extra_delay_bars": 1,
+      "hard_pass": false,
+      "return_2025_pct": -56.976004766978406,
+      "return_2026_pct": 167.5290723503022,
+      "min_required_year_return_pct": -56.976004766978406,
+      "min_monthly_return_pct": -87.78518140577155,
+      "losing_eval_months": 1,
+      "min_monthly_orders": 11,
+      "total_return_pct": 15.101695334940812,
+      "max_drawdown_pct": -92.09826182108583,
+      "exposure_pct": 33.161993769470406,
+      "turnover": 1712.0,
+      "orders": 304
+    }
+  ],
+  "risk_flags": {
+    "fixed_signal_still_from_prior_research": true,
+    "uses_strategy_1b_selected_controls": true,
+    "posthoc_runner_choice": true,
+    "not_a_live_guarantee": true
+  },
+  "hashes": {
+    "script_sha256": "b41b005c91a8e55ae480c43eb47b542c4d13fadd7070b0cfc5a77b42609af5c6",
+    "feature_frame_sha256": "999d287fc48e90f01411a3e300ab7d458321ce772dd9b95d09497de280e65292",
+    "signals_sha256": "aa3ff7f58eb1b5a257797cf7daf3369208ccda6920d2698b5ed746e2ae42efd9"
+  },
+  "files": {
+    "summary": "artifacts/strategy_1c_trend_runner_20260627/summary.json",
+    "report": "artifacts/strategy_1c_trend_runner_20260627/report.md",
+    "selections": "artifacts/strategy_1c_trend_runner_20260627/strategy_1c_selections.csv",
+    "signals": "artifacts/strategy_1c_trend_runner_20260627/strategy_1c_signals.csv",
+    "equity": "artifacts/strategy_1c_trend_runner_20260627/strategy_1c_equity.csv",
+    "monthly": "artifacts/strategy_1c_trend_runner_20260627/strategy_1c_monthly.csv",
+    "yearly": "artifacts/strategy_1c_trend_runner_20260627/strategy_1c_yearly.csv",
+    "stress": "artifacts/strategy_1c_trend_runner_20260627/strategy_1c_stress.csv"
+  }
+}

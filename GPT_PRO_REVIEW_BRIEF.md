@@ -100,6 +100,15 @@ Important current results:
   - Versus Strategy 0: higher 2025 and 2026 return, lower 2025 max drawdown (-31.28% vs -48.53%), but worse 2026 max drawdown (-26.09% vs -18.21%).
   - Stress: base cost and extra 1-bar delay pass; round-trip cost 0.4% fails. It is cost-sensitive and can select 12x leverage.
 
+- `STRATEGY_1C_CANDIDATE.md`
+  - Strategy 1C candidate addressing the chart critique that Strategy 1B misses large post-lock trends.
+  - Candidate id: `strategy_1c_trend_runner_20260627`.
+  - Script: `scripts/search_strategy_1c_trend_runner_20260627.py`.
+  - Output: `artifacts/strategy_1c_trend_runner_20260627/summary.json`.
+  - Change: after monthly lock, keep only a small 0.25x trend-runner position when `trend_close_ema_gap_bps_60 >= 350` and `trend_adx_30 >= 30` for long, or the symmetric short condition.
+  - Result: 2025 return 503.36%; 2026 return 199.61%; no losing evaluated months; minimum monthly orders 12; max drawdown -31.28%.
+  - Stress: base cost, 0.3% round-trip cost, and extra 1-bar delay pass; 0.4% round-trip cost fails. It remains cost-sensitive.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -119,6 +128,7 @@ Useful source files:
 - `scripts/search_strategy_1_candidate_20260627.py`
 - `scripts/search_strategy_1_walkforward_20260627.py`
 - `scripts/search_strategy_1b_expanded_controls_20260627.py`
+- `scripts/search_strategy_1c_trend_runner_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
 What advice is needed:
