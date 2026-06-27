@@ -1,0 +1,22 @@
+{
+  "status": "strategy_9_cold_start_feasibility_ready",
+  "generated_at": "2026-06-27T05:47:35.528196+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "feature_month_start": "2024-01",
+  "feature_month_end": "2026-06",
+  "selection_month_start": "2025-01",
+  "selection_month_end": "2026-06",
+  "direct_2024_test_clean": false,
+  "reason": "2C、3号、4号保存的月度控制参数从 2025-01 开始，而且 2024 已经作为训练历史参与。把这些参数倒回去测 2024，就是用未来选好的参数测过去。",
+  "clean_next_options": [
+    "Fetch earlier pre-2024 data, train controls before each 2024 month, then evaluate 2024 walk-forward.",
+    "Keep 2024 as training history only and evaluate future newly arriving months without changing rules.",
+    "If no earlier data is available, label any 2024 replay as leaky demonstration, not validation."
+  ],
+  "files": {
+    "month_coverage": "artifacts/strategy_9_cold_start_feasibility_20260627/month_coverage.csv",
+    "summary": "artifacts/strategy_9_cold_start_feasibility_20260627/summary.json",
+    "report": "artifacts/strategy_9_cold_start_feasibility_20260627/report.md"
+  }
+}

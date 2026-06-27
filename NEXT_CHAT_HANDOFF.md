@@ -20,6 +20,7 @@
 - 6号市场状态体检保存标签：`strategy-6-market-regime-audit-20260627`
 - 7号 Oracle 路由上限审计保存标签：`strategy-7-oracle-router-audit-20260627`
 - 8号执行压力审计保存标签：`strategy-8-execution-stress-20260627`
+- 9号冷启动可行性审计保存标签：`strategy-9-cold-start-feasibility-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -39,9 +40,10 @@
 12. `STRATEGY_6_MARKET_REGIME_AUDIT.md`
 13. `STRATEGY_7_ORACLE_ROUTER_AUDIT.md`
 14. `STRATEGY_8_EXECUTION_STRESS_AUDIT.md`
-15. `CURRENT_STRATEGY_FREEZE.md`
-16. `GPT_PRO_REVIEW_BRIEF.md`
-17. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+15. `STRATEGY_9_COLD_START_FEASIBILITY.md`
+16. `CURRENT_STRATEGY_FREEZE.md`
+17. `GPT_PRO_REVIEW_BRIEF.md`
+18. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -283,6 +285,18 @@
 - 4号：`5/6` 通过，失败在 `miss_top5pct_rebalance` 的 `2025-03`，月收益 `-0.56%`。
 - 当前判断：2C 执行压力下暂时最稳；4号图形更安静，但关键调仓漏掉时更脆。
 
+## 9号冷启动可行性审计
+
+- 审计编号：`strategy_9_cold_start_feasibility_20260627`
+- 定位文件：`STRATEGY_9_COLD_START_FEASIBILITY.md`
+- 脚本：`scripts/audit_strategy_9_cold_start_feasibility_20260627.py`
+- 结果目录：`artifacts/strategy_9_cold_start_feasibility_20260627/`
+- 这不是新策略，只判断能不能干净地把 2C、3号、4号直接拿去测 2024。
+- 本地特征数据覆盖 `2024-01` 到 `2026-06`。
+- 2C、3号、4号使用的已保存月度控制参数覆盖 `2025-01` 到 `2026-06`。
+- 结论：不能干净直接测 2024。因为 2024 已经是这些保存候选的训练历史；拿 2025 以后保存下来的参数倒回去测 2024，是未来参数测过去。
+- 干净做法：补 2023 或更早数据，为 2024 做真正 walk-forward；或者不改规则，等待未来新月份做影子记录。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -304,7 +318,7 @@
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 8号执行压力进一步支持 2C 主候选。下一轮如果继续，不要围着 2025/2026 补规则，更值得做更长历史/更多数据源的独立检验；
+- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024；下一轮如果继续，更值得补 2023 或更早历史数据，或者做未来新月份影子记录；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -331,9 +345,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 13. STRATEGY_6_MARKET_REGIME_AUDIT.md
 14. STRATEGY_7_ORACLE_ROUTER_AUDIT.md
 15. STRATEGY_8_EXECUTION_STRESS_AUDIT.md
-16. CURRENT_STRATEGY_FREEZE.md
-17. GPT_PRO_REVIEW_BRIEF.md
-18. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+16. STRATEGY_9_COLD_START_FEASIBILITY.md
+17. CURRENT_STRATEGY_FREEZE.md
+18. GPT_PRO_REVIEW_BRIEF.md
+19. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -375,6 +390,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 8号执行压力审计：
 8号：strategy_8_execution_stress_20260627，不是新策略，只检查更坏执行条件。压力包括波动放大滑点、资金费、关键调仓漏单、最大波动附近短时停摆。2C 6/6 通过，最差月 +2.76%；3号 6/6 通过，最差月 +2.44%；4号 5/6 通过，在 2025-03 关键调仓漏单场景亏 -0.56%。当前判断：执行压力下 2C 暂时最稳。
+
+当前新增 9号冷启动可行性审计：
+9号：strategy_9_cold_start_feasibility_20260627，不是新策略，只判断能否干净直接测 2024。结论：不能。因为当前保存候选的月度控制参数从 2025-01 开始，2024 已经是训练历史；拿这些参数倒回去测 2024 是未来参数测过去。干净做法是补 2023 或更早数据，或等待未来新月份做影子记录。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。
