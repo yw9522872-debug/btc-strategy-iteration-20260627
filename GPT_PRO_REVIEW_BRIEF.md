@@ -204,6 +204,19 @@ Important current results:
   - Order-miss profitability nuance: 2C and Strategy 3 had no losing months in all 9 order-miss scenarios; Strategy 4 had one losing-month scenario.
   - Interpretation: Strategy 3 did not beat 2C in robustness. It improves strong-trend coverage but does not justify promotion over 2C in this audit. Current practical ranking: 2C as main candidate, Strategy 4 as chart-quality/hard-pass comparator, Strategy 3 as intermediate experiment.
 
+- `STRATEGY_6_MARKET_REGIME_AUDIT.md`
+  - Strategy 6 is a market-regime audit, not a new strategy and not a live signal.
+  - Audit id: `strategy_6_market_regime_audit_20260627`.
+  - Script: `scripts/audit_strategy_6_market_regime_20260627.py`.
+  - Output: `artifacts/strategy_6_market_regime_audit_20260627/summary.json`.
+  - It reuses Strategy 5B monthly posthoc labels: monthly return >= +5% is up, <= -5% is down, otherwise sideways; max monthly drawdown/runup >= 15% marks a shock month.
+  - These are posthoc month-end labels. They are historical attribution labels, not real-time market state signals.
+  - Shared data end is 2026-06-19 23:45 UTC; 2026-06 is a partial month. Complete-month counts are down 5, sideways 6, up 6.
+  - Base monthly results for 2C, Strategy 3, and Strategy 4 pass in each state, but the sample is only 17 complete months.
+  - No confirmed regime weakness under the strict standard: complete months only, at least 2 distinct failure months, both cost/delay and order-miss stress families, and each family affecting at least 2 candidates.
+  - Conservative observations only: cost/delay losses cluster in down months, especially 2026-01; order-miss issues cluster in sideways months, especially 2025-03.
+  - GPT Pro review: keep Strategy 6 as a historical health check only; do not promote it into a router; avoid treating posthoc explanation as prediction; remember 2C/3/4 are one strategy family, not independent evidence.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -228,6 +241,7 @@ Useful source files:
 - `scripts/search_strategy_4_entry_confirm_20260627.py`
 - `scripts/audit_strategy_5_robustness_20260627.py`
 - `scripts/audit_strategy_5b_three_way_20260627.py`
+- `scripts/audit_strategy_6_market_regime_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

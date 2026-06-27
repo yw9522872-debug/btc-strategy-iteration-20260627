@@ -1,0 +1,15 @@
+test_family,candidate,scenario_id,month,market_regime,shock_month,complete_month,partial_month,failure_reason,return_pct,orders,cost_per_side,round_trip_cost,extra_delay_bars,miss_rate,seed
+cost_delay,2C,2C_cost0.0010_delay3,2026-01,down,True,True,False,losing_month,-1.1190669239208306,13,0.001,0.002,3,,
+cost_delay,2C,2C_cost0.0025_delay0,2025-01,up,True,True,False,losing_month,-0.7290966022250767,16,0.0025,0.005,0,,
+cost_delay,2C,2C_cost0.0025_delay2,2026-01,down,True,True,False,losing_month,-2.77842458419042,13,0.0025,0.005,2,,
+cost_delay,3,3_cost0.0010_delay3,2026-01,down,True,True,False,losing_month,-1.1190669239208306,13,0.001,0.002,3,,
+cost_delay,3,3_cost0.0025_delay0,2025-01,up,True,True,False,losing_month,-0.7290966022250767,16,0.0025,0.005,0,,
+cost_delay,3,3_cost0.0025_delay2,2026-01,down,True,True,False,losing_month,-2.77842458419042,13,0.0025,0.005,2,,
+cost_delay,4,4_cost0.0010_delay3,2026-01,down,True,True,False,losing_month,-0.0802544831634222,13,0.001,0.002,3,,
+cost_delay,4,4_cost0.0025_delay2,2026-01,down,True,True,False,losing_month,-1.4905440289534777,13,0.0025,0.005,2,,
+order_miss,2C,2C_miss0.05_seed1,2025-03,sideways,True,True,False,orders_below_10,41.47129377535877,9,0.001,0.002,,0.05,1
+order_miss,2C,2C_miss0.10_seed1,2025-03,sideways,True,True,False,orders_below_10,41.47129377535877,9,0.001,0.002,,0.1,1
+order_miss,3,3_miss0.05_seed1,2025-03,sideways,True,True,False,orders_below_10,41.47129377535877,9,0.001,0.002,,0.05,1
+order_miss,3,3_miss0.05_seed1,2026-02,down,True,True,False,orders_below_10,30.496203853836512,9,0.001,0.002,,0.05,1
+order_miss,3,3_miss0.10_seed1,2025-03,sideways,True,True,False,orders_below_10,41.47129377535877,9,0.001,0.002,,0.1,1
+order_miss,4,4_miss0.10_seed1,2025-03,sideways,True,True,False,losing_month,-1.2870996275835431,11,0.001,0.002,,0.1,1

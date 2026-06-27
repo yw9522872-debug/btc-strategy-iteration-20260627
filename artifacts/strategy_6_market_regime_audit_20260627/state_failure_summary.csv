@@ -1,0 +1,10 @@
+test_family,candidate,market_regime,failures,unique_scenarios,unique_months,losing_month,orders_below_10,both
+cost_delay,2C,down,2,2,1,2,0,0
+cost_delay,2C,up,1,1,1,1,0,0
+cost_delay,3,down,2,2,1,2,0,0
+cost_delay,3,up,1,1,1,1,0,0
+cost_delay,4,down,2,2,1,2,0,0
+order_miss,2C,sideways,2,2,1,0,2,0
+order_miss,3,down,1,1,1,0,1,0
+order_miss,3,sideways,2,2,1,0,2,0
+order_miss,4,sideways,1,1,1,1,0,0

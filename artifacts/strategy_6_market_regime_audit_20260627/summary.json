@@ -1,0 +1,683 @@
+{
+  "status": "strategy_6_market_regime_audit_ready",
+  "generated_at": "2026-06-27T05:18:46.915373+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "does_not_overwrite": [
+    "artifacts/strategy_2c_lock_cap_20260627",
+    "artifacts/strategy_3_trend_coverage_20260627",
+    "artifacts/strategy_4_entry_confirm_20260627"
+  ],
+  "no_parameter_search": true,
+  "state_rules_fixed_before_scoring": true,
+  "uses_posthoc_month_labels": true,
+  "label_rule_version": "5b_month_return_5pct_shock_15pct",
+  "pass_fail_standard": "base_month_pass = strategy_return_pct > 0 and strategy_orders >= 10; stress failure reasons are losing_month, orders_below_10, or both.",
+  "risk_flags": {
+    "posthoc_state_label": true,
+    "small_sample_17_complete_months": true,
+    "not_live_signal": true,
+    "not_live_guarantee": true,
+    "candidate_overfit_risk": true,
+    "candidate_family_non_independence": true,
+    "partial_2026_06_month": true
+  },
+  "data_end_utc": "2026-06-19T23:45:00+00:00",
+  "partial_months": [
+    {
+      "month": "2026-06",
+      "market_regime": "down"
+    }
+  ],
+  "state_counts": [
+    {
+      "market_regime": "down",
+      "months": 6,
+      "complete_months": 5,
+      "partial_months": 1
+    },
+    {
+      "market_regime": "sideways",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0
+    },
+    {
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0
+    }
+  ],
+  "complete_month_state_counts": [
+    {
+      "market_regime": "down",
+      "size": 5
+    },
+    {
+      "market_regime": "sideways",
+      "size": 6
+    },
+    {
+      "market_regime": "up",
+      "size": 6
+    }
+  ],
+  "shock_counts": [
+    {
+      "market_regime": "down",
+      "shock_month": false,
+      "size": 1
+    },
+    {
+      "market_regime": "down",
+      "shock_month": true,
+      "size": 5
+    },
+    {
+      "market_regime": "sideways",
+      "shock_month": false,
+      "size": 3
+    },
+    {
+      "market_regime": "sideways",
+      "shock_month": true,
+      "size": 3
+    },
+    {
+      "market_regime": "up",
+      "shock_month": false,
+      "size": 1
+    },
+    {
+      "market_regime": "up",
+      "shock_month": true,
+      "size": 5
+    }
+  ],
+  "candidate_state_summary": [
+    {
+      "candidate": "2C",
+      "market_regime": "down",
+      "months": 6,
+      "complete_months": 5,
+      "partial_months": 1,
+      "pass_months": 6,
+      "avg_return_pct": 21.624381944808054,
+      "min_return_pct": 9.528515109034808,
+      "avg_orders": 12.5,
+      "min_orders": 11,
+      "worst_drawdown_pct": -24.42711463198597,
+      "fail_months": 0,
+      "sample_note": "sample_too_small"
+    },
+    {
+      "candidate": "2C",
+      "market_regime": "sideways",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0,
+      "pass_months": 6,
+      "avg_return_pct": 19.907578587112795,
+      "min_return_pct": 9.405567332454943,
+      "avg_orders": 12.5,
+      "min_orders": 11,
+      "worst_drawdown_pct": -29.252496952297054,
+      "fail_months": 0,
+      "sample_note": "sample_ok_for_rough_read"
+    },
+    {
+      "candidate": "2C",
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0,
+      "pass_months": 6,
+      "avg_return_pct": 10.660210872316602,
+      "min_return_pct": 5.575755909827906,
+      "avg_orders": 13.0,
+      "min_orders": 12,
+      "worst_drawdown_pct": -29.40311707059141,
+      "fail_months": 0,
+      "sample_note": "sample_ok_for_rough_read"
+    },
+    {
+      "candidate": "3",
+      "market_regime": "down",
+      "months": 6,
+      "complete_months": 5,
+      "partial_months": 1,
+      "pass_months": 6,
+      "avg_return_pct": 21.594312629268785,
+      "min_return_pct": 9.528515109034808,
+      "avg_orders": 12.5,
+      "min_orders": 11,
+      "worst_drawdown_pct": -24.42711463198597,
+      "fail_months": 0,
+      "sample_note": "sample_too_small"
+    },
+    {
+      "candidate": "3",
+      "market_regime": "sideways",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0,
+      "pass_months": 6,
+      "avg_return_pct": 19.850533836904205,
+      "min_return_pct": 9.405567332454943,
+      "avg_orders": 13.833333333333334,
+      "min_orders": 11,
+      "worst_drawdown_pct": -29.252496952297054,
+      "fail_months": 0,
+      "sample_note": "sample_ok_for_rough_read"
+    },
+    {
+      "candidate": "3",
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0,
+      "pass_months": 6,
+      "avg_return_pct": 10.412367162884765,
+      "min_return_pct": 5.11302387708088,
+      "avg_orders": 16.0,
+      "min_orders": 12,
+      "worst_drawdown_pct": -29.40311707059141,
+      "fail_months": 0,
+      "sample_note": "sample_ok_for_rough_read"
+    },
+    {
+      "candidate": "4",
+      "market_regime": "down",
+      "months": 6,
+      "complete_months": 5,
+      "partial_months": 1,
+      "pass_months": 6,
+      "avg_return_pct": 22.998118042642513,
+      "min_return_pct": 8.517732674974642,
+      "avg_orders": 10.833333333333334,
+      "min_orders": 10,
+      "worst_drawdown_pct": -23.932143811447517,
+      "fail_months": 0,
+      "sample_note": "sample_too_small"
+    },
+    {
+      "candidate": "4",
+      "market_regime": "sideways",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0,
+      "pass_months": 6,
+      "avg_return_pct": 15.625224195247624,
+      "min_return_pct": 7.22868753869248,
+      "avg_orders": 12.5,
+      "min_orders": 10,
+      "worst_drawdown_pct": -28.78913036963924,
+      "fail_months": 0,
+      "sample_note": "sample_ok_for_rough_read"
+    },
+    {
+      "candidate": "4",
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "partial_months": 0,
+      "pass_months": 6,
+      "avg_return_pct": 10.535250852463419,
+      "min_return_pct": 4.558896263438661,
+      "avg_orders": 14.333333333333334,
+      "min_orders": 10,
+      "worst_drawdown_pct": -28.715648663214463,
+      "fail_months": 0,
+      "sample_note": "sample_ok_for_rough_read"
+    }
+  ],
+  "stress_failure_summary": [
+    {
+      "test_family": "cost_delay",
+      "candidate": "2C",
+      "market_regime": "down",
+      "failures": 2,
+      "unique_scenarios": 2,
+      "unique_months": 1,
+      "losing_month": 2,
+      "orders_below_10": 0,
+      "both": 0
+    },
+    {
+      "test_family": "cost_delay",
+      "candidate": "2C",
+      "market_regime": "up",
+      "failures": 1,
+      "unique_scenarios": 1,
+      "unique_months": 1,
+      "losing_month": 1,
+      "orders_below_10": 0,
+      "both": 0
+    },
+    {
+      "test_family": "cost_delay",
+      "candidate": "3",
+      "market_regime": "down",
+      "failures": 2,
+      "unique_scenarios": 2,
+      "unique_months": 1,
+      "losing_month": 2,
+      "orders_below_10": 0,
+      "both": 0
+    },
+    {
+      "test_family": "cost_delay",
+      "candidate": "3",
+      "market_regime": "up",
+      "failures": 1,
+      "unique_scenarios": 1,
+      "unique_months": 1,
+      "losing_month": 1,
+      "orders_below_10": 0,
+      "both": 0
+    },
+    {
+      "test_family": "cost_delay",
+      "candidate": "4",
+      "market_regime": "down",
+      "failures": 2,
+      "unique_scenarios": 2,
+      "unique_months": 1,
+      "losing_month": 2,
+      "orders_below_10": 0,
+      "both": 0
+    },
+    {
+      "test_family": "order_miss",
+      "candidate": "2C",
+      "market_regime": "sideways",
+      "failures": 2,
+      "unique_scenarios": 2,
+      "unique_months": 1,
+      "losing_month": 0,
+      "orders_below_10": 2,
+      "both": 0
+    },
+    {
+      "test_family": "order_miss",
+      "candidate": "3",
+      "market_regime": "down",
+      "failures": 1,
+      "unique_scenarios": 1,
+      "unique_months": 1,
+      "losing_month": 0,
+      "orders_below_10": 1,
+      "both": 0
+    },
+    {
+      "test_family": "order_miss",
+      "candidate": "3",
+      "market_regime": "sideways",
+      "failures": 2,
+      "unique_scenarios": 2,
+      "unique_months": 1,
+      "losing_month": 0,
+      "orders_below_10": 2,
+      "both": 0
+    },
+    {
+      "test_family": "order_miss",
+      "candidate": "4",
+      "market_regime": "sideways",
+      "failures": 1,
+      "unique_scenarios": 1,
+      "unique_months": 1,
+      "losing_month": 1,
+      "orders_below_10": 0,
+      "both": 0
+    }
+  ],
+  "state_threshold_sensitivity": [
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "down",
+      "months": 8,
+      "complete_months": 7,
+      "shock_months": 8
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "sideways",
+      "months": 4,
+      "complete_months": 4,
+      "shock_months": 4
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "down",
+      "months": 8,
+      "complete_months": 7,
+      "shock_months": 6
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "sideways",
+      "months": 4,
+      "complete_months": 4,
+      "shock_months": 2
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "down",
+      "months": 8,
+      "complete_months": 7,
+      "shock_months": 4
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "sideways",
+      "months": 4,
+      "complete_months": 4,
+      "shock_months": 0
+    },
+    {
+      "return_threshold_pct": 3.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 3
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "down",
+      "months": 6,
+      "complete_months": 5,
+      "shock_months": 6
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "sideways",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 6
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "down",
+      "months": 6,
+      "complete_months": 5,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "sideways",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 3
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "down",
+      "months": 6,
+      "complete_months": 5,
+      "shock_months": 4
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "sideways",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 0
+    },
+    {
+      "return_threshold_pct": 5.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "up",
+      "months": 6,
+      "complete_months": 6,
+      "shock_months": 3
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "down",
+      "months": 5,
+      "complete_months": 4,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "sideways",
+      "months": 8,
+      "complete_months": 8,
+      "shock_months": 7
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 10.0,
+      "market_regime": "up",
+      "months": 5,
+      "complete_months": 5,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "down",
+      "months": 5,
+      "complete_months": 4,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "sideways",
+      "months": 8,
+      "complete_months": 8,
+      "shock_months": 3
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 15.0,
+      "market_regime": "up",
+      "months": 5,
+      "complete_months": 5,
+      "shock_months": 5
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "down",
+      "months": 5,
+      "complete_months": 4,
+      "shock_months": 4
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "sideways",
+      "months": 8,
+      "complete_months": 8,
+      "shock_months": 0
+    },
+    {
+      "return_threshold_pct": 7.0,
+      "shock_threshold_pct": 20.0,
+      "market_regime": "up",
+      "months": 5,
+      "complete_months": 5,
+      "shock_months": 3
+    }
+  ],
+  "weakness_check": {
+    "qualified_weakness_found": false,
+    "qualified_regimes": [],
+    "all_regime_failure_counts": [
+      {
+        "market_regime": "down",
+        "failures": 7,
+        "candidate_count": 3,
+        "test_family_count": 2,
+        "candidates": [
+          "2C",
+          "3",
+          "4"
+        ],
+        "test_families": [
+          "cost_delay",
+          "order_miss"
+        ],
+        "family_details": [
+          {
+            "test_family": "cost_delay",
+            "candidate_count": 3,
+            "unique_scenarios": 6,
+            "unique_months": 1,
+            "candidates": [
+              "2C",
+              "3",
+              "4"
+            ]
+          },
+          {
+            "test_family": "order_miss",
+            "candidate_count": 1,
+            "unique_scenarios": 1,
+            "unique_months": 1,
+            "candidates": [
+              "3"
+            ]
+          }
+        ],
+        "qualified": false
+      },
+      {
+        "market_regime": "sideways",
+        "failures": 5,
+        "candidate_count": 3,
+        "test_family_count": 1,
+        "candidates": [
+          "2C",
+          "3",
+          "4"
+        ],
+        "test_families": [
+          "order_miss"
+        ],
+        "family_details": [
+          {
+            "test_family": "order_miss",
+            "candidate_count": 3,
+            "unique_scenarios": 5,
+            "unique_months": 1,
+            "candidates": [
+              "2C",
+              "3",
+              "4"
+            ]
+          }
+        ],
+        "qualified": false
+      },
+      {
+        "market_regime": "up",
+        "failures": 2,
+        "candidate_count": 2,
+        "test_family_count": 1,
+        "candidates": [
+          "2C",
+          "3"
+        ],
+        "test_families": [
+          "cost_delay"
+        ],
+        "family_details": [
+          {
+            "test_family": "cost_delay",
+            "candidate_count": 2,
+            "unique_scenarios": 2,
+            "unique_months": 1,
+            "candidates": [
+              "2C",
+              "3"
+            ]
+          }
+        ],
+        "qualified": false
+      }
+    ],
+    "conservative_observation": [
+      "手续费/延迟压力的亏损主要集中在下跌月，尤其是 2026-01",
+      "漏成交压力的问题主要集中在震荡月，尤其是 2025-03",
+      "上涨月也有手续费压力失败，但目前只来自一类压力，证据不够"
+    ],
+    "rule": "A confirmed weakness needs complete months only, at least 2 distinct months, both stress families, and each family must affect at least 2 candidates in the same market regime."
+  },
+  "decision": {
+    "promote_to_strategy": false,
+    "reason": "6号只是历史体检表；市场状态是整个月结束后才知道的事后标签，不能当实时交易信号。"
+  },
+  "input_files": {
+    "market_state_source": "artifacts/strategy_5b_three_way_audit_20260627/regime_base_monthly.csv",
+    "cost_delay_failures": "artifacts/strategy_5b_three_way_audit_20260627/failure_months.csv",
+    "order_miss_monthly": "artifacts/strategy_5b_three_way_audit_20260627/order_miss_monthly.csv",
+    "order_miss_stress": "artifacts/strategy_5b_three_way_audit_20260627/order_miss_stress.csv",
+    "candidate_monthly": {
+      "2C": "artifacts/strategy_2c_lock_cap_20260627/strategy_2c_monthly.csv",
+      "3": "artifacts/strategy_3_trend_coverage_20260627/strategy_3_monthly.csv",
+      "4": "artifacts/strategy_4_entry_confirm_20260627/strategy_4_monthly.csv"
+    }
+  },
+  "files": {
+    "market_state_monthly": "artifacts/strategy_6_market_regime_audit_20260627/market_state_monthly.csv",
+    "candidate_state_monthly": "artifacts/strategy_6_market_regime_audit_20260627/candidate_state_monthly.csv",
+    "state_failure_map": "artifacts/strategy_6_market_regime_audit_20260627/state_failure_map.csv",
+    "candidate_state_summary": "artifacts/strategy_6_market_regime_audit_20260627/candidate_state_summary.csv",
+    "state_failure_summary": "artifacts/strategy_6_market_regime_audit_20260627/state_failure_summary.csv",
+    "state_threshold_sensitivity": "artifacts/strategy_6_market_regime_audit_20260627/state_threshold_sensitivity.csv",
+    "summary": "artifacts/strategy_6_market_regime_audit_20260627/summary.json",
+    "report": "artifacts/strategy_6_market_regime_audit_20260627/report.md"
+  }
+}
