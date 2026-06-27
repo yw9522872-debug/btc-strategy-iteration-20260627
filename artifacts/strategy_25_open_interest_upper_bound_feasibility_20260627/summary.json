@@ -1,0 +1,144 @@
+{
+  "status": "strategy_25_open_interest_upper_bound_feasibility_ready",
+  "strategy_id": "strategy_25_open_interest_upper_bound_feasibility_20260627",
+  "generated_at": "2026-06-27T14:02:03.915884+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Check whether Binance public open-interest history is sufficient for a 2020-2026 upper-bound backtest.",
+  "source": {
+    "official_doc": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest-Statistics",
+    "rest_endpoint": "https://fapi.binance.com/futures/data/openInterestHist",
+    "symbol": "BTCUSDT",
+    "period": "15m",
+    "doc_limit_note": "Official Binance documentation says only the latest 1 month of openInterestHist data is available."
+  },
+  "availability_checks": [
+    {
+      "check_id": "historical_2020_01",
+      "ok": false,
+      "http_status": 400,
+      "row_count": 0,
+      "first_timestamp": null,
+      "last_timestamp": null,
+      "error": "{\"msg\":\"parameter 'startTime' is invalid.\",\"code\":-1130}",
+      "sample_rows": []
+    },
+    {
+      "check_id": "historical_2023_01",
+      "ok": false,
+      "http_status": 400,
+      "row_count": 0,
+      "first_timestamp": null,
+      "last_timestamp": null,
+      "error": "{\"msg\":\"parameter 'startTime' is invalid.\",\"code\":-1130}",
+      "sample_rows": []
+    },
+    {
+      "check_id": "baseline_end_2026_05",
+      "ok": true,
+      "http_status": 200,
+      "row_count": 97,
+      "first_timestamp": "2026-05-31T00:00:00+00:00",
+      "last_timestamp": "2026-06-01T00:00:00+00:00",
+      "error": null,
+      "sample_rows": [
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "103974.85000000",
+          "sumOpenInterestValue": "7678916981.96000000",
+          "CMCCirculatingSupply": "20036315.00000000",
+          "timestamp": 1780185600000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "104005.89200000",
+          "sumOpenInterestValue": "7681074337.75160000",
+          "CMCCirculatingSupply": "20036315.00000000",
+          "timestamp": 1780186500000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "104052.53000000",
+          "sumOpenInterestValue": "7693997846.80200000",
+          "CMCCirculatingSupply": "20036315.00000000",
+          "timestamp": 1780187400000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "104041.63200000",
+          "sumOpenInterestValue": "7690538950.01280000",
+          "CMCCirculatingSupply": "20036315.00000000",
+          "timestamp": 1780188300000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "104094.48100000",
+          "sumOpenInterestValue": "7703366334.13160000",
+          "CMCCirculatingSupply": "20036315.00000000",
+          "timestamp": 1780189200000
+        }
+      ]
+    },
+    {
+      "check_id": "recent_latest",
+      "ok": true,
+      "http_status": 200,
+      "row_count": 500,
+      "first_timestamp": "2026-06-22T09:15:00+00:00",
+      "last_timestamp": "2026-06-27T14:00:00+00:00",
+      "error": null,
+      "sample_rows": [
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "99635.81700000",
+          "sumOpenInterestValue": "6392531157.06290150",
+          "CMCCirculatingSupply": "20046103.00000000",
+          "timestamp": 1782119700000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "99663.11400000",
+          "sumOpenInterestValue": "6387304705.78103400",
+          "CMCCirculatingSupply": "20046103.00000000",
+          "timestamp": 1782120600000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "99642.47300000",
+          "sumOpenInterestValue": "6386920359.11769400",
+          "CMCCirculatingSupply": "20046103.00000000",
+          "timestamp": 1782121500000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "99650.45700000",
+          "sumOpenInterestValue": "6389505131.65113100",
+          "CMCCirculatingSupply": "20046103.00000000",
+          "timestamp": 1782122400000
+        },
+        {
+          "symbol": "BTCUSDT",
+          "sumOpenInterest": "99610.27300000",
+          "sumOpenInterestValue": "6393674632.02370000",
+          "CMCCirculatingSupply": "20046103.00000000",
+          "timestamp": 1782123300000
+        }
+      ]
+    }
+  ],
+  "can_run_2020_2026_upper_bound": false,
+  "decision": {
+    "verdict": "OPEN_INTEREST_HISTORY_NOT_AVAILABLE_FOR_2020_2026",
+    "promote_strategy": false,
+    "reason": "Binance公开openInterestHist接口只返回最近1个月，无法覆盖2020-2026历史硬目标区间。",
+    "next_step": "不要用不完整持仓量做2023-2026上限；若要继续，需要先找到可审计的完整历史数据源，或改做最近1个月的观察表。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json",
+    "report": "artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/report.md",
+    "availability_checks": "artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/availability_checks.csv",
+    "recent_open_interest_sample": "artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/recent_open_interest_sample.csv"
+  }
+}

@@ -433,6 +433,16 @@ Important current results:
   - Best strict selector is `funding_mean_only`: 2023 -22.82%, 2024 -42.05%, 2025 +9.70%, 2026 YTD +10.95%, 20 losing months, minimum monthly orders 0.
   - Decision: `FUNDING_RATE_STRICT_SELECTOR_FAILS`. Funding-rate oracle pieces cannot currently be selected without future information, so do not promote this family.
 
+- `STRATEGY_25_OPEN_INTEREST_UPPER_BOUND_FEASIBILITY.md`
+  - Strategy 25 is an open-interest data availability audit, not a strategy and not a freeze.
+  - Audit id: `strategy_25_open_interest_upper_bound_feasibility_20260627`.
+  - Script: `scripts/audit_strategy_25_open_interest_upper_bound_feasibility_20260627.py`.
+  - Output: `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`.
+  - Source checked: Binance USD-M futures `openInterestHist` REST endpoint.
+  - Official Binance documentation says only the latest 1 month is available.
+  - Actual checks: 2020-01 and 2023-01 requests failed with `startTime` invalid; recent data and 2026-05-31 succeeded.
+  - Decision: `OPEN_INTEREST_HISTORY_NOT_AVAILABLE_FOR_2020_2026`. Do not run a 2023-2026 hard-target upper bound from incomplete public open-interest data.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -476,6 +486,7 @@ Useful source files:
 - `scripts/audit_strategy_22_hard_target_bottleneck_20260627.py`
 - `scripts/audit_strategy_23_funding_rate_upper_bound_20260627.py`
 - `scripts/audit_strategy_24_funding_rate_strict_selector_20260627.py`
+- `scripts/audit_strategy_25_open_interest_upper_bound_feasibility_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
