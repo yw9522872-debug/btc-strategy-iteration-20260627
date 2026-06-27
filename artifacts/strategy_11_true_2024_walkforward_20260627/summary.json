@@ -1,0 +1,63 @@
+{
+  "status": "strategy_11_true_2024_walkforward_ready",
+  "strategy_id": "strategy_11_true_2024_walkforward_20260627",
+  "generated_at": "2026-06-27T08:48:27.690803+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "not_live_trading": true,
+  "strict_no_future_selection": true,
+  "purpose": "Use 2023 public data to select before each 2024 month, then evaluate 2024 without reusing 2025+ saved controls.",
+  "data": {
+    "train_start_month": "2023-01",
+    "eval_year": "2024",
+    "feature_2023": "artifacts/strategy_10_pre2024_data_probe_20260627/btc_15m_2023_feature_probe.csv",
+    "feature_2024": "artifacts/event_entry_fullscan/event_entry_best_signals.csv",
+    "uses_strategy_10_calendar_filled_rows": true
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "variants": [
+    {
+      "variant_id": "fixed_ret_state_64_100",
+      "hard_pass_2024": false,
+      "return_2024_pct": 138.0798823296002,
+      "min_monthly_return_pct": -6.449800499963443,
+      "losing_months": 1,
+      "min_monthly_orders": 12,
+      "max_drawdown_pct": -41.83936237596247,
+      "orders": 174,
+      "turnover": 535.0,
+      "exposure_pct": 19.83435792349727,
+      "annualized_sharpe": 0.9988531091604604,
+      "win_rate_pct": 49.41885492897116,
+      "profit_factor": 1.0488162327826034
+    },
+    {
+      "variant_id": "ret_state_selector",
+      "hard_pass_2024": false,
+      "return_2024_pct": 138.0798823296002,
+      "min_monthly_return_pct": -6.449800499963443,
+      "losing_months": 1,
+      "min_monthly_orders": 12,
+      "max_drawdown_pct": -41.83936237596247,
+      "orders": 174,
+      "turnover": 535.0,
+      "exposure_pct": 19.83435792349727,
+      "annualized_sharpe": 0.9988531091604604,
+      "win_rate_pct": 49.41885492897116,
+      "profit_factor": 1.0488162327826034
+    }
+  ],
+  "decision": {
+    "best_variant": "fixed_ret_state_64_100",
+    "promote_strategy": false,
+    "reason": "11号只是2024样本外审计。通过也只能说明多一个历史检验，失败则说明过拟合风险更大。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_11_true_2024_walkforward_20260627/summary.json",
+    "report": "artifacts/strategy_11_true_2024_walkforward_20260627/report.md",
+    "comparison": "artifacts/strategy_11_true_2024_walkforward_20260627/comparison.csv"
+  }
+}

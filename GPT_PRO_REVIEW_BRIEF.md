@@ -261,6 +261,18 @@ Important current results:
   - The feature probe is recomputed from public OHLC and is not an exact reproduction of the original `event_entry_fullscan` feature source.
   - Interpretation: use this as the data base for a new Strategy 11 true 2024 walk-forward. Do not reuse 2025+ saved controls on 2024.
 
+- `STRATEGY_11_TRUE_2024_WALKFORWARD.md`
+  - Strategy 11 is a true 2024 walk-forward audit, not a new trading strategy and not a freeze.
+  - Audit id: `strategy_11_true_2024_walkforward_20260627`.
+  - Script: `scripts/audit_strategy_11_true_2024_walkforward_20260627.py`.
+  - Output: `artifacts/strategy_11_true_2024_walkforward_20260627/summary.json`.
+  - It uses 2023 public data plus only prior months before each evaluated 2024 month to select controls, then evaluates 2024.
+  - Tested variants: fixed `ret_state window=64 threshold=100 bps`; small rolling `ret_state` selector with windows 32/64/96 and thresholds 50/100/200.
+  - Both variants selected back to `ret_state 64/100`.
+  - 2024 result: +138.08%, minimum monthly orders 12, but one losing month: 2024-12 at -6.45%.
+  - Hard-pass 2024 result: false, because the every-month-profitable condition fails.
+  - Interpretation: this strengthens the overfit concern. Future work should study 2024-12 as an out-of-sample failure month instead of only adding rules on 2025/2026.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -290,6 +302,7 @@ Useful source files:
 - `scripts/audit_strategy_8_execution_stress_20260627.py`
 - `scripts/audit_strategy_9_cold_start_feasibility_20260627.py`
 - `scripts/audit_strategy_10_pre2024_data_probe_20260627.py`
+- `scripts/audit_strategy_11_true_2024_walkforward_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

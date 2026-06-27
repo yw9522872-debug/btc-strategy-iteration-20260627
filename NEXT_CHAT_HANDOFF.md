@@ -22,6 +22,7 @@
 - 8号执行压力审计保存标签：`strategy-8-execution-stress-20260627`
 - 9号冷启动可行性审计保存标签：`strategy-9-cold-start-feasibility-20260627`
 - 10号 pre-2024 数据探针保存标签：`strategy-10-pre2024-data-probe-20260627`
+- 11号真正 2024 walk-forward 审计保存标签：`strategy-11-true-2024-walkforward-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -43,9 +44,10 @@
 14. `STRATEGY_8_EXECUTION_STRESS_AUDIT.md`
 15. `STRATEGY_9_COLD_START_FEASIBILITY.md`
 16. `STRATEGY_10_PRE2024_DATA_PROBE.md`
-17. `CURRENT_STRATEGY_FREEZE.md`
-18. `GPT_PRO_REVIEW_BRIEF.md`
-19. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+17. `STRATEGY_11_TRUE_2024_WALKFORWARD.md`
+18. `CURRENT_STRATEGY_FREEZE.md`
+19. `GPT_PRO_REVIEW_BRIEF.md`
+20. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -311,6 +313,18 @@
 - 补齐日历版用上一根收盘价补平这 5 根，并用 `calendar_filled=True` 标记；补齐后 `35040` 根，重复 `0`，非15分钟缺口 `0`，必要特征列缺失 `0`。
 - 当前判断：10号可作为 11号真正 2024 walk-forward 的数据底座；下一步不要倒用 2025+ 保存参数测 2024。
 
+## 11号真正 2024 Walk-Forward 审计
+
+- 审计编号：`strategy_11_true_2024_walkforward_20260627`
+- 定位文件：`STRATEGY_11_TRUE_2024_WALKFORWARD.md`
+- 脚本：`scripts/audit_strategy_11_true_2024_walkforward_20260627.py`
+- 结果目录：`artifacts/strategy_11_true_2024_walkforward_20260627/`
+- 这不是新策略，只检查：用 2023 和每个评估月以前的数据提前选参数，再测 2024。
+- 测了两个版本：固定 `ret_state 64/100`；小范围 `ret_state` 滚动选择器。
+- 两个版本最终都选回 `ret_state window=64 threshold=100 bps`。
+- 2024 收益 `+138.08%`，最少月交易 `12`，但 `2024-12` 亏 `-6.45%`，所以硬条件不通过。
+- 当前判断：11号不能升级候选；它说明当前策略族仍有样本外坏月，下一步应优先研究 `2024-12`，不要只在 2025/2026 上继续加规则。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -332,7 +346,7 @@
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；下一轮如果继续，更值得另起 11号做真正 2024 walk-forward，或者做未来新月份影子记录；
+- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；11号真正 2024 walk-forward 未通过，暴露 `2024-12` 样本外坏月。下一轮如果继续，应优先复盘 `2024-12`，或者做未来新月份影子记录；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -361,9 +375,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 15. STRATEGY_8_EXECUTION_STRESS_AUDIT.md
 16. STRATEGY_9_COLD_START_FEASIBILITY.md
 17. STRATEGY_10_PRE2024_DATA_PROBE.md
-18. CURRENT_STRATEGY_FREEZE.md
-19. GPT_PRO_REVIEW_BRIEF.md
-20. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+18. STRATEGY_11_TRUE_2024_WALKFORWARD.md
+19. CURRENT_STRATEGY_FREEZE.md
+20. GPT_PRO_REVIEW_BRIEF.md
+21. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -411,6 +426,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 10号 pre-2024 数据探针：
 10号：strategy_10_pre2024_data_probe_20260627，不是新策略，只补 2023 BTCUSDT 15m 公开K线和探针版特征。Binance 官方原始数据有 35035 根，2023-03-24 有 5 根15分钟K线缺口；REST 接口也同样缺。补齐日历版用上一根收盘价补平，并用 calendar_filled=True 标记；补齐后 35040 根，重复 0，非15分钟缺口 0，必要特征列缺失 0。下一步应另起 11号做真正 2024 walk-forward。
+
+当前新增 11号真正 2024 walk-forward 审计：
+11号：strategy_11_true_2024_walkforward_20260627，不是新策略，只检查用 2023 和每个评估月以前的数据提前选参数，再测 2024。固定 ret_state 64/100 与小范围 ret_state 滚动选择器最终都选回 ret_state 64/100；2024 收益 +138.08%，最少月交易 12，但 2024-12 亏 -6.45%，所以不满足每月盈利硬条件。当前判断：不能升级候选；下一步更应该复盘 2024-12 样本外坏月。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。
