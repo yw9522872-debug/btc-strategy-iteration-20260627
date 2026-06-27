@@ -167,6 +167,20 @@ Important current results:
   - Worst stress case, 0.4% round-trip plus 2-bar delay: 2025 return 217.67%; 2026 return 181.75%; worst evaluated month +1.81%.
   - Interpretation: 2C gives up some base return versus 1F but is currently more robust to execution cost and delay. It is still posthoc research and not a live guarantee.
 
+- `STRATEGY_4_CANDIDATE.md`
+  - Strategy 4 candidate from visual review of 2C/3.
+  - Candidate id: `strategy_4_entry_confirm_20260627`.
+  - Script: `scripts/search_strategy_4_entry_confirm_20260627.py`.
+  - Output: `artifacts/strategy_4_entry_confirm_20260627/summary.json`.
+  - Charts: `artifacts/strategy_4_visual_review_20260627/strategy4_trades_2025.png` and `artifacts/strategy_4_visual_review_20260627/strategy4_trades_2026.png`.
+  - Change: keep the 2C lock cap; use the Strategy 3 post-lock 0.10x trend runner with 350 bps gap, ADX >= 30, and 8-bar confirmation; add a 4-bar confirmation wait before allowing a newly switched main base direction to enter.
+  - Base result at 0.2% round-trip cost: 2025 return 290.69%; 2026 return 263.17%; no losing evaluated months; minimum monthly orders 10; max drawdown about -28.79%.
+  - Stress grid passed 9/9: round-trip cost 0.2%, 0.3%, 0.4% crossed with extra signal delay 0, 1, 2 bars.
+  - Worst stress case, 0.4% round-trip plus 2-bar delay: 2025 return 201.77%; 2026 return 183.84%; worst evaluated month +1.46%.
+  - Visual diagnostics: strong-trend flat bars fell from 2C's 1208 to 152 after the Strategy 3 runner change; adverse entry events fell from Strategy 3's 21/217 to Strategy 4's 16/203 after the 4-bar entry confirmation.
+  - Rejected experiments: leverage ramp failed stress 8/9; continuous weak-trend cap failed stress 0/9; RSI/Donchian extreme filters did not improve robustly.
+  - Interpretation: 2C has better headline return and stress margin; Strategy 4 has cleaner charts and fewer fast false reversals. Both remain posthoc research, not live guarantees.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -187,6 +201,9 @@ Useful source files:
 - `scripts/search_strategy_1_walkforward_20260627.py`
 - `scripts/search_strategy_1b_expanded_controls_20260627.py`
 - `scripts/search_strategy_1c_trend_runner_20260627.py`
+- `scripts/search_strategy_3_trend_coverage_20260627.py`
+- `scripts/search_strategy_4_entry_confirm_20260627.py`
+- `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
 What advice is needed:

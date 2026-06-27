@@ -13,6 +13,8 @@
 - 0号策略定位文件：`STRATEGY_0.md`
 - 1号F保存标签：`strategy-1f-selective-runner-20260627`
 - 1号G保存标签：`strategy-1g-cap7-selective-runner-20260627`
+- 2号C保存标签：`strategy-2c-lock-cap-20260627`
+- 4号候选保存标签：`strategy-4-entry-confirm-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -26,9 +28,10 @@
 6. `STRATEGY_1F_CANDIDATE.md`
 7. `STRATEGY_1G_CANDIDATE.md`
 8. `STRATEGY_2C_CANDIDATE.md`
-9. `CURRENT_STRATEGY_FREEZE.md`
-10. `GPT_PRO_REVIEW_BRIEF.md`
-11. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+9. `STRATEGY_4_CANDIDATE.md`
+10. `CURRENT_STRATEGY_FREEZE.md`
+11. `GPT_PRO_REVIEW_BRIEF.md`
+12. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -163,6 +166,44 @@
 - 最强压力 `0.4%手续费 + 晚2根K线`：2025 `+217.67%`，2026 `+181.75%`，最差月份 `+1.81%`。
 - 当前判断：2C 比 1F 少赚一些，但比 1F 更抗手续费和延迟；它是当前更稳的新候选。
 
+## 3号/4号视觉复盘优化
+
+- 画图脚本：`scripts/plot_strategy_trade_charts_20260627.py`
+- 2C 买卖点图：
+  - `artifacts/strategy_2c_visual_review_20260627/strategy2c_trades_2025.png`
+  - `artifacts/strategy_2c_visual_review_20260627/strategy2c_trades_2026.png`
+- 复盘结论：2C 压力测试强，但图上仍有“锁利后大趋势空仓”的问题。
+
+3号候选：
+
+- 候选编号：`strategy_3_trend_coverage_20260627`
+- 脚本：`scripts/search_strategy_3_trend_coverage_20260627.py`
+- 结果目录：`artifacts/strategy_3_trend_coverage_20260627/`
+- 图：`artifacts/strategy_3_visual_review_20260627/strategy3_trades_2025.png`、`artifacts/strategy_3_visual_review_20260627/strategy3_trades_2026.png`
+- 改动：保留 2C 锁利封顶，把锁利后小趋势仓触发从 `700 bps` 放宽到 `350 bps`，仍只用 `0.10x`。
+- 2025：`+352.49%`；2026：`+259.39%`；最差月份 `+5.11%`；压力测试 `9/9` 通过。
+- 强趋势空仓K线从 2C 的 `1208` 降到 `152`。
+- 问题：主仓位仍有一些“刚反手就被打脸”的点，不利进场事件 `21/217`。
+
+4号候选：
+
+- 候选编号：`strategy_4_entry_confirm_20260627`
+- 定位文件：`STRATEGY_4_CANDIDATE.md`
+- 脚本：`scripts/search_strategy_4_entry_confirm_20260627.py`
+- 结果目录：`artifacts/strategy_4_entry_confirm_20260627/`
+- 图：`artifacts/strategy_4_visual_review_20260627/strategy4_trades_2025.png`、`artifacts/strategy_4_visual_review_20260627/strategy4_trades_2026.png`
+- 改动：基于 3号，主方向刚切换时，要求新方向连续出现 `4` 根 15分钟K线；没站稳前先空仓等待。
+- 2025：`+290.69%`；2026：`+263.17%`；最差月份 `+4.56%`；最低月交易次数 `10`；压力测试 `9/9` 通过。
+- 最强压力 `0.4%手续费 + 晚2根K线`：2025 `+201.77%`，2026 `+183.84%`，最差月份 `+1.46%`。
+- 不利进场事件从 3号的 `21/217` 降到 `16/203`；最大回撤约 `-28.79%`。
+- 当前判断：2C 数字和压力余量更漂亮；4号图形更安静，更少假反手。4号是候选，不是固化版。
+
+已否掉的方向：
+
+- 仓位爬坡：压力测试从 `9/9` 掉到 `8/9`，不采用。
+- 弱趋势一直小仓位：压力测试 `0/9`，不采用。
+- RSI/Donchian 极端追高追低过滤：没有稳定改善，不采用。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -183,6 +224,7 @@
 - 对 `profit_lock_walkforward_20260627` 做二次检查：尤其检查固定 `ret_state 64/100` 信号是否也能用更早数据独立选出来；
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
+- 对 2C 和 4号做取舍：2C 更重数字和压力余量，4号更重图形质量和少假反手；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -202,9 +244,11 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 6. STRATEGY_1C_CANDIDATE.md
 7. STRATEGY_1F_CANDIDATE.md
 8. STRATEGY_1G_CANDIDATE.md
-9. CURRENT_STRATEGY_FREEZE.md
-10. GPT_PRO_REVIEW_BRIEF.md
-11. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+9. STRATEGY_2C_CANDIDATE.md
+10. STRATEGY_4_CANDIDATE.md
+11. CURRENT_STRATEGY_FREEZE.md
+12. GPT_PRO_REVIEW_BRIEF.md
+13. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -228,6 +272,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 2号C候选：
 2C：strategy_2c_lock_cap_20260627，基于 1F，只把每月 lock_log 封顶为 0.04。2025 +359.10%，2026 +260.59%，开平合计 0.2%/0.3%/0.4% 乘以信号晚 0/1/2 根K线的 9 个压力场景全部通过。当前判断：比 1F 少赚一点，但更抗手续费和延迟。
+
+当前新增 4号候选：
+4号：strategy_4_entry_confirm_20260627，基于 3号视觉复盘优化。它保留 2C 锁利封顶，降低锁利后强趋势空仓，并要求主方向刚切换时连续确认 4 根 15分钟K线。2025 +290.69%，2026 +263.17%，9 个压力场景全部通过。当前判断：2C 数字和压力余量更漂亮；4号图形更安静，更少假反手。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。
