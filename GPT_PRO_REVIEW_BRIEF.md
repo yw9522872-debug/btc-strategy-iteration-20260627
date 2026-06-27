@@ -229,6 +229,16 @@ Important current results:
   - `oracle_regime_past_only` gets +986.32%, underperforming 2C by 46.79 percentage points.
   - Interpretation: do not promote a router; complex real-time regime switching is not currently justified. Next useful work is execution-stress expansion, not more regime routing.
 
+- `STRATEGY_8_EXECUTION_STRESS_AUDIT.md`
+  - Strategy 8 is an execution-stress audit, not a new strategy.
+  - Audit id: `strategy_8_execution_stress_20260627`.
+  - Script: `scripts/audit_strategy_8_execution_stress_20260627.py`.
+  - Output: `artifacts/strategy_8_execution_stress_20260627/summary.json`.
+  - Stress set: volatility-scaled slippage, 1bp/3bp per 8h funding drag, missing the largest 5% rebalances, and short outages around the top 3 volatility bars.
+  - Results: 2C passed 6/6 with worst year +218.06% and worst month +2.76%; Strategy 3 passed 6/6 with worst year +216.95% and worst month +2.44%; Strategy 4 passed 5/6.
+  - Strategy 4 failure: `miss_top5pct_rebalance` in 2025-03, monthly return -0.56% with 11 orders.
+  - Interpretation: execution stress further supports 2C as the main candidate. Strategy 4 remains a chart-quality/hard-pass comparator but is more fragile under critical missed rebalances.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -255,6 +265,7 @@ Useful source files:
 - `scripts/audit_strategy_5b_three_way_20260627.py`
 - `scripts/audit_strategy_6_market_regime_20260627.py`
 - `scripts/audit_strategy_7_oracle_router_20260627.py`
+- `scripts/audit_strategy_8_execution_stress_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

@@ -1,0 +1,73 @@
+{
+  "status": "strategy_8_execution_stress_ready",
+  "generated_at": "2026-06-27T05:43:19.743958+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "does_not_overwrite": [
+    "artifacts/strategy_2c_lock_cap_20260627",
+    "artifacts/strategy_3_trend_coverage_20260627",
+    "artifacts/strategy_4_entry_confirm_20260627"
+  ],
+  "checked_candidates": [
+    "2C",
+    "3",
+    "4"
+  ],
+  "scenario_count": 6,
+  "stress_rollup": [
+    {
+      "candidate": "2C",
+      "scenarios": 6,
+      "hard_pass_scenarios": 6,
+      "failed_scenarios": 0,
+      "worst_min_required_year_return_pct": 218.05856618196452,
+      "worst_min_monthly_return_pct": 2.758073592353849,
+      "worst_max_drawdown_pct": -32.55120185368895
+    },
+    {
+      "candidate": "3",
+      "scenarios": 6,
+      "hard_pass_scenarios": 6,
+      "failed_scenarios": 0,
+      "worst_min_required_year_return_pct": 216.9523275986624,
+      "worst_min_monthly_return_pct": 2.441016713068511,
+      "worst_max_drawdown_pct": -32.55120185368895
+    },
+    {
+      "candidate": "4",
+      "scenarios": 6,
+      "hard_pass_scenarios": 5,
+      "failed_scenarios": 1,
+      "worst_min_required_year_return_pct": 211.67326455074215,
+      "worst_min_monthly_return_pct": -0.5551478057268855,
+      "worst_max_drawdown_pct": -31.62316262152033
+    }
+  ],
+  "failure_months": [
+    {
+      "month": "2025-03",
+      "log_return": -0.005566944780254765,
+      "first_equity": 1.1563573091776849,
+      "last_equity": 1.1503661458687018,
+      "min_drawdown": -0.20166282040972028,
+      "turnover": 50.1,
+      "orders": 11,
+      "return_pct": -0.5551478057268855,
+      "drawdown_pct": -20.16628204097203,
+      "scenario_id": "miss_top5pct_rebalance",
+      "candidate": "4"
+    }
+  ],
+  "decision": {
+    "best_execution_stress_candidate": "2C",
+    "promote_strategy": false,
+    "reason": "这是执行层压力审计，不是新策略；用于找真实交易摩擦下谁更抗打。"
+  },
+  "files": {
+    "execution_stress": "artifacts/strategy_8_execution_stress_20260627/execution_stress.csv",
+    "execution_stress_monthly": "artifacts/strategy_8_execution_stress_20260627/execution_stress_monthly.csv",
+    "execution_stress_failures": "artifacts/strategy_8_execution_stress_20260627/execution_stress_failures.csv",
+    "summary": "artifacts/strategy_8_execution_stress_20260627/summary.json",
+    "report": "artifacts/strategy_8_execution_stress_20260627/report.md"
+  }
+}

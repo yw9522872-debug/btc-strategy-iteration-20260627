@@ -19,6 +19,7 @@
 - 5B审计保存标签：`strategy-5b-three-way-audit-20260627`
 - 6号市场状态体检保存标签：`strategy-6-market-regime-audit-20260627`
 - 7号 Oracle 路由上限审计保存标签：`strategy-7-oracle-router-audit-20260627`
+- 8号执行压力审计保存标签：`strategy-8-execution-stress-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -37,9 +38,10 @@
 11. `STRATEGY_5B_THREE_WAY_AUDIT.md`
 12. `STRATEGY_6_MARKET_REGIME_AUDIT.md`
 13. `STRATEGY_7_ORACLE_ROUTER_AUDIT.md`
-14. `CURRENT_STRATEGY_FREEZE.md`
-15. `GPT_PRO_REVIEW_BRIEF.md`
-16. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+14. `STRATEGY_8_EXECUTION_STRESS_AUDIT.md`
+15. `CURRENT_STRATEGY_FREEZE.md`
+16. `GPT_PRO_REVIEW_BRIEF.md`
+17. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -268,6 +270,19 @@
 - 只用过去同状态选择 `+986.32%`，反而比 2C 少 `46.79` 个百分点。
 - 当前判断：不升级路由；复杂实时状态切换暂时不值得做。下一步更值得做执行压力升级，而不是继续调状态路由。
 
+## 8号执行压力审计
+
+- 审计编号：`strategy_8_execution_stress_20260627`
+- 定位文件：`STRATEGY_8_EXECUTION_STRESS_AUDIT.md`
+- 脚本：`scripts/audit_strategy_8_execution_stress_20260627.py`
+- 结果目录：`artifacts/strategy_8_execution_stress_20260627/`
+- 这不是新策略，只检查 2C、3号、4号在更坏执行条件下是否容易坏。
+- 压力项：波动放大滑点、每8小时资金费 `1bp/3bp`、专门漏掉换手最大的 `5%` 调仓、最大波动附近交易所短时停摆。
+- 2C：`6/6` 通过，最差年度 `+218.06%`，最差月 `+2.76%`。
+- 3号：`6/6` 通过，最差年度 `+216.95%`，最差月 `+2.44%`。
+- 4号：`5/6` 通过，失败在 `miss_top5pct_rebalance` 的 `2025-03`，月收益 `-0.56%`。
+- 当前判断：2C 执行压力下暂时最稳；4号图形更安静，但关键调仓漏掉时更脆。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -289,7 +304,7 @@
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 7号已说明状态路由上限不大，下一轮更建议另起 8号做执行压力升级：波动放大滑点、点差扩大、连续漏单、关键调仓漏单、funding、交易所短时不可用；
+- 8号执行压力进一步支持 2C 主候选。下一轮如果继续，不要围着 2025/2026 补规则，更值得做更长历史/更多数据源的独立检验；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -315,9 +330,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 12. STRATEGY_5B_THREE_WAY_AUDIT.md
 13. STRATEGY_6_MARKET_REGIME_AUDIT.md
 14. STRATEGY_7_ORACLE_ROUTER_AUDIT.md
-15. CURRENT_STRATEGY_FREEZE.md
-16. GPT_PRO_REVIEW_BRIEF.md
-17. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+15. STRATEGY_8_EXECUTION_STRESS_AUDIT.md
+16. CURRENT_STRATEGY_FREEZE.md
+17. GPT_PRO_REVIEW_BRIEF.md
+18. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -356,6 +372,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 7号 Oracle 路由上限审计：
 7号：strategy_7_oracle_router_audit_20260627，不是新策略，只测试“完美知道状态时，路由最多能不能明显超过 2C”。完整月里，2C 总收益 +1033.11%；每月事后最佳 +1128.92%，但这是看答案；按状态全样本最佳 +1045.54%，只比 2C 多 12.42 个百分点；只用过去同状态选择 +986.32%，反而跑输 2C。当前判断：不升级路由，复杂实时状态切换暂时不值得做。
+
+当前新增 8号执行压力审计：
+8号：strategy_8_execution_stress_20260627，不是新策略，只检查更坏执行条件。压力包括波动放大滑点、资金费、关键调仓漏单、最大波动附近短时停摆。2C 6/6 通过，最差月 +2.76%；3号 6/6 通过，最差月 +2.44%；4号 5/6 通过，在 2025-03 关键调仓漏单场景亏 -0.56%。当前判断：执行压力下 2C 暂时最稳。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。

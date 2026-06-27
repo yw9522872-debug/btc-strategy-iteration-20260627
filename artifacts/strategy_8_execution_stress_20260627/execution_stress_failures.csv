@@ -1,0 +1,2 @@
+month,log_return,first_equity,last_equity,min_drawdown,turnover,orders,return_pct,drawdown_pct,scenario_id,candidate
+2025-03,-0.005566944780254765,1.1563573091776849,1.1503661458687018,-0.20166282040972028,50.1,11,-0.5551478057268855,-20.16628204097203,miss_top5pct_rebalance,4
