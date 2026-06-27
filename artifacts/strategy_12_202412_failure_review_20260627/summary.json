@@ -1,0 +1,91 @@
+{
+  "status": "strategy_12_202412_failure_review_ready",
+  "strategy_id": "strategy_12_202412_failure_review_20260627",
+  "generated_at": "2026-06-27T08:56:41.443464+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "review_month": "2024-12",
+  "source": "Strategy 11 fixed_ret_state_64_100 true 2024 walk-forward result.",
+  "selected_params_for_2024_12": {
+    "eval_month": "2024-12",
+    "train_start_month": "2023-01",
+    "window": 64,
+    "threshold_bps": 100.0,
+    "train_end_month": "2024-11",
+    "candidate_id": 18,
+    "leverage": 6.0,
+    "lock_log": 0.04,
+    "quota_arm_log": 0.08,
+    "quota_leverage": 0.25,
+    "train_months": 23,
+    "train_return_pct": 814.4575027735414,
+    "train_losing_months": 0,
+    "train_min_month_return_pct": 4.285429590446732,
+    "train_min_orders": 12
+  },
+  "december_summary": {
+    "month": "2024-12",
+    "net_return_pct": -6.449800499963276,
+    "gross_before_cost_return_pct": 4.2193888334699725,
+    "cost_log_pct": 10.8,
+    "net_log": -0.06667200072043522,
+    "gross_log": 0.04132799927956299,
+    "cost_log": 0.10800000000000001,
+    "turnover": 108.0,
+    "orders": 18,
+    "active_bars": 474,
+    "exposure_pct": 15.92741935483871,
+    "avg_abs_active_position": 0.9556451612903226,
+    "long_gross_log": 0.008871508393323069,
+    "short_gross_log": 0.03245649088623992
+  },
+  "through_10th_order": {
+    "phase": "through_10th_order",
+    "bars": 295,
+    "net_return_pct": -23.21276274524098,
+    "gross_before_cost_return_pct": -17.973821627102595,
+    "cost_log_pct": 6.6000000000000005,
+    "turnover": 66.0,
+    "orders": 11,
+    "max_cum_month_log_pct": 4.309697262953821,
+    "min_cum_month_log_pct": -26.41317412228119
+  },
+  "after_10th_order": {
+    "phase": "after_10th_order",
+    "bars": 2681,
+    "net_return_pct": 21.830401567467227,
+    "gross_before_cost_return_pct": 27.056253138699816,
+    "cost_log_pct": 4.2,
+    "turnover": 42.0,
+    "orders": 7,
+    "max_cum_month_log_pct": 7.495812300604696,
+    "min_cum_month_log_pct": -49.88644169190109
+  },
+  "param_sweep_summary": {
+    "candidate_count": 30,
+    "train_hard_ok_count": 8,
+    "train_hard_ok_and_dec_positive_count": 2,
+    "selected_dec_return_pct": -6.449800499963443,
+    "best_dec_return_pct_leaky": 5.73833578404761,
+    "best_dec_params_leaky": {
+      "leverage": 6.0,
+      "lock_log": 0.04,
+      "quota_arm_log": 0.04,
+      "quota_leverage": 0.25
+    }
+  },
+  "decision": {
+    "promote_strategy": false,
+    "add_new_rule_now": false,
+    "reason": "这是样本外失败复盘。单月亏损不能直接拿来补规则，否则很容易继续过拟合。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_12_202412_failure_review_20260627/summary.json",
+    "report": "artifacts/strategy_12_202412_failure_review_20260627/report.md",
+    "month_decomposition": "artifacts/strategy_12_202412_failure_review_20260627/month_decomposition.csv",
+    "december_order_events": "artifacts/strategy_12_202412_failure_review_20260627/december_order_events.csv",
+    "december_worst_bars": "artifacts/strategy_12_202412_failure_review_20260627/december_worst_bars.csv",
+    "december_phase_breakdown": "artifacts/strategy_12_202412_failure_review_20260627/december_phase_breakdown.csv",
+    "december_param_sweep": "artifacts/strategy_12_202412_failure_review_20260627/december_param_sweep.csv"
+  }
+}

@@ -23,6 +23,7 @@
 - 9号冷启动可行性审计保存标签：`strategy-9-cold-start-feasibility-20260627`
 - 10号 pre-2024 数据探针保存标签：`strategy-10-pre2024-data-probe-20260627`
 - 11号真正 2024 walk-forward 审计保存标签：`strategy-11-true-2024-walkforward-20260627`
+- 12号 2024-12 失败复盘保存标签：`strategy-12-202412-failure-review-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -45,9 +46,10 @@
 15. `STRATEGY_9_COLD_START_FEASIBILITY.md`
 16. `STRATEGY_10_PRE2024_DATA_PROBE.md`
 17. `STRATEGY_11_TRUE_2024_WALKFORWARD.md`
-18. `CURRENT_STRATEGY_FREEZE.md`
-19. `GPT_PRO_REVIEW_BRIEF.md`
-20. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+18. `STRATEGY_12_202412_FAILURE_REVIEW.md`
+19. `CURRENT_STRATEGY_FREEZE.md`
+20. `GPT_PRO_REVIEW_BRIEF.md`
+21. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -325,6 +327,18 @@
 - 2024 收益 `+138.08%`，最少月交易 `12`，但 `2024-12` 亏 `-6.45%`，所以硬条件不通过。
 - 当前判断：11号不能升级候选；它说明当前策略族仍有样本外坏月，下一步应优先研究 `2024-12`，不要只在 2025/2026 上继续加规则。
 
+## 12号 2024-12 失败复盘
+
+- 复盘编号：`strategy_12_202412_failure_review_20260627`
+- 定位文件：`STRATEGY_12_202412_FAILURE_REVIEW.md`
+- 脚本：`scripts/audit_strategy_12_202412_failure_review_20260627.py`
+- 结果目录：`artifacts/strategy_12_202412_failure_review_20260627/`
+- 这不是新策略，只复盘 11号真正样本外测试里的 `2024-12` 亏损月。
+- `2024-12` 全月净收益 `-6.45%`；不算手续费/换手前 `+4.22%`；换手成本约 `10.80%` log；订单 `18`，换手 `108.0`。
+- 真正的问题在月初：达到月交易配额前后那段净收益 `-23.21%`，不算成本也亏 `-17.97%`，成本约 `6.60%` log；后半月追回 `+21.83%`，但没完全补回。
+- 参数复查：小网格候选 `30` 个，训练期达标 `8` 个，其中 `2` 个在 `2024-12` 为正；事后最佳 `+5.74%`，但这是看答案，不能交易。
+- 当前判断：12号不升级策略，也不立刻加规则。下一步如果继续，应另起 13号，用 `2023` 训练期设计低换手/低反手预防规则，再测完整 `2024`。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -346,7 +360,7 @@
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；11号真正 2024 walk-forward 未通过，暴露 `2024-12` 样本外坏月。下一轮如果继续，应优先复盘 `2024-12`，或者做未来新月份影子记录；
+- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；11号真正 2024 walk-forward 未通过，暴露 `2024-12` 样本外坏月。12号说明坏月主要来自月初反手亏损和高换手成本。下一轮如果继续，应另起 13号做低换手/低反手预防规则的 2024 全年验证，或者做未来新月份影子记录；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -376,9 +390,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 16. STRATEGY_9_COLD_START_FEASIBILITY.md
 17. STRATEGY_10_PRE2024_DATA_PROBE.md
 18. STRATEGY_11_TRUE_2024_WALKFORWARD.md
-19. CURRENT_STRATEGY_FREEZE.md
-20. GPT_PRO_REVIEW_BRIEF.md
-21. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+19. STRATEGY_12_202412_FAILURE_REVIEW.md
+20. CURRENT_STRATEGY_FREEZE.md
+21. GPT_PRO_REVIEW_BRIEF.md
+22. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -429,6 +444,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 11号真正 2024 walk-forward 审计：
 11号：strategy_11_true_2024_walkforward_20260627，不是新策略，只检查用 2023 和每个评估月以前的数据提前选参数，再测 2024。固定 ret_state 64/100 与小范围 ret_state 滚动选择器最终都选回 ret_state 64/100；2024 收益 +138.08%，最少月交易 12，但 2024-12 亏 -6.45%，所以不满足每月盈利硬条件。当前判断：不能升级候选；下一步更应该复盘 2024-12 样本外坏月。
+
+当前新增 12号 2024-12 失败复盘：
+12号：strategy_12_202412_failure_review_20260627，不是新策略，只复盘 11号真正样本外坏月。2024-12 全月净收益 -6.45%；不算手续费/换手前 +4.22%；换手成本约 10.80% log；订单 18，换手 108.0。真正问题在月初：达到月交易配额前后那段净收益 -23.21%，不算成本也亏 -17.97%，成本约 6.60% log；后半月追回 +21.83%，但没完全补回。小网格里训练期达标候选 8 个，其中 2 个 2024-12 为正，事后最佳 +5.74%，但这是看答案。当前判断：不升级策略，不立刻加规则；下一步若继续，应做 13号低换手/低反手预防规则，并测完整 2024。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。

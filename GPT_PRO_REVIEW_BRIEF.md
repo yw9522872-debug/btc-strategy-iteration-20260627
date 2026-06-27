@@ -273,6 +273,17 @@ Important current results:
   - Hard-pass 2024 result: false, because the every-month-profitable condition fails.
   - Interpretation: this strengthens the overfit concern. Future work should study 2024-12 as an out-of-sample failure month instead of only adding rules on 2025/2026.
 
+- `STRATEGY_12_202412_FAILURE_REVIEW.md`
+  - Strategy 12 is a 2024-12 failure review, not a strategy and not a freeze.
+  - Review id: `strategy_12_202412_failure_review_20260627`.
+  - Script: `scripts/audit_strategy_12_202412_failure_review_20260627.py`.
+  - Output: `artifacts/strategy_12_202412_failure_review_20260627/summary.json`.
+  - Source result: Strategy 11 fixed `ret_state 64/100` true 2024 walk-forward.
+  - 2024-12 net return: -6.45%; gross before turnover cost: +4.22%; turnover-cost drag: about 10.80% log; orders 18; turnover 108.0.
+  - Main failure timing: around quota completion / early month, net -23.21%, gross before cost -17.97%, cost about 6.60% log. Later part recovered +21.83% net but did not fully repair the hole.
+  - Small parameter sweep: 30 candidates, 8 train-hard-ok candidates, 2 train-hard-ok candidates were positive in 2024-12. Best 2024-12 candidate was +5.74%, but that is leaky hindsight and not tradeable.
+  - Interpretation: do not immediately add a stop or switch rule from this single bad month. If continuing, build Strategy 13 as a low-turnover / low-reversal prevention rule selected from 2023 and evaluated on all 2024.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -303,6 +314,7 @@ Useful source files:
 - `scripts/audit_strategy_9_cold_start_feasibility_20260627.py`
 - `scripts/audit_strategy_10_pre2024_data_probe_20260627.py`
 - `scripts/audit_strategy_11_true_2024_walkforward_20260627.py`
+- `scripts/audit_strategy_12_202412_failure_review_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
