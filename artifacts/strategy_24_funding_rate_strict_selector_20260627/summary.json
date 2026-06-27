@@ -1,0 +1,204 @@
+{
+  "status": "strategy_24_funding_rate_strict_selector_ready",
+  "strategy_id": "strategy_24_funding_rate_strict_selector_20260627",
+  "generated_at": "2026-06-27T13:53:19.662974+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Test whether Strategy 23 funding-rate oracle pieces can be selected with strict expanding no-future monthly selection.",
+  "source": {
+    "strategy_23_summary": "artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json",
+    "strategy_23_decision": {
+      "verdict": "FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES",
+      "promote_strategy": false,
+      "reason": "看答案的资金费率月度上限能过硬门槛，但它不能交易。",
+      "next_step": "再做严格逐月选择器，确认这些月份能不能不用未来信息提前选中。"
+    },
+    "combined_ohlc": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/btc_15m_2020_2026_05_combined_ohlc.csv",
+    "funding_rates": "artifacts/strategy_23_funding_rate_upper_bound_20260627/btcusdt_funding_rate_2020_2026_05.csv",
+    "new_rules_added": false
+  },
+  "data": {
+    "train_start_month": "2020-01",
+    "eval_start_month": "2023-01",
+    "eval_end_exclusive": "2026-06",
+    "funding_quality": {
+      "from_cache": true,
+      "rows": 7029,
+      "duplicate_timestamp_rows": 0,
+      "non_8h_gap_rows_after_second_floor": 0,
+      "invalid_interval_rows": 0,
+      "missing_funding_rate_rows": 0,
+      "first_timestamp": "2020-01-01T00:00:00+00:00",
+      "last_timestamp": "2026-05-31T16:00:00.004000+00:00",
+      "pass": true
+    }
+  },
+  "strict_no_future": {
+    "funding_features_use_latest_known_funding_at_or_before_bar_t": true,
+    "position_participates_from_bar_t_plus_1": true,
+    "monthly_selection_uses_only_months_before_eval_month": true
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "candidate_grid": {
+    "total_candidates": 246,
+    "families": {
+      "funding_change": 72,
+      "funding_level": 30,
+      "funding_mean": 72,
+      "funding_zscore": 72
+    },
+    "rules": {
+      "funding_change": 72,
+      "funding_level": 30,
+      "funding_mean": 72,
+      "funding_zscore": 72
+    },
+    "leverages": [
+      1.0,
+      2.0,
+      4.0
+    ]
+  },
+  "selector_summary": [
+    {
+      "selector_id": "funding_mean_only",
+      "family_filter": "funding_mean",
+      "selected_candidate_count": 2,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -45.561024203558716,
+      "return_2023_pct": -22.824525657392257,
+      "return_2024_pct": -42.048525903410514,
+      "return_2025_pct": 9.70467319011654,
+      "return_2026_ytd_pct": 10.953504201297992,
+      "min_complete_year_return_pct": -42.048525903410514,
+      "losing_eval_months": 20,
+      "min_monthly_return_pct": -29.05219153320334,
+      "min_monthly_orders": 0,
+      "orders": 371,
+      "turnover": 371.0,
+      "cost_log": 0.371,
+      "max_drawdown_pct": -66.71889075818942
+    },
+    {
+      "selector_id": "funding_level_only",
+      "family_filter": "funding_level",
+      "selected_candidate_count": 1,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -46.83764432900058,
+      "return_2023_pct": -16.844951179189426,
+      "return_2024_pct": -34.179597857764676,
+      "return_2025_pct": -2.674480713344607,
+      "return_2026_ytd_pct": -0.20050749862750017,
+      "min_complete_year_return_pct": -34.179597857764676,
+      "losing_eval_months": 23,
+      "min_monthly_return_pct": -27.108756559982837,
+      "min_monthly_orders": 0,
+      "orders": 408,
+      "turnover": 408.0,
+      "cost_log": 0.40800000000000003,
+      "max_drawdown_pct": -57.55145665107917
+    },
+    {
+      "selector_id": "all_funding",
+      "family_filter": "all",
+      "selected_candidate_count": 2,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -36.328052533085476,
+      "return_2023_pct": 0.6763397585460407,
+      "return_2024_pct": -28.355062427512213,
+      "return_2025_pct": -12.989225555799678,
+      "return_2026_ytd_pct": 1.4523643943458175,
+      "min_complete_year_return_pct": -28.355062427512213,
+      "losing_eval_months": 24,
+      "min_monthly_return_pct": -17.22073053051578,
+      "min_monthly_orders": 2,
+      "orders": 518,
+      "turnover": 523.0,
+      "cost_log": 0.523,
+      "max_drawdown_pct": -48.57102793563251
+    },
+    {
+      "selector_id": "funding_change_only",
+      "family_filter": "funding_change",
+      "selected_candidate_count": 1,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -32.9163506899034,
+      "return_2023_pct": 9.503407343796688,
+      "return_2024_pct": -28.355062427512213,
+      "return_2025_pct": -12.989225555799678,
+      "return_2026_ytd_pct": -1.7278394750475323,
+      "min_complete_year_return_pct": -28.355062427512213,
+      "losing_eval_months": 24,
+      "min_monthly_return_pct": -17.22073053051578,
+      "min_monthly_orders": 2,
+      "orders": 541,
+      "turnover": 546.0,
+      "cost_log": 0.546,
+      "max_drawdown_pct": -44.061855141499365
+    },
+    {
+      "selector_id": "funding_zscore_only",
+      "family_filter": "funding_zscore",
+      "selected_candidate_count": 2,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -32.26911235091765,
+      "return_2023_pct": 12.211284336828587,
+      "return_2024_pct": -12.40252009626941,
+      "return_2025_pct": -19.07968017107382,
+      "return_2026_ytd_pct": -14.846788571353587,
+      "min_complete_year_return_pct": -19.07968017107382,
+      "losing_eval_months": 25,
+      "min_monthly_return_pct": -14.023628855697723,
+      "min_monthly_orders": 0,
+      "orders": 534,
+      "turnover": 536.0,
+      "cost_log": 0.536,
+      "max_drawdown_pct": -50.49092305909102
+    }
+  ],
+  "best_selector": {
+    "selector_id": "funding_mean_only",
+    "family_filter": "funding_mean",
+    "selected_candidate_count": 2,
+    "hard_pass_complete_years": false,
+    "total_eval_return_pct": -45.561024203558716,
+    "return_2023_pct": -22.824525657392257,
+    "return_2024_pct": -42.048525903410514,
+    "return_2025_pct": 9.70467319011654,
+    "return_2026_ytd_pct": 10.953504201297992,
+    "min_complete_year_return_pct": -42.048525903410514,
+    "losing_eval_months": 20,
+    "min_monthly_return_pct": -29.05219153320334,
+    "min_monthly_orders": 0,
+    "orders": 371,
+    "turnover": 371.0,
+    "cost_log": 0.371,
+    "max_drawdown_pct": -66.71889075818942
+  },
+  "decision": {
+    "verdict": "FUNDING_RATE_STRICT_SELECTOR_FAILS",
+    "promote_strategy": false,
+    "reason": "资金费率看答案上限很好，但严格逐月选择无法提前选中好候选。",
+    "next_step": "不要升级资金费率候选；若继续，应换持仓量等新数据源或调整硬目标。"
+  },
+  "hashes": {
+    "script_sha256": "5133e397dbf0a7cc480351f7a17dd1c9fa2f12c55e5bd0cc1d45fc3eceb7f019",
+    "strategy_23_summary_sha256": "1bbe620a706bca8e2f2b63f297596f03208d8cd6728455d8ca7a88a1699eb668",
+    "funding_rates_sha256": "eb67507b9520fa87634ddc7f735b0827e25f7946754e45e9627f9e46eb5faac8",
+    "combined_ohlc_sha256": "e5475b5691b0dffe23c4cae738a6b3f9759de6ad3e7586e3beb3ca262f2b3a57"
+  },
+  "files": {
+    "summary": "artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json",
+    "report": "artifacts/strategy_24_funding_rate_strict_selector_20260627/report.md",
+    "selector_summary": "artifacts/strategy_24_funding_rate_strict_selector_20260627/selector_summary.csv",
+    "selector_monthly": "artifacts/strategy_24_funding_rate_strict_selector_20260627/selector_monthly.csv",
+    "selector_yearly": "artifacts/strategy_24_funding_rate_strict_selector_20260627/selector_yearly.csv",
+    "selected_params_by_month": "artifacts/strategy_24_funding_rate_strict_selector_20260627/selected_params_by_month.csv",
+    "candidate_monthly": "artifacts/strategy_24_funding_rate_strict_selector_20260627/candidate_monthly.csv"
+  }
+}

@@ -413,6 +413,26 @@ Important current results:
   - Stop patching `ret_state 64/100`, simple price indicators, calendar seasonality, OHLC candle/range/volatility micro-rules, and volume/taker micro-rules.
   - Do not jump straight to ML unless a new feature set first shows useful upper-bound evidence under no-future constraints.
 
+- `STRATEGY_23_FUNDING_RATE_UPPER_BOUND.md`
+  - Strategy 23 is a funding-rate upper-bound test, not a strategy, not tradeable, and not a freeze.
+  - Test id: `strategy_23_funding_rate_upper_bound_20260627`.
+  - Script: `scripts/audit_strategy_23_funding_rate_upper_bound_20260627.py`.
+  - Output: `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`.
+  - Data: Binance public USD-M futures monthly fundingRate archive, 2020-01 through 2026-05, 7,029 funding rows, no duplicate timestamps and no 8h gaps after second-flooring.
+  - Candidate grid: 246 candidates using funding level, change, rolling mean, and z-score, with 1x/2x/4x leverage.
+  - Static hindsight scan hard-pass count: 0.
+  - Monthly oracle with monthly orders >= 10 passes: 2023 +17,263.32%, 2024 +45,467.21%, 2025 +6,801.02%, 2026 YTD +648.74%, zero losing months, minimum monthly return +5.43%, minimum monthly orders 10.
+  - Decision: `FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES`. It is leaky and not tradeable; it only justifies a strict selector test.
+
+- `STRATEGY_24_FUNDING_RATE_STRICT_SELECTOR.md`
+  - Strategy 24 reuses Strategy 23 funding candidates with strict expanding monthly selection, not a new strategy and not a freeze.
+  - Test id: `strategy_24_funding_rate_strict_selector_20260627`.
+  - Script: `scripts/audit_strategy_24_funding_rate_strict_selector_20260627.py`.
+  - Output: `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`.
+  - No new rules were added. Each evaluated month uses only months before it for selection.
+  - Best strict selector is `funding_mean_only`: 2023 -22.82%, 2024 -42.05%, 2025 +9.70%, 2026 YTD +10.95%, 20 losing months, minimum monthly orders 0.
+  - Decision: `FUNDING_RATE_STRICT_SELECTOR_FAILS`. Funding-rate oracle pieces cannot currently be selected without future information, so do not promote this family.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -454,6 +474,8 @@ Useful source files:
 - `scripts/audit_strategy_20_ohlc_structure_upper_bound_20260627.py`
 - `scripts/audit_strategy_21_volume_upper_bound_20260627.py`
 - `scripts/audit_strategy_22_hard_target_bottleneck_20260627.py`
+- `scripts/audit_strategy_23_funding_rate_upper_bound_20260627.py`
+- `scripts/audit_strategy_24_funding_rate_strict_selector_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

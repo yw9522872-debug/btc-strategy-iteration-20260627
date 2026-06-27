@@ -7,8 +7,8 @@
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
-- 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`、`strategy-20-ohlc-structure-upper-bound-20260627`、`strategy-21-volume-upper-bound-20260627`
-- 15号、16号、17号、18号、19号、20号、21号、22号及交接说明已提交并推送到 GitHub
+- 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`、`strategy-20-ohlc-structure-upper-bound-20260627`、`strategy-21-volume-upper-bound-20260627`、`strategy-22-hard-target-bottleneck-audit-20260627`、`strategy-23-funding-rate-upper-bound-20260627`、`strategy-24-funding-rate-strict-selector-20260627`
+- 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号及交接说明已提交并推送到 GitHub
 - 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
@@ -37,6 +37,8 @@
 - 20号 OHLC结构上限测试保存标签：`strategy-20-ohlc-structure-upper-bound-20260627`
 - 21号成交量上限测试保存标签：`strategy-21-volume-upper-bound-20260627`
 - 22号硬目标瓶颈审计保存标签：`strategy-22-hard-target-bottleneck-audit-20260627`
+- 23号资金费率上限测试保存标签：`strategy-23-funding-rate-upper-bound-20260627`
+- 24号资金费率严格选择器保存标签：`strategy-24-funding-rate-strict-selector-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -70,18 +72,22 @@
 26. `STRATEGY_20_OHLC_STRUCTURE_UPPER_BOUND.md`
 27. `STRATEGY_21_VOLUME_UPPER_BOUND.md`
 28. `STRATEGY_22_HARD_TARGET_BOTTLENECK_AUDIT.md`
-29. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
-30. `CURRENT_STRATEGY_FREEZE.md`
-31. `GPT_PRO_REVIEW_BRIEF.md`
-32. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
-33. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
-34. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
-35. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
-36. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
-37. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
-38. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
-39. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
-40. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
+29. `STRATEGY_23_FUNDING_RATE_UPPER_BOUND.md`
+30. `STRATEGY_24_FUNDING_RATE_STRICT_SELECTOR.md`
+31. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+32. `CURRENT_STRATEGY_FREEZE.md`
+33. `GPT_PRO_REVIEW_BRIEF.md`
+34. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+35. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
+36. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
+37. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
+38. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
+39. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
+40. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
+41. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
+42. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
+43. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
+44. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
 
 ## 当前固化策略
 
@@ -516,6 +522,30 @@
 - 当前判断：`ORIGINAL_TARGET_AND_SELECTION_BOTTLENECK`。原始硬目标太紧，而且严格选择器选不出看答案月份。不要继续扩 16/19/20/21 小规则。
 - 停止结论文件：`RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
 
+## 23号资金费率上限测试
+
+- 测试编号：`strategy_23_funding_rate_upper_bound_20260627`
+- 定位文件：`STRATEGY_23_FUNDING_RATE_UPPER_BOUND.md`
+- 脚本：`scripts/audit_strategy_23_funding_rate_upper_bound_20260627.py`
+- 结果目录：`artifacts/strategy_23_funding_rate_upper_bound_20260627/`
+- 这不是策略，不能交易，只是测试资金费率这个新数据源的“看答案”月度上限。
+- 数据源：Binance public USD-M futures fundingRate archive，`2020-01` 到 `2026-05`，共 `7029` 条资金费率记录，无重复、无8小时断档。
+- 候选：`246` 个，只用资金费率水平、变化、均值、z-score。
+- 静态候选硬通过数量：`0`。
+- 带每月10单门槛的月度oracle能过：2023 `+17263.32%`，2024 `+45467.21%`，2025 `+6801.02%`，2026 YTD `+648.74%`，亏损月 `0`，最差月 `+5.43%`，最少月交易 `10`。
+- 当前判断：`FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES`。资金费率有事后好月份，但不能交易，必须做严格选择器。
+
+## 24号资金费率严格选择器
+
+- 测试编号：`strategy_24_funding_rate_strict_selector_20260627`
+- 定位文件：`STRATEGY_24_FUNDING_RATE_STRICT_SELECTOR.md`
+- 脚本：`scripts/audit_strategy_24_funding_rate_strict_selector_20260627.py`
+- 结果目录：`artifacts/strategy_24_funding_rate_strict_selector_20260627/`
+- 这不是策略，不能交易，只复用23号资金费率候选，没有新增规则。
+- 严格口径：每个月只能用过去月份选择候选。
+- 最好严格选择器 `funding_mean_only`：2023 `-22.82%`，2024 `-42.05%`，2025 `+9.70%`，2026 YTD `+10.95%`，亏损月 `20`，最差月 `-29.05%`，最少月交易 `0`。
+- 当前判断：`FUNDING_RATE_STRICT_SELECTOR_FAILS`。资金费率看答案很好，但当前规则无法提前选中好月份，不要升级资金费率候选。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -530,9 +560,9 @@
 
 0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
-- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住。
-- 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC 结构小规则，也不要继续扩成交量/taker小规则。
-- 如果继续研究，应另起 23号，只做真正不同的数据源上限测试，或先把目标改得更现实。不要直接写可交易策略，也不要直接上机器学习。
+- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住；23号资金费率看答案上限有月度零件；24号资金费率严格逐月选择失败。
+- 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC 结构小规则，也不要继续扩成交量/taker小规则；资金费率候选也不能升级。
+- 如果继续研究，应另起 25号，只测持仓量等真正不同数据源的上限，或先把目标改得更现实。不要直接写可交易策略，也不要直接上机器学习。
 - 当前历史硬目标很可能过严：22号显示原始硬目标下连看答案 oracle 都差 `2` 个月；放宽后看答案能过，但严格逐月选择器 `0/120` 通过。
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
@@ -574,18 +604,22 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 27. STRATEGY_20_OHLC_STRUCTURE_UPPER_BOUND.md
 28. STRATEGY_21_VOLUME_UPPER_BOUND.md
 29. STRATEGY_22_HARD_TARGET_BOTTLENECK_AUDIT.md
-30. RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md
-31. CURRENT_STRATEGY_FREEZE.md
-32. GPT_PRO_REVIEW_BRIEF.md
-33. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
-34. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
-35. artifacts/strategy_16_new_family_probe_20260627/summary.json
-36. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
-37. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
-38. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
-39. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
-40. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
-41. artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json
+30. STRATEGY_23_FUNDING_RATE_UPPER_BOUND.md
+31. STRATEGY_24_FUNDING_RATE_STRICT_SELECTOR.md
+32. RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md
+33. CURRENT_STRATEGY_FREEZE.md
+34. GPT_PRO_REVIEW_BRIEF.md
+35. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+36. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
+37. artifacts/strategy_16_new_family_probe_20260627/summary.json
+38. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
+39. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
+40. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
+41. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
+42. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
+43. artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json
+44. artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json
+45. artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -670,8 +704,14 @@ monthly_profit_lock_research_freeze_20260627
 当前新增 22号硬目标瓶颈审计：
 22号：strategy_22_hard_target_bottleneck_20260627，不是策略，不能交易，只把16/19/20/21的927个候选放进同一张压力表。压力网格包括月交易次数0/2/5/10、手续费0.0%到0.4%、月收益要求不限/>=-1%/>0、年收益门槛50%/100%。严格逐月选择器0/120通过；月度oracle80/120通过但它看答案不能交易。原始硬目标下，月度oracle也失败，差2023-07和2024-06两个月；严格选择器2025 -95.78%，2026 YTD +7.81%。当前判断：ORIGINAL_TARGET_AND_SELECTION_BOTTLENECK。不要继续扩16/19/20/21小规则，见 RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md。
 
+当前新增 23号资金费率上限测试：
+23号：strategy_23_funding_rate_upper_bound_20260627，不是策略，不能交易，只测试资金费率这个新数据源的看答案月度上限。Binance public USD-M futures fundingRate archive，2020-01到2026-05，共7029条，无重复、无8小时断档。246个资金费率候选静态硬通过0个，但带每月10单门槛的月度oracle能过：2023 +17263.32%，2024 +45467.21%，2025 +6801.02%，2026 YTD +648.74%，亏损月0，最差月 +5.43%，最少月交易10。当前判断：FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES，但它看答案不能交易。
+
+当前新增 24号资金费率严格选择器：
+24号：strategy_24_funding_rate_strict_selector_20260627，不是策略，不能交易，只复用23号候选，每个月只用过去月份选候选。最好严格选择器 funding_mean_only：2023 -22.82%，2024 -42.05%，2025 +9.70%，2026 YTD +10.95%，亏损月20，最差月 -29.05%，最少月交易0。当前判断：FUNDING_RATE_STRICT_SELECTOR_FAILS。资金费率看答案很好，但当前规则无法提前选中好月份，不要升级资金费率候选。
+
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
-这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，只能另起23号，换真正不同的数据源先做上限测试，或把目标改得更现实；不要直接上机器学习。
+这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，只能另起25号，测持仓量等真正不同数据源的上限，或把目标改得更现实；不要直接上机器学习。
 
 请用中文、通俗的话和我沟通。
 ```
