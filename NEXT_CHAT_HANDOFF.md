@@ -6,6 +6,9 @@
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
+- 当前最新提交：`9ca58fa Add strategy 14 pre-2023 stress audit`
+- 当前最新标签：`strategy-14-pre2023-expanding-crowding-stress-audit-20260627`
+- 本地未提交新增：15号、16号、17号、18号、19号及交接说明更新
 - 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
@@ -26,6 +29,11 @@
 - 12号 2024-12 失败复盘保存标签：`strategy-12-202412-failure-review-20260627`
 - 13号低换手/低反手预防规则保存标签：`strategy-13-low-turnover-prevention-20260627`
 - 14号 pre-2023 扩展滚动与拥挤压力审计保存标签：`strategy-14-pre2023-expanding-crowding-stress-audit-20260627`
+- 15号统一数据底座体检：`strategy_15_unified_data_baseline_20260627`，本地新增，尚未提交/打标签
+- 16号新策略族可行性探针：`strategy_16_new_family_probe_20260627`，本地新增，尚未提交/打标签
+- 17号简单策略族上限测试：`strategy_17_simple_family_upper_bound_20260627`，本地新增，尚未提交/打标签
+- 18号上限失败月份复盘：`strategy_18_upper_bound_failure_review_20260627`，本地新增，尚未提交/打标签
+- 19号日历季节性探针：`strategy_19_calendar_seasonality_probe_20260627`，本地新增，尚未提交/打标签
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -51,9 +59,19 @@
 18. `STRATEGY_12_202412_FAILURE_REVIEW.md`
 19. `STRATEGY_13_LOW_TURNOVER_PREVENTION.md`
 20. `STRATEGY_14_PRE2023_EXPANDING_CROWDING_STRESS_AUDIT.md`
-21. `CURRENT_STRATEGY_FREEZE.md`
-22. `GPT_PRO_REVIEW_BRIEF.md`
-23. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+21. `STRATEGY_15_UNIFIED_DATA_BASELINE.md`
+22. `STRATEGY_16_NEW_FAMILY_PROBE.md`
+23. `STRATEGY_17_SIMPLE_FAMILY_UPPER_BOUND.md`
+24. `STRATEGY_18_UPPER_BOUND_FAILURE_REVIEW.md`
+25. `STRATEGY_19_CALENDAR_SEASONALITY_PROBE.md`
+26. `CURRENT_STRATEGY_FREEZE.md`
+27. `GPT_PRO_REVIEW_BRIEF.md`
+28. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+29. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
+30. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
+31. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
+32. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
+33. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
 
 ## 当前固化策略
 
@@ -376,6 +394,74 @@
 - 压力测试 `11` 个场景全部失败，包括 0.2/0.3/0.4/0.6% 开平合计手续费、1/2/4 根K线延迟、资金费和波动滑点。
 - 当前判断：`STOP_FAMILY`。不要继续给这个 `ret_state 64/100` 家族手工堆补丁，也不要为了已知坏月继续加规则。
 
+## 15号统一数据底座体检
+
+- 体检编号：`strategy_15_unified_data_baseline_20260627`
+- 定位文件：`STRATEGY_15_UNIFIED_DATA_BASELINE.md`
+- 脚本：`scripts/audit_strategy_15_unified_data_baseline_20260627.py`
+- 结果目录：`artifacts/strategy_15_unified_data_baseline_20260627/`
+- 这不是新策略，也不是收益回测，只确认以后换新策略族时先用哪份K线。
+- 输入数据沿用 14号合并K线：`artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/btc_15m_2020_2026_05_combined_ohlc.csv`
+- 时间范围：`2020-01-01 00:00 UTC` 到 `2026-05-31 23:45 UTC`，共 `224928` 根 15分钟K线、`77` 个月。
+- 来源拆分：`2020-2024` 为 Binance public USD-M futures archive，`2025-2026-05` 为本地 `event_entry_fullscan`。
+- 质量检查：重复时间戳 `0`，非15分钟断档 `0`，OHLC异常 `0`，补齐K线 `0`，不完整月份 `0`，缺失月份 `0`。
+- 继承 14号 2024 对齐结论：public futures 与本地 event 都是 `35136` 行，close 差异 `0`。
+- 当前判断：`DATA_BASELINE_READY`。后续新策略族应先用这份 futures 统一K线底座，不要再混用 spot 探针和旧 event 口径。
+
+## 16号新策略族可行性探针
+
+- 探针编号：`strategy_16_new_family_probe_20260627`
+- 定位文件：`STRATEGY_16_NEW_FAMILY_PROBE.md`
+- 脚本：`scripts/audit_strategy_16_new_family_probe_20260627.py`
+- 结果目录：`artifacts/strategy_16_new_family_probe_20260627/`
+- 这不是候选策略，也不是固化版，只是在 15号 futures 底座上检查简单新策略族有没有继续研究价值。
+- 评估范围：`2023-01` 到 `2026-05`；完整年度硬门槛看 `2023/2024/2025`，`2026` 只记录 YTD。
+- 手续费：开平合计 `0.2%`，代码里单边 `0.001`。
+- 候选：共 `144` 个，包含均线趋势、Donchian 突破、RSI 回归、布林带回归、ATR 突破；杠杆只测 `1x/2x/4x`。
+- 严格逐月选择：每个月只用评估月以前的数据选参数；信号只用已收盘K线，下一根K线吃收益。
+- 最好严格选择器：`all_families`，2023 `+23.04%`，2024 `+33.45%`，2025 `-54.66%`，2026 YTD `+1.90%`；亏损月 `22`，最差月 `-25.35%`，最少月交易 `3`，最大回撤 `-72.40%`。
+- 单类结果也失败：trend 同上；volatility_breakout 为 2023 `-15.38%`、2024 `-35.94%`、2025 `-6.78%`；mean_reversion 为 2023 `-36.13%`、2024 `-22.65%`、2025 `-32.68%`。
+- 144个静态候选事后硬通过数量也是 `0`；事后最好是 `trend_donchian_trend_lev1p0_lookback192`，但 2025 仍 `-54.66%`，亏损月 `22`。
+- 当前判断：`NO_HARD_PASS_IN_SIMPLE_NEW_FAMILY_PROBE`。不要升级16号；下一步更适合做17号上限测试，先看这批简单候选的理论月度上限够不够。
+
+## 17号简单策略族上限测试
+
+- 测试编号：`strategy_17_simple_family_upper_bound_20260627`
+- 定位文件：`STRATEGY_17_SIMPLE_FAMILY_UPPER_BOUND.md`
+- 脚本：`scripts/audit_strategy_17_simple_family_upper_bound_20260627.py`
+- 结果目录：`artifacts/strategy_17_simple_family_upper_bound_20260627/`
+- 这不是策略，不能交易，也不是固化版；它是“看答案”的月度上限测试。
+- 来源：16号的 `144` 个简单候选；评估范围仍是 `2023-01` 到 `2026-05`；手续费开平合计 `0.2%`。
+- 最宽松上限 `monthly_oracle_best_return`：每个月直接挑收益最高候选，不要求交易次数够 `10`。2023 `+10048.37%`，2024 `+5634.19%`，2025 `+1912.71%`，2026 YTD `+564.01%`，但仍有 `6` 个不盈利月份：`2023-07`、`2024-12`、`2025-06`、`2025-09`、`2026-04`、`2026-05`；最少月交易 `0`。
+- 带交易次数门槛上限 `monthly_oracle_best_return_order10`：每个月只在交易次数不少于 `10` 的候选里事后挑最好。2023 `+3299.38%`，2024 `+1721.70%`，2025 `+385.93%`，2026 YTD `+274.52%`，但仍有 `10` 个不盈利月份：`2023-07`、`2023-09`、`2024-04`、`2024-06`、`2024-12`、`2025-06`、`2025-07`、`2025-09`、`2026-04`、`2026-05`。
+- 当前判断：`SIMPLE_FAMILY_UPPER_BOUND_FAILS`。不是严格选择器太笨，而是这批简单规则本身不够；不要继续扩这批均线/Donchian/RSI/布林带/ATR突破简单变体。
+
+## 18号上限失败月份复盘
+
+- 复盘编号：`strategy_18_upper_bound_failure_review_20260627`
+- 定位文件：`STRATEGY_18_UPPER_BOUND_FAILURE_REVIEW.md`
+- 脚本：`scripts/audit_strategy_18_upper_bound_failure_review_20260627.py`
+- 结果目录：`artifacts/strategy_18_upper_bound_failure_review_20260627/`
+- 这不是策略，也不是候选，只复盘 17号为什么连看答案上限都没过。
+- 复盘月份：`2023-07`、`2023-09`、`2024-04`、`2024-06`、`2024-12`、`2025-06`、`2025-07`、`2025-09`、`2026-04`、`2026-05`。
+- 失败类型：`no_positive_candidate` 有 `6` 个月，意思是 144个简单候选里没有任何一个当月正收益；`positive_only_with_too_few_orders` 有 `4` 个月，意思是有正收益候选但交易次数不到 `10`。
+- `no_positive_candidate` 月份：`2023-07`、`2024-12`、`2025-06`、`2025-09`、`2026-04`、`2026-05`。
+- `positive_only_with_too_few_orders` 月份：`2023-09`、`2024-04`、`2024-06`、`2025-07`。
+- 当前判断：`FAILURE_MONTHS_EXPLAIN_SIMPLE_FAMILY_STOP`。这批简单规则在很多失败月份里，最好的选择其实是空仓；一旦要求每月10次交易，就变成亏钱。不要继续微调这批规则。
+
+## 19号日历季节性探针
+
+- 探针编号：`strategy_19_calendar_seasonality_probe_20260627`
+- 定位文件：`STRATEGY_19_CALENDAR_SEASONALITY_PROBE.md`
+- 脚本：`scripts/audit_strategy_19_calendar_seasonality_probe_20260627.py`
+- 结果目录：`artifacts/strategy_19_calendar_seasonality_probe_20260627/`
+- 这不是候选策略，也不是固化版，只检查星期几、小时、交易时段这类日历规律有没有用。
+- 数据底座：15号确认过的 USD-M futures 合并K线；模型起点 `2021-01`；评估范围 `2023-01` 到 `2026-05`。
+- 候选：`216` 个，分桶包括 `session`、`weekday`、`hour`、`hour_week`；回看训练期 `12/24/扩展`；阈值 `0/0.5/1.0 bps`；最小样本数 `20/50`；杠杆 `1x/2x/4x`。
+- 最好严格选择器：`all_calendar`，2023 `-1.32%`，2024 `+71.64%`，2025 `-26.91%`，2026 YTD `+43.60%`；亏损月 `22`，最差月 `-25.36%`，最少月交易 `0`，最大回撤 `-46.37%`。
+- 单个动态候选事后最好：`calendar_weekday_lbexpanding_thr0p0_min20_lev1p0`，2023 `+31.81%`，2024 `+71.57%`，2025 `-10.55%`，2026 YTD `+43.60%`，亏损月 `17`，最少月交易 `10`。
+- 当前判断：`CALENDAR_SEASONALITY_FAILS`。单靠星期几、小时、交易时段这种规律不够，不要升级19号。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -390,14 +476,10 @@
 
 0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
-- 做更严格的 walk-forward / out-of-sample 验证；
-- 降低过拟合风险；
-- 补最新数据后复测；
-- 对 `profit_lock_walkforward_20260627` 做二次检查：尤其检查固定 `ret_state 64/100` 信号是否也能用更早数据独立选出来；
-- 重新设计更稳健的非事后选参规则；
-- 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
-- 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；11号真正 2024 walk-forward 未通过，暴露 `2024-12` 样本外坏月。12号说明坏月主要来自月初反手亏损和高换手成本。13号测试低换手/低反手确认规则，但严格 2023 选择后仍未通过 2024。14号发现旧 event 数据应按 USD-M futures 对齐，并用 2020-2026 更严格滚动审计判定 `STOP_FAMILY`。下一轮不要继续修这个 `ret_state 64/100` 家族，应先考虑换策略族或重建统一数据/特征框架；
+- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败。
+- 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，也不要升级日历季节性。
+- 如果继续研究，应另起 20号，换更不同的数据特征或问题定义，例如：成交量/波动结构、趋势强弱过滤后的少交易策略、只研究方向上限、或先让 GPT Pro 复核 15-19 后再定下一类策略族。
+- 当前历史硬目标可能过严：每月盈利且每月最少10次交易，在 17/18 号里已经看到即使“看答案”也会卡住部分月份。下一轮应考虑先做可行性上限，再做可交易规则。
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -430,9 +512,19 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 19. STRATEGY_12_202412_FAILURE_REVIEW.md
 20. STRATEGY_13_LOW_TURNOVER_PREVENTION.md
 21. STRATEGY_14_PRE2023_EXPANDING_CROWDING_STRESS_AUDIT.md
-22. CURRENT_STRATEGY_FREEZE.md
-23. GPT_PRO_REVIEW_BRIEF.md
-24. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+22. STRATEGY_15_UNIFIED_DATA_BASELINE.md
+23. STRATEGY_16_NEW_FAMILY_PROBE.md
+24. STRATEGY_17_SIMPLE_FAMILY_UPPER_BOUND.md
+25. STRATEGY_18_UPPER_BOUND_FAILURE_REVIEW.md
+26. STRATEGY_19_CALENDAR_SEASONALITY_PROBE.md
+27. CURRENT_STRATEGY_FREEZE.md
+28. GPT_PRO_REVIEW_BRIEF.md
+29. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+30. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
+31. artifacts/strategy_16_new_family_probe_20260627/summary.json
+32. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
+33. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
+34. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -492,6 +584,21 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 14号 pre-2023 扩展滚动与拥挤压力审计：
 14号：strategy_14_pre2023_expanding_crowding_stress_audit_20260627，不是新策略，不是候选，也不是固化版。它按 GPT Pro 建议做更早历史、更严格 walk-forward 和执行拥挤压力审计。重要发现：旧 event_entry_fullscan 对齐 Binance USD-M futures，不是 spot；14号用 futures 公共K线补 2020-2024，并接本地 2025 到完整 2026-05 数据。2024 futures 对齐检查 35136/35136 行完全匹配，close 差异 0。基础滚动结果：2023 -21.96%，2024 +140.23%，2025 -5.28%，2026 YTD -0.35%；亏损月 6，最差月 -39.60%，最大回撤 -58.39%。11 个压力场景全部失败。当前判断：STOP_FAMILY，不要继续给 ret_state 64/100 家族手工堆补丁。
+
+当前新增 15号统一数据底座体检：
+15号：strategy_15_unified_data_baseline_20260627，不是新策略，也不是收益回测，只确认以后换新策略族时先用哪份K线。它沿用 14号合并K线：2020-01-01 到 2026-05-31，共 224928 根15分钟K线、77个月；2020-2024 来自 Binance public USD-M futures archive，2025-2026-05 来自本地 event_entry_fullscan。质量检查：重复时间戳 0，非15分钟断档 0，OHLC异常 0，补齐K线 0，不完整月份 0，缺失月份 0。继承14号结论：2024 public futures 与本地 event 都是 35136 行，close 差异 0。当前判断：DATA_BASELINE_READY。后续新策略族应先用这份 futures 统一K线底座，不要再混用 spot 探针和旧 event 口径。
+
+当前新增 16号新策略族可行性探针：
+16号：strategy_16_new_family_probe_20260627，不是候选策略，也不是固化版。它在15号 futures 底座上扫了 144 个简单候选：均线趋势、Donchian突破、RSI回归、布林带回归、ATR突破，杠杆只测 1x/2x/4x。严格逐月选择每个月只用过去数据选参数。最好严格选择器 all_families：2023 +23.04%，2024 +33.45%，2025 -54.66%，2026 YTD +1.90%；亏损月 22，最差月 -25.35%，最少月交易 3，最大回撤 -72.40%。144个静态候选事后硬通过数量也是 0。当前判断：NO_HARD_PASS_IN_SIMPLE_NEW_FAMILY_PROBE。不要升级16号；下一步更适合做17号上限测试，先看这批简单候选的理论月度上限够不够。
+
+当前新增 17号简单策略族上限测试：
+17号：strategy_17_simple_family_upper_bound_20260627，不是策略，不能交易，只是“看答案”的月度上限测试。来源是16号的144个简单候选。最宽松上限 monthly_oracle_best_return 每个月直接挑收益最高候选：2023 +10048.37%，2024 +5634.19%，2025 +1912.71%，2026 YTD +564.01%，但仍有6个不盈利月份：2023-07、2024-12、2025-06、2025-09、2026-04、2026-05，且最少月交易为0。带交易次数门槛 monthly_oracle_best_return_order10：2023 +3299.38%，2024 +1721.70%，2025 +385.93%，2026 YTD +274.52%，但仍有10个不盈利月份。当前判断：SIMPLE_FAMILY_UPPER_BOUND_FAILS。不要继续扩这批均线/Donchian/RSI/布林带/ATR突破简单变体。
+
+当前新增 18号上限失败月份复盘：
+18号：strategy_18_upper_bound_failure_review_20260627，不是策略，也不是候选，只复盘17号为什么连看答案上限都没过。复盘10个失败月份：2023-07、2023-09、2024-04、2024-06、2024-12、2025-06、2025-07、2025-09、2026-04、2026-05。失败类型：no_positive_candidate 有6个月，意思是144个简单候选里没有任何一个当月正收益；positive_only_with_too_few_orders 有4个月，意思是有正收益候选但交易次数不到10。当前判断：FAILURE_MONTHS_EXPLAIN_SIMPLE_FAMILY_STOP。不要继续微调这批简单规则。
+
+当前新增 19号日历季节性探针：
+19号：strategy_19_calendar_seasonality_probe_20260627，不是候选策略，也不是固化版，只检查星期几、小时、交易时段这类日历规律有没有用。候选216个，分桶包括 session/weekday/hour/hour_week。最好严格选择器 all_calendar：2023 -1.32%，2024 +71.64%，2025 -26.91%，2026 YTD +43.60%；亏损月22，最差月 -25.36%，最少月交易0，最大回撤 -46.37%。单个动态候选事后最好 calendar_weekday_lbexpanding_thr0p0_min20_lev1p0：2023 +31.81%，2024 +71.57%，2025 -10.55%，2026 YTD +43.60%，亏损月17，最少月交易10。当前判断：CALENDAR_SEASONALITY_FAILS。不要升级19号。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。

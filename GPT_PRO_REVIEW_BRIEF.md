@@ -311,6 +311,66 @@ Important current results:
   - Stress: 11 fixed scenarios covering 0.2/0.3/0.4/0.6% round-trip cost, 1/2/4-bar signal delay, 1/3/5bp per 8h funding drag, and dynamic volatility slippage. Hard-pass scenarios: 0/11.
   - Decision: `STOP_FAMILY`. Do not keep hand-tuning this `ret_state 64/100` family to repair known bad months.
 
+- `STRATEGY_15_UNIFIED_DATA_BASELINE.md`
+  - Strategy 15 is a unified data-baseline audit, not a strategy, not a profitability backtest, and not a freeze.
+  - Audit id: `strategy_15_unified_data_baseline_20260627`.
+  - Script: `scripts/audit_strategy_15_unified_data_baseline_20260627.py`.
+  - Output: `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`.
+  - It audits the Strategy 14 combined OHLC file rather than downloading new data.
+  - Accepted baseline: BTCUSDT 15m Binance USD-M futures public archive for 2020-2024 plus local `event_entry_fullscan` tail for 2025 through complete 2026-05.
+  - Coverage: 2020-01-01 00:00 UTC through 2026-05-31 23:45 UTC, 224,928 rows, 77 complete months.
+  - Quality checks: duplicate timestamps 0, non-15m gaps 0, invalid OHLC rows 0, calendar-filled rows 0, incomplete months 0, missing months 0.
+  - Inherits Strategy 14's 2024 parity check: 35,136 public futures rows vs 35,136 event rows, 0 close mismatches.
+  - Decision: `DATA_BASELINE_READY`. Next new strategy family should use this futures baseline and avoid mixing the earlier 2023 spot probe with the event source.
+
+- `STRATEGY_16_NEW_FAMILY_PROBE.md`
+  - Strategy 16 is a new-family feasibility probe, not a candidate, not a freeze, and not live trading.
+  - Probe id: `strategy_16_new_family_probe_20260627`.
+  - Script: `scripts/audit_strategy_16_new_family_probe_20260627.py`.
+  - Output: `artifacts/strategy_16_new_family_probe_20260627/summary.json`.
+  - Data: Strategy 15 USD-M futures baseline, 2020-01 through complete 2026-05.
+  - Evaluation: strict monthly expanding selection, evaluating 2023-01 through 2026-05. Complete-year hard gate applies to 2023/2024/2025; 2026 is YTD only.
+  - Cost: round-trip open+close 0.2%, modeled as `cost_per_side = 0.001`.
+  - Candidate grid: 144 simple non-`ret_state` candidates: MA trend, Donchian trend, RSI reversion, Bollinger reversion, and ATR breakout; leverage only 1x/2x/4x.
+  - Best strict selector: `all_families`, with 2023 +23.04%, 2024 +33.45%, 2025 -54.66%, 2026 YTD +1.90%; 22 losing months, worst month -25.35%, minimum monthly orders 3, max drawdown -72.40%.
+  - Family selectors also failed: trend matches all_families; volatility_breakout lost money in 2023/2024/2025/YTD; mean_reversion lost money in every listed year.
+  - Static hindsight scan hard-pass count: 0 out of 144.
+  - Decision: `NO_HARD_PASS_IN_SIMPLE_NEW_FAMILY_PROBE`. Do not promote Strategy 16; next useful step is an upper-bound/oracle test before adding complexity to these simple rules.
+
+- `STRATEGY_17_SIMPLE_FAMILY_UPPER_BOUND.md`
+  - Strategy 17 is a leaky monthly oracle upper-bound test, not a strategy, not tradeable, and not a freeze.
+  - Test id: `strategy_17_simple_family_upper_bound_20260627`.
+  - Script: `scripts/audit_strategy_17_simple_family_upper_bound_20260627.py`.
+  - Output: `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`.
+  - Source: the 144 simple Strategy 16 candidates on the Strategy 15 USD-M futures baseline.
+  - Warning: the monthly oracle chooses the best candidate after seeing each evaluated month, so `strict_no_future = false`; month-boundary switching cost is not included, making this optimistic.
+  - Most permissive oracle, `monthly_oracle_best_return`, ignores the 10-order monthly floor. It has huge annual returns, but still fails hard gates: non-positive months are 2023-07, 2024-12, 2025-06, 2025-09, 2026-04, and 2026-05; minimum monthly orders is 0.
+  - Order-floor oracle, `monthly_oracle_best_return_order10`, only chooses candidates with at least 10 monthly orders. It still has 10 non-positive months: 2023-07, 2023-09, 2024-04, 2024-06, 2024-12, 2025-06, 2025-07, 2025-09, 2026-04, and 2026-05.
+  - Decision: `SIMPLE_FAMILY_UPPER_BOUND_FAILS`. Do not keep expanding this simple MA/Donchian/RSI/Bollinger/ATR-breakout menu; the problem is not just selector quality.
+
+- `STRATEGY_18_UPPER_BOUND_FAILURE_REVIEW.md`
+  - Strategy 18 is a failure-month review for Strategy 17, not a strategy, not a candidate, and not a freeze.
+  - Review id: `strategy_18_upper_bound_failure_review_20260627`.
+  - Script: `scripts/audit_strategy_18_upper_bound_failure_review_20260627.py`.
+  - Output: `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`.
+  - Reviewed months: 2023-07, 2023-09, 2024-04, 2024-06, 2024-12, 2025-06, 2025-07, 2025-09, 2026-04, and 2026-05.
+  - Failure types: `no_positive_candidate` in 6 months, meaning none of the 144 simple candidates had positive return that month; `positive_only_with_too_few_orders` in 4 months, meaning positive candidates existed but had fewer than 10 monthly orders.
+  - `no_positive_candidate` months: 2023-07, 2024-12, 2025-06, 2025-09, 2026-04, 2026-05.
+  - `positive_only_with_too_few_orders` months: 2023-09, 2024-04, 2024-06, 2025-07.
+  - Decision: `FAILURE_MONTHS_EXPLAIN_SIMPLE_FAMILY_STOP`. This supports stopping expansion of the simple MA/Donchian/RSI/Bollinger/ATR-breakout menu.
+
+- `STRATEGY_19_CALENDAR_SEASONALITY_PROBE.md`
+  - Strategy 19 is a calendar/time-of-week seasonality probe, not a candidate, not a freeze, and not live trading.
+  - Probe id: `strategy_19_calendar_seasonality_probe_20260627`.
+  - Script: `scripts/audit_strategy_19_calendar_seasonality_probe_20260627.py`.
+  - Output: `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`.
+  - Data: Strategy 15 USD-M futures baseline. Model months start at 2021-01; evaluation is 2023-01 through 2026-05.
+  - Candidate grid: 216 candidates using session, weekday, hour, and hour-of-week buckets; lookback 12 months, 24 months, or expanding; minimum average bucket threshold 0/0.5/1.0 bps; minimum samples 20/50; leverage 1x/2x/4x.
+  - Signals use only calendar buckets and prior-month training history; positions participate from the next bar.
+  - Best strict selector: `all_calendar`, with 2023 -1.32%, 2024 +71.64%, 2025 -26.91%, 2026 YTD +43.60%; 22 losing months, worst month -25.36%, minimum monthly orders 0, max drawdown -46.37%.
+  - Best single dynamic candidate: `calendar_weekday_lbexpanding_thr0p0_min20_lev1p0`, with 2023 +31.81%, 2024 +71.57%, 2025 -10.55%, 2026 YTD +43.60%; 17 losing months, minimum monthly orders 10.
+  - Decision: `CALENDAR_SEASONALITY_FAILS`. Do not promote Strategy 19.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -344,6 +404,11 @@ Useful source files:
 - `scripts/audit_strategy_12_202412_failure_review_20260627.py`
 - `scripts/search_strategy_13_low_turnover_prevention_20260627.py`
 - `scripts/audit_strategy_14_pre2023_expanding_crowding_stress_20260627.py`
+- `scripts/audit_strategy_15_unified_data_baseline_20260627.py`
+- `scripts/audit_strategy_16_new_family_probe_20260627.py`
+- `scripts/audit_strategy_17_simple_family_upper_bound_20260627.py`
+- `scripts/audit_strategy_18_upper_bound_failure_review_20260627.py`
+- `scripts/audit_strategy_19_calendar_seasonality_probe_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

@@ -1,0 +1,8 @@
+source,year,rows,first_timestamp,last_timestamp,calendar_fill_rows
+binance_public_um_futures_archive,2020,35136,2020-01-01T00:00:00+00:00,2020-12-31T23:45:00+00:00,0
+binance_public_um_futures_archive,2021,35040,2021-01-01T00:00:00+00:00,2021-12-31T23:45:00+00:00,0
+binance_public_um_futures_archive,2022,35040,2022-01-01T00:00:00+00:00,2022-12-31T23:45:00+00:00,0
+binance_public_um_futures_archive,2023,35040,2023-01-01T00:00:00+00:00,2023-12-31T23:45:00+00:00,0
+binance_public_um_futures_archive,2024,35136,2024-01-01T00:00:00+00:00,2024-12-31T23:45:00+00:00,0
+event_entry_fullscan,2025,35040,2025-01-01T00:00:00+00:00,2025-12-31T23:45:00+00:00,0
+event_entry_fullscan,2026,14496,2026-01-01T00:00:00+00:00,2026-05-31T23:45:00+00:00,0

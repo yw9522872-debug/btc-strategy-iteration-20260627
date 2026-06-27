@@ -1,0 +1,219 @@
+{
+  "status": "strategy_19_calendar_seasonality_probe_ready",
+  "strategy_id": "strategy_19_calendar_seasonality_probe_20260627",
+  "generated_at": "2026-06-27T11:48:00.851052+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Probe a calendar/time-of-week seasonality family on the Strategy 15 USD-M futures baseline. This is intentionally different from ret_state and simple price-indicator rules.",
+  "data": {
+    "baseline_15_summary": "artifacts/strategy_15_unified_data_baseline_20260627/summary.json",
+    "combined_ohlc": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/btc_15m_2020_2026_05_combined_ohlc.csv",
+    "model_start_month": "2021-01",
+    "train_score_start_month": "2021-01",
+    "eval_start_month": "2023-01",
+    "eval_end_exclusive": "2026-06",
+    "complete_eval_years_for_annual_threshold": [
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "partial_eval_year_recorded_not_annual_threshold": "2026"
+  },
+  "strict_no_future": {
+    "signals_use_only_calendar_bucket_and_prior_month_training": true,
+    "position_participates_from_bar_t_plus_1": true,
+    "monthly_selection_uses_only_months_before_eval_month": true
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "candidate_grid": {
+    "total_candidates": 216,
+    "bucket_families": {
+      "hour": 54,
+      "hour_week": 54,
+      "session": 54,
+      "weekday": 54
+    },
+    "lookback_months": [
+      12,
+      24,
+      "expanding"
+    ],
+    "min_abs_mean_bps": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "min_samples": [
+      20,
+      50
+    ],
+    "leverages": [
+      1.0,
+      2.0,
+      4.0
+    ]
+  },
+  "selector_summary": [
+    {
+      "selector_id": "all_calendar",
+      "bucket_family_filter": "all",
+      "selected_candidate_count": 4,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": 77.76196871968064,
+      "return_2023_pct": -1.3217331843579538,
+      "return_2024_pct": 71.63931867520834,
+      "return_2025_pct": -26.911625268968876,
+      "return_2026_ytd_pct": 43.59927657304039,
+      "min_complete_year_return_pct": -26.911625268968876,
+      "losing_eval_months": 22,
+      "min_monthly_return_pct": -25.363412626054206,
+      "min_monthly_orders": 0,
+      "orders": 472,
+      "turnover": 834.0,
+      "cost_log": 0.8340000000000001,
+      "max_drawdown_pct": -46.37017784636315
+    },
+    {
+      "selector_id": "weekday_only",
+      "bucket_family_filter": "weekday",
+      "selected_candidate_count": 4,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": 77.76196871968064,
+      "return_2023_pct": -1.3217331843579538,
+      "return_2024_pct": 71.63931867520834,
+      "return_2025_pct": -26.911625268968876,
+      "return_2026_ytd_pct": 43.59927657304039,
+      "min_complete_year_return_pct": -26.911625268968876,
+      "losing_eval_months": 22,
+      "min_monthly_return_pct": -25.363412626054206,
+      "min_monthly_orders": 0,
+      "orders": 472,
+      "turnover": 834.0,
+      "cost_log": 0.8340000000000001,
+      "max_drawdown_pct": -46.37017784636315
+    },
+    {
+      "selector_id": "session_only",
+      "bucket_family_filter": "session",
+      "selected_candidate_count": 2,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -98.87371802218809,
+      "return_2023_pct": -75.11970673153922,
+      "return_2024_pct": -74.07282266117254,
+      "return_2025_pct": -67.93097775884311,
+      "return_2026_ytd_pct": -45.555917601154206,
+      "min_complete_year_return_pct": -75.11970673153922,
+      "losing_eval_months": 34,
+      "min_monthly_return_pct": -32.734505913447364,
+      "min_monthly_orders": 2,
+      "orders": 2126,
+      "turnover": 4170.0,
+      "cost_log": 4.169999999999999,
+      "max_drawdown_pct": -98.87711453929043
+    },
+    {
+      "selector_id": "hour_only",
+      "bucket_family_filter": "hour",
+      "selected_candidate_count": 2,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -88.71555778476484,
+      "return_2023_pct": -76.82355561905764,
+      "return_2024_pct": -51.31072726360828,
+      "return_2025_pct": 0.0,
+      "return_2026_ytd_pct": 0.0,
+      "min_complete_year_return_pct": -76.82355561905764,
+      "losing_eval_months": 40,
+      "min_monthly_return_pct": -53.17531282423899,
+      "min_monthly_orders": 0,
+      "orders": 1983,
+      "turnover": 2138.0,
+      "cost_log": 2.138,
+      "max_drawdown_pct": -88.76680346118901
+    },
+    {
+      "selector_id": "hour_week_only",
+      "bucket_family_filter": "hour_week",
+      "selected_candidate_count": 1,
+      "hard_pass_complete_years": false,
+      "total_eval_return_pct": -99.99999474784495,
+      "return_2023_pct": -99.69555325192601,
+      "return_2024_pct": -99.3378259198056,
+      "return_2025_pct": -98.77920615109097,
+      "return_2026_ytd_pct": -78.65915116277236,
+      "min_complete_year_return_pct": -99.69555325192601,
+      "losing_eval_months": 41,
+      "min_monthly_return_pct": -50.615592225371266,
+      "min_monthly_orders": 296,
+      "orders": 15994,
+      "turnover": 17734.0,
+      "cost_log": 17.734,
+      "max_drawdown_pct": -99.99999477628151
+    }
+  ],
+  "best_selector": {
+    "selector_id": "all_calendar",
+    "bucket_family_filter": "all",
+    "selected_candidate_count": 4,
+    "hard_pass_complete_years": false,
+    "total_eval_return_pct": 77.76196871968064,
+    "return_2023_pct": -1.3217331843579538,
+    "return_2024_pct": 71.63931867520834,
+    "return_2025_pct": -26.911625268968876,
+    "return_2026_ytd_pct": 43.59927657304039,
+    "min_complete_year_return_pct": -26.911625268968876,
+    "losing_eval_months": 22,
+    "min_monthly_return_pct": -25.363412626054206,
+    "min_monthly_orders": 0,
+    "orders": 472,
+    "turnover": 834.0,
+    "cost_log": 0.8340000000000001,
+    "max_drawdown_pct": -46.37017784636315
+  },
+  "best_dynamic_candidate": {
+    "candidate_id": "calendar_weekday_lbexpanding_thr0p0_min20_lev1p0",
+    "hard_pass_complete_years": false,
+    "total_eval_return_pct": 190.4752802545444,
+    "return_2023_pct": 31.807343866931205,
+    "return_2024_pct": 71.56603116404476,
+    "return_2025_pct": -10.548832319332647,
+    "return_2026_ytd_pct": 43.59927657304039,
+    "min_complete_year_return_pct": -10.548832319332647,
+    "losing_eval_months": 17,
+    "min_monthly_return_pct": -25.436689044812365,
+    "min_monthly_orders": 10,
+    "orders": 554,
+    "turnover": 1026.0,
+    "cost_log": 1.026,
+    "max_drawdown_pct": -87.82619149800371,
+    "bucket_family": "weekday",
+    "lookback_months": null,
+    "min_abs_mean_bps": 0.0,
+    "min_samples": 20,
+    "leverage": 1.0
+  },
+  "decision": {
+    "verdict": "CALENDAR_SEASONALITY_FAILS",
+    "promote_strategy": false,
+    "reason": "日历/星期/小时季节性在严格逐月选择下没有通过硬门槛。",
+    "next_step": "不要把日历季节性升级候选；如果继续，应换到更不同的数据特征或先做可行性上限。"
+  },
+  "hashes": {
+    "script_sha256": "253e35d8b02c9a08958b3fc2b9bc71961f6180c149f0375b3c8c9c268b0249ff",
+    "baseline_15_summary_sha256": "39442d932bedd1885fea33dadba3f4f1c5a12e8b19cf3576313204506296dbfc",
+    "combined_ohlc_sha256": "e5475b5691b0dffe23c4cae738a6b3f9759de6ad3e7586e3beb3ca262f2b3a57"
+  },
+  "files": {
+    "summary": "artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json",
+    "report": "artifacts/strategy_19_calendar_seasonality_probe_20260627/report.md",
+    "selector_summary": "artifacts/strategy_19_calendar_seasonality_probe_20260627/selector_summary.csv",
+    "selector_monthly": "artifacts/strategy_19_calendar_seasonality_probe_20260627/selector_monthly.csv",
+    "selector_yearly": "artifacts/strategy_19_calendar_seasonality_probe_20260627/selector_yearly.csv",
+    "selected_params_by_month": "artifacts/strategy_19_calendar_seasonality_probe_20260627/selected_params_by_month.csv",
+    "candidate_scan": "artifacts/strategy_19_calendar_seasonality_probe_20260627/candidate_scan.csv"
+  }
+}

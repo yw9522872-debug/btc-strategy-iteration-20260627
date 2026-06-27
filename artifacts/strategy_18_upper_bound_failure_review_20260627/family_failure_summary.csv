@@ -1,0 +1,7 @@
+failure_type,best_order10_family,best_order10_rule,months,avg_best_order10_return_pct,min_best_order10_return_pct
+no_positive_candidate,mean_reversion,rsi_reversion,2,-3.182689078817491,-3.360781346251862
+no_positive_candidate,trend,ma_trend,2,-1.0062441743896977,-1.5246229820595425
+no_positive_candidate,volatility_breakout,atr_breakout,2,-1.0624900879728894,-2.0406454611777147
+positive_only_with_too_few_orders,volatility_breakout,atr_breakout,2,-0.962043727446299,-1.6029494423842716
+positive_only_with_too_few_orders,mean_reversion,rsi_reversion,1,-2.4418014168092195,-2.4418014168092195
+positive_only_with_too_few_orders,trend,donchian_trend,1,-1.7770278685450447,-1.7770278685450447
