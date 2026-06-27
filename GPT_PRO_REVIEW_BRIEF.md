@@ -443,6 +443,13 @@ Important current results:
   - Actual checks: 2020-01 and 2023-01 requests failed with `startTime` invalid; recent data and 2026-05-31 succeeded.
   - Decision: `OPEN_INTEREST_HISTORY_NOT_AVAILABLE_FOR_2020_2026`. Do not run a 2023-2026 hard-target upper bound from incomplete public open-interest data.
 
+- `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
+  - Data-source review for historical open interest and long/short ratios.
+  - Binance official REST is not enough for multi-year backtests: open interest history is latest 1 month only; long/short ratio endpoints are latest 30 days only.
+  - Best next source is Tardis.dev because it documents Binance USDS-M futures coverage, timestamps, generated channels, CSV/API access, open interest from 2020-05, and long/short ratio channels from 2020-10-28.
+  - CoinGlass and Amberdata are backups if they can provide complete BTCUSDT Binance futures exports for at least 2020-10-28 through 2026-05-31.
+  - Do not start Strategy 26 until complete local CSV exports are available; first step after CSV is a data-quality audit and 15m baseline alignment check.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.

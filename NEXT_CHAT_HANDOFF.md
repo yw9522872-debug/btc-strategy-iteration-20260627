@@ -9,6 +9,7 @@
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
 - 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`、`strategy-20-ohlc-structure-upper-bound-20260627`、`strategy-21-volume-upper-bound-20260627`、`strategy-22-hard-target-bottleneck-audit-20260627`、`strategy-23-funding-rate-upper-bound-20260627`、`strategy-24-funding-rate-strict-selector-20260627`
 - 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号及交接说明已提交并推送到 GitHub
+- 持仓量/多空比历史数据源审查文件：`DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`。它不是策略，无策略标签。
 - 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
@@ -76,21 +77,22 @@
 29. `STRATEGY_23_FUNDING_RATE_UPPER_BOUND.md`
 30. `STRATEGY_24_FUNDING_RATE_STRICT_SELECTOR.md`
 31. `STRATEGY_25_OPEN_INTEREST_UPPER_BOUND_FEASIBILITY.md`
-32. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
-33. `CURRENT_STRATEGY_FREEZE.md`
-34. `GPT_PRO_REVIEW_BRIEF.md`
-35. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
-36. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
-37. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
-38. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
-39. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
-40. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
-41. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
-42. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
-43. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
-44. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
-45. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
-46. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
+32. `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
+33. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+34. `CURRENT_STRATEGY_FREEZE.md`
+35. `GPT_PRO_REVIEW_BRIEF.md`
+36. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+37. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
+38. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
+39. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
+40. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
+41. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
+42. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
+43. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
+44. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
+45. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
+46. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
+47. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
 
 ## 当前固化策略
 
@@ -560,6 +562,15 @@
 - 实测：2020-01 和 2023-01 请求失败，错误为 `startTime invalid`；2026-05-31 到 2026-06-01 成功返回 `97` 行；最近数据成功返回 `500` 行。
 - 当前判断：`OPEN_INTEREST_HISTORY_NOT_AVAILABLE_FOR_2020_2026`。公开持仓量接口不够覆盖 2023-2026 硬目标，不能硬做历史上限。
 
+## 持仓量/多空比历史数据源审查
+
+- 审查文件：`DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
+- 这不是策略，没有收益回测，也没有策略标签。
+- 结论：Binance 官方 REST 不能做多年历史回测，因为持仓量只给最近 `1` 个月，多空比只给最近 `30` 天。
+- 首选数据源：`Tardis.dev`。原因是它有 Binance USDS-M futures 历史覆盖说明、CSV/API、交易所时间和本地接收时间；持仓量从 2020-05 起，多空比从 `2020-10-28` 起。
+- 备选：`CoinGlass` 和 `Amberdata`。但必须先确认能导出 BTCUSDT Binance futures 从 `2020-10-28` 到 `2026-05-31` 的完整历史。
+- 拿到完整 CSV 前，不要硬做 26号。拿到后，先做数据质量审计和 15m 底座对齐，再做上限测试。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -574,9 +585,9 @@
 
 0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
-- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住；23号资金费率看答案上限有月度零件；24号资金费率严格逐月选择失败；25号确认 Binance 公开持仓量历史不够覆盖 2020-2026。
+- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住；23号资金费率看答案上限有月度零件；24号资金费率严格逐月选择失败；25号确认 Binance 公开持仓量历史不够覆盖 2020-2026；数据源审查建议优先用 Tardis.dev 完整 CSV。
 - 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC 结构小规则，也不要继续扩成交量/taker小规则；资金费率候选也不能升级。
-- 如果继续研究，应先找可审计的完整历史持仓量/多空比等数据源，或把目标改得更现实。不要直接写可交易策略，也不要直接上机器学习。
+- 如果继续研究，应先拿到可审计的完整历史持仓量/多空比 CSV，或把目标改得更现实。不要直接写可交易策略，也不要直接上机器学习。
 - 当前历史硬目标很可能过严：22号显示原始硬目标下连看答案 oracle 都差 `2` 个月；放宽后看答案能过，但严格逐月选择器 `0/120` 通过。
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
@@ -621,21 +632,22 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 30. STRATEGY_23_FUNDING_RATE_UPPER_BOUND.md
 31. STRATEGY_24_FUNDING_RATE_STRICT_SELECTOR.md
 32. STRATEGY_25_OPEN_INTEREST_UPPER_BOUND_FEASIBILITY.md
-33. RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md
-34. CURRENT_STRATEGY_FREEZE.md
-35. GPT_PRO_REVIEW_BRIEF.md
-36. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
-37. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
-38. artifacts/strategy_16_new_family_probe_20260627/summary.json
-39. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
-40. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
-41. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
-42. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
-43. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
-44. artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json
-45. artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json
-46. artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json
-47. artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json
+33. DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md
+34. RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md
+35. CURRENT_STRATEGY_FREEZE.md
+36. GPT_PRO_REVIEW_BRIEF.md
+37. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+38. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
+39. artifacts/strategy_16_new_family_probe_20260627/summary.json
+40. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
+41. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
+42. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
+43. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
+44. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
+45. artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json
+46. artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json
+47. artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json
+48. artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -729,8 +741,11 @@ monthly_profit_lock_research_freeze_20260627
 当前新增 25号持仓量上限可行性审计：
 25号：strategy_25_open_interest_upper_bound_feasibility_20260627，不是策略，也不是收益回测，只检查 Binance 公开持仓量历史够不够做2020-2026上限测试。官方 openInterestHist 只提供最近1个月。实测 2020-01 和 2023-01 请求失败，错误 startTime invalid；2026-05-31 到 2026-06-01 成功返回97行；最近数据成功返回500行。当前判断：OPEN_INTEREST_HISTORY_NOT_AVAILABLE_FOR_2020_2026。公开持仓量接口不够覆盖2023-2026硬目标，不能硬做历史上限。
 
+当前新增持仓量/多空比历史数据源审查：
+DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md 不是策略，只审查后续能不能找到完整、可审计的数据源。结论：Binance 官方 REST 不能做多年历史回测，因为持仓量只给最近1个月，多空比只给最近30天。首选 Tardis.dev，因其有 Binance USDS-M futures 历史覆盖、CSV/API、交易所时间和本地接收时间；持仓量从2020-05起，多空比从2020-10-28起。CoinGlass 和 Amberdata 可作备选，但必须先确认能导出 BTCUSDT Binance futures 从2020-10-28到2026-05-31的完整历史。拿到完整 CSV 前，不要硬做26号；拿到后先做数据质量审计和15m底座对齐，再做上限测试。
+
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
-这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，要么先找可审计的完整历史持仓量/多空比数据源，要么把目标改得更现实；不要直接上机器学习。
+这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，应优先拿 Tardis.dev 或同等级完整 CSV；如果拿不到完整历史，就不要继续硬测持仓量/多空比多年目标。
 
 请用中文、通俗的话和我沟通。
 ```

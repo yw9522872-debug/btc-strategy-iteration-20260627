@@ -64,3 +64,4 @@
 - 23号测试 Binance USD-M futures 资金费率这个新数据源的“看答案”上限：246个资金费率候选静态硬通过为 `0`，但月度oracle带每月10单门槛能过，2023 `+17263.32%`、2024 `+45467.21%`、2025 `+6801.02%`、2026 YTD `+648.74%`，亏损月 `0`。结论 `FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES`，但不能交易。
 - 24号复用23号资金费率候选做严格逐月选择，失败：最好 `funding_mean_only` 为 2023 `-22.82%`、2024 `-42.05%`、2025 `+9.70%`、2026 YTD `+10.95%`，亏损月 `20`。结论 `FUNDING_RATE_STRICT_SELECTOR_FAILS`。不要升级资金费率候选；若继续，应换持仓量等新数据源先做上限测试，或调整硬目标。
 - 25号检查 Binance 公开持仓量数据能否做 2020-2026 上限测试，结论 `OPEN_INTEREST_HISTORY_NOT_AVAILABLE_FOR_2020_2026`：openInterestHist 最近数据可取，但 2020-01、2023-01 历史请求返回 `startTime invalid`，公开接口只够最近1个月观察，不够做 2023-2026 硬目标上限。不要用不完整持仓量硬做历史上限。
+- `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md` 已审查持仓量/多空比历史数据源：Binance 官方持仓量只保留最近1个月，多空比只保留最近30天；首选 Tardis.dev，其次 CoinGlass/Amberdata。拿到完整 CSV 前，不要硬做 26号回测；拿到后先做数据质量审计，再做上限测试。
