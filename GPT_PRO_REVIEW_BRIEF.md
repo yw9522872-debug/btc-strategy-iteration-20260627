@@ -284,6 +284,19 @@ Important current results:
   - Small parameter sweep: 30 candidates, 8 train-hard-ok candidates, 2 train-hard-ok candidates were positive in 2024-12. Best 2024-12 candidate was +5.74%, but that is leaky hindsight and not tradeable.
   - Interpretation: do not immediately add a stop or switch rule from this single bad month. If continuing, build Strategy 13 as a low-turnover / low-reversal prevention rule selected from 2023 and evaluated on all 2024.
 
+- `STRATEGY_13_LOW_TURNOVER_PREVENTION.md`
+  - Strategy 13 is a low-turnover / low-reversal prevention experiment, not a candidate and not a freeze.
+  - Experiment id: `strategy_13_low_turnover_prevention_20260627`.
+  - Script: `scripts/search_strategy_13_low_turnover_prevention_20260627.py`.
+  - Output: `artifacts/strategy_13_low_turnover_prevention_20260627/summary.json`.
+  - Rule: base signal remains `ret_state window=64 threshold=100 bps`; switch side only after the new side persists for `confirm_bars` closed 15m bars.
+  - Tested `confirm_bars`: 1, 2, 4, 8, 12. `confirm_bars=1` is the original immediate reversal.
+  - Strict selection: use 2023 only to select `confirm_bars` and control params, then evaluate full 2024 from flat, without carrying 2023 positions into 2024.
+  - 2023 selected `confirm_bars=1`, leverage 6, lock_log 0.04, quota_arm_log 0.08, quota_leverage 0.25.
+  - Full 2024 result: +114.96%, one losing month, worst month -6.45%, min monthly orders 12, hard pass false.
+  - Leaky diagnostics: if allowed to look at 2024, 24 candidates pass; best 2024 return is +183.61% with `confirm_bars=4`. This is hindsight only and must not be promoted.
+  - Interpretation: confirmation has potential, but a strict 2023-only selector does not choose it. Do not freeze `confirm_bars=4` from this evidence.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -315,6 +328,7 @@ Useful source files:
 - `scripts/audit_strategy_10_pre2024_data_probe_20260627.py`
 - `scripts/audit_strategy_11_true_2024_walkforward_20260627.py`
 - `scripts/audit_strategy_12_202412_failure_review_20260627.py`
+- `scripts/search_strategy_13_low_turnover_prevention_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

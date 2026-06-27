@@ -1,0 +1,201 @@
+{
+  "status": "strategy_13_low_turnover_prevention_ready",
+  "strategy_id": "strategy_13_low_turnover_prevention_20260627",
+  "generated_at": "2026-06-27T09:16:19.965786+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "strict_train_only_selection": true,
+  "base_signal": {
+    "family": "ret_state",
+    "window": 64,
+    "threshold_bps": 100.0
+  },
+  "rule": "Only switch side after the new ret_state side persists for confirm_bars closed 15m bars.",
+  "train_year": "2023",
+  "eval_year": "2024",
+  "selected_by_2023": {
+    "confirm_bars": 1,
+    "leverage": 6.0,
+    "lock_log": 0.04,
+    "quota_arm_log": 0.08,
+    "quota_leverage": 0.25,
+    "train_hard_ok": true,
+    "train_return_pct": 307.1755047365798,
+    "train_losing_months": 0,
+    "train_min_monthly_return_pct": 5.917179004728057,
+    "train_min_monthly_orders": 12,
+    "train_turnover": 916.5,
+    "eval_return_pct": 114.95708554462092,
+    "eval_losing_months": 1,
+    "eval_min_monthly_return_pct": -6.449800499963443,
+    "eval_min_monthly_orders": 12,
+    "eval_turnover": 464.5,
+    "eval_hard_pass": false
+  },
+  "yearly": [
+    {
+      "year": "2024",
+      "log_return": 0.7652682200983751,
+      "compounded_return_pct": 114.95708554462092,
+      "months": 12,
+      "losing_months": 1,
+      "min_monthly_return_pct": -6.449800499963443,
+      "min_monthly_orders": 12,
+      "orders_sum": 156,
+      "max_drawdown_pct": -41.83936237596249
+    }
+  ],
+  "monthly": [
+    {
+      "month": "2024-01",
+      "log_return": 0.11070805626481346,
+      "first_equity": 1.0,
+      "last_equity": 1.1170687380254625,
+      "min_drawdown": -0.018408869463906186,
+      "turnover": 14.5,
+      "orders": 12,
+      "return_pct": 11.706873802546248,
+      "drawdown_pct": -1.8408869463906186
+    },
+    {
+      "month": "2024-02",
+      "log_return": 0.041961469140685353,
+      "first_equity": 1.110386392680369,
+      "last_equity": 1.1649399322704355,
+      "min_drawdown": -0.09021404380507436,
+      "turnover": 26.0,
+      "orders": 12,
+      "return_pct": 4.285429590446732,
+      "drawdown_pct": -9.021404380507436
+    },
+    {
+      "month": "2024-03",
+      "log_return": 0.08000795071614858,
+      "first_equity": 1.1579712197205874,
+      "last_equity": 1.2619743968070336,
+      "min_drawdown": -0.22570938660048523,
+      "turnover": 49.0,
+      "orders": 12,
+      "return_pct": 8.329568061718051,
+      "drawdown_pct": -22.570938660048522
+    },
+    {
+      "month": "2024-04",
+      "log_return": 0.08033246832970047,
+      "first_equity": 1.2544252206023205,
+      "last_equity": 1.3675351303465564,
+      "min_drawdown": -0.25539180330859224,
+      "turnover": 26.0,
+      "orders": 12,
+      "return_pct": 8.364728619424122,
+      "drawdown_pct": -25.539180330859224
+    },
+    {
+      "month": "2024-05",
+      "log_return": 0.06756013160368153,
+      "first_equity": 1.359354486039317,
+      "last_equity": 1.463118440520986,
+      "min_drawdown": -0.04050036355049447,
+      "turnover": 14.5,
+      "orders": 12,
+      "return_pct": 6.989459214126881,
+      "drawdown_pct": -4.050036355049446
+    },
+    {
+      "month": "2024-06",
+      "log_return": 0.09478469706829243,
+      "first_equity": 1.4543660134164393,
+      "last_equity": 1.6085847789124637,
+      "min_drawdown": -0.06788573878138637,
+      "turnover": 26.0,
+      "orders": 12,
+      "return_pct": 9.942212083642389,
+      "drawdown_pct": -6.788573878138637
+    },
+    {
+      "month": "2024-07",
+      "log_return": 0.07876238592666769,
+      "first_equity": 1.5989621669427165,
+      "last_equity": 1.740403806581984,
+      "min_drawdown": -0.02747357066690237,
+      "turnover": 14.5,
+      "orders": 12,
+      "return_pct": 8.19472056416204,
+      "drawdown_pct": -2.747357066690237
+    },
+    {
+      "month": "2024-08",
+      "log_return": 0.0829860504356676,
+      "first_equity": 1.7299926484503427,
+      "last_equity": 1.8909951208657512,
+      "min_drawdown": -0.032724982763987276,
+      "turnover": 14.5,
+      "orders": 12,
+      "return_pct": 8.65266518690946,
+      "drawdown_pct": -3.2724982763987276
+    },
+    {
+      "month": "2024-09",
+      "log_return": 0.0592822433392834,
+      "first_equity": 1.879683120078899,
+      "last_equity": 2.0064870422657037,
+      "min_drawdown": -0.1401301727924661,
+      "turnover": 49.0,
+      "orders": 12,
+      "return_pct": 6.1074679741678795,
+      "drawdown_pct": -14.01301727924661
+    },
+    {
+      "month": "2024-10",
+      "log_return": 0.0499597648870106,
+      "first_equity": 1.9944841646535574,
+      "last_equity": 2.1092769640826368,
+      "min_drawdown": -0.34173841543670813,
+      "turnover": 108.0,
+      "orders": 18,
+      "return_pct": 5.122879921559997,
+      "drawdown_pct": -34.17384154367081
+    },
+    {
+      "month": "2024-11",
+      "log_return": 0.08559500310686104,
+      "first_equity": 2.096659193463288,
+      "last_equity": 2.2977726043709508,
+      "min_drawdown": -0.023831635987444866,
+      "turnover": 14.5,
+      "orders": 12,
+      "return_pct": 8.93650494923477,
+      "drawdown_pct": -2.3831635987444866
+    },
+    {
+      "month": "2024-12",
+      "log_return": -0.066672000720437,
+      "first_equity": 2.284027246055721,
+      "last_equity": 2.14957085544621,
+      "min_drawdown": -0.41839362375962486,
+      "turnover": 108.0,
+      "orders": 18,
+      "return_pct": -6.449800499963443,
+      "drawdown_pct": -41.83936237596249
+    }
+  ],
+  "leaky_diagnostics_not_for_selection": {
+    "candidate_count": 150,
+    "eval_hard_pass_count": 24,
+    "best_eval_return_pct_leaky": 183.61378640222276,
+    "best_eval_confirm_bars_leaky": 4,
+    "note": "These numbers look at 2024 and are diagnostics only, not selection evidence."
+  },
+  "decision": {
+    "promote_strategy": false,
+    "reason": "Promote only if the 2023-selected low-turnover rule passes full 2024 hard conditions."
+  },
+  "files": {
+    "summary": "artifacts/strategy_13_low_turnover_prevention_20260627/summary.json",
+    "report": "artifacts/strategy_13_low_turnover_prevention_20260627/report.md",
+    "candidate_scan": "artifacts/strategy_13_low_turnover_prevention_20260627/candidate_scan.csv",
+    "selected_equity": "artifacts/strategy_13_low_turnover_prevention_20260627/selected_equity.csv",
+    "selected_monthly": "artifacts/strategy_13_low_turnover_prevention_20260627/selected_monthly.csv",
+    "selected_yearly": "artifacts/strategy_13_low_turnover_prevention_20260627/selected_yearly.csv"
+  }
+}
