@@ -21,6 +21,7 @@
 - 7号 Oracle 路由上限审计保存标签：`strategy-7-oracle-router-audit-20260627`
 - 8号执行压力审计保存标签：`strategy-8-execution-stress-20260627`
 - 9号冷启动可行性审计保存标签：`strategy-9-cold-start-feasibility-20260627`
+- 10号 pre-2024 数据探针保存标签：`strategy-10-pre2024-data-probe-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -41,9 +42,10 @@
 13. `STRATEGY_7_ORACLE_ROUTER_AUDIT.md`
 14. `STRATEGY_8_EXECUTION_STRESS_AUDIT.md`
 15. `STRATEGY_9_COLD_START_FEASIBILITY.md`
-16. `CURRENT_STRATEGY_FREEZE.md`
-17. `GPT_PRO_REVIEW_BRIEF.md`
-18. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+16. `STRATEGY_10_PRE2024_DATA_PROBE.md`
+17. `CURRENT_STRATEGY_FREEZE.md`
+18. `GPT_PRO_REVIEW_BRIEF.md`
+19. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -297,6 +299,18 @@
 - 结论：不能干净直接测 2024。因为 2024 已经是这些保存候选的训练历史；拿 2025 以后保存下来的参数倒回去测 2024，是未来参数测过去。
 - 干净做法：补 2023 或更早数据，为 2024 做真正 walk-forward；或者不改规则，等待未来新月份做影子记录。
 
+## 10号 pre-2024 数据探针
+
+- 探针编号：`strategy_10_pre2024_data_probe_20260627`
+- 定位文件：`STRATEGY_10_PRE2024_DATA_PROBE.md`
+- 脚本：`scripts/audit_strategy_10_pre2024_data_probe_20260627.py`
+- 结果目录：`artifacts/strategy_10_pre2024_data_probe_20260627/`
+- 这不是新策略，不回测收益，只补 2023 年 BTCUSDT 15m 公开K线和探针版特征。
+- 数据来源：Binance public monthly kline archive，不使用 API key。
+- 官方原始 2023 K线有 `35035` 根，`2023-03-24` 有 5 根15分钟K线缺口；REST 接口也同样缺这 5 根。
+- 补齐日历版用上一根收盘价补平这 5 根，并用 `calendar_filled=True` 标记；补齐后 `35040` 根，重复 `0`，非15分钟缺口 `0`，必要特征列缺失 `0`。
+- 当前判断：10号可作为 11号真正 2024 walk-forward 的数据底座；下一步不要倒用 2025+ 保存参数测 2024。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -318,7 +332,7 @@
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024；下一轮如果继续，更值得补 2023 或更早历史数据，或者做未来新月份影子记录；
+- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；下一轮如果继续，更值得另起 11号做真正 2024 walk-forward，或者做未来新月份影子记录；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -346,9 +360,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 14. STRATEGY_7_ORACLE_ROUTER_AUDIT.md
 15. STRATEGY_8_EXECUTION_STRESS_AUDIT.md
 16. STRATEGY_9_COLD_START_FEASIBILITY.md
-17. CURRENT_STRATEGY_FREEZE.md
-18. GPT_PRO_REVIEW_BRIEF.md
-19. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+17. STRATEGY_10_PRE2024_DATA_PROBE.md
+18. CURRENT_STRATEGY_FREEZE.md
+19. GPT_PRO_REVIEW_BRIEF.md
+20. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -393,6 +408,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 9号冷启动可行性审计：
 9号：strategy_9_cold_start_feasibility_20260627，不是新策略，只判断能否干净直接测 2024。结论：不能。因为当前保存候选的月度控制参数从 2025-01 开始，2024 已经是训练历史；拿这些参数倒回去测 2024 是未来参数测过去。干净做法是补 2023 或更早数据，或等待未来新月份做影子记录。
+
+当前新增 10号 pre-2024 数据探针：
+10号：strategy_10_pre2024_data_probe_20260627，不是新策略，只补 2023 BTCUSDT 15m 公开K线和探针版特征。Binance 官方原始数据有 35035 根，2023-03-24 有 5 根15分钟K线缺口；REST 接口也同样缺。补齐日历版用上一根收盘价补平，并用 calendar_filled=True 标记；补齐后 35040 根，重复 0，非15分钟缺口 0，必要特征列缺失 0。下一步应另起 11号做真正 2024 walk-forward。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。

@@ -249,6 +249,18 @@ Important current results:
   - Direct 2024 testing is not clean because 2024 is already training history for the saved candidates. Reusing 2025+ controls on 2024 would test the past with future-selected controls.
   - Clean options: fetch pre-2024 data and build a true 2024 walk-forward, or leave 2024 as training history and evaluate future newly arriving months without changing rules.
 
+- `STRATEGY_10_PRE2024_DATA_PROBE.md`
+  - Strategy 10 is a pre-2024 data probe, not a trading strategy and not a profitability backtest.
+  - Probe id: `strategy_10_pre2024_data_probe_20260627`.
+  - Script: `scripts/audit_strategy_10_pre2024_data_probe_20260627.py`.
+  - Output: `artifacts/strategy_10_pre2024_data_probe_20260627/summary.json`.
+  - It fetched 2023 BTCUSDT 15m public klines from Binance public monthly kline archives without API keys.
+  - Official raw 2023 rows: 35035. Binance has a 5-bar 15m gap on 2023-03-24; public REST endpoints return the same gap.
+  - The calendar-filled OHLC file inserts 5 flat bars using the previous close and marks them with `calendar_filled=True`.
+  - Filled rows: 35040; duplicate rows 0; non-15m gap rows 0; required feature columns missing 0.
+  - The feature probe is recomputed from public OHLC and is not an exact reproduction of the original `event_entry_fullscan` feature source.
+  - Interpretation: use this as the data base for a new Strategy 11 true 2024 walk-forward. Do not reuse 2025+ saved controls on 2024.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -277,6 +289,7 @@ Useful source files:
 - `scripts/audit_strategy_7_oracle_router_20260627.py`
 - `scripts/audit_strategy_8_execution_stress_20260627.py`
 - `scripts/audit_strategy_9_cold_start_feasibility_20260627.py`
+- `scripts/audit_strategy_10_pre2024_data_probe_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

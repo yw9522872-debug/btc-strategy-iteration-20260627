@@ -1,0 +1,98 @@
+{
+  "status": "strategy_10_pre2024_data_probe_ready",
+  "generated_at": "2026-06-27T06:00:35.174311+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "data_only": true,
+  "symbol": "BTCUSDT",
+  "interval": "15m",
+  "requested_start": "2023-01-01T00:00:00+00:00",
+  "requested_end_exclusive": "2024-01-01T00:00:00+00:00",
+  "source": {
+    "kind": "Binance public monthly kline archive",
+    "base_url": "https://data.binance.vision/data/spot/monthly/klines",
+    "months": [
+      "2023-01",
+      "2023-02",
+      "2023-03",
+      "2023-04",
+      "2023-05",
+      "2023-06",
+      "2023-07",
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12"
+    ]
+  },
+  "no_api_keys_used": true,
+  "does_not_overwrite": [
+    "artifacts/strategy_freeze_monthly_profit_lock_20260627",
+    "artifacts/strategy_1f_selective_runner_20260627",
+    "artifacts/strategy_1g_cap7_selective_runner_20260627",
+    "artifacts/strategy_2c_lock_cap_20260627",
+    "artifacts/strategy_3_trend_coverage_20260627",
+    "artifacts/strategy_4_entry_confirm_20260627"
+  ],
+  "quality_checks": {
+    "row_count": 35040,
+    "expected_row_count": 35040,
+    "official_row_count": 35035,
+    "official_missing_calendar_rows": 5,
+    "official_non_15m_gap_rows": 1,
+    "calendar_fill_rows": 5,
+    "first_timestamp": "2023-01-01T00:00:00+00:00",
+    "last_timestamp": "2023-12-31T23:45:00+00:00",
+    "duplicate_rows": 0,
+    "non_15m_gap_rows": 0,
+    "missing_required_feature_columns": [],
+    "feature_non_null_counts": {
+      "bbl": 35021,
+      "bbu": 35021,
+      "close": 35040,
+      "ema100": 34941,
+      "ema20": 35021,
+      "ema50": 34991,
+      "high": 35040,
+      "low": 35040,
+      "natr_30": 35011,
+      "open": 35040,
+      "rsi14": 35040,
+      "trend_adx_30": 35040,
+      "trend_close_ema_gap_bps_60": 34981,
+      "trend_donchian_pos_30": 35040
+    },
+    "ready_for_walkforward": true,
+    "note": "Official Binance data has a small 2023-03-24 maintenance gap. The calendar-filled file inserts flat bars from the prior close and marks them with calendar_filled=True. This is not a profitability test."
+  },
+  "rest_gap_probe": {
+    "missing_timestamp_count": 5,
+    "returned_by_any_rest_endpoint": 0,
+    "timestamps": [
+      "2023-03-24T12:45:00+00:00",
+      "2023-03-24T13:00:00+00:00",
+      "2023-03-24T13:15:00+00:00",
+      "2023-03-24T13:30:00+00:00",
+      "2023-03-24T13:45:00+00:00"
+    ]
+  },
+  "month_count": 12,
+  "ready_for_strategy_11_walkforward": true,
+  "next_step": "Use this independent 2023 feature probe to build Strategy 11 true 2024 walk-forward. Do not reuse 2025+ selected controls on 2024.",
+  "hashes": {
+    "script_sha256": "c3f145227785398299b879c3b2a6d622e865d702bd2ac70b09a3610431541dd8",
+    "official_ohlc_sha256": "6a8bdb88011d23a19f496e1eeb781fae9da74dd0ece6c26c78621515e2f7b5bc",
+    "ohlc_sha256": "6b295e5d1cf6d59c1d7f9b96679e099f3cf8363e14ab5eb21d70c0746ec6eecf",
+    "feature_probe_sha256": "d68d388c6ddbb76611269162168d15c1f5d1d742ad0992aaf4be41c4931c278e"
+  },
+  "files": {
+    "official_ohlc": "artifacts/strategy_10_pre2024_data_probe_20260627/btc_15m_2023_official_ohlc.csv",
+    "ohlc": "artifacts/strategy_10_pre2024_data_probe_20260627/btc_15m_2023_ohlc.csv",
+    "feature_probe": "artifacts/strategy_10_pre2024_data_probe_20260627/btc_15m_2023_feature_probe.csv",
+    "month_coverage": "artifacts/strategy_10_pre2024_data_probe_20260627/month_coverage.csv",
+    "official_gap_rest_probe": "artifacts/strategy_10_pre2024_data_probe_20260627/official_gap_rest_probe.csv",
+    "summary": "artifacts/strategy_10_pre2024_data_probe_20260627/summary.json",
+    "report": "artifacts/strategy_10_pre2024_data_probe_20260627/report.md"
+  }
+}
