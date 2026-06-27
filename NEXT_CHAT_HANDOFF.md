@@ -16,6 +16,7 @@
 - 2号C保存标签：`strategy-2c-lock-cap-20260627`
 - 4号候选保存标签：`strategy-4-entry-confirm-20260627`
 - 5号审计保存标签：`strategy-5-robustness-audit-20260627`
+- 5B审计保存标签：`strategy-5b-three-way-audit-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -31,9 +32,10 @@
 8. `STRATEGY_2C_CANDIDATE.md`
 9. `STRATEGY_4_CANDIDATE.md`
 10. `STRATEGY_5_ROBUSTNESS_AUDIT.md`
-11. `CURRENT_STRATEGY_FREEZE.md`
-12. `GPT_PRO_REVIEW_BRIEF.md`
-13. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+11. `STRATEGY_5B_THREE_WAY_AUDIT.md`
+12. `CURRENT_STRATEGY_FREEZE.md`
+13. `GPT_PRO_REVIEW_BRIEF.md`
+14. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -220,6 +222,19 @@
 - 关键细节：2C 的漏成交失败是交易次数降到 `9` 次，不是亏钱；4号有 1 个漏成交场景出现亏损月。
 - 当前判断：严格按硬条件通过数量看，4号略好；如果更在意漏成交后不要亏月，2C 更干净。
 
+## 5B 三方鲁棒性审计
+
+- 审计编号：`strategy_5b_three_way_audit_20260627`
+- 定位文件：`STRATEGY_5B_THREE_WAY_AUDIT.md`
+- 脚本：`scripts/audit_strategy_5b_three_way_20260627.py`
+- 结果目录：`artifacts/strategy_5b_three_way_audit_20260627/`
+- 这不是新策略，只把 3号拉进 2C/4号同一套审计。
+- 手续费/延迟共 `16` 个场景：2C 通过 `13` 个，3号通过 `13` 个，4号通过 `14` 个。
+- 漏成交共 `9` 个场景：2C 通过 `7` 个，3号通过 `7` 个，4号通过 `8` 个。
+- 漏成交后不亏月：2C 和 3号都是 `9/9`，4号是 `8/9`。
+- 3号没有明显超过 2C：它改善强趋势空仓，但在这套审计里没有换来更强鲁棒性。
+- 当前判断：主候选仍倾向 2C；4号做图形质量/硬压力对照；3号暂时只保留为中间实验。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -240,7 +255,7 @@
 - 对 `profit_lock_walkforward_20260627` 做二次检查：尤其检查固定 `ret_state 64/100` 信号是否也能用更早数据独立选出来；
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
-- 对 2C 和 4号做取舍：5号审计说明 4号硬条件通过数略好，2C 漏成交后不亏月更好；
+- 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -263,9 +278,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 9. STRATEGY_2C_CANDIDATE.md
 10. STRATEGY_4_CANDIDATE.md
 11. STRATEGY_5_ROBUSTNESS_AUDIT.md
-12. CURRENT_STRATEGY_FREEZE.md
-13. GPT_PRO_REVIEW_BRIEF.md
-14. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+12. STRATEGY_5B_THREE_WAY_AUDIT.md
+13. CURRENT_STRATEGY_FREEZE.md
+14. GPT_PRO_REVIEW_BRIEF.md
+15. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -295,6 +311,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 5号审计：
 5号：strategy_5_robustness_audit_20260627，不是新策略，只比较 2C 和 4号。手续费/延迟 16 个场景里，2C 通过 13 个，4号通过 14 个；漏成交 9 个场景里，2C 通过 7 个，4号通过 8 个。但 2C 漏成交失败是交易次数不足，不是亏钱；4号有 1 个漏成交场景亏损。当前判断：4号硬条件略胜，2C 漏成交盈利稳定性更干净。
+
+当前新增 5B审计：
+5B：strategy_5b_three_way_audit_20260627，不是新策略，只把 3号也拉进来和 2C/4号同台比较。手续费/延迟 16 个场景里，2C 13/16，3号 13/16，4号 14/16；漏成交 9 个场景里，2C 7/9，3号 7/9，4号 8/9。2C 和 3号漏成交后都没有亏损月，4号有 1 个亏损月。当前判断：主候选仍倾向 2C；4号做对照；3号暂不升主候选。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。

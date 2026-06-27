@@ -1,0 +1,232 @@
+{
+  "status": "strategy_5b_three_way_audit_ready",
+  "generated_at": "2026-06-27T04:43:38.634750+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "does_not_overwrite": [
+    "artifacts/strategy_2c_lock_cap_20260627",
+    "artifacts/strategy_3_trend_coverage_20260627",
+    "artifacts/strategy_4_entry_confirm_20260627"
+  ],
+  "checked_candidates": [
+    "2C",
+    "3",
+    "4"
+  ],
+  "stress_grid": {
+    "round_trip_cost": [
+      0.002,
+      0.003,
+      0.004,
+      0.005
+    ],
+    "extra_delay_bars": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "order_miss_grid": {
+    "miss_rate": [
+      0.02,
+      0.05,
+      0.1
+    ],
+    "seeds": [
+      1,
+      2,
+      3
+    ]
+  },
+  "stress_rollup": [
+    {
+      "candidate": "2C",
+      "scenarios": 16,
+      "hard_pass_scenarios": 13,
+      "failed_scenarios": 3,
+      "worst_min_required_year_return_pct": 136.53828266480775,
+      "worst_min_monthly_return_pct": -2.77842458419042,
+      "worst_max_drawdown_pct": -59.67934992809643
+    },
+    {
+      "candidate": "3",
+      "scenarios": 16,
+      "hard_pass_scenarios": 13,
+      "failed_scenarios": 3,
+      "worst_min_required_year_return_pct": 135.47546365127943,
+      "worst_min_monthly_return_pct": -2.77842458419042,
+      "worst_max_drawdown_pct": -59.67934992809643
+    },
+    {
+      "candidate": "4",
+      "scenarios": 16,
+      "hard_pass_scenarios": 14,
+      "failed_scenarios": 2,
+      "worst_min_required_year_return_pct": 145.67721270172643,
+      "worst_min_monthly_return_pct": -1.4905440289534777,
+      "worst_max_drawdown_pct": -59.55338775192408
+    }
+  ],
+  "order_miss_rollup": [
+    {
+      "candidate": "2C",
+      "scenarios": 9,
+      "hard_pass_scenarios": 7,
+      "failed_scenarios": 2,
+      "worst_min_required_year_return_pct": 244.02335644836876,
+      "worst_min_monthly_return_pct": 2.6755179504551307,
+      "worst_max_drawdown_pct": -31.50282810108265
+    },
+    {
+      "candidate": "3",
+      "scenarios": 9,
+      "hard_pass_scenarios": 7,
+      "failed_scenarios": 2,
+      "worst_min_required_year_return_pct": 251.2675600959179,
+      "worst_min_monthly_return_pct": 2.4047725808604037,
+      "worst_max_drawdown_pct": -31.50282810108265
+    },
+    {
+      "candidate": "4",
+      "scenarios": 9,
+      "hard_pass_scenarios": 8,
+      "failed_scenarios": 1,
+      "worst_min_required_year_return_pct": 219.8398793610936,
+      "worst_min_monthly_return_pct": -1.2870996275835433,
+      "worst_max_drawdown_pct": -30.39099591869543
+    }
+  ],
+  "base_regime_rollup": [
+    {
+      "candidate": "2C",
+      "market_regime": "down",
+      "months": 6,
+      "min_strategy_return_pct": 9.528515109034807,
+      "avg_strategy_return_pct": 21.624381944808054,
+      "min_orders": 11
+    },
+    {
+      "candidate": "2C",
+      "market_regime": "sideways",
+      "months": 6,
+      "min_strategy_return_pct": 9.405567332454945,
+      "avg_strategy_return_pct": 19.907578587112795,
+      "min_orders": 11
+    },
+    {
+      "candidate": "2C",
+      "market_regime": "up",
+      "months": 6,
+      "min_strategy_return_pct": 5.575755909827906,
+      "avg_strategy_return_pct": 10.6602108723166,
+      "min_orders": 12
+    },
+    {
+      "candidate": "3",
+      "market_regime": "down",
+      "months": 6,
+      "min_strategy_return_pct": 9.528515109034807,
+      "avg_strategy_return_pct": 21.59431262926878,
+      "min_orders": 11
+    },
+    {
+      "candidate": "3",
+      "market_regime": "sideways",
+      "months": 6,
+      "min_strategy_return_pct": 9.405567332454945,
+      "avg_strategy_return_pct": 19.850533836904205,
+      "min_orders": 11
+    },
+    {
+      "candidate": "3",
+      "market_regime": "up",
+      "months": 6,
+      "min_strategy_return_pct": 5.11302387708088,
+      "avg_strategy_return_pct": 10.412367162884765,
+      "min_orders": 12
+    },
+    {
+      "candidate": "4",
+      "market_regime": "down",
+      "months": 6,
+      "min_strategy_return_pct": 8.517732674974642,
+      "avg_strategy_return_pct": 22.998118042642513,
+      "min_orders": 10
+    },
+    {
+      "candidate": "4",
+      "market_regime": "sideways",
+      "months": 6,
+      "min_strategy_return_pct": 7.22868753869248,
+      "avg_strategy_return_pct": 15.62522419524762,
+      "min_orders": 10
+    },
+    {
+      "candidate": "4",
+      "market_regime": "up",
+      "months": 6,
+      "min_strategy_return_pct": 4.558896263438661,
+      "avg_strategy_return_pct": 10.535250852463419,
+      "min_orders": 10
+    }
+  ],
+  "decision": {
+    "strict_hard_pass_preference": "4",
+    "order_miss_profit_preference": "2C",
+    "scoreboard": [
+      {
+        "candidate": "4",
+        "total_hard_pass": 22,
+        "total_scenarios": 25,
+        "worst_min_monthly_return_pct": -1.4905440289534777,
+        "worst_min_required_year_return_pct": 145.67721270172643
+      },
+      {
+        "candidate": "2C",
+        "total_hard_pass": 20,
+        "total_scenarios": 25,
+        "worst_min_monthly_return_pct": -2.77842458419042,
+        "worst_min_required_year_return_pct": 136.53828266480775
+      },
+      {
+        "candidate": "3",
+        "total_hard_pass": 20,
+        "total_scenarios": 25,
+        "worst_min_monthly_return_pct": -2.77842458419042,
+        "worst_min_required_year_return_pct": 135.47546365127943
+      }
+    ],
+    "order_miss_profit_scoreboard": [
+      {
+        "candidate": "2C",
+        "order_miss_scenarios": 9,
+        "order_miss_no_losing_month_scenarios": 9,
+        "worst_order_miss_min_monthly_return_pct": 2.6755179504551307
+      },
+      {
+        "candidate": "3",
+        "order_miss_scenarios": 9,
+        "order_miss_no_losing_month_scenarios": 9,
+        "worst_order_miss_min_monthly_return_pct": 2.4047725808604037
+      },
+      {
+        "candidate": "4",
+        "order_miss_scenarios": 9,
+        "order_miss_no_losing_month_scenarios": 8,
+        "worst_order_miss_min_monthly_return_pct": -1.2870996275835433
+      }
+    ],
+    "note": "This is an audit, not a strategy. It adds Strategy 3 to the same Strategy 5 audit grid."
+  },
+  "files": {
+    "summary": "artifacts/strategy_5b_three_way_audit_20260627/summary.json",
+    "report": "artifacts/strategy_5b_three_way_audit_20260627/report.md",
+    "stress_matrix": "artifacts/strategy_5b_three_way_audit_20260627/stress_matrix.csv",
+    "monthly_by_scenario": "artifacts/strategy_5b_three_way_audit_20260627/monthly_by_scenario.csv",
+    "failure_months": "artifacts/strategy_5b_three_way_audit_20260627/failure_months.csv",
+    "order_miss_stress": "artifacts/strategy_5b_three_way_audit_20260627/order_miss_stress.csv",
+    "order_miss_monthly": "artifacts/strategy_5b_three_way_audit_20260627/order_miss_monthly.csv",
+    "regime_base_monthly": "artifacts/strategy_5b_three_way_audit_20260627/regime_base_monthly.csv"
+  }
+}

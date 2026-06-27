@@ -193,6 +193,17 @@ Important current results:
   - Order-miss result: 2C passed 7/9, Strategy 4 passed 8/9. Important nuance: 2C failures were due to monthly order count falling to 9, not losing months; Strategy 4 had one order-miss scenario with a losing month.
   - Interpretation: Strategy 4 wins strict hard-pass count; 2C is cleaner if order-miss profitability is weighted above the monthly order-count rule.
 
+- `STRATEGY_5B_THREE_WAY_AUDIT.md`
+  - Strategy 5B is an audit, not a new strategy.
+  - Audit id: `strategy_5b_three_way_audit_20260627`.
+  - Script: `scripts/audit_strategy_5b_three_way_20260627.py`.
+  - Output: `artifacts/strategy_5b_three_way_audit_20260627/summary.json`.
+  - Compared 2C, Strategy 3, and Strategy 4 under the same Strategy 5 audit grid.
+  - Cost/delay result: 2C passed 13/16, Strategy 3 passed 13/16, Strategy 4 passed 14/16.
+  - Order-miss result: 2C passed 7/9, Strategy 3 passed 7/9, Strategy 4 passed 8/9.
+  - Order-miss profitability nuance: 2C and Strategy 3 had no losing months in all 9 order-miss scenarios; Strategy 4 had one losing-month scenario.
+  - Interpretation: Strategy 3 did not beat 2C in robustness. It improves strong-trend coverage but does not justify promotion over 2C in this audit. Current practical ranking: 2C as main candidate, Strategy 4 as chart-quality/hard-pass comparator, Strategy 3 as intermediate experiment.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -216,6 +227,7 @@ Useful source files:
 - `scripts/search_strategy_3_trend_coverage_20260627.py`
 - `scripts/search_strategy_4_entry_confirm_20260627.py`
 - `scripts/audit_strategy_5_robustness_20260627.py`
+- `scripts/audit_strategy_5b_three_way_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
