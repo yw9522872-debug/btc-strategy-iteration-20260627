@@ -6,11 +6,13 @@
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
-- 交接文件创建前项目提交：`5eb6f20`
+- 当前项目提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
 - 当前固化策略源提交：`0c69585`
 - 0号策略定位文件：`STRATEGY_0.md`
+- 1号F保存标签：`strategy-1f-selective-runner-20260627`
+- 1号G保存标签：`strategy-1g-cap7-selective-runner-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -178,6 +180,10 @@ monthly_profit_lock_research_freeze_20260627
 当前执行逻辑没发现明显未来函数。
 但参数是历史事后挑出来的，过拟合风险高。
 2024 选参再测 2025/2026 没达到每年 100%。
+
+当前保存的 1号候选：
+1F：标签 strategy-1f-selective-runner-20260627，2025 +433.74%，2026 +260.59%，更稳，0.4% 开平合计手续费压力测试通过。
+1G：标签 strategy-1g-cap7-selective-runner-20260627，2025 +471.14%，2026 +246.16%，当前 0.2% 手续费下数字更漂亮，但 0.4% 手续费压力测试失败。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。
