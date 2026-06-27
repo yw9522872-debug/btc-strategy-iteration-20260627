@@ -463,6 +463,18 @@ Important current results:
   - Order-floor oracle, `monthly_oracle_best_return_order10`: 2023 +34.37%, 2024 +15.88%, 2025 -8.43%, 2026 YTD -9.54%, 30 non-positive months, minimum monthly orders 10.
   - Decision: `INTRABAR_1M_UPPER_BOUND_FAILS`. Do not keep expanding this 1m intrabar micro-rule family.
 
+- `STRATEGY_27_TARGET_FEASIBILITY_AUDIT.md`
+  - Strategy 27 is a target-feasibility audit, not a strategy and not tradeable.
+  - Audit id: `strategy_27_target_feasibility_audit_20260627`.
+  - Script: `scripts/audit_strategy_27_target_feasibility_20260627.py`.
+  - Output: `artifacts/strategy_27_target_feasibility_audit_20260627/summary.json`.
+  - No new candidate rules were added. It reuses Strategy 22's 927-candidate monthly base from Strategies 16/19/20/21 and references Strategy 23/24/26 results.
+  - Grid at the main 0.2% round-trip cost: annual thresholds 30/50/80/100%, monthly gates allow-any / >= -2% / >= -1% / > 0, and monthly order floors 0/5/10. It also adds one no-fee original-gate diagnostic row.
+  - Original target still fails: monthly oracle fails due to 2 non-passing months; strict selector fails with 2025 -95.78%, 2026 YTD +7.81%, and 41 non-passing months.
+  - Relaxed grid: strict expanding selector passes 0/49 scenarios; monthly oracle passes 37/49 scenarios.
+  - Closest oracle pass at the real 0.2% cost is annual 100%, monthly orders >= 10, and monthly return >= -1%; this is leaky and not tradeable.
+  - Decision: `TARGET_RELAXATION_HELPS_ORACLE_NOT_SELECTOR`. Target relaxation helps the oracle but not the strict selector; the bottleneck is selecting the right month/candidate without future information.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.

@@ -1,0 +1,6 @@
+source,test_type,best_known_result,decision
+16/19/20/21 composite micro-rules,strict selector,original target pass=False; 2025=-95.78%; 2026=7.81%,fails even under relaxed target grid
+16/19/20/21 composite micro-rules,monthly oracle,original target pass=False; non-passing months=2,oracle can pass only after relaxing targets; not tradeable
+23 funding rate,monthly oracle,2023=17263.32%; 2024=45467.21%; 2025=6801.02%; 2026=648.74%; losing_months=0; min_orders=10,FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES
+24 funding rate,strict selector,2023=-22.82%; 2024=-42.05%; 2025=9.70%; 2026=10.95%; losing_months=20; min_orders=0,FUNDING_RATE_STRICT_SELECTOR_FAILS
+26 1m intrabar,monthly oracle,2023=47.27%; 2024=16.29%; 2025=-3.27%; 2026=-7.68%; losing_months=28; min_orders=0,INTRABAR_1M_UPPER_BOUND_FAILS

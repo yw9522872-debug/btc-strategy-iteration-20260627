@@ -1,0 +1,227 @@
+{
+  "status": "strategy_27_target_feasibility_audit_ready",
+  "strategy_id": "strategy_27_target_feasibility_audit_20260627",
+  "generated_at": "2026-06-27T15:29:07.152171+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Audit whether changing the target, rather than adding more micro-rules, creates a realistic research target.",
+  "source": {
+    "strategy_22_candidate_monthly_base": "artifacts/strategy_22_hard_target_bottleneck_20260627/candidate_monthly_base.csv",
+    "strategy_22_candidate_pool_summary": "artifacts/strategy_22_hard_target_bottleneck_20260627/candidate_pool_summary.csv",
+    "strategy_23_summary": "artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json",
+    "strategy_24_summary": "artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json",
+    "strategy_26_summary": "artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json",
+    "new_candidate_rules_added": false
+  },
+  "grid": {
+    "main_round_trip_cost": 0.002,
+    "extra_no_fee_original_gate_check": true,
+    "order_floors": [
+      0,
+      5,
+      10
+    ],
+    "monthly_requirements": [
+      "allow_any",
+      "return_ge_minus2",
+      "return_ge_minus1",
+      "return_gt_0"
+    ],
+    "annual_thresholds_pct": [
+      30.0,
+      50.0,
+      80.0,
+      100.0
+    ],
+    "methods": [
+      "strict_expanding_selector",
+      "monthly_oracle"
+    ]
+  },
+  "candidate_pool": {
+    "total_candidates_from_16_19_20_21": 927,
+    "by_pool": {
+      "strategy16_simple": 144,
+      "strategy19_calendar": 216,
+      "strategy20_ohlc_structure": 189,
+      "strategy21_volume": 378
+    }
+  },
+  "results": {
+    "strict_pass_count": 0,
+    "strict_scenario_count": 49,
+    "oracle_pass_count": 37,
+    "oracle_scenario_count": 49,
+    "original_rows": [
+      {
+        "method": "monthly_oracle",
+        "order_floor": 10,
+        "round_trip_cost": 0.002,
+        "round_trip_cost_pct": 0.2,
+        "monthly_requirement": "return_gt_0",
+        "annual_threshold_pct": 100.0,
+        "scenario_pass": false,
+        "annual_2025_2026_pass": true,
+        "monthly_requirement_pass": false,
+        "order_floor_pass": false,
+        "non_passing_months": 2,
+        "non_passing_month_list": "2023-07,2024-06",
+        "month_fail_count": 1,
+        "order_fail_count": 2,
+        "total_eval_return_pct": 23373865969.466232,
+        "return_2023_pct": 34943.37558262292,
+        "return_2024_pct": 103360.70293254641,
+        "return_2025_pct": 4123.170958710208,
+        "return_2026_ytd_pct": 1426.5482322829644,
+        "min_monthly_return_pct": 0.0,
+        "min_monthly_orders": 0,
+        "orders": 899,
+        "turnover": 5824.0,
+        "cost_log": 5.824000000000001,
+        "selected_candidate_count": 17,
+        "scenario_id": "original"
+      },
+      {
+        "method": "strict_expanding_selector",
+        "order_floor": 10,
+        "round_trip_cost": 0.002,
+        "round_trip_cost_pct": 0.2,
+        "monthly_requirement": "return_gt_0",
+        "annual_threshold_pct": 100.0,
+        "scenario_pass": false,
+        "annual_2025_2026_pass": false,
+        "monthly_requirement_pass": false,
+        "order_floor_pass": false,
+        "non_passing_months": 41,
+        "non_passing_month_list": "2023-01,2023-02,2023-03,2023-04,2023-05,2023-06,2023-07,2023-08,2023-09,2023-10,2023-11,2023-12,2024-01,2024-02,2024-03,2024-04,2024-05,2024-06,2024-07,2024-08,2024-09,2024-10,2024-11,2024-12,2025-01,2025-02,2025-03,2025-04,2025-05,2025-06,2025-07,2025-08,2025-09,2025-10,2025-11,2025-12,2026-01,2026-02,2026-03,2026-04,2026-05",
+        "month_fail_count": 22,
+        "order_fail_count": 27,
+        "total_eval_return_pct": -82.00281373254529,
+        "return_2023_pct": 23.044839527490435,
+        "return_2024_pct": 221.13941482348213,
+        "return_2025_pct": -95.77523229154947,
+        "return_2026_ytd_pct": 7.806453830252669,
+        "min_monthly_return_pct": -68.94526344928104,
+        "min_monthly_orders": 3,
+        "orders": 316,
+        "turnover": 2012.0,
+        "cost_log": 2.012,
+        "selected_candidate_count": 2,
+        "scenario_id": "original"
+      }
+    ],
+    "best_strict_active_balance": {
+      "method": "strict_expanding_selector",
+      "order_floor": 5,
+      "round_trip_cost": 0.002,
+      "round_trip_cost_pct": 0.2,
+      "monthly_requirement": "allow_any",
+      "annual_threshold_pct": 30.0,
+      "scenario_pass": false,
+      "annual_2025_2026_pass": false,
+      "monthly_requirement_pass": true,
+      "order_floor_pass": true,
+      "non_passing_months": 0,
+      "non_passing_month_list": "",
+      "month_fail_count": 0,
+      "order_fail_count": 0,
+      "total_eval_return_pct": -70.55548454026702,
+      "return_2023_pct": -5.128811274638556,
+      "return_2024_pct": -18.406615788953296,
+      "return_2025_pct": -49.40491860305303,
+      "return_2026_ytd_pct": -24.81922051985679,
+      "min_monthly_return_pct": -17.01121500806867,
+      "min_monthly_orders": 13,
+      "orders": 1446,
+      "turnover": 1446.0,
+      "cost_log": 1.446,
+      "selected_candidate_count": 1,
+      "min_2025_2026_pct": -49.40491860305303
+    },
+    "best_main_cost_oracle_passing_row": {
+      "method": "monthly_oracle",
+      "order_floor": 10,
+      "round_trip_cost": 0.002,
+      "round_trip_cost_pct": 0.2,
+      "monthly_requirement": "return_ge_minus1",
+      "annual_threshold_pct": 100.0,
+      "scenario_pass": true,
+      "annual_2025_2026_pass": true,
+      "monthly_requirement_pass": true,
+      "order_floor_pass": true,
+      "non_passing_months": 0,
+      "non_passing_month_list": "",
+      "month_fail_count": 0,
+      "order_fail_count": 0,
+      "total_eval_return_pct": 19148426023.083294,
+      "return_2023_pct": 34913.82185178022,
+      "return_2024_pct": 84729.00493350062,
+      "return_2025_pct": 4123.170958710208,
+      "return_2026_ytd_pct": 1426.5482322829644,
+      "min_monthly_return_pct": -0.9375433791891985,
+      "min_monthly_orders": 10,
+      "orders": 948,
+      "turnover": 5826.0,
+      "cost_log": 5.8260000000000005,
+      "selected_candidate_count": 17,
+      "monthly_strictness_rank": 2
+    }
+  },
+  "source_context": [
+    {
+      "source": "16/19/20/21 composite micro-rules",
+      "test_type": "strict selector",
+      "best_known_result": "original target pass=False; 2025=-95.78%; 2026=7.81%",
+      "decision": "fails even under relaxed target grid"
+    },
+    {
+      "source": "16/19/20/21 composite micro-rules",
+      "test_type": "monthly oracle",
+      "best_known_result": "original target pass=False; non-passing months=2",
+      "decision": "oracle can pass only after relaxing targets; not tradeable"
+    },
+    {
+      "source": "23 funding rate",
+      "test_type": "monthly oracle",
+      "best_known_result": "2023=17263.32%; 2024=45467.21%; 2025=6801.02%; 2026=648.74%; losing_months=0; min_orders=10",
+      "decision": "FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES"
+    },
+    {
+      "source": "24 funding rate",
+      "test_type": "strict selector",
+      "best_known_result": "2023=-22.82%; 2024=-42.05%; 2025=9.70%; 2026=10.95%; losing_months=20; min_orders=0",
+      "decision": "FUNDING_RATE_STRICT_SELECTOR_FAILS"
+    },
+    {
+      "source": "26 1m intrabar",
+      "test_type": "monthly oracle",
+      "best_known_result": "2023=47.27%; 2024=16.29%; 2025=-3.27%; 2026=-7.68%; losing_months=28; min_orders=0",
+      "decision": "INTRABAR_1M_UPPER_BOUND_FAILS"
+    }
+  ],
+  "decision": {
+    "verdict": "TARGET_RELAXATION_HELPS_ORACLE_NOT_SELECTOR",
+    "promote_strategy": false,
+    "reason": "放宽目标能让看答案上限通过，但严格逐月选择仍0个通过；真正卡点是提前选择能力。",
+    "next_step": "不要继续加免费K线小规则；若不拿新数据，应把研究目标降到影子跟踪/低年化验证，而不是继续追每月盈利。",
+    "best_strict_active_2025_pct": -49.40491860305303,
+    "best_strict_active_2026_ytd_pct": -24.81922051985679,
+    "source_context_note": "Funding has oracle pieces but strict selector failed; 1m intrabar oracle failed."
+  },
+  "hashes": {
+    "script_sha256": "8f2a8e4f7be72ad3b81a2a69d1a511758fdd8cc05619543407a321b0a1e48600",
+    "strategy_22_candidate_monthly_base_sha256": "064975e24ae92017773f3290ee8871c21aed4f78bca813709675ab477b44e797",
+    "strategy_23_summary_sha256": "1bbe620a706bca8e2f2b63f297596f03208d8cd6728455d8ca7a88a1699eb668",
+    "strategy_24_summary_sha256": "1b0fa91ecfeb273d15873e7ed8deef3288c91f80fc24938181367e663b33599b",
+    "strategy_26_summary_sha256": "d888b4b5b4deeb8078928fe706ff573f302eb65be4ce2759c8a7d919b45b9a63"
+  },
+  "files": {
+    "summary": "artifacts/strategy_27_target_feasibility_audit_20260627/summary.json",
+    "report": "artifacts/strategy_27_target_feasibility_audit_20260627/report.md",
+    "target_grid_summary": "artifacts/strategy_27_target_feasibility_audit_20260627/target_grid_summary.csv",
+    "gate_relaxation_summary": "artifacts/strategy_27_target_feasibility_audit_20260627/gate_relaxation_summary.csv",
+    "source_family_context": "artifacts/strategy_27_target_feasibility_audit_20260627/source_family_context.csv"
+  }
+}
