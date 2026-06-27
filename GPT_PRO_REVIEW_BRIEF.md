@@ -384,6 +384,18 @@ Important current results:
   - Order-floor oracle, `monthly_oracle_best_return_order10`, also fails: 2023 +22.80%, 2024 -2.56%, 2025 -6.90%, 2026 YTD -2.98%; 33 non-positive months; minimum monthly orders 10.
   - Decision: `OHLC_STRUCTURE_UPPER_BOUND_FAILS`. Do not promote Strategy 20 or keep expanding these OHLC-only candle/range/volatility micro-rules.
 
+- `STRATEGY_21_VOLUME_UPPER_BOUND.md`
+  - Strategy 21 is a leaky monthly oracle upper-bound test, not a strategy, not tradeable, and not a freeze.
+  - Test id: `strategy_21_volume_upper_bound_20260627`.
+  - Script: `scripts/audit_strategy_21_volume_upper_bound_20260627.py`.
+  - Output: `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`.
+  - Data: Binance public USD-M futures monthly klines with volume/taker fields, 2020-01 through 2026-05. 224,928 rows; duplicate timestamps 0; non-15m gaps 0; calendar fills 0; invalid volume rows 0. Close parity with Strategy 15 baseline is 224,928/224,928 rows, close mismatches 0.
+  - Candidate grid: 378 candidates using volume spike body momentum/reversal, taker buy/sell imbalance momentum/reversal, and volume-confirmed price move momentum/reversal.
+  - Static hindsight scan hard-pass count: 0 out of 378.
+  - Most permissive oracle, `monthly_oracle_best_return`, ignores the 10-order monthly floor. It still fails: 2023 +45.98%, 2024 +54.74%, 2025 -12.01%, 2026 YTD -9.17%; 25 non-positive months; minimum monthly orders 2.
+  - Order-floor oracle, `monthly_oracle_best_return_order10`, also fails: 2023 +39.04%, 2024 +50.98%, 2025 -12.73%, 2026 YTD -9.17%; 29 non-positive months; minimum monthly orders 10.
+  - Decision: `VOLUME_UPPER_BOUND_FAILS`. Do not promote Strategy 21 or keep expanding these simple volume/taker-flow micro-rules.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -423,6 +435,7 @@ Useful source files:
 - `scripts/audit_strategy_18_upper_bound_failure_review_20260627.py`
 - `scripts/audit_strategy_19_calendar_seasonality_probe_20260627.py`
 - `scripts/audit_strategy_20_ohlc_structure_upper_bound_20260627.py`
+- `scripts/audit_strategy_21_volume_upper_bound_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
