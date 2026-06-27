@@ -181,6 +181,18 @@ Important current results:
   - Rejected experiments: leverage ramp failed stress 8/9; continuous weak-trend cap failed stress 0/9; RSI/Donchian extreme filters did not improve robustly.
   - Interpretation: 2C has better headline return and stress margin; Strategy 4 has cleaner charts and fewer fast false reversals. Both remain posthoc research, not live guarantees.
 
+- `STRATEGY_5_ROBUSTNESS_AUDIT.md`
+  - Strategy 5 is an audit, not a new strategy.
+  - Audit id: `strategy_5_robustness_audit_20260627`.
+  - Script: `scripts/audit_strategy_5_robustness_20260627.py`.
+  - Output: `artifacts/strategy_5_robustness_audit_20260627/summary.json`.
+  - Compared only 2C and Strategy 4; did not edit either strategy.
+  - Cost/delay grid: round-trip cost 0.2%, 0.3%, 0.4%, 0.5% crossed with extra signal delay 0, 1, 2, 3 bars.
+  - Cost/delay result: 2C passed 13/16, Strategy 4 passed 14/16. Worst min monthly return: 2C -2.78%, Strategy 4 -1.49%.
+  - Order-miss test: base cost, deterministic random missed rebalance instructions at 2%, 5%, 10%, three seeds each.
+  - Order-miss result: 2C passed 7/9, Strategy 4 passed 8/9. Important nuance: 2C failures were due to monthly order count falling to 9, not losing months; Strategy 4 had one order-miss scenario with a losing month.
+  - Interpretation: Strategy 4 wins strict hard-pass count; 2C is cleaner if order-miss profitability is weighted above the monthly order-count rule.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -203,6 +215,7 @@ Useful source files:
 - `scripts/search_strategy_1c_trend_runner_20260627.py`
 - `scripts/search_strategy_3_trend_coverage_20260627.py`
 - `scripts/search_strategy_4_entry_confirm_20260627.py`
+- `scripts/audit_strategy_5_robustness_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
