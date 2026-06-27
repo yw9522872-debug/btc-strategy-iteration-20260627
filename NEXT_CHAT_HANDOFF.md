@@ -6,9 +6,9 @@
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
-- 当前最新提交：`9ca58fa Add strategy 14 pre-2023 stress audit`
-- 当前最新标签：`strategy-14-pre2023-expanding-crowding-stress-audit-20260627`
-- 本地未提交新增：15号、16号、17号、18号、19号及交接说明更新
+- 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
+- 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`
+- 15号、16号、17号、18号、19号及交接说明已提交并推送到 GitHub
 - 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
@@ -29,11 +29,11 @@
 - 12号 2024-12 失败复盘保存标签：`strategy-12-202412-failure-review-20260627`
 - 13号低换手/低反手预防规则保存标签：`strategy-13-low-turnover-prevention-20260627`
 - 14号 pre-2023 扩展滚动与拥挤压力审计保存标签：`strategy-14-pre2023-expanding-crowding-stress-audit-20260627`
-- 15号统一数据底座体检：`strategy_15_unified_data_baseline_20260627`，本地新增，尚未提交/打标签
-- 16号新策略族可行性探针：`strategy_16_new_family_probe_20260627`，本地新增，尚未提交/打标签
-- 17号简单策略族上限测试：`strategy_17_simple_family_upper_bound_20260627`，本地新增，尚未提交/打标签
-- 18号上限失败月份复盘：`strategy_18_upper_bound_failure_review_20260627`，本地新增，尚未提交/打标签
-- 19号日历季节性探针：`strategy_19_calendar_seasonality_probe_20260627`，本地新增，尚未提交/打标签
+- 15号统一数据底座体检保存标签：`strategy-15-unified-data-baseline-20260627`
+- 16号新策略族可行性探针保存标签：`strategy-16-new-family-probe-20260627`
+- 17号简单策略族上限测试保存标签：`strategy-17-simple-family-upper-bound-20260627`
+- 18号上限失败月份复盘保存标签：`strategy-18-upper-bound-failure-review-20260627`
+- 19号日历季节性探针保存标签：`strategy-19-calendar-seasonality-probe-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
