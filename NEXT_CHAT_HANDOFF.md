@@ -6,7 +6,7 @@
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
-- 当前项目提交：`e4232d3`
+- 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
 - 当前固化策略源提交：`0c69585`
