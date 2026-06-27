@@ -1,0 +1,212 @@
+{
+  "status": "strategy_14_pre2023_expanding_crowding_stress_audit_ready",
+  "strategy_id": "strategy_14_pre2023_expanding_crowding_stress_audit_20260627",
+  "generated_at": "2026-06-27T10:09:23.139102+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "gpt_pro_review_applied": true,
+  "purpose": "Audit the ret_state 64/100 monthly-lock family with 2020-2022 prehistory, nested expanding walk-forward selection, and fixed crowding/execution stress. This is not a new candidate strategy.",
+  "data": {
+    "public_archive_kind": "Binance public USD-M futures monthly kline archive",
+    "public_archive_base_url": "https://data.binance.vision/data/futures/um/monthly/klines",
+    "public_archive_years": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "event_tail_source": "artifacts/event_entry_fullscan/event_entry_best_signals.csv",
+    "train_start_month": "2020-01",
+    "eval_start_month": "2023-01",
+    "eval_end_exclusive": "2026-06-01T00:00:00+00:00",
+    "complete_eval_years_for_annual_threshold": [
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "partial_eval_year_recorded_not_annual_threshold": "2026"
+  },
+  "base_signal": {
+    "family": "ret_state",
+    "window": 64,
+    "threshold_bps": 100.0
+  },
+  "candidate_grid": {
+    "confirm_bars": [
+      1,
+      2,
+      4,
+      8,
+      12
+    ],
+    "control_grid_rows": 30,
+    "total_candidates": 150,
+    "selection_sort": [
+      "train_hard_ok",
+      "fewest_train_losing_months",
+      "highest_train_min_month",
+      "highest_train_return",
+      "highest_train_min_orders",
+      "lowest_train_turnover",
+      "lowest_leverage",
+      "smallest_confirm_bars"
+    ]
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "data_quality": {
+    "year_quality": [
+      {
+        "year": 2020,
+        "expected_rows": 35136,
+        "official_rows": 35136,
+        "filled_rows": 35136,
+        "calendar_fill_rows": 0,
+        "duplicate_rows_after_fill": 0,
+        "non_15m_gap_rows_after_fill": 0,
+        "official_non_15m_gap_rows": 0,
+        "first_timestamp": "2020-01-01T00:00:00+00:00",
+        "last_timestamp": "2020-12-31T23:45:00+00:00",
+        "ready": true
+      },
+      {
+        "year": 2021,
+        "expected_rows": 35040,
+        "official_rows": 35040,
+        "filled_rows": 35040,
+        "calendar_fill_rows": 0,
+        "duplicate_rows_after_fill": 0,
+        "non_15m_gap_rows_after_fill": 0,
+        "official_non_15m_gap_rows": 0,
+        "first_timestamp": "2021-01-01T00:00:00+00:00",
+        "last_timestamp": "2021-12-31T23:45:00+00:00",
+        "ready": true
+      },
+      {
+        "year": 2022,
+        "expected_rows": 35040,
+        "official_rows": 35040,
+        "filled_rows": 35040,
+        "calendar_fill_rows": 0,
+        "duplicate_rows_after_fill": 0,
+        "non_15m_gap_rows_after_fill": 0,
+        "official_non_15m_gap_rows": 0,
+        "first_timestamp": "2022-01-01T00:00:00+00:00",
+        "last_timestamp": "2022-12-31T23:45:00+00:00",
+        "ready": true
+      },
+      {
+        "year": 2023,
+        "expected_rows": 35040,
+        "official_rows": 35040,
+        "filled_rows": 35040,
+        "calendar_fill_rows": 0,
+        "duplicate_rows_after_fill": 0,
+        "non_15m_gap_rows_after_fill": 0,
+        "official_non_15m_gap_rows": 0,
+        "first_timestamp": "2023-01-01T00:00:00+00:00",
+        "last_timestamp": "2023-12-31T23:45:00+00:00",
+        "ready": true
+      },
+      {
+        "year": 2024,
+        "expected_rows": 35136,
+        "official_rows": 35136,
+        "filled_rows": 35136,
+        "calendar_fill_rows": 0,
+        "duplicate_rows_after_fill": 0,
+        "non_15m_gap_rows_after_fill": 0,
+        "official_non_15m_gap_rows": 0,
+        "first_timestamp": "2024-01-01T00:00:00+00:00",
+        "last_timestamp": "2024-12-31T23:45:00+00:00",
+        "ready": true
+      }
+    ],
+    "parity_2024": {
+      "public_2024_rows": 35136,
+      "event_2024_rows": 35136,
+      "matched_rows": 35136,
+      "missing_from_event": 0,
+      "missing_from_public": 0,
+      "close_mismatch_rows": 0,
+      "max_abs_close_diff": 0.0,
+      "mismatch_file": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/event_2024_close_mismatches.csv"
+    },
+    "month_coverage_rows": 77,
+    "source_note": "2024 event_entry_fullscan close matches Binance USD-M futures public klines, not spot klines."
+  },
+  "base_result": {
+    "hard_pass_complete_years": false,
+    "return_2023_pct": -21.962351846160345,
+    "return_2024_pct": 140.2325138208937,
+    "return_2025_pct": -5.27893948240118,
+    "return_2026_ytd_pct": -0.3461109252179351,
+    "min_complete_year_return_pct": -21.962351846160345,
+    "losing_eval_months": 6,
+    "min_monthly_return_pct": -39.595618471559334,
+    "min_monthly_orders": 10,
+    "max_drawdown_pct": -58.38883094747598,
+    "orders": 634,
+    "turnover": 2171.0,
+    "exposure_pct": 13.937616947340285,
+    "annualized_sharpe": 0.28791841085445835,
+    "win_rate_pct": 49.60143841774048,
+    "profit_factor": 1.0463336525884708
+  },
+  "stress_result": {
+    "scenario_count": 11,
+    "hard_pass_scenarios": 0,
+    "failed_scenarios": 11,
+    "worst_min_monthly_return_pct": -62.43460948719216,
+    "worst_min_complete_year_return_pct": -89.64362382650916,
+    "worst_max_drawdown_pct": -99.41636491536842,
+    "failed_scenario_ids": [
+      "round_trip_cost_0p2pct",
+      "round_trip_cost_0p3pct",
+      "round_trip_cost_0p4pct",
+      "round_trip_cost_0p6pct",
+      "delay_1_bars",
+      "delay_2_bars",
+      "delay_4_bars",
+      "funding_1bp_8h",
+      "funding_3bp_8h",
+      "funding_5bp_8h",
+      "dynamic_vol_slip_min1bp_k10pct"
+    ]
+  },
+  "selected_confirm_bars_counts": {
+    "8": 41
+  },
+  "decision": {
+    "verdict": "STOP_FAMILY",
+    "promote_strategy": false,
+    "reason": "Base nested walk-forward still has a losing month, too few monthly orders, or a complete year below +100%.",
+    "next_step": "If verdict is STOP_FAMILY or DIAGNOSTIC_ONLY, do not add more hand-tuned 2024-12 patch rules."
+  },
+  "hashes": {
+    "script_sha256": "18b3aa9ae9981548a42809db2c2329b4ffa2007bb3c480a0de30e757c4c5ba2e",
+    "combined_ohlc_sha256": "e5475b5691b0dffe23c4cae738a6b3f9759de6ad3e7586e3beb3ca262f2b3a57",
+    "selected_params_sha256": "402b6f0b1c4ad437b9a35c19ae42a1b00a41121136f6a3b28dd232cc4f078f5e",
+    "base_equity_sha256": "36996e688f499167fc1bb648b8b72564f92771d7152d9194d3b6e82fb482a447"
+  },
+  "files": {
+    "public_ohlc_2020_2024": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/btc_15m_2020_2024_public_ohlc.csv",
+    "combined_ohlc": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/btc_15m_2020_2026_05_combined_ohlc.csv",
+    "year_quality": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/public_year_quality.csv",
+    "month_coverage": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/month_coverage.csv",
+    "selected_params": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/selected_params_by_month.csv",
+    "base_equity": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/base_nested_equity.csv",
+    "base_monthly": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/base_nested_monthly.csv",
+    "base_yearly": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/base_nested_yearly.csv",
+    "stress": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/stress_scenarios.csv",
+    "stress_monthly": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/stress_monthly.csv",
+    "event_2024_close_mismatches": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/event_2024_close_mismatches.csv",
+    "summary": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/summary.json",
+    "report": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/report.md"
+  }
+}

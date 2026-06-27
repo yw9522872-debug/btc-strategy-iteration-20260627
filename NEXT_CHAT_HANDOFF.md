@@ -25,6 +25,7 @@
 - 11号真正 2024 walk-forward 审计保存标签：`strategy-11-true-2024-walkforward-20260627`
 - 12号 2024-12 失败复盘保存标签：`strategy-12-202412-failure-review-20260627`
 - 13号低换手/低反手预防规则保存标签：`strategy-13-low-turnover-prevention-20260627`
+- 14号 pre-2023 扩展滚动与拥挤压力审计保存标签：`strategy-14-pre2023-expanding-crowding-stress-audit-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -49,9 +50,10 @@
 17. `STRATEGY_11_TRUE_2024_WALKFORWARD.md`
 18. `STRATEGY_12_202412_FAILURE_REVIEW.md`
 19. `STRATEGY_13_LOW_TURNOVER_PREVENTION.md`
-20. `CURRENT_STRATEGY_FREEZE.md`
-21. `GPT_PRO_REVIEW_BRIEF.md`
-22. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+20. `STRATEGY_14_PRE2023_EXPANDING_CROWDING_STRESS_AUDIT.md`
+21. `CURRENT_STRATEGY_FREEZE.md`
+22. `GPT_PRO_REVIEW_BRIEF.md`
+23. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -355,6 +357,25 @@
 - 事后看 2024，有 `24` 个候选能通过，事后最佳 `confirm_bars=4`、收益 `+183.61%`，但这是看答案，不能交易。
 - 当前判断：13号不能升级。它只说明“确认后反手”有潜力，但不能直接拿 `confirm_bars=4` 固化。
 
+## 14号 pre-2023 扩展滚动与拥挤压力审计
+
+- 审计编号：`strategy_14_pre2023_expanding_crowding_stress_audit_20260627`
+- 定位文件：`STRATEGY_14_PRE2023_EXPANDING_CROWDING_STRESS_AUDIT.md`
+- 脚本：`scripts/audit_strategy_14_pre2023_expanding_crowding_stress_20260627.py`
+- 结果目录：`artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/`
+- 这不是新策略，不是候选，也不是固化版。
+- 先问过 GPT Pro。GPT Pro 建议不要继续堆参数修 2024-12，而要做更早历史、更严格 walk-forward 和拥挤执行压力审计。
+- 重要数据修正：旧 `event_entry_fullscan` 对齐的是 Binance USD-M futures 公共K线，不是 spot K线。14号改用 USD-M futures 公共K线补 `2020-2024`，并接本地 `2025` 到完整 `2026-05` 数据。
+- 2024 对齐检查：公共 futures `35136` 行，本地 event `35136` 行，匹配 `35136` 行，close 差异 `0`。
+- 这说明 10/11/13 用 2023 spot 探针接旧 event 数据的结果，只能当探索或诊断，不能当最终严审依据。
+- 14号候选族固定为 `ret_state 64/100`；`confirm_bars` 只允许 `1/2/4/8/12`；控制参数用 11号小网格，共 `150` 个候选。
+- 评估范围：`2023-01` 到 `2026-05`，每个月只用评估月之前的数据选参数。
+- 基础滚动结果：2023 `-21.96%`，2024 `+140.23%`，2025 `-5.28%`，2026 YTD `-0.35%`。
+- 评估期亏损月 `6`，最差月 `-39.60%`，最大回撤 `-58.39%`。
+- 所有 `41` 个评估月都选中 `confirm_bars=8`，但仍然不稳。
+- 压力测试 `11` 个场景全部失败，包括 0.2/0.3/0.4/0.6% 开平合计手续费、1/2/4 根K线延迟、资金费和波动滑点。
+- 当前判断：`STOP_FAMILY`。不要继续给这个 `ret_state 64/100` 家族手工堆补丁，也不要为了已知坏月继续加规则。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -376,7 +397,7 @@
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；11号真正 2024 walk-forward 未通过，暴露 `2024-12` 样本外坏月。12号说明坏月主要来自月初反手亏损和高换手成本。13号测试低换手/低反手确认规则，但严格 2023 选择后仍未通过 2024。下一轮如果继续，建议先让 GPT Pro 复核 10/11/12/13，再决定是否继续规则搜索；
+- 8号执行压力进一步支持 2C 主候选。9号说明不能直接用当前保存参数测 2024。10号已经补出 2023 数据底座；11号真正 2024 walk-forward 未通过，暴露 `2024-12` 样本外坏月。12号说明坏月主要来自月初反手亏损和高换手成本。13号测试低换手/低反手确认规则，但严格 2023 选择后仍未通过 2024。14号发现旧 event 数据应按 USD-M futures 对齐，并用 2020-2026 更严格滚动审计判定 `STOP_FAMILY`。下一轮不要继续修这个 `ret_state 64/100` 家族，应先考虑换策略族或重建统一数据/特征框架；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -408,9 +429,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 18. STRATEGY_11_TRUE_2024_WALKFORWARD.md
 19. STRATEGY_12_202412_FAILURE_REVIEW.md
 20. STRATEGY_13_LOW_TURNOVER_PREVENTION.md
-21. CURRENT_STRATEGY_FREEZE.md
-22. GPT_PRO_REVIEW_BRIEF.md
-23. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+21. STRATEGY_14_PRE2023_EXPANDING_CROWDING_STRESS_AUDIT.md
+22. CURRENT_STRATEGY_FREEZE.md
+23. GPT_PRO_REVIEW_BRIEF.md
+24. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -466,7 +488,10 @@ monthly_profit_lock_research_freeze_20260627
 12号：strategy_12_202412_failure_review_20260627，不是新策略，只复盘 11号真正样本外坏月。2024-12 全月净收益 -6.45%；不算手续费/换手前 +4.22%；换手成本约 10.80% log；订单 18，换手 108.0。真正问题在月初：达到月交易配额前后那段净收益 -23.21%，不算成本也亏 -17.97%，成本约 6.60% log；后半月追回 +21.83%，但没完全补回。小网格里训练期达标候选 8 个，其中 2 个 2024-12 为正，事后最佳 +5.74%，但这是看答案。当前判断：不升级策略，不立刻加规则；下一步若继续，应做 13号低换手/低反手预防规则，并测完整 2024。
 
 当前新增 13号低换手/低反手预防规则：
-13号：strategy_13_low_turnover_prevention_20260627，不是候选策略，是负面实验。规则是基础信号 ret_state 64/100 新方向连续出现 confirm_bars 根 15分钟K线后才切换，测试 1/2/4/8/12。严格口径只用 2023 训练期选择 confirm_bars 和控制参数，完整测试 2024，并且 2024 从空仓开始。2023 选中的仍是 confirm_bars=1；完整 2024 收益 +114.96%，亏损月 1，最差月 -6.45%，最少月交易 12，硬条件不通过。事后看 2024 有 24 个候选能通过，事后最佳 confirm_bars=4、收益 +183.61%，但这是看答案，不能交易。当前判断：13号不能升级；建议下一步先问 GPT Pro 复核 10/11/12/13。
+13号：strategy_13_low_turnover_prevention_20260627，不是候选策略，是负面实验。规则是基础信号 ret_state 64/100 新方向连续出现 confirm_bars 根 15分钟K线后才切换，测试 1/2/4/8/12。严格口径只用 2023 训练期选择 confirm_bars 和控制参数，完整测试 2024，并且 2024 从空仓开始。2023 选中的仍是 confirm_bars=1；完整 2024 收益 +114.96%，亏损月 1，最差月 -6.45%，最少月交易 12，硬条件不通过。事后看 2024 有 24 个候选能通过，事后最佳 confirm_bars=4、收益 +183.61%，但这是看答案，不能交易。当前判断：13号不能升级。
+
+当前新增 14号 pre-2023 扩展滚动与拥挤压力审计：
+14号：strategy_14_pre2023_expanding_crowding_stress_audit_20260627，不是新策略，不是候选，也不是固化版。它按 GPT Pro 建议做更早历史、更严格 walk-forward 和执行拥挤压力审计。重要发现：旧 event_entry_fullscan 对齐 Binance USD-M futures，不是 spot；14号用 futures 公共K线补 2020-2024，并接本地 2025 到完整 2026-05 数据。2024 futures 对齐检查 35136/35136 行完全匹配，close 差异 0。基础滚动结果：2023 -21.96%，2024 +140.23%，2025 -5.28%，2026 YTD -0.35%；亏损月 6，最差月 -39.60%，最大回撤 -58.39%。11 个压力场景全部失败。当前判断：STOP_FAMILY，不要继续给 ret_state 64/100 家族手工堆补丁。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。

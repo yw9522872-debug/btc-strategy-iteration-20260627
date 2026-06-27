@@ -297,6 +297,20 @@ Important current results:
   - Leaky diagnostics: if allowed to look at 2024, 24 candidates pass; best 2024 return is +183.61% with `confirm_bars=4`. This is hindsight only and must not be promoted.
   - Interpretation: confirmation has potential, but a strict 2023-only selector does not choose it. Do not freeze `confirm_bars=4` from this evidence.
 
+- `STRATEGY_14_PRE2023_EXPANDING_CROWDING_STRESS_AUDIT.md`
+  - Strategy 14 is a pre-2023 expanding walk-forward and crowding/execution stress audit, not a candidate and not a freeze.
+  - Audit id: `strategy_14_pre2023_expanding_crowding_stress_audit_20260627`.
+  - Script: `scripts/audit_strategy_14_pre2023_expanding_crowding_stress_20260627.py`.
+  - Output: `artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/summary.json`.
+  - Important data correction: `event_entry_fullscan` matches Binance USD-M futures public klines, not spot klines. Strategy 14 therefore uses USD-M futures public klines for 2020-2024 and local event tail for 2025 through complete 2026-05.
+  - 2024 parity check: 35136 public futures rows, 35136 event rows, 35136 matched rows, 0 close mismatches.
+  - This means 10/11/13, which used the 2023 spot probe with the old event data, should be treated as exploratory/diagnostic rather than the final clean pre-2024 audit.
+  - Candidate family: fixed `ret_state 64/100`; `confirm_bars` in 1/2/4/8/12; 30 small control-grid rows; 150 candidates total.
+  - Nested expanding result, 2023-01 through 2026-05: 2023 -21.96%, 2024 +140.23%, 2025 -5.28%, 2026 YTD -0.35%; losing eval months 6; worst month -39.60%; max drawdown -58.39%.
+  - All 41 evaluated months selected `confirm_bars=8`, but the family still failed.
+  - Stress: 11 fixed scenarios covering 0.2/0.3/0.4/0.6% round-trip cost, 1/2/4-bar signal delay, 1/3/5bp per 8h funding drag, and dynamic volatility slippage. Hard-pass scenarios: 0/11.
+  - Decision: `STOP_FAMILY`. Do not keep hand-tuning this `ret_state 64/100` family to repair known bad months.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -329,6 +343,7 @@ Useful source files:
 - `scripts/audit_strategy_11_true_2024_walkforward_20260627.py`
 - `scripts/audit_strategy_12_202412_failure_review_20260627.py`
 - `scripts/search_strategy_13_low_turnover_prevention_20260627.py`
+- `scripts/audit_strategy_14_pre2023_expanding_crowding_stress_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
