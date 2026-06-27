@@ -448,7 +448,20 @@ Important current results:
   - Binance official REST is not enough for multi-year backtests: open interest history is latest 1 month only; long/short ratio endpoints are latest 30 days only.
   - Best next source is Tardis.dev because it documents Binance USDS-M futures coverage, timestamps, generated channels, CSV/API access, open interest from 2020-05, and long/short ratio channels from 2020-10-28.
   - CoinGlass and Amberdata are backups if they can provide complete BTCUSDT Binance futures exports for at least 2020-10-28 through 2026-05-31.
-  - Do not start Strategy 26 until complete local CSV exports are available; first step after CSV is a data-quality audit and 15m baseline alignment check.
+  - Do not start any open-interest/long-short-ratio backtest until complete local CSV exports are available; first step after CSV is a data-quality audit and 15m baseline alignment check.
+
+- `STRATEGY_26_INTRABAR_1M_UPPER_BOUND.md`
+  - Strategy 26 is a leaky monthly oracle upper-bound test using free Binance USD-M futures 1m klines, not a strategy and not tradeable.
+  - Test id: `strategy_26_intrabar_1m_upper_bound_20260627`.
+  - Script: `scripts/audit_strategy_26_intrabar_1m_upper_bound_20260627.py`.
+  - Output: `artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json`.
+  - Data: BTCUSDT 1m public monthly klines from 2020-01 through 2026-05, aggregated to the Strategy 15 15m baseline. Missing 1m rows 0, duplicates 0, non-1m gaps 0, incomplete 15m groups 0.
+  - Caveat: 8 aggregated 15m bars disagree with the Strategy 15 OHLC baseline; Strategy 26 disables signals on those bars instead of repairing them.
+  - Candidate grid: 186 intrabar candidates using early/late 1m movement, late volume share, late taker ratio, path efficiency, high/low minute position, and chop reversal.
+  - Static hard-pass count: 0.
+  - Best oracle, `monthly_oracle_best_return`: 2023 +47.27%, 2024 +16.29%, 2025 -3.27%, 2026 YTD -7.68%, 28 losing months, minimum monthly orders 0.
+  - Order-floor oracle, `monthly_oracle_best_return_order10`: 2023 +34.37%, 2024 +15.88%, 2025 -8.43%, 2026 YTD -9.54%, 30 non-positive months, minimum monthly orders 10.
+  - Decision: `INTRABAR_1M_UPPER_BOUND_FAILS`. Do not keep expanding this 1m intrabar micro-rule family.
 
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.

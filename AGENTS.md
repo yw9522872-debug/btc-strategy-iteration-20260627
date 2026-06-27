@@ -64,4 +64,5 @@
 - 23号测试 Binance USD-M futures 资金费率这个新数据源的“看答案”上限：246个资金费率候选静态硬通过为 `0`，但月度oracle带每月10单门槛能过，2023 `+17263.32%`、2024 `+45467.21%`、2025 `+6801.02%`、2026 YTD `+648.74%`，亏损月 `0`。结论 `FUNDING_RATE_UPPER_BOUND_HAS_MONTHLY_PIECES`，但不能交易。
 - 24号复用23号资金费率候选做严格逐月选择，失败：最好 `funding_mean_only` 为 2023 `-22.82%`、2024 `-42.05%`、2025 `+9.70%`、2026 YTD `+10.95%`，亏损月 `20`。结论 `FUNDING_RATE_STRICT_SELECTOR_FAILS`。不要升级资金费率候选；若继续，应换持仓量等新数据源先做上限测试，或调整硬目标。
 - 25号检查 Binance 公开持仓量数据能否做 2020-2026 上限测试，结论 `OPEN_INTEREST_HISTORY_NOT_AVAILABLE_FOR_2020_2026`：openInterestHist 最近数据可取，但 2020-01、2023-01 历史请求返回 `startTime invalid`，公开接口只够最近1个月观察，不够做 2023-2026 硬目标上限。不要用不完整持仓量硬做历史上限。
-- `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md` 已审查持仓量/多空比历史数据源：Binance 官方持仓量只保留最近1个月，多空比只保留最近30天；首选 Tardis.dev，其次 CoinGlass/Amberdata。拿到完整 CSV 前，不要硬做 26号回测；拿到后先做数据质量审计，再做上限测试。
+- `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md` 已审查持仓量/多空比历史数据源：Binance 官方持仓量只保留最近1个月，多空比只保留最近30天；首选 Tardis.dev，其次 CoinGlass/Amberdata。拿到完整 CSV 前，不要硬做持仓量/多空比多年回测；拿到后先做数据质量审计，再做上限测试。
+- 26号改用 Binance 免费公开 1分钟 USD-M futures K线测试15分钟内部结构上限，结论 `INTRABAR_1M_UPPER_BOUND_FAILS`：2020-01到2026-05 的1分钟月包完整，缺失/重复/断档均为 `0`；有 `8` 根15分钟K线和15号底座OHLC不一致，已禁用这些K线信号。186个候选静态硬通过为 `0`；最好看答案上限 2023 `+47.27%`、2024 `+16.29%`、2025 `-3.27%`、2026 YTD `-7.68%`，亏损月 `28`；要求每月10单后 2025/2026 仍亏。不要继续扩这批1分钟内部结构小规则。
