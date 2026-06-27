@@ -129,6 +129,44 @@ Important current results:
   - Stress: base cost, 0.3% round-trip cost, and extra 1-bar delay pass; 0.4% round-trip cost and 0.3% + 1-bar delay fail.
   - Interpretation: stronger under the fixed 0.2% fee backtest, but less robust than 1F under stress.
 
+- `artifacts/strategy_1fg_extra_audit_20260627/summary.json`
+  - Extra audit only; not a new strategy and does not overwrite Strategy 0, 1F, or 1G.
+  - Script: `scripts/audit_strategy_1fg_extra_20260627.py`.
+  - Grid: round-trip cost 0.2%, 0.3%, 0.4%; extra signal delay 0, 1, and 2 bars.
+  - Checks passed: active position equals previous target position, and position does not exceed each candidate leverage cap.
+  - 1F passed 7/9 scenarios. It failed only under 0.4% round-trip cost plus 1-bar or 2-bar extra delay, mainly because 2025-02 turned sharply negative.
+  - 1G passed 4/9 scenarios. It failed under 0.3% round-trip cost plus delay and all 0.4% round-trip cost scenarios, also mainly due to 2025-02.
+  - Interpretation: this strengthens the current judgment that 1F is the more robust candidate, while 1G is mainly attractive under the fixed 0.2% cost assumption.
+
+- `artifacts/strategy_1fg_202502_failure_review_20260627/summary.json`
+  - Failure review for 2025-02.
+  - Script: `scripts/analyze_strategy_1fg_202502_failure_20260627.py`.
+  - Main finding: the stress failure was not caused by a missing indicator. Under higher cost/delay, the strategy did not lock early enough, stayed exposed for almost the whole month, and turnover exploded.
+  - Normal 2025-02 active bars were about 640; failed stress scenarios had about 2630 active bars.
+  - Normal turnover was about 20-32; failed stress turnover was about 536-660.
+  - Largest loss contribution came from `adverse_shock_cut`, where large active positions were hit by abrupt moves and then paid large switching cost.
+
+- `artifacts/strategy_2_damage_stop_20260627/summary.json`
+  - Negative experiment, not a candidate.
+  - It added a month-level drawdown damage stop. This was too aggressive and killed many profitable months.
+  - Result: 2025 return 22.36%, 2026 return 50.81%, 10 losing evaluated months. Do not promote this.
+
+- `artifacts/strategy_2b_shock_stop_20260627/summary.json`
+  - Negative experiment, not a candidate.
+  - It only stopped after two adverse shocks in a month.
+  - Base result matched 1F, but 0.4% round-trip cost plus delay still failed. Interpretation: waiting until the second adverse shock is too late.
+
+- `STRATEGY_2C_CANDIDATE.md`
+  - Strategy 2C candidate.
+  - Candidate id: `strategy_2c_lock_cap_20260627`.
+  - Script: `scripts/search_strategy_2c_lock_cap_20260627.py`.
+  - Output: `artifacts/strategy_2c_lock_cap_20260627/summary.json`.
+  - Change: keep 1F logic, but cap the monthly selected `lock_log` at 0.04, so the strategy locks earlier after the 10-order monthly quota is met.
+  - Base result at 0.2% round-trip cost: 2025 return 359.10%; 2026 return 260.59%; no losing evaluated months; minimum monthly orders 11; max drawdown -29.40%.
+  - Stress grid passed 9/9: round-trip cost 0.2%, 0.3%, 0.4% crossed with extra signal delay 0, 1, 2 bars.
+  - Worst stress case, 0.4% round-trip plus 2-bar delay: 2025 return 217.67%; 2026 return 181.75%; worst evaluated month +1.81%.
+  - Interpretation: 2C gives up some base return versus 1F but is currently more robust to execution cost and delay. It is still posthoc research and not a live guarantee.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
