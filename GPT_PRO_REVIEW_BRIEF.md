@@ -371,6 +371,19 @@ Important current results:
   - Best single dynamic candidate: `calendar_weekday_lbexpanding_thr0p0_min20_lev1p0`, with 2023 +31.81%, 2024 +71.57%, 2025 -10.55%, 2026 YTD +43.60%; 17 losing months, minimum monthly orders 10.
   - Decision: `CALENDAR_SEASONALITY_FAILS`. Do not promote Strategy 19.
 
+- `STRATEGY_20_OHLC_STRUCTURE_UPPER_BOUND.md`
+  - Strategy 20 is a leaky monthly oracle upper-bound test, not a strategy, not tradeable, and not a freeze.
+  - Test id: `strategy_20_ohlc_structure_upper_bound_20260627`.
+  - Script: `scripts/audit_strategy_20_ohlc_structure_upper_bound_20260627.py`.
+  - Output: `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`.
+  - Data: Strategy 15 USD-M futures baseline. The baseline has only OHLC, no volume, so Strategy 20 does not test volume.
+  - Candidate grid: 189 OHLC-only candidates using candle body momentum/reversal, wick reversal, range momentum/reversal, high-volatility body momentum/reversal, and low-volatility wick reversal.
+  - Warning: the monthly oracle chooses the best candidate after seeing each evaluated month, so `strict_no_future = false`; month-boundary switching cost is not included.
+  - Static hindsight scan hard-pass count: 0 out of 189.
+  - Most permissive oracle, `monthly_oracle_best_return`, ignores the 10-order monthly floor. It still fails: 2023 +51.61%, 2024 +18.35%, 2025 +12.99%, 2026 YTD +0.18%; 30 non-positive months; minimum monthly orders 0.
+  - Order-floor oracle, `monthly_oracle_best_return_order10`, also fails: 2023 +22.80%, 2024 -2.56%, 2025 -6.90%, 2026 YTD -2.98%; 33 non-positive months; minimum monthly orders 10.
+  - Decision: `OHLC_STRUCTURE_UPPER_BOUND_FAILS`. Do not promote Strategy 20 or keep expanding these OHLC-only candle/range/volatility micro-rules.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -409,6 +422,7 @@ Useful source files:
 - `scripts/audit_strategy_17_simple_family_upper_bound_20260627.py`
 - `scripts/audit_strategy_18_upper_bound_failure_review_20260627.py`
 - `scripts/audit_strategy_19_calendar_seasonality_probe_20260627.py`
+- `scripts/audit_strategy_20_ohlc_structure_upper_bound_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
