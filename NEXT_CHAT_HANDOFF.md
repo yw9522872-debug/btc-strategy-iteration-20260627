@@ -18,6 +18,7 @@
 - 5号审计保存标签：`strategy-5-robustness-audit-20260627`
 - 5B审计保存标签：`strategy-5b-three-way-audit-20260627`
 - 6号市场状态体检保存标签：`strategy-6-market-regime-audit-20260627`
+- 7号 Oracle 路由上限审计保存标签：`strategy-7-oracle-router-audit-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -35,9 +36,10 @@
 10. `STRATEGY_5_ROBUSTNESS_AUDIT.md`
 11. `STRATEGY_5B_THREE_WAY_AUDIT.md`
 12. `STRATEGY_6_MARKET_REGIME_AUDIT.md`
-13. `CURRENT_STRATEGY_FREEZE.md`
-14. `GPT_PRO_REVIEW_BRIEF.md`
-15. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+13. `STRATEGY_7_ORACLE_ROUTER_AUDIT.md`
+14. `CURRENT_STRATEGY_FREEZE.md`
+15. `GPT_PRO_REVIEW_BRIEF.md`
+16. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
 
 ## 当前固化策略
 
@@ -252,6 +254,20 @@
 - GPT Pro 复核意见：6号可保留为历史体检表，但绝不能升级成策略依据；最大坑是把事后解释当成事前预测。
 - 当前判断：不升级策略，不做路由，2C/4号/3号排序不变。
 
+## 7号 Oracle 路由上限审计
+
+- 审计编号：`strategy_7_oracle_router_audit_20260627`
+- 定位文件：`STRATEGY_7_ORACLE_ROUTER_AUDIT.md`
+- 脚本：`scripts/audit_strategy_7_oracle_router_20260627.py`
+- 结果目录：`artifacts/strategy_7_oracle_router_audit_20260627/`
+- 这不是新策略，只测试“如果事后完美知道市场状态，状态路由最多能不能明显超过 2C”。
+- 只看完整月份，排除未完整的 `2026-06`。
+- 静态 2C 完整月总收益 `+1033.11%`；3号 `+1013.10%`；4号 `+829.14%`。
+- 每月事后最佳 `+1128.92%`，但这是看答案，不能交易。
+- 按市场状态全样本最佳 `+1045.54%`，只比 2C 多 `+12.42` 个百分点。
+- 只用过去同状态选择 `+986.32%`，反而比 2C 少 `46.79` 个百分点。
+- 当前判断：不升级路由；复杂实时状态切换暂时不值得做。下一步更值得做执行压力升级，而不是继续调状态路由。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -273,7 +289,7 @@
 - 重新设计更稳健的非事后选参规则；
 - 对 1F/1G 做更严格的独立样本验证，尤其不要只看 2025/2026 图形继续加规则；
 - 对 2C、3号、4号做取舍：5B 审计说明 4号硬条件通过数略好，2C 漏成交后最干净，3号暂不升主候选；
-- 如果研究实时市场状态识别，先另起 7号做 oracle router 上限、实时可见特征、walk-forward、误判压力和影子记录，不要直接把 6号事后标签拿来交易；
+- 7号已说明状态路由上限不大，下一轮更建议另起 8号做执行压力升级：波动放大滑点、点差扩大、连续漏单、关键调仓漏单、funding、交易所短时不可用；
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -298,9 +314,10 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 11. STRATEGY_5_ROBUSTNESS_AUDIT.md
 12. STRATEGY_5B_THREE_WAY_AUDIT.md
 13. STRATEGY_6_MARKET_REGIME_AUDIT.md
-14. CURRENT_STRATEGY_FREEZE.md
-15. GPT_PRO_REVIEW_BRIEF.md
-16. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+14. STRATEGY_7_ORACLE_ROUTER_AUDIT.md
+15. CURRENT_STRATEGY_FREEZE.md
+16. GPT_PRO_REVIEW_BRIEF.md
+17. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -336,6 +353,9 @@ monthly_profit_lock_research_freeze_20260627
 
 当前新增 6号市场状态体检：
 6号：strategy_6_market_regime_audit_20260627，不是新策略，也不是实时状态识别器。它复用 5B 的月度事后市场标签，只检查历史弱点是否集中。数据到 2026-06-19 23:45 UTC，2026-06 是未完整月份；完整月只有 17 个。压力失败没有达到确认弱点标准，只保守观察到下跌月手续费/延迟风险、震荡月漏成交风险。GPT Pro 复核后也建议：6号只能当体检表，不能当策略依据，不能做路由。
+
+当前新增 7号 Oracle 路由上限审计：
+7号：strategy_7_oracle_router_audit_20260627，不是新策略，只测试“完美知道状态时，路由最多能不能明显超过 2C”。完整月里，2C 总收益 +1033.11%；每月事后最佳 +1128.92%，但这是看答案；按状态全样本最佳 +1045.54%，只比 2C 多 12.42 个百分点；只用过去同状态选择 +986.32%，反而跑输 2C。当前判断：不升级路由，复杂实时状态切换暂时不值得做。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
 这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。

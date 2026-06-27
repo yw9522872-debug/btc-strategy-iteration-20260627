@@ -217,6 +217,18 @@ Important current results:
   - Conservative observations only: cost/delay losses cluster in down months, especially 2026-01; order-miss issues cluster in sideways months, especially 2025-03.
   - GPT Pro review: keep Strategy 6 as a historical health check only; do not promote it into a router; avoid treating posthoc explanation as prediction; remember 2C/3/4 are one strategy family, not independent evidence.
 
+- `STRATEGY_7_ORACLE_ROUTER_AUDIT.md`
+  - Strategy 7 is an oracle router upper-bound audit, not a new strategy and not a live router.
+  - Audit id: `strategy_7_oracle_router_audit_20260627`.
+  - Script: `scripts/audit_strategy_7_oracle_router_20260627.py`.
+  - Output: `artifacts/strategy_7_oracle_router_audit_20260627/summary.json`.
+  - It excludes partial 2026-06 and uses 17 complete months only.
+  - Static complete-month totals: 2C +1033.11%, Strategy 3 +1013.10%, Strategy 4 +829.14%.
+  - `oracle_month_best` gets +1128.92%, but it picks the best candidate after seeing each month and is therefore a leaky upper bound.
+  - `oracle_regime_best_fullsample` gets +1045.54%, only +12.42 percentage points above 2C.
+  - `oracle_regime_past_only` gets +986.32%, underperforming 2C by 46.79 percentage points.
+  - Interpretation: do not promote a router; complex real-time regime switching is not currently justified. Next useful work is execution-stress expansion, not more regime routing.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -242,6 +254,7 @@ Useful source files:
 - `scripts/audit_strategy_5_robustness_20260627.py`
 - `scripts/audit_strategy_5b_three_way_20260627.py`
 - `scripts/audit_strategy_6_market_regime_20260627.py`
+- `scripts/audit_strategy_7_oracle_router_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

@@ -1,0 +1,142 @@
+{
+  "status": "strategy_7_oracle_router_audit_ready",
+  "generated_at": "2026-06-27T05:37:57.977713+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "uses_posthoc_month_labels": true,
+  "oracle_upper_bound": true,
+  "does_not_overwrite": [
+    "artifacts/strategy_2c_lock_cap_20260627",
+    "artifacts/strategy_3_trend_coverage_20260627",
+    "artifacts/strategy_4_entry_confirm_20260627",
+    "artifacts/strategy_6_market_regime_audit_20260627"
+  ],
+  "complete_months_only": true,
+  "excluded_partial_months": [
+    "2026-06"
+  ],
+  "candidate_summary": [
+    {
+      "candidate": "2C",
+      "months": 17,
+      "log_return": 2.427555182449113,
+      "total_return_pct": 1033.1145604859807,
+      "return_2025_complete_pct": 359.09529443752473,
+      "return_2026_complete_pct": 146.8146753440921,
+      "min_monthly_return_pct": 5.575755909827906,
+      "losing_months": 0,
+      "min_monthly_orders": 11,
+      "worst_month_drawdown_pct": -29.40311707059141,
+      "avg_monthly_orders": 12.705882352941176
+    },
+    {
+      "candidate": "3",
+      "months": 17,
+      "log_return": 2.4097362724075704,
+      "total_return_pct": 1013.1025199460261,
+      "return_2025_complete_pct": 352.4929187681595,
+      "return_2026_complete_pct": 145.99335675269165,
+      "min_monthly_return_pct": 5.11302387708088,
+      "losing_months": 0,
+      "min_monthly_orders": 11,
+      "worst_month_drawdown_pct": -29.40311707059141,
+      "avg_monthly_orders": 14.235294117647058
+    },
+    {
+      "candidate": "4",
+      "months": 17,
+      "log_return": 2.2290846609274184,
+      "total_return_pct": 829.1357443428852,
+      "return_2025_complete_pct": 290.6896967934812,
+      "return_2026_complete_pct": 137.81936200739545,
+      "min_monthly_return_pct": 4.558896263438661,
+      "losing_months": 0,
+      "min_monthly_orders": 10,
+      "worst_month_drawdown_pct": -28.78913036963924,
+      "avg_monthly_orders": 12.705882352941176
+    }
+  ],
+  "oracle_regime_choice_map": [
+    {
+      "market_regime": "down",
+      "chosen_candidate": "4",
+      "chosen_total_return_pct": 116.6909287305165,
+      "candidate_returns": "[{\"candidate\": \"2C\", \"log_return\": 0.7623992570376443, \"months\": 5, \"min_monthly_return_pct\": 9.528515109034808, \"min_orders\": 11, \"total_return_pct\": 114.34126541155653}, {\"candidate\": \"3\", \"log_return\": 0.7609211175610964, \"months\": 5, \"min_monthly_return_pct\": 9.528515109034808, \"min_orders\": 11, \"total_return_pct\": 114.02467316708918}, {\"candidate\": \"4\", \"log_return\": 0.7733018607205588, \"months\": 5, \"min_monthly_return_pct\": 8.517732674974642, \"min_orders\": 10, \"total_return_pct\": 116.6909287305165}]"
+    },
+    {
+      "market_regime": "sideways",
+      "chosen_candidate": "2C",
+      "chosen_total_return_pct": 190.52203034954917,
+      "candidate_returns": "[{\"candidate\": \"2C\", \"log_return\": 1.066509223399382, \"months\": 6, \"min_monthly_return_pct\": 9.405567332454943, \"min_orders\": 11, \"total_return_pct\": 190.52203034954917}, {\"candidate\": \"3\", \"log_return\": 1.0634472099325514, \"months\": 6, \"min_monthly_return_pct\": 9.405567332454943, \"min_orders\": 11, \"total_return_pct\": 189.63380854775892}, {\"candidate\": \"4\", \"log_return\": 0.8638658245326221, \"months\": 6, \"min_monthly_return_pct\": 7.22868753869248, \"min_orders\": 10, \"total_return_pct\": 137.23139393114624}]"
+    },
+    {
+      "market_regime": "up",
+      "chosen_candidate": "2C",
+      "chosen_total_return_pct": 81.96545984600397,
+      "candidate_returns": "[{\"candidate\": \"2C\", \"log_return\": 0.5986467020120865, \"months\": 6, \"min_monthly_return_pct\": 5.575755909827906, \"min_orders\": 12, \"total_return_pct\": 81.96545984600397}, {\"candidate\": \"3\", \"log_return\": 0.5853679449139227, \"months\": 6, \"min_monthly_return_pct\": 5.11302387708088, \"min_orders\": 12, \"total_return_pct\": 79.56515649645522}, {\"candidate\": \"4\", \"log_return\": 0.5919169756742371, \"months\": 6, \"min_monthly_return_pct\": 4.558896263438661, \"min_orders\": 10, \"total_return_pct\": 80.74499340702945}]"
+    }
+  ],
+  "oracle_router_summary": [
+    {
+      "router": "oracle_month_best",
+      "months": 17,
+      "log_return": 2.508721122537801,
+      "total_return_pct": 1128.9203621020024,
+      "return_2025_complete_pct": 387.73663216871785,
+      "return_2026_complete_pct": 151.96392500551278,
+      "min_monthly_return_pct": 5.575755909827906,
+      "losing_months": 0,
+      "min_monthly_orders": 10,
+      "worst_month_drawdown_pct": -29.252496952297054,
+      "avg_monthly_orders": 12.705882352941176,
+      "delta_vs_2c_log_return": 0.08116594008868816,
+      "delta_vs_2c_pct_points": 95.80580161602165
+    },
+    {
+      "router": "oracle_regime_best_fullsample",
+      "months": 17,
+      "log_return": 2.438457786132027,
+      "total_return_pct": 1045.5360497117774,
+      "return_2025_complete_pct": 365.5067272885761,
+      "return_2026_complete_pct": 146.0836723851767,
+      "min_monthly_return_pct": 5.575755909827906,
+      "losing_months": 0,
+      "min_monthly_orders": 10,
+      "worst_month_drawdown_pct": -29.40311707059141,
+      "avg_monthly_orders": 12.235294117647058,
+      "delta_vs_2c_log_return": 0.01090260368291407,
+      "delta_vs_2c_pct_points": 12.421489225796677
+    },
+    {
+      "router": "oracle_regime_past_only",
+      "months": 17,
+      "log_return": 2.3853854639982925,
+      "total_return_pct": 986.3249249470018,
+      "return_2025_complete_pct": 350.4775405438143,
+      "return_2026_complete_pct": 141.14963059769767,
+      "min_monthly_return_pct": 4.558896263438661,
+      "losing_months": 0,
+      "min_monthly_orders": 10,
+      "worst_month_drawdown_pct": -29.40311707059141,
+      "avg_monthly_orders": 12.705882352941176,
+      "delta_vs_2c_log_return": -0.042169718450820515,
+      "delta_vs_2c_pct_points": -46.78963553897893
+    }
+  ],
+  "decision": {
+    "promote_router": false,
+    "best_oracle_router": "oracle_month_best",
+    "regime_fullsample_delta_vs_2c_pct_points": 12.421489225796677,
+    "regime_past_only_delta_vs_2c_pct_points": -46.78963553897893,
+    "reason": "每月事后最佳太泄漏；只按状态的 oracle 提升很小；只用过去同状态选择还跑输 2C。"
+  },
+  "files": {
+    "candidate_complete_monthly": "artifacts/strategy_7_oracle_router_audit_20260627/candidate_complete_monthly.csv",
+    "candidate_complete_summary": "artifacts/strategy_7_oracle_router_audit_20260627/candidate_complete_summary.csv",
+    "oracle_regime_choice_map": "artifacts/strategy_7_oracle_router_audit_20260627/oracle_regime_choice_map.csv",
+    "oracle_router_monthly": "artifacts/strategy_7_oracle_router_audit_20260627/oracle_router_monthly.csv",
+    "oracle_router_summary": "artifacts/strategy_7_oracle_router_audit_20260627/oracle_router_summary.csv",
+    "summary": "artifacts/strategy_7_oracle_router_audit_20260627/summary.json",
+    "report": "artifacts/strategy_7_oracle_router_audit_20260627/report.md"
+  }
+}
