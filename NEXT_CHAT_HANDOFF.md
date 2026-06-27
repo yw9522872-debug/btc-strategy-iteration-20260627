@@ -8,7 +8,7 @@
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
 - 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`、`strategy-20-ohlc-structure-upper-bound-20260627`、`strategy-21-volume-upper-bound-20260627`
-- 15号、16号、17号、18号、19号、20号、21号及交接说明已提交并推送到 GitHub
+- 15号、16号、17号、18号、19号、20号、21号、22号及交接说明已提交并推送到 GitHub
 - 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
 - 固化标签对应提交：`910d99a`
@@ -36,6 +36,7 @@
 - 19号日历季节性探针保存标签：`strategy-19-calendar-seasonality-probe-20260627`
 - 20号 OHLC结构上限测试保存标签：`strategy-20-ohlc-structure-upper-bound-20260627`
 - 21号成交量上限测试保存标签：`strategy-21-volume-upper-bound-20260627`
+- 22号硬目标瓶颈审计保存标签：`strategy-22-hard-target-bottleneck-audit-20260627`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -68,16 +69,19 @@
 25. `STRATEGY_19_CALENDAR_SEASONALITY_PROBE.md`
 26. `STRATEGY_20_OHLC_STRUCTURE_UPPER_BOUND.md`
 27. `STRATEGY_21_VOLUME_UPPER_BOUND.md`
-28. `CURRENT_STRATEGY_FREEZE.md`
-29. `GPT_PRO_REVIEW_BRIEF.md`
-30. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
-31. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
-32. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
-33. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
-34. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
-35. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
-36. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
-37. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
+28. `STRATEGY_22_HARD_TARGET_BOTTLENECK_AUDIT.md`
+29. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+30. `CURRENT_STRATEGY_FREEZE.md`
+31. `GPT_PRO_REVIEW_BRIEF.md`
+32. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+33. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
+34. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
+35. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
+36. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
+37. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
+38. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
+39. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
+40. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
 
 ## 当前固化策略
 
@@ -497,6 +501,21 @@
 - 带交易次数门槛上限 `monthly_oracle_best_return_order10`：2023 `+39.04%`、2024 `+50.98%`、2025 `-12.73%`、2026 YTD `-9.17%`，不盈利月份 `29`，最少月交易 `10`。
 - 当前判断：`VOLUME_UPPER_BOUND_FAILS`。只看成交量放大、taker买卖比例、放量动量/反转，连看答案上限都不够，不要升级21号，也不要继续扩这批成交量小规则。
 
+## 22号硬目标瓶颈审计
+
+- 审计编号：`strategy_22_hard_target_bottleneck_20260627`
+- 定位文件：`STRATEGY_22_HARD_TARGET_BOTTLENECK_AUDIT.md`
+- 脚本：`scripts/audit_strategy_22_hard_target_bottleneck_20260627.py`
+- 结果目录：`artifacts/strategy_22_hard_target_bottleneck_20260627/`
+- 这不是策略，不能交易，只是把 16/19/20/21 的候选放进同一张硬目标压力表。
+- 候选：`927` 个，只复用 16号简单价格、19号日历、20号 OHLC结构、21号成交量/taker，没有新增规则。
+- 压力网格：月交易次数 `0/2/5/10`，开平合计手续费 `0.0%/0.1%/0.2%/0.3%/0.4%`，月收益要求不限/`>=-1%`/`>0`，年收益门槛 `50%/100%`。
+- 严格逐月选择器：`0/120` 通过。
+- 月度oracle：`80/120` 通过，但它是看答案，不能交易。
+- 原始硬目标口径下，月度oracle仍失败，差 `2023-07` 和 `2024-06` 两个月；严格选择器也失败，2025 `-95.78%`，2026 YTD `+7.81%`。
+- 当前判断：`ORIGINAL_TARGET_AND_SELECTION_BOTTLENECK`。原始硬目标太紧，而且严格选择器选不出看答案月份。不要继续扩 16/19/20/21 小规则。
+- 停止结论文件：`RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -511,10 +530,10 @@
 
 0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
-- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限也失败。
-- 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC 结构小规则，也不要继续扩 21号成交量小规则。
-- 如果继续研究，应另起 22号。更省事的下一步是先请 GPT Pro 复核 15-21，或者重新审视硬目标本身；如果还要补数据源，资金费/持仓量应先做上限测试，不能直接写策略。
-- 当前历史硬目标可能过严：每月盈利且每月最少10次交易，在 17/18 号里已经看到即使“看答案”也会卡住部分月份。下一轮应考虑先做可行性上限，再做可交易规则。
+- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住。
+- 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC 结构小规则，也不要继续扩成交量/taker小规则。
+- 如果继续研究，应另起 23号，只做真正不同的数据源上限测试，或先把目标改得更现实。不要直接写可交易策略，也不要直接上机器学习。
+- 当前历史硬目标很可能过严：22号显示原始硬目标下连看答案 oracle 都差 `2` 个月；放宽后看答案能过，但严格逐月选择器 `0/120` 通过。
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
@@ -554,16 +573,19 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 26. STRATEGY_19_CALENDAR_SEASONALITY_PROBE.md
 27. STRATEGY_20_OHLC_STRUCTURE_UPPER_BOUND.md
 28. STRATEGY_21_VOLUME_UPPER_BOUND.md
-29. CURRENT_STRATEGY_FREEZE.md
-30. GPT_PRO_REVIEW_BRIEF.md
-31. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
-32. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
-33. artifacts/strategy_16_new_family_probe_20260627/summary.json
-34. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
-35. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
-36. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
-37. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
-38. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
+29. STRATEGY_22_HARD_TARGET_BOTTLENECK_AUDIT.md
+30. RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md
+31. CURRENT_STRATEGY_FREEZE.md
+32. GPT_PRO_REVIEW_BRIEF.md
+33. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+34. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
+35. artifacts/strategy_16_new_family_probe_20260627/summary.json
+36. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
+37. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
+38. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
+39. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
+40. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
+41. artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -645,8 +667,11 @@ monthly_profit_lock_research_freeze_20260627
 当前新增 21号成交量上限测试：
 21号：strategy_21_volume_upper_bound_20260627，不是策略，不能交易，只是“看答案”的月度上限测试。它下载 Binance public USD-M futures 15m K线的 volume/taker 字段，2020-01 到 2026-05 共224928行；与15号 OHLC 底座 close 完全对齐。候选378个，包括成交量放大、taker买卖比例、放量确认涨跌。静态硬通过数量 0。最宽松上限 monthly_oracle_best_return：2023 +45.98%，2024 +54.74%，2025 -12.01%，2026 YTD -9.17%，仍有25个不盈利月份。要求每月交易不少于10次后：2023 +39.04%，2024 +50.98%，2025 -12.73%，2026 YTD -9.17%，不盈利月份29个。当前判断：VOLUME_UPPER_BOUND_FAILS。不要继续扩这批成交量小规则。
 
+当前新增 22号硬目标瓶颈审计：
+22号：strategy_22_hard_target_bottleneck_20260627，不是策略，不能交易，只把16/19/20/21的927个候选放进同一张压力表。压力网格包括月交易次数0/2/5/10、手续费0.0%到0.4%、月收益要求不限/>=-1%/>0、年收益门槛50%/100%。严格逐月选择器0/120通过；月度oracle80/120通过但它看答案不能交易。原始硬目标下，月度oracle也失败，差2023-07和2024-06两个月；严格选择器2025 -95.78%，2026 YTD +7.81%。当前判断：ORIGINAL_TARGET_AND_SELECTION_BOTTLENECK。不要继续扩16/19/20/21小规则，见 RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md。
+
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
-这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。
+这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，只能另起23号，换真正不同的数据源先做上限测试，或把目标改得更现实；不要直接上机器学习。
 
 请用中文、通俗的话和我沟通。
 ```

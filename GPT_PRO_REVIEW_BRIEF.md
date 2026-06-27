@@ -396,6 +396,23 @@ Important current results:
   - Order-floor oracle, `monthly_oracle_best_return_order10`, also fails: 2023 +39.04%, 2024 +50.98%, 2025 -12.73%, 2026 YTD -9.17%; 29 non-positive months; minimum monthly orders 10.
   - Decision: `VOLUME_UPPER_BOUND_FAILS`. Do not promote Strategy 21 or keep expanding these simple volume/taker-flow micro-rules.
 
+- `STRATEGY_22_HARD_TARGET_BOTTLENECK_AUDIT.md`
+  - Strategy 22 is a hard-target bottleneck audit, not a strategy, not tradeable, and not a freeze.
+  - Audit id: `strategy_22_hard_target_bottleneck_20260627`.
+  - Script: `scripts/audit_strategy_22_hard_target_bottleneck_20260627.py`.
+  - Output: `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`.
+  - It reuses only Strategy 16/19/20/21 candidates, 927 candidates total, and adds no new rules.
+  - Grid: monthly order floor 0/2/5/10; round-trip cost 0.0/0.1/0.2/0.3/0.4%; monthly requirement allow-any / return >= -1% / return > 0; annual threshold 50/100%.
+  - Strict expanding monthly selector pass count: 0/120.
+  - Monthly oracle pass count: 80/120, but it is leaky and not tradeable.
+  - Original hard target row, with 0.2% round-trip cost, monthly return > 0, monthly orders >= 10, annual threshold 100%: monthly oracle still fails due to 2023-07 and 2024-06; strict selector fails badly with 2025 -95.78% and 2026 YTD +7.81%.
+  - Decision: `ORIGINAL_TARGET_AND_SELECTION_BOTTLENECK`. Do not keep expanding Strategy 16/19/20/21 micro-rules. If continuing research, use a genuinely different data source with an upper-bound test first, or lower the target to something more realistic.
+
+- `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+  - Project-level research decision after Strategy 22.
+  - Stop patching `ret_state 64/100`, simple price indicators, calendar seasonality, OHLC candle/range/volatility micro-rules, and volume/taker micro-rules.
+  - Do not jump straight to ML unless a new feature set first shows useful upper-bound evidence under no-future constraints.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -436,6 +453,7 @@ Useful source files:
 - `scripts/audit_strategy_19_calendar_seasonality_probe_20260627.py`
 - `scripts/audit_strategy_20_ohlc_structure_upper_bound_20260627.py`
 - `scripts/audit_strategy_21_volume_upper_bound_20260627.py`
+- `scripts/audit_strategy_22_hard_target_bottleneck_20260627.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
