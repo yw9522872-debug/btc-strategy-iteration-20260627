@@ -2,13 +2,60 @@
 
 本文件用于开启新的 Codex 对话时交接本项目。
 
+## 给下一个窗口直接发送的内容
+
+```text
+请接着这个项目继续工作：
+
+本地路径：C:\Users\WHR\Documents\策略迭代
+GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
+
+请先阅读：
+1. AGENTS.md
+2. NEXT_CHAT_HANDOFF.md
+3. GPT_PRO_REVIEW_BRIEF.md
+4. STRATEGY_31_MULTISYMBOL_FREE_FUTURES_UPPER_BOUND.md
+5. STRATEGY_32_BTC_3M_2025_TODAY_UPPER_BOUND.md
+6. artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json
+7. artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json
+
+重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
+
+当前最新提交：
+0500e23 Add strategy 32 BTC 3m upper bound audit
+
+当前最新标签：
+strategy-32-btc-3m-2025-today-upper-bound-20260628
+
+这里只做研究和回测：
+不下实盘，不读取密钥，不启动 supervisor，不改真实仓位。
+
+0号策略已经永久保存，不能覆盖。
+1F、1G、2C、4号、10号到32号都不能覆盖，后续必须另起新编号、新目录。
+
+当前关键结论：
+14号已经判定旧 ret_state 64/100 家族为 STOP_FAMILY。
+22号说明简单免费K线小规则和严格选择器双重卡住。
+23号资金费率看答案上限很好，但24号严格选择器失败，不能升级。
+25号说明 Binance 免费持仓量/多空比历史不够多年回测。
+30号 spot-perp aggTrades 样本上限失败，不要下载全量约90GB继续做。
+31号多币种免费期货样本上限有信号，但只是四个月看答案样本，不能交易。
+32号 BTC 单币 3m 从2025到2026-06-27上限失败，不要继续扩 BTC 3m 小规则。
+
+下一步建议：
+另起33号，做多币种完整历史严格选择器。优先用 Binance USD-M futures 免费15m K线，先覆盖 BTC、ETH、SOL、BNB、DOGE、XRP、ADA、AVAX、LINK；HYPE历史太短，只能当附加观察，不要当主训练币。必须严格不看未来，每个月只能用之前数据选候选。
+
+请用中文、通俗的话和我沟通。
+```
+
 ## 项目身份
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
+- 当前最新提交：`0500e23 Add strategy 32 BTC 3m upper bound audit`
+- 当前最新标签：`strategy-32-btc-3m-2025-today-upper-bound-20260628`
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
-- 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`、`strategy-20-ohlc-structure-upper-bound-20260627`、`strategy-21-volume-upper-bound-20260627`、`strategy-22-hard-target-bottleneck-audit-20260627`、`strategy-23-funding-rate-upper-bound-20260627`、`strategy-24-funding-rate-strict-selector-20260627`、`strategy-25-open-interest-upper-bound-feasibility-20260627`、`strategy-26-intrabar-1m-upper-bound-20260627`、`strategy-27-target-feasibility-audit-20260627`、`strategy-28-relaxed-no-monthly-profit-audit-20260628`、`strategy-29-free-raw-trade-coverage-audit-20260628`
-- 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号、29号及交接说明已提交并推送到 GitHub
+- 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号、29号、30号、31号、32号及交接说明已提交并推送到 GitHub
 - 持仓量/多空比历史数据源审查文件：`DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`。它不是策略，无策略标签。
 - 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
@@ -45,6 +92,9 @@
 - 27号目标可行性审计保存标签：`strategy-27-target-feasibility-audit-20260627`
 - 28号不要求月月盈利审计保存标签：`strategy-28-relaxed-no-monthly-profit-audit-20260628`
 - 29号免费 raw trade 数据覆盖审计保存标签：`strategy-29-free-raw-trade-coverage-audit-20260628`
+- 30号 spot-perp aggTrades 样本上限测试保存标签：`strategy-30-spot-perp-aggtrade-sample-upper-bound-20260628`
+- 31号多币种免费期货样本上限测试保存标签：`strategy-31-multisymbol-free-futures-sample-upper-bound-20260628`
+- 32号 BTC 3m 2025到最新公开数据上限测试保存标签：`strategy-32-btc-3m-2025-today-upper-bound-20260628`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -85,26 +135,32 @@
 33. `STRATEGY_27_TARGET_FEASIBILITY_AUDIT.md`
 34. `STRATEGY_28_RELAXED_NO_MONTHLY_PROFIT_AUDIT.md`
 35. `STRATEGY_29_FREE_RAW_TRADE_COVERAGE_AUDIT.md`
-36. `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
-37. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
-38. `CURRENT_STRATEGY_FREEZE.md`
-39. `GPT_PRO_REVIEW_BRIEF.md`
-40. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
-41. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
-42. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
-43. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
-44. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
-45. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
-46. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
-47. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
-48. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
-49. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
-50. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
-51. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
-52. `artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json`
-53. `artifacts/strategy_27_target_feasibility_audit_20260627/summary.json`
-54. `artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json`
-55. `artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json`
+36. `STRATEGY_30_SPOT_PERP_AGGTRADE_SAMPLE_UPPER_BOUND.md`
+37. `STRATEGY_31_MULTISYMBOL_FREE_FUTURES_UPPER_BOUND.md`
+38. `STRATEGY_32_BTC_3M_2025_TODAY_UPPER_BOUND.md`
+39. `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
+40. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+41. `CURRENT_STRATEGY_FREEZE.md`
+42. `GPT_PRO_REVIEW_BRIEF.md`
+43. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+44. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
+45. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
+46. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
+47. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
+48. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
+49. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
+50. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
+51. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
+52. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
+53. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
+54. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
+55. `artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json`
+56. `artifacts/strategy_27_target_feasibility_audit_20260627/summary.json`
+57. `artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json`
+58. `artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json`
+59. `artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/summary.json`
+60. `artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json`
+61. `artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json`
 
 ## 当前固化策略
 
@@ -652,13 +708,15 @@
 
 0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
-- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住；23号资金费率看答案上限有月度零件；24号资金费率严格逐月选择失败；25号确认 Binance 公开持仓量历史不够覆盖 2020-2026；数据源审查建议优先用 Tardis.dev 完整 CSV；26号免费1分钟内部结构上限失败；27号确认目标放宽只能帮 oracle，帮不了严格选择器；28号确认不要求月月盈利也救不回 `ret_state 64/100` 严格选择器；29号确认免费 spot-perp raw trade 数据覆盖完整。
-- 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC 结构小规则，也不要继续扩成交量/taker小规则，也不要继续扩1分钟内部结构小规则；资金费率候选也不能升级。
-- 如果继续研究，下一步应另起30号，只做 spot-perp `aggTrades` 成交流错位上限测试；funding/mark/index/premium 只做过滤器。不要直接写可交易策略，也不要直接上机器学习。
+- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16-22号说明免费K线小规则和严格选择器卡住；23-24号说明资金费率看答案强但严格选择失败；25号说明 Binance 免费持仓量历史不够；26-28号继续确认 BTC 单币旧路线救不回；29号确认免费 raw trade 数据覆盖完整；30号 spot-perp `aggTrades` 样本上限失败；31号多币种样本上限有信号；32号 BTC 单币 3m 上限失败。
+- 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC/成交量/taker/1分钟内部结构小规则，不要继续 spot-perp `aggTrades`，也不要继续单币 BTC 3m。
+- 如果继续研究，下一步应另起33号，做多币种完整历史严格选择器。先用免费 Binance USD-M futures 15m K线；HYPE 历史太短，只做附加观察，不做主训练币。
 - 当前历史硬目标很可能过严，但不是唯一问题：22号显示原始硬目标下连看答案 oracle 都差 `2` 个月；27号显示放宽后看答案能过，但严格逐月选择器仍 `0/49`；28号显示拿掉“月月盈利”后，旧 ret_state 家族严格选择器仍在 2025/2026 亏损。
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
 ## 发到下一个窗口的内容
+
+最新可复制内容已经放在本文顶部“给下一个窗口直接发送的内容”。下面长版保留作历史参考，避免遗漏旧资料。
 
 ```text
 请接着这个项目继续工作：
