@@ -1,0 +1,265 @@
+{
+  "status": "strategy_28_relaxed_no_monthly_profit_audit_ready",
+  "strategy_id": "strategy_28_relaxed_no_monthly_profit_audit_20260628",
+  "generated_at": "2026-06-28T09:31:08.479039+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "not_a_freeze": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Remove the monthly-profitable-month requirement and retest whether the strategy_14 ret_state family can produce a useful non-leaky yearly result.",
+  "source": {
+    "source_ohlc": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/btc_15m_2020_2026_05_combined_ohlc.csv",
+    "source_family": "strategy_14 ret_state 64/100 family",
+    "new_market_data_added": false,
+    "new_trade_rules_added": false,
+    "cache_status": "reused_existing_cache"
+  },
+  "relaxed_target": {
+    "monthly_profit_required": false,
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002,
+    "main_gate_checked": "2025 and 2026 YTD both above +100%; monthly losses allowed"
+  },
+  "candidate_grid": {
+    "total_candidates": 150,
+    "candidate_monthly_rows": 11550,
+    "confirm_bars": [
+      1,
+      2,
+      4,
+      8,
+      12
+    ],
+    "selectors": {
+      "loss_control_no_positive_gate": "Fewest past losing months first, with no monthly-profit pass/fail gate.",
+      "return_first": "Highest past total return first; losing months are allowed.",
+      "return_first_min10_orders": "Highest past total return first, preferring candidates with at least 10 past monthly orders.",
+      "worst_year_balance": "Best past worst full-year return first, then total return."
+    }
+  },
+  "strict_selector_fast_proxy_results": [
+    {
+      "selector_id": "loss_control_no_positive_gate",
+      "method": "strict_expanding_selector_fast_monthly_proxy",
+      "exact_backtest": false,
+      "total_eval_return_pct": 76.96067336554972,
+      "return_2023_pct": -21.962351846160377,
+      "return_2024_pct": 140.23251382089362,
+      "return_2025_pct": -5.278939482401224,
+      "return_2026_ytd_pct": -0.3461109252179573,
+      "min_2025_2026_return_pct": -5.278939482401224,
+      "annual_2025_2026_gt_100": false,
+      "annual_2025_2026_gt_50": false,
+      "annual_2025_2026_gt_30": false,
+      "losing_eval_months": 6,
+      "min_monthly_return_pct": -39.595618471559334,
+      "min_monthly_orders": 10,
+      "orders": 634,
+      "turnover": 2171.0,
+      "cost_log": 2.1710000000000003,
+      "max_drawdown_pct_proxy": -47.66651360373736
+    },
+    {
+      "selector_id": "return_first",
+      "method": "strict_expanding_selector_fast_monthly_proxy",
+      "exact_backtest": false,
+      "total_eval_return_pct": 82.16890562002655,
+      "return_2023_pct": -3.262891533389445,
+      "return_2024_pct": 928.9028023132605,
+      "return_2025_pct": -82.69420979130078,
+      "return_2026_ytd_pct": 5.758519537632378,
+      "min_2025_2026_return_pct": -82.69420979130078,
+      "annual_2025_2026_gt_100": false,
+      "annual_2025_2026_gt_50": false,
+      "annual_2025_2026_gt_30": false,
+      "losing_eval_months": 9,
+      "min_monthly_return_pct": -74.48575843122582,
+      "min_monthly_orders": 10,
+      "orders": 714,
+      "turnover": 4612.0,
+      "cost_log": 4.612,
+      "max_drawdown_pct_proxy": -93.68859937157514
+    },
+    {
+      "selector_id": "return_first_min10_orders",
+      "method": "strict_expanding_selector_fast_monthly_proxy",
+      "exact_backtest": false,
+      "total_eval_return_pct": 82.16890562002655,
+      "return_2023_pct": -3.262891533389445,
+      "return_2024_pct": 928.9028023132605,
+      "return_2025_pct": -82.69420979130078,
+      "return_2026_ytd_pct": 5.758519537632378,
+      "min_2025_2026_return_pct": -82.69420979130078,
+      "annual_2025_2026_gt_100": false,
+      "annual_2025_2026_gt_50": false,
+      "annual_2025_2026_gt_30": false,
+      "losing_eval_months": 9,
+      "min_monthly_return_pct": -74.48575843122582,
+      "min_monthly_orders": 10,
+      "orders": 714,
+      "turnover": 4612.0,
+      "cost_log": 4.612,
+      "max_drawdown_pct_proxy": -93.68859937157514
+    },
+    {
+      "selector_id": "worst_year_balance",
+      "method": "strict_expanding_selector_fast_monthly_proxy",
+      "exact_backtest": false,
+      "total_eval_return_pct": 13.841024253423285,
+      "return_2023_pct": -14.153764859506024,
+      "return_2024_pct": 157.16009579594004,
+      "return_2025_pct": -55.071552654933065,
+      "return_2026_ytd_pct": 14.776387563075,
+      "min_2025_2026_return_pct": -55.071552654933065,
+      "annual_2025_2026_gt_100": false,
+      "annual_2025_2026_gt_50": false,
+      "annual_2025_2026_gt_30": false,
+      "losing_eval_months": 5,
+      "min_monthly_return_pct": -45.836658381585416,
+      "min_monthly_orders": 10,
+      "orders": 606,
+      "turnover": 1782.0,
+      "cost_log": 1.782,
+      "max_drawdown_pct_proxy": -65.37851920477075
+    }
+  ],
+  "best_strict_exact_result": {
+    "selector_id": "loss_control_no_positive_gate",
+    "method": "strict_expanding_selector_exact_best",
+    "exact_backtest": true,
+    "total_eval_return_pct": 76.96067336554995,
+    "return_2023_pct": -21.962351846160345,
+    "return_2024_pct": 140.2325138208937,
+    "return_2025_pct": -5.27893948240118,
+    "return_2026_ytd_pct": -0.3461109252179351,
+    "min_2025_2026_return_pct": -5.27893948240118,
+    "annual_2025_2026_gt_100": false,
+    "annual_2025_2026_gt_50": false,
+    "annual_2025_2026_gt_30": false,
+    "losing_eval_months": 6,
+    "min_monthly_return_pct": -39.595618471559334,
+    "min_monthly_orders": 10,
+    "orders": 634,
+    "turnover": 2171.0,
+    "cost_log": 2.1710000000000003,
+    "max_drawdown_pct_proxy": -58.38883094747598,
+    "max_drawdown_pct": -58.38883094747598,
+    "exposure_pct": 13.937616947340285,
+    "annualized_sharpe": 0.28791841085445835,
+    "win_rate_pct": 49.60143841774048,
+    "profit_factor": 1.0463336525884708
+  },
+  "oracle_diagnostics_fast_proxy": [
+    {
+      "selector_id": "static_oracle_best_min_2025_2026",
+      "method": "leaky_oracle_fast_monthly_proxy",
+      "exact_backtest": false,
+      "total_eval_return_pct": 514.2268740784181,
+      "return_2023_pct": -21.84725912849037,
+      "return_2024_pct": 264.09354587362,
+      "return_2025_pct": 49.973517360133776,
+      "return_2026_ytd_pct": 43.93189482284343,
+      "min_2025_2026_return_pct": 43.93189482284343,
+      "annual_2025_2026_gt_100": false,
+      "annual_2025_2026_gt_50": false,
+      "annual_2025_2026_gt_30": true,
+      "losing_eval_months": 5,
+      "min_monthly_return_pct": -53.05356019578138,
+      "min_monthly_orders": 10,
+      "orders": 592,
+      "turnover": 2642.0,
+      "cost_log": 2.642,
+      "max_drawdown_pct_proxy": -62.14096831796978
+    },
+    {
+      "selector_id": "monthly_oracle_best_return_min10",
+      "method": "leaky_oracle_fast_monthly_proxy",
+      "exact_backtest": false,
+      "total_eval_return_pct": 23382751.108661175,
+      "return_2023_pct": 2018.5952709240307,
+      "return_2024_pct": 22543.88548263184,
+      "return_2025_pct": 1692.6386394382653,
+      "return_2026_ytd_pct": 171.89784326451027,
+      "min_2025_2026_return_pct": 171.89784326451027,
+      "annual_2025_2026_gt_100": true,
+      "annual_2025_2026_gt_50": true,
+      "annual_2025_2026_gt_30": true,
+      "losing_eval_months": 1,
+      "min_monthly_return_pct": -38.284753747488686,
+      "min_monthly_orders": 10,
+      "orders": 660,
+      "turnover": 4407.0,
+      "cost_log": 4.407,
+      "max_drawdown_pct_proxy": -38.2847537474887
+    }
+  ],
+  "decision": {
+    "verdict": "NO_STRICT_RELAXED_UPGRADE",
+    "promote_strategy": false,
+    "reason": "去掉每月盈利要求后，严格不看未来的选择器仍没有做出2025和2026 YTD同时够强的结果。",
+    "next_step": "不要继续在这批免费K线规则里硬挤；若继续研究，应降低目标或等新数据源。",
+    "best_exact_selector_id": "loss_control_no_positive_gate",
+    "best_exact_2025_pct": -5.27893948240118,
+    "best_exact_2026_ytd_pct": -0.3461109252179351,
+    "best_exact_losing_months": 6,
+    "best_exact_max_drawdown_pct": -58.38883094747598,
+    "best_oracle_min_2025_2026_pct": 171.89784326451027,
+    "oracle_note": "Oracle rows are leaky diagnostics only and cannot be traded."
+  },
+  "hashes": {
+    "script_sha256": "379cf3b3ba6cdf806f8cb8a02fe9d94e32d439e233f24664b9c8a7df506d6b47",
+    "source_ohlc_sha256": "e5475b5691b0dffe23c4cae738a6b3f9759de6ad3e7586e3beb3ca262f2b3a57",
+    "candidate_monthly_sha256": "53ad11d5e3d5c5fff094f381875002496d05a88b19a13300e55df4a0d9fb4e87",
+    "candidate_meta_sha256": "0fbf3fefc85bbbaf98710e6490b622c99b68be03b384328d0f964f47f5c8eb5a",
+    "strict_selector_summary_sha256": "3b46f1bf024513c741f572dfecd0d036e38d07b6f7d3da377549d58934f4a0f8",
+    "oracle_diagnostic_summary_sha256": "665659244f3e4db85b7e00401d1f1b82380e7c5de9dca43fde6b4bbb0f9bc45d"
+  },
+  "files": {
+    "summary": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json",
+    "report": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/report.md",
+    "candidate_monthly_base": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/candidate_monthly_base.csv",
+    "candidate_meta": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/candidate_meta.csv",
+    "strict_selector_summary": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/strict_selector_summary.csv",
+    "oracle_diagnostic_summary": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/oracle_diagnostic_summary.csv",
+    "strict_fast_outputs": {
+      "loss_control_no_positive_gate": {
+        "selected_params": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/loss_control_no_positive_gate_fast_selected_params.csv",
+        "monthly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/loss_control_no_positive_gate_fast_monthly.csv",
+        "yearly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/loss_control_no_positive_gate_fast_yearly.csv"
+      },
+      "return_first": {
+        "selected_params": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/return_first_fast_selected_params.csv",
+        "monthly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/return_first_fast_monthly.csv",
+        "yearly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/return_first_fast_yearly.csv"
+      },
+      "return_first_min10_orders": {
+        "selected_params": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/return_first_min10_orders_fast_selected_params.csv",
+        "monthly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/return_first_min10_orders_fast_monthly.csv",
+        "yearly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/return_first_min10_orders_fast_yearly.csv"
+      },
+      "worst_year_balance": {
+        "selected_params": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/worst_year_balance_fast_selected_params.csv",
+        "monthly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/worst_year_balance_fast_monthly.csv",
+        "yearly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/worst_year_balance_fast_yearly.csv"
+      }
+    },
+    "best_strict_exact_outputs": {
+      "selected_params": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/loss_control_no_positive_gate_exact_selected_params.csv",
+      "monthly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/loss_control_no_positive_gate_exact_monthly.csv",
+      "yearly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/loss_control_no_positive_gate_exact_yearly.csv",
+      "equity": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/loss_control_no_positive_gate_exact_equity.csv"
+    },
+    "oracle_outputs": {
+      "static_oracle_best_min_2025_2026": {
+        "selected_params": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/static_oracle_best_min_2025_2026_selected_params.csv",
+        "monthly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/static_oracle_best_min_2025_2026_monthly.csv",
+        "yearly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/static_oracle_best_min_2025_2026_yearly.csv"
+      },
+      "monthly_oracle_best_return_min10": {
+        "selected_params": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/monthly_oracle_best_return_min10_selected_params.csv",
+        "monthly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/monthly_oracle_best_return_min10_monthly.csv",
+        "yearly": "artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/monthly_oracle_best_return_min10_yearly.csv"
+      }
+    }
+  }
+}

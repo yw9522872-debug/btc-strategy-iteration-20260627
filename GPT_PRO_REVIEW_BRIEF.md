@@ -475,6 +475,18 @@ Important current results:
   - Closest oracle pass at the real 0.2% cost is annual 100%, monthly orders >= 10, and monthly return >= -1%; this is leaky and not tradeable.
   - Decision: `TARGET_RELAXATION_HELPS_ORACLE_NOT_SELECTOR`. Target relaxation helps the oracle but not the strict selector; the bottleneck is selecting the right month/candidate without future information.
 
+- `STRATEGY_28_RELAXED_NO_MONTHLY_PROFIT_AUDIT.md`
+  - Strategy 28 is a relaxed-target audit, not a strategy and not tradeable.
+  - Audit id: `strategy_28_relaxed_no_monthly_profit_audit_20260628`.
+  - Script: `scripts/audit_strategy_28_relaxed_no_monthly_profit_20260628.py`.
+  - Output: `artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json`.
+  - It reuses the Strategy 14 `ret_state 64/100` family and the unified futures OHLC baseline; no new trading rule or market data was added.
+  - Monthly profitable-month requirement is removed, while the 0.2% round-trip cost and no-future expanding monthly selection rule remain.
+  - Four strict selectors were tested: loss-control first, return first, return first with monthly order-floor preference, and worst-full-year balance.
+  - Best strict exact result is still weak: 2023 -21.96%, 2024 +140.23%, 2025 -5.28%, 2026 YTD -0.35%, 6 losing eval months, max drawdown -58.39%, min monthly orders 10.
+  - The monthly oracle is strong, with 2025 +1692.64% and 2026 YTD +171.90%, but it chooses the best candidate after seeing each month and is therefore leaky.
+  - Decision: `NO_STRICT_RELAXED_UPGRADE`. Removing the monthly-profit requirement does not fix the non-leaky selector problem.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -519,6 +531,9 @@ Useful source files:
 - `scripts/audit_strategy_23_funding_rate_upper_bound_20260627.py`
 - `scripts/audit_strategy_24_funding_rate_strict_selector_20260627.py`
 - `scripts/audit_strategy_25_open_interest_upper_bound_feasibility_20260627.py`
+- `scripts/audit_strategy_26_intrabar_1m_upper_bound_20260627.py`
+- `scripts/audit_strategy_27_target_feasibility_20260627.py`
+- `scripts/audit_strategy_28_relaxed_no_monthly_profit_20260628.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
