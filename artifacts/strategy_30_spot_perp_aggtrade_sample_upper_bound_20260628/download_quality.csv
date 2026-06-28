@@ -1,0 +1,13 @@
+raw_rows,parsed_rows,aggregated_15m_rows,first_trade_time,last_trade_time,timestamp_units_seen,kind,month,url,downloaded_bytes,valid_15m_rows,missing_spot_15m_rows,missing_futures_15m_rows
+16197332,16197332,2976,2023-07-01T00:00:00+00:00,2023-07-31T23:59:59.999000+00:00,ms:2997,spot,2023-07,https://data.binance.vision/data/spot/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2023-07.zip,230203311,,,
+24963536,24963535,2976,2023-07-01T00:00:04.059000+00:00,2023-07-31T23:59:59.917000+00:00,ms:3009,futures,2023-07,https://data.binance.vision/data/futures/um/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2023-07.zip,329652487,,,
+0,0,2976,,,,combined,2023-07,,0,2976.0,0.0,0.0
+27774325,27774325,2880,2024-06-01T00:00:00.001000+00:00,2024-06-30T23:59:59.999000+00:00,ms:2917,spot,2024-06,https://data.binance.vision/data/spot/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2024-06.zip,353905374,,,
+26121816,26121815,2880,2024-06-01T00:00:00.131000+00:00,2024-06-30T23:59:59.985000+00:00,ms:2914,futures,2024-06,https://data.binance.vision/data/futures/um/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2024-06.zip,340036587,,,
+0,0,2880,,,,combined,2024-06,,0,2880.0,0.0,0.0
+24302731,24302731,2976,2025-08-01T00:00:00.328945+00:00,2025-08-31T23:59:59.566595+00:00,us:3008,spot,2025-08,https://data.binance.vision/data/spot/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2025-08.zip,367398550,,,
+34721407,34721406,2976,2025-08-01T00:00:01.745000+00:00,2025-08-31T23:59:59.989000+00:00,ms:3022,futures,2025-08,https://data.binance.vision/data/futures/um/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2025-08.zip,430144584,,,
+0,0,2976,,,,combined,2025-08,,0,2976.0,0.0,0.0
+21080265,21080265,2976,2026-05-01T00:00:00.365107+00:00,2026-05-31T23:59:59.698477+00:00,us:3004,spot,2026-05,https://data.binance.vision/data/spot/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2026-05.zip,312088417,,,
+33660929,33660928,2976,2026-05-01T00:00:00.217000+00:00,2026-05-31T23:59:59.812000+00:00,ms:3020,futures,2026-05,https://data.binance.vision/data/futures/um/monthly/aggTrades/BTCUSDT/BTCUSDT-aggTrades-2026-05.zip,413059686,,,
+0,0,2976,,,,combined,2026-05,,0,2976.0,0.0,0.0

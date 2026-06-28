@@ -1,0 +1,6 @@
+oracle_id,family_filter,leaky_oracle,requires_monthly_orders_ge_10_at_selection,months_without_order_floor_candidate,sample_month_count,non_positive_months,total_sample_return_pct,losing_sample_months,min_monthly_return_pct,max_monthly_return_pct,min_monthly_orders,orders,turnover,cost_log,worst_month_drawdown_pct,selected_candidate_count
+monthly_oracle_best_return,all,True,False,0,4,"['2023-07', '2024-06', '2025-08', '2026-05']",0.0,4,0.0,0.0,0,0,0.0,0.0,-0.252411071404246,2
+monthly_oracle_best_return_order10,all,True,True,0,4,"['2023-07', '2024-06', '2025-08', '2026-05']",-25.33249505586802,4,-12.672503833550241,-3.890801320404935,39,336,346.0,0.346,-25.765656630027177,2
+return_lead_order10,return_lead,True,True,0,4,"['2023-07', '2024-06', '2025-08', '2026-05']",-25.33249505586802,4,-12.672503833550241,-3.890801320404935,39,336,346.0,0.346,-25.765656630027177,2
+return_flow_combo_order10,return_flow_combo,True,True,0,4,"['2023-07', '2024-06', '2025-08', '2026-05']",-51.991037119457985,4,-23.887791430498794,-7.091631840284707,108,822,834.0,0.8340000000000001,-52.41363414197426,2
+flow_lead_order10,flow_lead,True,True,0,4,"['2023-07', '2024-06', '2025-08', '2026-05']",-99.3260045882653,4,-79.5230434989296,-64.51233454509102,976,4822,5166.0,5.166,-99.3316639182384,2

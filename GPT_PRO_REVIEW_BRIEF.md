@@ -498,6 +498,17 @@ Important current results:
   - Optional bookTicker archive probes return 404 for 2020-01, so do not build a second-level order-book strategy from monthly bookTicker archives.
   - Decision: `FREE_SPOT_PERP_RAW_TRADE_DATA_AVAILABLE`. Next step, if any, should be a separate spot-perp aggTrades lead/lag upper-bound test with funding/mark/index/premium as filters.
 
+- `STRATEGY_30_SPOT_PERP_AGGTRADE_SAMPLE_UPPER_BOUND.md`
+  - Strategy 30 is a small-sample leaky upper-bound test, not a strategy and not tradeable.
+  - Audit id: `strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628`.
+  - Script: `scripts/audit_strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628.py`.
+  - Output: `artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/summary.json`.
+  - It downloaded only four sample months, `2023-07`, `2024-06`, `2025-08`, and `2026-05`, for spot/futures BTCUSDT `aggTrades`; raw zip files were deleted after 15m aggregation.
+  - Data quality passed: 11808 15m feature rows, no missing spot/futures 15m rows, about 2.586 GB compressed downloaded, 208.8M raw rows parsed.
+  - Candidate grid: 204 spot-perp return/flow lead-lag candidates, leverage 1x/2x/4x, using Strategy 15 futures 15m returns and 0.2% round-trip cost.
+  - Best no-order-floor oracle is no trading, 0.00% sample return; order>=10 oracle loses all four sample months, total -25.33%, worst month -12.67%, minimum monthly orders 39.
+  - Decision: `SPOT_PERP_AGGTRADE_SAMPLE_UPPER_BOUND_FAILS`. Do not download the full ~90 GB aggTrades set for this lead-lag route.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -546,6 +557,7 @@ Useful source files:
 - `scripts/audit_strategy_27_target_feasibility_20260627.py`
 - `scripts/audit_strategy_28_relaxed_no_monthly_profit_20260628.py`
 - `scripts/audit_strategy_29_free_raw_trade_coverage_20260628.py`
+- `scripts/audit_strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

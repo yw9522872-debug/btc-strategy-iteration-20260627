@@ -723,6 +723,7 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 54. artifacts/strategy_27_target_feasibility_audit_20260627/summary.json
 55. artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json
 56. artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json
+57. artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -831,8 +832,11 @@ DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md 不是策略，只审查
 当前新增 29号免费 raw trade 数据覆盖审计：
 29号：strategy_29_free_raw_trade_coverage_audit_20260628，不是策略，不能交易，只检查 GPT Pro 建议的免费路线：现货-永续 raw trade 成交流错位。它只做 HTTP HEAD 检查，不下载大 trade 压缩包。2020-01 到 2026-05 共77个月全部覆盖：futures/spot aggTrades、futures/spot trades、futures/spot 1m K线、fundingRate、markPriceKlines、indexPriceKlines、premiumIndexKlines 都是77/77。可选 bookTicker 月包探针 2020-01 返回404，不做秒级盘口主策略。当前判断：FREE_SPOT_PERP_RAW_TRADE_DATA_AVAILABLE。如果继续，另起30号，只做 spot-perp aggTrades 成交流错位上限测试，funding/mark/index/premium 只做过滤器。
 
+当前新增 30号 spot-perp aggTrades 样本上限测试：
+30号：strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628，不是策略，不能交易，只拿四个关键样本月测试免费 spot/futures aggTrades 成交流错位有没有希望。样本月是 2023-07、2024-06、2025-08、2026-05。实际下载压缩包约2.586GB，处理成15分钟特征后删除原始zip；数据质量通过，11808根15分钟特征，spot/futures缺失15分钟行均为0。204个候选里，不要求交易次数时最好只是0%不交易；要求每月至少10单时，看答案oracle四个样本月全部亏，样本总收益 -25.33%，最差月 -12.67%，最少月交易39。当前判断：SPOT_PERP_AGGTRADE_SAMPLE_UPPER_BOUND_FAILS。不要下载全量约90GB继续做这条免费aggTrades lead-lag路线。
+
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
-这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，应做30号 spot-perp aggTrades 成交流错位上限测试。不要继续追“每个月盈利 + 每年100%”，也不要继续扩免费K线小规则或旧 ret_state 64/100 家族。
+这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，不要继续追“每个月盈利 + 每年100%”，不要继续扩免费K线小规则、旧 ret_state 64/100 家族、资金费率严格选择器或免费 aggTrades lead-lag 路线；更现实的方向是整理成研究结论/影子跟踪，或等用户提供完整付费级新数据源后另起新编号审计。
 
 请用中文、通俗的话和我沟通。
 ```

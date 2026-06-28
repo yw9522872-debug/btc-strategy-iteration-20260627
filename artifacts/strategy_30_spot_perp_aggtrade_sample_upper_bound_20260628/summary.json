@@ -1,0 +1,272 @@
+{
+  "status": "strategy_30_spot_perp_aggtrade_sample_upper_bound_ready",
+  "strategy_id": "strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628",
+  "generated_at": "2026-06-28T11:55:53.166433+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Small sample upper-bound test for free Binance spot-vs-USD-M futures aggTrades lead/lag features.",
+  "sample_months": [
+    "2023-07",
+    "2024-06",
+    "2025-08",
+    "2026-05"
+  ],
+  "source": {
+    "strategy_29_summary": "artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json",
+    "baseline_15_summary": "artifacts/strategy_15_unified_data_baseline_20260627/summary.json",
+    "combined_ohlc": "artifacts/strategy_14_pre2023_expanding_crowding_stress_audit_20260627/btc_15m_2020_2026_05_combined_ohlc.csv",
+    "features_15m": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/spot_perp_aggtrade_features_15m_sample.csv",
+    "download_quality": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/download_quality.csv",
+    "raw_zip_retained": false,
+    "raw_zip_note": "Downloaded monthly zip files are processed into 15m features and then deleted."
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "timing": {
+    "signals_use_closed_15m_aggTrades": true,
+    "position_participates_from_next_15m_bar": true,
+    "leaky_oracle_tradeable": false,
+    "sample_only_not_full_backtest": true
+  },
+  "data_quality": {
+    "from_cache": true,
+    "feature_rows": 11808,
+    "sample_months": [
+      "2023-07",
+      "2024-06",
+      "2025-08",
+      "2026-05"
+    ],
+    "first_timestamp": "2023-07-01T00:00:00+00:00",
+    "last_timestamp": "2026-05-31T23:45:00+00:00",
+    "duplicate_feature_timestamps": 0,
+    "valid_15m_rows": 11808,
+    "invalid_15m_rows": 0,
+    "missing_spot_15m_rows": 0,
+    "missing_futures_15m_rows": 0,
+    "downloaded_raw_zip_gb": 2.586,
+    "raw_rows": 208822341,
+    "parsed_rows": 208822337,
+    "pass": true
+  },
+  "candidate_grid": {
+    "candidate_count": 204,
+    "families": [
+      "flow_lead",
+      "return_flow_combo",
+      "return_lead"
+    ],
+    "rules": [
+      "flow_gap_momentum",
+      "flow_gap_reversal",
+      "return_flow_momentum",
+      "return_flow_reversal",
+      "return_gap_momentum",
+      "return_gap_reversal"
+    ],
+    "leverages": [
+      1.0,
+      2.0,
+      4.0
+    ]
+  },
+  "best_static_candidate": {
+    "candidate_id": "return_lead_return_gap_momentum_lev1p0_move_bps5_gap_bps10",
+    "family": "return_lead",
+    "rule": "return_gap_momentum",
+    "leverage": 1.0,
+    "move_bps": 5.0,
+    "gap_bps": 10.0,
+    "sample_month_count": 4,
+    "non_positive_months": [
+      "2023-07",
+      "2024-06",
+      "2025-08",
+      "2026-05"
+    ],
+    "total_sample_return_pct": 0.0,
+    "losing_sample_months": 4,
+    "min_monthly_return_pct": 0.0,
+    "max_monthly_return_pct": 0.0,
+    "min_monthly_orders": 0,
+    "orders": 0,
+    "turnover": 0.0,
+    "cost_log": 0.0,
+    "worst_month_drawdown_pct": 0.0,
+    "selected_candidate_count": 1,
+    "imbalance": null,
+    "gap": null
+  },
+  "oracle_summary": [
+    {
+      "oracle_id": "monthly_oracle_best_return",
+      "family_filter": "all",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": false,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [
+        "2023-07",
+        "2024-06",
+        "2025-08",
+        "2026-05"
+      ],
+      "total_sample_return_pct": 0.0,
+      "losing_sample_months": 4,
+      "min_monthly_return_pct": 0.0,
+      "max_monthly_return_pct": 0.0,
+      "min_monthly_orders": 0,
+      "orders": 0,
+      "turnover": 0.0,
+      "cost_log": 0.0,
+      "worst_month_drawdown_pct": -0.252411071404246,
+      "selected_candidate_count": 2
+    },
+    {
+      "oracle_id": "monthly_oracle_best_return_order10",
+      "family_filter": "all",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": true,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [
+        "2023-07",
+        "2024-06",
+        "2025-08",
+        "2026-05"
+      ],
+      "total_sample_return_pct": -25.33249505586802,
+      "losing_sample_months": 4,
+      "min_monthly_return_pct": -12.672503833550241,
+      "max_monthly_return_pct": -3.890801320404935,
+      "min_monthly_orders": 39,
+      "orders": 336,
+      "turnover": 346.0,
+      "cost_log": 0.346,
+      "worst_month_drawdown_pct": -25.765656630027177,
+      "selected_candidate_count": 2
+    },
+    {
+      "oracle_id": "return_lead_order10",
+      "family_filter": "return_lead",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": true,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [
+        "2023-07",
+        "2024-06",
+        "2025-08",
+        "2026-05"
+      ],
+      "total_sample_return_pct": -25.33249505586802,
+      "losing_sample_months": 4,
+      "min_monthly_return_pct": -12.672503833550241,
+      "max_monthly_return_pct": -3.890801320404935,
+      "min_monthly_orders": 39,
+      "orders": 336,
+      "turnover": 346.0,
+      "cost_log": 0.346,
+      "worst_month_drawdown_pct": -25.765656630027177,
+      "selected_candidate_count": 2
+    },
+    {
+      "oracle_id": "return_flow_combo_order10",
+      "family_filter": "return_flow_combo",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": true,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [
+        "2023-07",
+        "2024-06",
+        "2025-08",
+        "2026-05"
+      ],
+      "total_sample_return_pct": -51.991037119457985,
+      "losing_sample_months": 4,
+      "min_monthly_return_pct": -23.887791430498794,
+      "max_monthly_return_pct": -7.091631840284707,
+      "min_monthly_orders": 108,
+      "orders": 822,
+      "turnover": 834.0,
+      "cost_log": 0.8340000000000001,
+      "worst_month_drawdown_pct": -52.41363414197426,
+      "selected_candidate_count": 2
+    },
+    {
+      "oracle_id": "flow_lead_order10",
+      "family_filter": "flow_lead",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": true,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [
+        "2023-07",
+        "2024-06",
+        "2025-08",
+        "2026-05"
+      ],
+      "total_sample_return_pct": -99.3260045882653,
+      "losing_sample_months": 4,
+      "min_monthly_return_pct": -79.5230434989296,
+      "max_monthly_return_pct": -64.51233454509102,
+      "min_monthly_orders": 976,
+      "orders": 4822,
+      "turnover": 5166.0,
+      "cost_log": 5.166,
+      "worst_month_drawdown_pct": -99.3316639182384,
+      "selected_candidate_count": 2
+    }
+  ],
+  "best_oracle": {
+    "oracle_id": "monthly_oracle_best_return",
+    "family_filter": "all",
+    "leaky_oracle": true,
+    "requires_monthly_orders_ge_10_at_selection": false,
+    "months_without_order_floor_candidate": 0,
+    "sample_month_count": 4,
+    "non_positive_months": [
+      "2023-07",
+      "2024-06",
+      "2025-08",
+      "2026-05"
+    ],
+    "total_sample_return_pct": 0.0,
+    "losing_sample_months": 4,
+    "min_monthly_return_pct": 0.0,
+    "max_monthly_return_pct": 0.0,
+    "min_monthly_orders": 0,
+    "orders": 0,
+    "turnover": 0.0,
+    "cost_log": 0.0,
+    "worst_month_drawdown_pct": -0.252411071404246,
+    "selected_candidate_count": 2
+  },
+  "decision": {
+    "verdict": "SPOT_PERP_AGGTRADE_SAMPLE_UPPER_BOUND_FAILS",
+    "promote_strategy": false,
+    "reason": "即使只看四个关键样本月并允许每个月事后挑最好候选，仍不能稳定满足盈利和每月至少10单。",
+    "next_step": "停止这条免费aggTrades lead-lag路线，不再下载全量90GB。"
+  },
+  "hashes": {
+    "script_sha256": "8a2d3035ac9665e4b456d402638db5c7fa1f55444b5a59711c84f4bdb275ac76",
+    "features_15m_sha256": "f2a912d51996e9c1e93c18b3e3c0b3f4615a2d0b733579bb980117197bc4fa1c",
+    "baseline_15_summary_sha256": "39442d932bedd1885fea33dadba3f4f1c5a12e8b19cf3576313204506296dbfc",
+    "combined_ohlc_sha256": "e5475b5691b0dffe23c4cae738a6b3f9759de6ad3e7586e3beb3ca262f2b3a57"
+  },
+  "files": {
+    "summary": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/summary.json",
+    "report": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/report.md",
+    "features_15m": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/spot_perp_aggtrade_features_15m_sample.csv",
+    "download_quality": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/download_quality.csv",
+    "candidate_scan": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/candidate_scan.csv",
+    "candidate_monthly": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/candidate_monthly.csv",
+    "oracle_summary": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/oracle_summary.csv",
+    "oracle_monthly": "artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/oracle_monthly.csv"
+  }
+}
