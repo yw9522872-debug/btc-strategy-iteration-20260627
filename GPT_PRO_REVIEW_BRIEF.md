@@ -520,6 +520,17 @@ Important current results:
   - Result: 18 static candidates are positive in all four sample months. The order>=10 monthly oracle is positive in all four months, worst month +244.10%, minimum monthly orders 18, but it is leaky and the return numbers are extreme.
   - Decision: `MULTISYMBOL_FREE_FUTURES_SAMPLE_UPPER_BOUND_HAS_SIGNAL`. Next step should be Strategy 32 full-history coverage plus strict monthly selector. Do not promote Strategy 31 directly.
 
+- `STRATEGY_32_BTC_3M_2025_TODAY_UPPER_BOUND.md`
+  - Strategy 32 is a user-requested BTC 3m upper-bound test from 2025 through the latest available public archive, not a strategy and not tradeable.
+  - Audit id: `strategy_32_btc_3m_2025_today_upper_bound_20260628`.
+  - Script: `scripts/audit_strategy_32_btc_3m_2025_today_upper_bound_20260628.py`.
+  - Output: `artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json`.
+  - Data: Binance USD-M futures BTCUSDT 3m public klines from 2025-01-01 00:00 UTC through 2026-06-27 23:57 UTC. The 2026-06-28 daily archive was not available at run time.
+  - Data quality passed: 260640 rows, no duplicate timestamps, no non-3m gaps, no calendar-filled bars.
+  - Candidate grid: 348 single-BTC 3m momentum/reversal, EMA/Donchian trend, RSI/Bollinger mean-reversion, ATR breakout, and volume-body candidates, leverage 1x/2x/4x, 0.2% round-trip cost.
+  - Result: 0 static candidates are positive in every month. The order>=10 monthly oracle has 2025 +51.33%, 2026 YTD +227.11%, but 11 non-positive months and worst month -3.67%.
+  - Decision: `BTC_3M_2025_TODAY_UPPER_BOUND_FAILS`. Do not continue single-BTC 3m micro-rule expansion; if continuing, return to the Strategy 31 multi-symbol full-history strict-selector route.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -570,6 +581,7 @@ Useful source files:
 - `scripts/audit_strategy_29_free_raw_trade_coverage_20260628.py`
 - `scripts/audit_strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628.py`
 - `scripts/audit_strategy_31_multisymbol_free_futures_upper_bound_20260628.py`
+- `scripts/audit_strategy_32_btc_3m_2025_today_upper_bound_20260628.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
