@@ -21,7 +21,7 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
-当前最新提交：
+当前最新策略结果提交：
 0500e23 Add strategy 32 BTC 3m upper bound audit
 
 当前最新标签：
@@ -52,7 +52,7 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
-- 当前最新提交：`0500e23 Add strategy 32 BTC 3m upper bound audit`
+- 当前最新策略结果提交：`0500e23 Add strategy 32 BTC 3m upper bound audit`
 - 当前最新标签：`strategy-32-btc-3m-2025-today-upper-bound-20260628`
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
 - 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号、29号、30号、31号、32号及交接说明已提交并推送到 GitHub
