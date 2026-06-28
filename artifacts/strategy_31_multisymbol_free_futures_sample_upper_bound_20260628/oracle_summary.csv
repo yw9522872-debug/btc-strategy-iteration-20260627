@@ -1,0 +1,5 @@
+oracle_id,family_filter,leaky_oracle,requires_monthly_orders_ge_10_at_selection,months_without_order_floor_candidate,sample_month_count,non_positive_months,total_sample_return_pct,losing_sample_months,min_monthly_return_pct,max_monthly_return_pct,min_monthly_orders,orders,turnover,cost_log,worst_month_drawdown_pct,selected_candidate_count
+monthly_oracle_best_return,all,True,False,0,4,[],130043528603.5436,0,244.09985744174838,187775.89360969674,18,167,740.0,0.74,-58.639893516152306,4
+monthly_oracle_best_return_order10,all,True,True,0,4,[],130043528603.5436,0,244.09985744174838,187775.89360969674,18,167,740.0,0.74,-58.639893516152306,4
+single_symbol_oracle_order10,single_symbol,True,True,0,4,[],130043528603.5436,0,244.09985744174838,187775.89360969674,18,167,740.0,0.74,-58.639893516152306,4
+cross_section_oracle_order10,cross_section,True,True,0,4,['2023-07'],13052.009397225493,1,-2.2891864574294374,2539.7546672063972,108,1056,1878.0,1.8780000000000001,-86.82544360275976,4

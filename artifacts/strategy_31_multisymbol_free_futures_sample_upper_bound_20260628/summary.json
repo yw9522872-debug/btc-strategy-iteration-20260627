@@ -1,0 +1,311 @@
+{
+  "status": "strategy_31_multisymbol_free_futures_sample_upper_bound_ready",
+  "strategy_id": "strategy_31_multisymbol_free_futures_sample_upper_bound_20260628",
+  "generated_at": "2026-06-28T13:03:35.822612+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Small sample test for whether a free multi-symbol USD-M futures basket gives enough upper-bound pieces beyond BTC-only rules.",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "BNBUSDT",
+    "HYPEUSDT",
+    "DOGEUSDT",
+    "XRPUSDT",
+    "ADAUSDT",
+    "AVAXUSDT",
+    "LINKUSDT"
+  ],
+  "sample_months": [
+    "2023-07",
+    "2024-06",
+    "2025-08",
+    "2026-05"
+  ],
+  "data": {
+    "from_cache": true,
+    "rows": 11808,
+    "start_timestamp": "2023-07-01T00:00:00+00:00",
+    "end_timestamp": "2026-05-31T23:45:00+00:00",
+    "duplicate_timestamp_rows": 0,
+    "non_15m_gap_rows": 3,
+    "expected_sample_boundary_gaps": 3,
+    "symbols": [
+      {
+        "symbol": "BTCUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.538
+      },
+      {
+        "symbol": "ETHUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.552
+      },
+      {
+        "symbol": "SOLUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.497
+      },
+      {
+        "symbol": "BNBUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.489
+      },
+      {
+        "symbol": "HYPEUSDT",
+        "ok_months": 2,
+        "first_timestamp": "2025-08-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 5952,
+        "download_size_mb": 0.269
+      },
+      {
+        "symbol": "DOGEUSDT",
+        "ok_months": 3,
+        "first_timestamp": "2024-06-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 8832,
+        "download_size_mb": 0.387
+      },
+      {
+        "symbol": "XRPUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.504
+      },
+      {
+        "symbol": "ADAUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.464
+      },
+      {
+        "symbol": "AVAXUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.443
+      },
+      {
+        "symbol": "LINKUSDT",
+        "ok_months": 4,
+        "first_timestamp": "2023-07-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "valid_15m_rows": 11808,
+        "download_size_mb": 0.496
+      }
+    ],
+    "coverage_summary": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/symbol_coverage_summary.csv",
+    "pass": true
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002,
+    "multi_asset_turnover_note": "Cost is charged on the sum of absolute target weight changes across symbols."
+  },
+  "timing": {
+    "signals_use_closed_bar_t": true,
+    "position_participates_from_bar_t_plus_1": true,
+    "monthly_oracle_is_leaky_and_not_tradeable": true
+  },
+  "candidate_grid": {
+    "candidate_count": 816,
+    "families": [
+      "cross_section",
+      "single_symbol"
+    ],
+    "rules": [
+      "long_strong_short_weak",
+      "long_weak_short_strong",
+      "symbol_momentum",
+      "symbol_reversal"
+    ],
+    "leverages": [
+      1.0,
+      2.0,
+      4.0
+    ]
+  },
+  "static_positive_all_sample_months_count": 18,
+  "best_static_candidate": {
+    "candidate_id": "single_symbol_symbol_momentum_lev4p0_symbolXRPUSDT_lookback384_threshold_bps100",
+    "family": "single_symbol",
+    "rule": "symbol_momentum",
+    "leverage": 4.0,
+    "lookback": 384,
+    "threshold_bps": 100,
+    "sample_month_count": 4,
+    "non_positive_months": [],
+    "total_sample_return_pct": 2359738.3038216094,
+    "losing_sample_months": 0,
+    "min_monthly_return_pct": 88.84497420614265,
+    "max_monthly_return_pct": 71789.83820924602,
+    "min_monthly_orders": 86,
+    "orders": 462,
+    "turnover": 1868.0,
+    "cost_log": 1.868,
+    "worst_month_drawdown_pct": -76.5918175533039,
+    "selected_candidate_count": 1,
+    "symbol": "XRPUSDT"
+  },
+  "oracle_summary": [
+    {
+      "oracle_id": "monthly_oracle_best_return",
+      "family_filter": "all",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": false,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [],
+      "total_sample_return_pct": 130043528603.5436,
+      "losing_sample_months": 0,
+      "min_monthly_return_pct": 244.09985744174838,
+      "max_monthly_return_pct": 187775.89360969674,
+      "min_monthly_orders": 18,
+      "orders": 167,
+      "turnover": 740.0,
+      "cost_log": 0.74,
+      "worst_month_drawdown_pct": -58.639893516152306,
+      "selected_candidate_count": 4
+    },
+    {
+      "oracle_id": "monthly_oracle_best_return_order10",
+      "family_filter": "all",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": true,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [],
+      "total_sample_return_pct": 130043528603.5436,
+      "losing_sample_months": 0,
+      "min_monthly_return_pct": 244.09985744174838,
+      "max_monthly_return_pct": 187775.89360969674,
+      "min_monthly_orders": 18,
+      "orders": 167,
+      "turnover": 740.0,
+      "cost_log": 0.74,
+      "worst_month_drawdown_pct": -58.639893516152306,
+      "selected_candidate_count": 4
+    },
+    {
+      "oracle_id": "single_symbol_oracle_order10",
+      "family_filter": "single_symbol",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": true,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [],
+      "total_sample_return_pct": 130043528603.5436,
+      "losing_sample_months": 0,
+      "min_monthly_return_pct": 244.09985744174838,
+      "max_monthly_return_pct": 187775.89360969674,
+      "min_monthly_orders": 18,
+      "orders": 167,
+      "turnover": 740.0,
+      "cost_log": 0.74,
+      "worst_month_drawdown_pct": -58.639893516152306,
+      "selected_candidate_count": 4
+    },
+    {
+      "oracle_id": "cross_section_oracle_order10",
+      "family_filter": "cross_section",
+      "leaky_oracle": true,
+      "requires_monthly_orders_ge_10_at_selection": true,
+      "months_without_order_floor_candidate": 0,
+      "sample_month_count": 4,
+      "non_positive_months": [
+        "2023-07"
+      ],
+      "total_sample_return_pct": 13052.009397225493,
+      "losing_sample_months": 1,
+      "min_monthly_return_pct": -2.2891864574294374,
+      "max_monthly_return_pct": 2539.7546672063972,
+      "min_monthly_orders": 108,
+      "orders": 1056,
+      "turnover": 1878.0,
+      "cost_log": 1.8780000000000001,
+      "worst_month_drawdown_pct": -86.82544360275976,
+      "selected_candidate_count": 4
+    }
+  ],
+  "best_oracle": {
+    "oracle_id": "monthly_oracle_best_return",
+    "family_filter": "all",
+    "leaky_oracle": true,
+    "requires_monthly_orders_ge_10_at_selection": false,
+    "months_without_order_floor_candidate": 0,
+    "sample_month_count": 4,
+    "non_positive_months": [],
+    "total_sample_return_pct": 130043528603.5436,
+    "losing_sample_months": 0,
+    "min_monthly_return_pct": 244.09985744174838,
+    "max_monthly_return_pct": 187775.89360969674,
+    "min_monthly_orders": 18,
+    "orders": 167,
+    "turnover": 740.0,
+    "cost_log": 0.74,
+    "worst_month_drawdown_pct": -58.639893516152306,
+    "selected_candidate_count": 4
+  },
+  "best_order10_oracle": {
+    "oracle_id": "monthly_oracle_best_return_order10",
+    "family_filter": "all",
+    "leaky_oracle": true,
+    "requires_monthly_orders_ge_10_at_selection": true,
+    "months_without_order_floor_candidate": 0,
+    "sample_month_count": 4,
+    "non_positive_months": [],
+    "total_sample_return_pct": 130043528603.5436,
+    "losing_sample_months": 0,
+    "min_monthly_return_pct": 244.09985744174838,
+    "max_monthly_return_pct": 187775.89360969674,
+    "min_monthly_orders": 18,
+    "orders": 167,
+    "turnover": 740.0,
+    "cost_log": 0.74,
+    "worst_month_drawdown_pct": -58.639893516152306,
+    "selected_candidate_count": 4
+  },
+  "decision": {
+    "verdict": "MULTISYMBOL_FREE_FUTURES_SAMPLE_UPPER_BOUND_HAS_SIGNAL",
+    "promote_strategy": false,
+    "reason": "四个样本月里，多币种看答案上限在每月至少10单口径下全为正收益；但它仍然不能交易。",
+    "next_step": "另起32号扩到完整2020-2026，再做严格逐月选择器。"
+  },
+  "hashes": {
+    "script_sha256": "e0827d96dcb8543f4fbf0519bd70819356b22008e9ccdc0965a5e2ffac39dbe8",
+    "panel_sha256": "9afaefe9881651eb311518e719c274bbadd3271a6c87c07f86d4a00642cfe84b",
+    "coverage_sha256": "d313db491f035bda34aec82c3ca64dafbb13152bcd5d80d639ed0eb870900b14"
+  },
+  "files": {
+    "summary": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json",
+    "report": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/report.md",
+    "panel": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/multisymbol_close_panel_15m_sample.csv.gz",
+    "coverage": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/symbol_month_coverage.csv",
+    "candidate_scan": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/candidate_scan.csv",
+    "candidate_monthly": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/candidate_monthly.csv",
+    "oracle_summary": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/oracle_summary.csv",
+    "oracle_monthly": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/oracle_monthly.csv",
+    "oracle_yearly": "artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/oracle_yearly.csv"
+  }
+}

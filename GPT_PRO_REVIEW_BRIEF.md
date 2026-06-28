@@ -509,6 +509,17 @@ Important current results:
   - Best no-order-floor oracle is no trading, 0.00% sample return; order>=10 oracle loses all four sample months, total -25.33%, worst month -12.67%, minimum monthly orders 39.
   - Decision: `SPOT_PERP_AGGTRADE_SAMPLE_UPPER_BOUND_FAILS`. Do not download the full ~90 GB aggTrades set for this lead-lag route.
 
+- `STRATEGY_31_MULTISYMBOL_FREE_FUTURES_UPPER_BOUND.md`
+  - Strategy 31 is a small-sample multi-symbol free-data upper-bound test, not a strategy and not tradeable.
+  - Audit id: `strategy_31_multisymbol_free_futures_sample_upper_bound_20260628`.
+  - Script: `scripts/audit_strategy_31_multisymbol_free_futures_upper_bound_20260628.py`.
+  - Output: `artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json`.
+  - Symbols: BTCUSDT, ETHUSDT, SOLUSDT, BNBUSDT, HYPEUSDT, DOGEUSDT, XRPUSDT, ADAUSDT, AVAXUSDT, LINKUSDT on Binance USD-M futures 15m public klines.
+  - Sample months: 2023-07, 2024-06, 2025-08, 2026-05. HYPE covers only 2 sample months; DOGE covers 3; the other major symbols cover all 4.
+  - Candidate grid: 816 candidates, cross-sectional strong/weak rotation and single-symbol momentum/reversal, leverage 1x/2x/4x, 0.2% round-trip cost.
+  - Result: 18 static candidates are positive in all four sample months. The order>=10 monthly oracle is positive in all four months, worst month +244.10%, minimum monthly orders 18, but it is leaky and the return numbers are extreme.
+  - Decision: `MULTISYMBOL_FREE_FUTURES_SAMPLE_UPPER_BOUND_HAS_SIGNAL`. Next step should be Strategy 32 full-history coverage plus strict monthly selector. Do not promote Strategy 31 directly.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -558,6 +569,7 @@ Useful source files:
 - `scripts/audit_strategy_28_relaxed_no_monthly_profit_20260628.py`
 - `scripts/audit_strategy_29_free_raw_trade_coverage_20260628.py`
 - `scripts/audit_strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628.py`
+- `scripts/audit_strategy_31_multisymbol_free_futures_upper_bound_20260628.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

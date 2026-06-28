@@ -1,0 +1,41 @@
+symbol,month,url,ok,http_status,content_length,error,rows
+BTCUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/15m/BTCUSDT-15m-2023-07.zip,True,200.0,140229.0,,2976
+BTCUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/15m/BTCUSDT-15m-2024-06.zip,True,200.0,137470.0,,2880
+BTCUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/15m/BTCUSDT-15m-2025-08.zip,True,200.0,144410.0,,2976
+BTCUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/15m/BTCUSDT-15m-2026-05.zip,True,200.0,142000.0,,2976
+ETHUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/15m/ETHUSDT-15m-2023-07.zip,True,200.0,141673.0,,2976
+ETHUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/15m/ETHUSDT-15m-2024-06.zip,True,200.0,140804.0,,2880
+ETHUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/15m/ETHUSDT-15m-2025-08.zip,True,200.0,151325.0,,2976
+ETHUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/15m/ETHUSDT-15m-2026-05.zip,True,200.0,145132.0,,2976
+SOLUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/15m/SOLUSDT-15m-2023-07.zip,True,200.0,123883.0,,2976
+SOLUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/15m/SOLUSDT-15m-2024-06.zip,True,200.0,123267.0,,2880
+SOLUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/15m/SOLUSDT-15m-2025-08.zip,True,200.0,141260.0,,2976
+SOLUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/15m/SOLUSDT-15m-2026-05.zip,True,200.0,132325.0,,2976
+BNBUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/BNBUSDT/15m/BNBUSDT-15m-2023-07.zip,True,200.0,126440.0,,2976
+BNBUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/BNBUSDT/15m/BNBUSDT-15m-2024-06.zip,True,200.0,125801.0,,2880
+BNBUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/BNBUSDT/15m/BNBUSDT-15m-2025-08.zip,True,200.0,131504.0,,2976
+BNBUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/BNBUSDT/15m/BNBUSDT-15m-2026-05.zip,True,200.0,128535.0,,2976
+HYPEUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-07.zip,False,404.0,,HTTP Error 404: Not Found,0
+HYPEUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-06.zip,False,404.0,,HTTP Error 404: Not Found,0
+HYPEUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-08.zip,True,200.0,139847.0,,2976
+HYPEUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2026-05.zip,True,200.0,142704.0,,2976
+DOGEUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/15m/DOGEUSDT-15m-2023-07.zip,False,,,"URLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)'))",0
+DOGEUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/15m/DOGEUSDT-15m-2024-06.zip,True,200.0,130234.0,,2880
+DOGEUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/15m/DOGEUSDT-15m-2025-08.zip,True,200.0,141313.0,,2976
+DOGEUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/15m/DOGEUSDT-15m-2026-05.zip,True,200.0,134671.0,,2976
+XRPUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/XRPUSDT/15m/XRPUSDT-15m-2023-07.zip,True,200.0,133298.0,,2976
+XRPUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/XRPUSDT/15m/XRPUSDT-15m-2024-06.zip,True,200.0,122853.0,,2880
+XRPUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/XRPUSDT/15m/XRPUSDT-15m-2025-08.zip,True,200.0,139717.0,,2976
+XRPUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/XRPUSDT/15m/XRPUSDT-15m-2026-05.zip,True,200.0,132255.0,,2976
+ADAUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/ADAUSDT/15m/ADAUSDT-15m-2023-07.zip,True,200.0,121057.0,,2976
+ADAUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/ADAUSDT/15m/ADAUSDT-15m-2024-06.zip,True,200.0,116944.0,,2880
+ADAUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/ADAUSDT/15m/ADAUSDT-15m-2025-08.zip,True,200.0,129662.0,,2976
+ADAUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/ADAUSDT/15m/ADAUSDT-15m-2026-05.zip,True,200.0,119028.0,,2976
+AVAXUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/AVAXUSDT/15m/AVAXUSDT-15m-2023-07.zip,True,200.0,115280.0,,2976
+AVAXUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/AVAXUSDT/15m/AVAXUSDT-15m-2024-06.zip,True,200.0,114803.0,,2880
+AVAXUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/AVAXUSDT/15m/AVAXUSDT-15m-2025-08.zip,True,200.0,121247.0,,2976
+AVAXUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/AVAXUSDT/15m/AVAXUSDT-15m-2026-05.zip,True,200.0,112916.0,,2976
+LINKUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/LINKUSDT/15m/LINKUSDT-15m-2023-07.zip,True,200.0,129303.0,,2976
+LINKUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/LINKUSDT/15m/LINKUSDT-15m-2024-06.zip,True,200.0,125838.0,,2880
+LINKUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/LINKUSDT/15m/LINKUSDT-15m-2025-08.zip,True,200.0,137597.0,,2976
+LINKUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/LINKUSDT/15m/LINKUSDT-15m-2026-05.zip,True,200.0,126947.0,,2976
