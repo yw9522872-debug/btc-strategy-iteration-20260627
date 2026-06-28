@@ -7,8 +7,8 @@
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
-- 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`、`strategy-20-ohlc-structure-upper-bound-20260627`、`strategy-21-volume-upper-bound-20260627`、`strategy-22-hard-target-bottleneck-audit-20260627`、`strategy-23-funding-rate-upper-bound-20260627`、`strategy-24-funding-rate-strict-selector-20260627`、`strategy-25-open-interest-upper-bound-feasibility-20260627`、`strategy-26-intrabar-1m-upper-bound-20260627`、`strategy-27-target-feasibility-audit-20260627`、`strategy-28-relaxed-no-monthly-profit-audit-20260628`
-- 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号及交接说明已提交并推送到 GitHub
+- 当前最新标签：`strategy-15-unified-data-baseline-20260627`、`strategy-16-new-family-probe-20260627`、`strategy-17-simple-family-upper-bound-20260627`、`strategy-18-upper-bound-failure-review-20260627`、`strategy-19-calendar-seasonality-probe-20260627`、`strategy-20-ohlc-structure-upper-bound-20260627`、`strategy-21-volume-upper-bound-20260627`、`strategy-22-hard-target-bottleneck-audit-20260627`、`strategy-23-funding-rate-upper-bound-20260627`、`strategy-24-funding-rate-strict-selector-20260627`、`strategy-25-open-interest-upper-bound-feasibility-20260627`、`strategy-26-intrabar-1m-upper-bound-20260627`、`strategy-27-target-feasibility-audit-20260627`、`strategy-28-relaxed-no-monthly-profit-audit-20260628`、`strategy-29-free-raw-trade-coverage-audit-20260628`
+- 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号、29号及交接说明已提交并推送到 GitHub
 - 持仓量/多空比历史数据源审查文件：`DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`。它不是策略，无策略标签。
 - 1F/1G 策略结果提交：`e4232d3`
 - 固化标签：`strategy-freeze-monthly-profit-lock-20260627`
@@ -44,6 +44,7 @@
 - 26号1分钟内部结构上限测试保存标签：`strategy-26-intrabar-1m-upper-bound-20260627`
 - 27号目标可行性审计保存标签：`strategy-27-target-feasibility-audit-20260627`
 - 28号不要求月月盈利审计保存标签：`strategy-28-relaxed-no-monthly-profit-audit-20260628`
+- 29号免费 raw trade 数据覆盖审计保存标签：`strategy-29-free-raw-trade-coverage-audit-20260628`
 
 不要和其他 Codex 线程、其他 Chrome/GPT Pro 页面、其他仓库混用。
 
@@ -83,25 +84,27 @@
 32. `STRATEGY_26_INTRABAR_1M_UPPER_BOUND.md`
 33. `STRATEGY_27_TARGET_FEASIBILITY_AUDIT.md`
 34. `STRATEGY_28_RELAXED_NO_MONTHLY_PROFIT_AUDIT.md`
-35. `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
-36. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
-37. `CURRENT_STRATEGY_FREEZE.md`
-38. `GPT_PRO_REVIEW_BRIEF.md`
-39. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
-40. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
-41. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
-42. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
-43. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
-44. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
-45. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
-46. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
-47. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
-48. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
-49. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
-50. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
-51. `artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json`
-52. `artifacts/strategy_27_target_feasibility_audit_20260627/summary.json`
-53. `artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json`
+35. `STRATEGY_29_FREE_RAW_TRADE_COVERAGE_AUDIT.md`
+36. `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
+37. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+38. `CURRENT_STRATEGY_FREEZE.md`
+39. `GPT_PRO_REVIEW_BRIEF.md`
+40. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+41. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
+42. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
+43. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
+44. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
+45. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
+46. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
+47. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
+48. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
+49. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
+50. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
+51. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
+52. `artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json`
+53. `artifacts/strategy_27_target_feasibility_audit_20260627/summary.json`
+54. `artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json`
+55. `artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json`
 
 ## 当前固化策略
 
@@ -622,6 +625,19 @@
 - 看答案月度 oracle 很强：2025 `+1692.64%`、2026 YTD `+171.90%`，但它事后挑当月最好候选，是未来函数，不能交易。
 - 当前判断：`NO_STRICT_RELAXED_UPGRADE`。去掉月月盈利要求也救不回严格选择器；问题不是月月盈利条件单独太严，而是当月之前选不出正确候选。
 
+## 29号免费 raw trade 数据覆盖审计
+
+- 审计编号：`strategy_29_free_raw_trade_coverage_audit_20260628`
+- 定位文件：`STRATEGY_29_FREE_RAW_TRADE_COVERAGE_AUDIT.md`
+- 脚本：`scripts/audit_strategy_29_free_raw_trade_coverage_20260628.py`
+- 结果目录：`artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/`
+- 这不是策略，不能交易，只检查 GPT Pro 建议的免费路线：现货-永续 raw trade 成交流错位。
+- 审计只做 HTTP HEAD 检查，不下载大 trade 压缩包。
+- `2020-01` 到 `2026-05` 共 `77` 个月全部覆盖：futures/spot `aggTrades`、futures/spot `trades`、futures/spot 1m K线、fundingRate、markPriceKlines、indexPriceKlines、premiumIndexKlines 都是 `77/77`。
+- 可选 `bookTicker` 月包探针 2020-01 返回 `404`，不要做秒级盘口主策略。
+- 数据量很大：futures `aggTrades` 约 `39.56GB`，spot `aggTrades` 约 `50.70GB`；所以下一步优先用 `aggTrades`，不要先下更重的 `trades`。
+- 当前判断：`FREE_SPOT_PERP_RAW_TRADE_DATA_AVAILABLE`。如果继续，另起30号，只做 spot-perp `aggTrades` 成交流错位上限测试，funding/mark/index/premium 只做过滤器。
+
 ## 重要风险
 
 - 当前执行逻辑没有发现明显未来函数：信号只用已收盘K线，下一根K线才吃收益。
@@ -636,9 +652,9 @@
 
 0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
-- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住；23号资金费率看答案上限有月度零件；24号资金费率严格逐月选择失败；25号确认 Binance 公开持仓量历史不够覆盖 2020-2026；数据源审查建议优先用 Tardis.dev 完整 CSV；26号免费1分钟内部结构上限失败；27号确认目标放宽只能帮 oracle，帮不了严格选择器；28号确认不要求月月盈利也救不回 `ret_state 64/100` 严格选择器。
+- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16号简单价格规则失败；17号看答案上限失败；18号解释失败月份；19号日历季节性失败；20号 OHLC 结构上限失败；21号成交量/taker 上限失败；22号确认原始硬目标和严格选择器双重卡住；23号资金费率看答案上限有月度零件；24号资金费率严格逐月选择失败；25号确认 Binance 公开持仓量历史不够覆盖 2020-2026；数据源审查建议优先用 Tardis.dev 完整 CSV；26号免费1分钟内部结构上限失败；27号确认目标放宽只能帮 oracle，帮不了严格选择器；28号确认不要求月月盈利也救不回 `ret_state 64/100` 严格选择器；29号确认免费 spot-perp raw trade 数据覆盖完整。
 - 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC 结构小规则，也不要继续扩成交量/taker小规则，也不要继续扩1分钟内部结构小规则；资金费率候选也不能升级。
-- 如果继续研究，应先拿到可审计的完整历史持仓量/多空比 CSV；如果拿不到，应把目标降到影子跟踪/低年化验证，而不是继续追“每个月盈利 + 每年100%”。不要直接写可交易策略，也不要直接上机器学习。
+- 如果继续研究，下一步应另起30号，只做 spot-perp `aggTrades` 成交流错位上限测试；funding/mark/index/premium 只做过滤器。不要直接写可交易策略，也不要直接上机器学习。
 - 当前历史硬目标很可能过严，但不是唯一问题：22号显示原始硬目标下连看答案 oracle 都差 `2` 个月；27号显示放宽后看答案能过，但严格逐月选择器仍 `0/49`；28号显示拿掉“月月盈利”后，旧 ret_state 家族严格选择器仍在 2025/2026 亏损。
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
@@ -686,25 +702,27 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 33. STRATEGY_26_INTRABAR_1M_UPPER_BOUND.md
 34. STRATEGY_27_TARGET_FEASIBILITY_AUDIT.md
 35. STRATEGY_28_RELAXED_NO_MONTHLY_PROFIT_AUDIT.md
-36. DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md
-37. RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md
-38. CURRENT_STRATEGY_FREEZE.md
-39. GPT_PRO_REVIEW_BRIEF.md
-40. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
-41. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
-42. artifacts/strategy_16_new_family_probe_20260627/summary.json
-43. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
-44. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
-45. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
-46. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
-47. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
-48. artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json
-49. artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json
-50. artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json
-51. artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json
-52. artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json
-53. artifacts/strategy_27_target_feasibility_audit_20260627/summary.json
-54. artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json
+36. STRATEGY_29_FREE_RAW_TRADE_COVERAGE_AUDIT.md
+37. DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md
+38. RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md
+39. CURRENT_STRATEGY_FREEZE.md
+40. GPT_PRO_REVIEW_BRIEF.md
+41. artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json
+42. artifacts/strategy_15_unified_data_baseline_20260627/summary.json
+43. artifacts/strategy_16_new_family_probe_20260627/summary.json
+44. artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json
+45. artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json
+46. artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json
+47. artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json
+48. artifacts/strategy_21_volume_upper_bound_20260627/summary.json
+49. artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json
+50. artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json
+51. artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json
+52. artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json
+53. artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json
+54. artifacts/strategy_27_target_feasibility_audit_20260627/summary.json
+55. artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json
+56. artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -810,8 +828,11 @@ DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md 不是策略，只审查
 当前新增 28号不要求月月盈利审计：
 28号：strategy_28_relaxed_no_monthly_profit_audit_20260628，不是策略，不能交易，只检查如果不要求每个月都盈利，旧 ret_state 64/100 家族能不能重新优化。它不新增交易规则，不新增市场数据，复用14号统一 futures K线底座；主手续费仍为开平合计0.2%，严格选择器仍每个月只能用过去数据选参数。最好的严格不看未来结果：2023 -21.96%、2024 +140.23%、2025 -5.28%、2026 YTD -0.35%，亏损月份6，最差月份 -39.60%，最大回撤 -58.39%，最低月交易10。看答案月度oracle很强：2025 +1692.64%、2026 YTD +171.90%，但它事后挑当月最好候选，是未来函数，不能交易。当前判断：NO_STRICT_RELAXED_UPGRADE。去掉月月盈利要求也救不回严格选择器；问题不是月月盈利条件单独太严，而是当月之前选不出正确候选。
 
+当前新增 29号免费 raw trade 数据覆盖审计：
+29号：strategy_29_free_raw_trade_coverage_audit_20260628，不是策略，不能交易，只检查 GPT Pro 建议的免费路线：现货-永续 raw trade 成交流错位。它只做 HTTP HEAD 检查，不下载大 trade 压缩包。2020-01 到 2026-05 共77个月全部覆盖：futures/spot aggTrades、futures/spot trades、futures/spot 1m K线、fundingRate、markPriceKlines、indexPriceKlines、premiumIndexKlines 都是77/77。可选 bookTicker 月包探针 2020-01 返回404，不做秒级盘口主策略。当前判断：FREE_SPOT_PERP_RAW_TRADE_DATA_AVAILABLE。如果继续，另起30号，只做 spot-perp aggTrades 成交流错位上限测试，funding/mark/index/premium 只做过滤器。
+
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
-这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，要么拿 Tardis.dev 或同等级完整持仓量/多空比 CSV；如果拿不到，应把目标降到影子跟踪/低年化验证。不要继续追“每个月盈利 + 每年100%”，也不要继续扩免费K线小规则或旧 ret_state 64/100 家族。
+这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，应做30号 spot-perp aggTrades 成交流错位上限测试。不要继续追“每个月盈利 + 每年100%”，也不要继续扩免费K线小规则或旧 ret_state 64/100 家族。
 
 请用中文、通俗的话和我沟通。
 ```

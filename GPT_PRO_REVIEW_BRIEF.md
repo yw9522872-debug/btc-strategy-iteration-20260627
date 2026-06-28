@@ -487,6 +487,17 @@ Important current results:
   - The monthly oracle is strong, with 2025 +1692.64% and 2026 YTD +171.90%, but it chooses the best candidate after seeing each month and is therefore leaky.
   - Decision: `NO_STRICT_RELAXED_UPGRADE`. Removing the monthly-profit requirement does not fix the non-leaky selector problem.
 
+- `STRATEGY_29_FREE_RAW_TRADE_COVERAGE_AUDIT.md`
+  - Strategy 29 is a free-data coverage audit, not a strategy and not tradeable.
+  - Audit id: `strategy_29_free_raw_trade_coverage_audit_20260628`.
+  - Script: `scripts/audit_strategy_29_free_raw_trade_coverage_20260628.py`.
+  - Output: `artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json`.
+  - It follows the GPT Pro recommendation to check the last plausible free route: spot-perp raw-trade lead/lag plus funding/mark/index/premium filters.
+  - The audit uses HEAD checks only and does not download or parse the large trade zip files.
+  - Coverage from 2020-01 through 2026-05 is complete, 77/77 months, for futures/spot aggTrades, futures/spot trades, futures/spot 1m klines, fundingRate, markPriceKlines, indexPriceKlines, and premiumIndexKlines.
+  - Optional bookTicker archive probes return 404 for 2020-01, so do not build a second-level order-book strategy from monthly bookTicker archives.
+  - Decision: `FREE_SPOT_PERP_RAW_TRADE_DATA_AVAILABLE`. Next step, if any, should be a separate spot-perp aggTrades lead/lag upper-bound test with funding/mark/index/premium as filters.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -534,6 +545,7 @@ Useful source files:
 - `scripts/audit_strategy_26_intrabar_1m_upper_bound_20260627.py`
 - `scripts/audit_strategy_27_target_feasibility_20260627.py`
 - `scripts/audit_strategy_28_relaxed_no_monthly_profit_20260628.py`
+- `scripts/audit_strategy_29_free_raw_trade_coverage_20260628.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

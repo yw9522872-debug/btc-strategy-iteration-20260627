@@ -1,0 +1,192 @@
+{
+  "status": "strategy_29_free_raw_trade_coverage_audit_ready",
+  "strategy_id": "strategy_29_free_raw_trade_coverage_audit_20260628",
+  "generated_at": "2026-06-28T11:05:56.542313+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "Check whether free Binance public data can support a spot-perp raw-trade lead/lag Strategy 29 research path.",
+  "gpt_pro_direction": {
+    "most_recommended": "spot-perp raw trade lead-lag plus basis/premium/funding filters",
+    "secondary": "small cross-asset lead-lag with very few major symbols",
+    "not_recommended": "more K-line micro-rules, OI/long-short public REST history, funding-only selector"
+  },
+  "coverage_window": {
+    "start_month": "2020-01",
+    "end_month": "2026-05",
+    "months": 77
+  },
+  "source": {
+    "kind": "Binance public data archive HEAD checks only",
+    "symbol": "BTCUSDT",
+    "note": "This audit checks archive availability and size only; it does not download or parse the large trade zip files."
+  },
+  "dataset_summary": [
+    {
+      "dataset_id": "futures_um_aggTrades",
+      "role": "main",
+      "description": "USD-M futures aggregate trades; rebuild aggressive flow with isBuyerMaker.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 39.558,
+      "min_month_size_mb": 90.985,
+      "max_month_size_mb": 1325.165
+    },
+    {
+      "dataset_id": "spot_aggTrades",
+      "role": "main",
+      "description": "Spot aggregate trades; spot lead/lag against USD-M futures.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 50.699,
+      "min_month_size_mb": 204.967,
+      "max_month_size_mb": 2534.952
+    },
+    {
+      "dataset_id": "futures_um_trades",
+      "role": "main_optional",
+      "description": "USD-M futures raw trades; heavier alternative to aggTrades.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 61.396,
+      "min_month_size_mb": 113.634,
+      "max_month_size_mb": 1759.378
+    },
+    {
+      "dataset_id": "spot_trades",
+      "role": "main_optional",
+      "description": "Spot raw trades; heavier alternative to aggTrades.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 67.988,
+      "min_month_size_mb": 257.614,
+      "max_month_size_mb": 3094.922
+    },
+    {
+      "dataset_id": "futures_um_1m_klines",
+      "role": "support",
+      "description": "USD-M futures 1m klines for validation and low-cost features.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 0.135,
+      "min_month_size_mb": 1.61,
+      "max_month_size_mb": 1.991
+    },
+    {
+      "dataset_id": "spot_1m_klines",
+      "role": "support",
+      "description": "Spot 1m klines for spot-perp spread and validation.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 0.156,
+      "min_month_size_mb": 1.876,
+      "max_month_size_mb": 2.296
+    },
+    {
+      "dataset_id": "futures_um_fundingRate",
+      "role": "filter",
+      "description": "Funding history; use only after fundingTime is known.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 0.0,
+      "min_month_size_mb": 0.001,
+      "max_month_size_mb": 0.001
+    },
+    {
+      "dataset_id": "futures_um_markPriceKlines_1m",
+      "role": "filter",
+      "description": "Mark price 1m klines for mark/index divergence.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 0.08,
+      "min_month_size_mb": 0.899,
+      "max_month_size_mb": 1.341
+    },
+    {
+      "dataset_id": "futures_um_indexPriceKlines_1m",
+      "role": "filter",
+      "description": "Index price 1m klines for fair-price reference.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 0.086,
+      "min_month_size_mb": 0.875,
+      "max_month_size_mb": 1.405
+    },
+    {
+      "dataset_id": "futures_um_premiumIndexKlines_1m",
+      "role": "filter",
+      "description": "Premium index 1m klines for premium/basis filter.",
+      "required_months": 77,
+      "ok_months": 77,
+      "missing_months": 0,
+      "missing_month_list": "",
+      "coverage_pass": true,
+      "total_size_gb": 0.058,
+      "min_month_size_mb": 0.461,
+      "max_month_size_mb": 0.882
+    }
+  ],
+  "optional_probes": [
+    {
+      "probe_id": "futures_um_bookTicker_2020_01",
+      "description": "Optional bookTicker archive sample. Not required for Strategy 29.",
+      "url": "https://data.binance.vision/data/futures/um/monthly/bookTicker/BTCUSDT/BTCUSDT-bookTicker-2020-01.zip",
+      "ok": false,
+      "http_status": 404,
+      "content_length": null,
+      "attempts": 1,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "probe_id": "spot_bookTicker_2020_01",
+      "description": "Optional spot bookTicker archive sample. Not required for Strategy 29.",
+      "url": "https://data.binance.vision/data/spot/monthly/bookTicker/BTCUSDT/BTCUSDT-bookTicker-2020-01.zip",
+      "ok": false,
+      "http_status": 404,
+      "content_length": null,
+      "attempts": 1,
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "decision": {
+    "verdict": "FREE_SPOT_PERP_RAW_TRADE_DATA_AVAILABLE",
+    "promote_strategy": false,
+    "reason": "现货/合约aggTrades、1m K线、funding、mark/index/premium 月包都覆盖 2020-01 到 2026-05，可以继续做一次成交流错位上限测试。",
+    "next_step": "另起30号，只做 spot-perp raw trade lead-lag + basis/funding filter 的上限测试；不要再扩免费K线小规则。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json",
+    "report": "artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/report.md",
+    "availability_matrix": "artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/availability_matrix.csv",
+    "dataset_summary": "artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/dataset_summary.csv",
+    "optional_probe_summary": "artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/optional_probe_summary.csv"
+  }
+}

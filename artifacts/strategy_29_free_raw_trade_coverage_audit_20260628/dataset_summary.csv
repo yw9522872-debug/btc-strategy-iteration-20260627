@@ -1,0 +1,11 @@
+dataset_id,role,description,required_months,ok_months,missing_months,missing_month_list,coverage_pass,total_size_gb,min_month_size_mb,max_month_size_mb
+futures_um_aggTrades,main,USD-M futures aggregate trades; rebuild aggressive flow with isBuyerMaker.,77,77,0,,True,39.558,90.985,1325.165
+spot_aggTrades,main,Spot aggregate trades; spot lead/lag against USD-M futures.,77,77,0,,True,50.699,204.967,2534.952
+futures_um_trades,main_optional,USD-M futures raw trades; heavier alternative to aggTrades.,77,77,0,,True,61.396,113.634,1759.378
+spot_trades,main_optional,Spot raw trades; heavier alternative to aggTrades.,77,77,0,,True,67.988,257.614,3094.922
+futures_um_1m_klines,support,USD-M futures 1m klines for validation and low-cost features.,77,77,0,,True,0.135,1.61,1.991
+spot_1m_klines,support,Spot 1m klines for spot-perp spread and validation.,77,77,0,,True,0.156,1.876,2.296
+futures_um_fundingRate,filter,Funding history; use only after fundingTime is known.,77,77,0,,True,0.0,0.001,0.001
+futures_um_markPriceKlines_1m,filter,Mark price 1m klines for mark/index divergence.,77,77,0,,True,0.08,0.899,1.341
+futures_um_indexPriceKlines_1m,filter,Index price 1m klines for fair-price reference.,77,77,0,,True,0.086,0.875,1.405
+futures_um_premiumIndexKlines_1m,filter,Premium index 1m klines for premium/basis filter.,77,77,0,,True,0.058,0.461,0.882

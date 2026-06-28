@@ -1,0 +1,3 @@
+probe_id,description,url,ok,http_status,content_length,attempts,error
+futures_um_bookTicker_2020_01,Optional bookTicker archive sample. Not required for Strategy 29.,https://data.binance.vision/data/futures/um/monthly/bookTicker/BTCUSDT/BTCUSDT-bookTicker-2020-01.zip,False,404,,1,HTTP Error 404: Not Found
+spot_bookTicker_2020_01,Optional spot bookTicker archive sample. Not required for Strategy 29.,https://data.binance.vision/data/spot/monthly/bookTicker/BTCUSDT/BTCUSDT-bookTicker-2020-01.zip,False,404,,1,HTTP Error 404: Not Found
