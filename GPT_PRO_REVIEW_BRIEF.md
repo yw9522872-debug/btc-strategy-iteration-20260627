@@ -822,6 +822,19 @@ Important current results:
   - Best low-drawdown near miss: confirm 1, `event_micro_plus_time`, depth 3, min leaf 3, hold 96, leverage 2.0, 2025 +88.56%, 2026 +368.95%, max drawdown -47.83%; drawdown is acceptable but 2025 return is below +100%.
   - Decision: `EVENT_MICRO_ORACLE_PASSES_BUT_WALKFORWARD_FAILS`. Micro/event-local data helps, but still does not simultaneously satisfy return and drawdown. Do not keep tuning tree depth, leaf size, hold, leverage, or confirmation bars; the next useful audit is failure-month/event attribution for the near-miss configs.
 
+- `STRATEGY_59_TAIL_EVENT_FAILURE_ATTRIBUTION.md`
+  - Strategy 59 attributes Strategy 58 failure months and events. It is not a strategy and not tradeable.
+  - Audit id: `strategy_59_tail_event_failure_attribution_20260630`.
+  - Script: `scripts/audit_strategy_59_tail_event_failure_attribution_20260630.py`.
+  - Output: `artifacts/strategy_59_tail_event_failure_attribution_20260630/summary.json`.
+  - It reuses Strategy 58 only and does not add rules or tune parameters.
+  - It analyzes two representative configs: Strategy 58's best-return drawdown-fail policy and the best drawdown-constrained near miss.
+  - Best-return policy: 2025 +144.16%, 2026 +151.71%, max drawdown -65.31%, 173 trades. Its main drawdown window runs from 2025-11-18 12:30 UTC to 2026-01-29 14:00 UTC, across 39 trades with 20 losing trades.
+  - Concentration result: in that drawdown window, the worst 3 losing trades explain only 39.50% of window negative log PnL; across all trades, worst 3 explain only 16.60% of total negative trade log PnL. So the main drawdown is not one or two isolated events.
+  - Worst 5 events all have predicted action opposite to oracle action, mainly HYPE momentum/reversal direction mistakes.
+  - Low-drawdown near miss: max drawdown -47.83%, but 2025 return is only +88.56%, so it fails the +100% annual threshold.
+  - Decision: `DRAWDOWN_SPREAD_ACROSS_MANY_EVENTS`. Deleting the worst few trades or minor stop-loss patching is unlikely to rescue Strategy 58. If continuing, only test a minimal causal risk overlay using already-realized trade PnL/drawdown; if that fails, stop the BTC/HYPE tail-event action-selection branch.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -898,6 +911,7 @@ Useful source files:
 - `scripts/audit_strategy_56_tail_event_loss_root_cause_20260630.py`
 - `scripts/audit_strategy_57_tail_event_state_action_predictability_20260630.py`
 - `scripts/audit_strategy_58_tail_event_micro_signal_20260630.py`
+- `scripts/audit_strategy_59_tail_event_failure_attribution_20260630.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
