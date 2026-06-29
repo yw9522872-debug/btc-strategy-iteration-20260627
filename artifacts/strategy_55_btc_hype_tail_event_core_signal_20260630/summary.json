@@ -1,0 +1,124 @@
+{
+  "status": "strategy_55_btc_hype_tail_event_core_signal_done",
+  "strategy_id": "strategy_55_btc_hype_tail_event_core_signal_20260630",
+  "generated_at": "2026-06-29T18:58:18.330858+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Switch away from old 2C/ret_state. Test BTC/HYPE tail-event triggers as a new core signal source.",
+  "data": {
+    "sources": [
+      "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/btc_hype_close_panel_15m_2020_2026_05.csv.gz",
+      "artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/latest_klines.csv.gz"
+    ],
+    "rows": 37790,
+    "start_timestamp": "2025-06-01T00:00:00+00:00",
+    "end_timestamp": "2026-06-29T15:15:00+00:00",
+    "duplicate_timestamp_rows": 0,
+    "non_15m_gap_rows": 0,
+    "months": [
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06"
+    ]
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "timing": {
+    "signals_use_closed_15m_bar_t": true,
+    "position_participates_from_bar_t_plus_1": true,
+    "monthly_oracle_is_leaky": true,
+    "strict_selector_uses_only_prior_months": true
+  },
+  "candidate_count": 144,
+  "static_relaxed_pass_count": 0,
+  "best_static_candidate": {
+    "candidate_id": "loose_hype_reversal_hold64_lev2p0",
+    "event_set": "loose",
+    "hype_ret16_abs": 0.04,
+    "hype_ret96_abs": 0.1,
+    "resid_z_abs": 2.0,
+    "action": "hype_reversal",
+    "hold_bars": 64,
+    "leverage": 2.0,
+    "relaxed_pass": false,
+    "return_2025_pct": 34.83199640487751,
+    "return_2026_pct": 104.15088385414518,
+    "min_target_year_return_pct": 34.83199640487751,
+    "max_drawdown_pct": -71.96878449517146,
+    "losing_months": 7,
+    "min_monthly_return_pct": -37.9628967757461,
+    "orders": 484,
+    "turnover": 996.0,
+    "selected_month_count": 13,
+    "selected_candidate_count": 1
+  },
+  "monthly_oracle": {
+    "relaxed_pass": false,
+    "return_2025_pct": 2399.2648154862845,
+    "return_2026_pct": 5271.518452502309,
+    "min_target_year_return_pct": 2399.2648154862845,
+    "max_drawdown_pct": -91.10312566348023,
+    "losing_months": 0,
+    "min_monthly_return_pct": 16.68805668982978,
+    "orders": 378,
+    "turnover": 786.0,
+    "selected_month_count": 13,
+    "selected_candidate_count": 9
+  },
+  "monthly_oracle_drawdown_capped": {
+    "relaxed_pass": true,
+    "return_2025_pct": 1689.67020097216,
+    "return_2026_pct": 1047.55329034413,
+    "min_target_year_return_pct": 1047.55329034413,
+    "max_drawdown_pct": -40.65819177229061,
+    "losing_months": 0,
+    "min_monthly_return_pct": 7.1304780725820915,
+    "orders": 485,
+    "turnover": 841.0,
+    "selected_month_count": 13,
+    "selected_candidate_count": 10
+  },
+  "strict_selector": {
+    "relaxed_pass": false,
+    "return_2025_pct": -11.639257655959302,
+    "return_2026_pct": -0.41311877329666125,
+    "min_target_year_return_pct": -11.639257655959302,
+    "max_drawdown_pct": -10.830842104300942,
+    "losing_months": 10,
+    "min_monthly_return_pct": -5.7421111872333,
+    "orders": 494,
+    "turnover": 213.5,
+    "selected_month_count": 12,
+    "selected_candidate_count": 6
+  },
+  "decision": {
+    "verdict": "TAIL_EVENT_CORE_DRAWDOWN_CAPPED_ORACLE_ONLY_PASSES",
+    "promote_strategy": false,
+    "reason": "回撤限制版看答案oracle能过，说明事件后有风险受控空间，但还不能提前选中。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/summary.json",
+    "report": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/report.md",
+    "candidate_scan": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/candidate_scan.csv",
+    "candidate_monthly": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/candidate_monthly.csv",
+    "monthly_oracle": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/monthly_oracle.csv",
+    "monthly_oracle_drawdown_capped": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/monthly_oracle_drawdown_capped.csv",
+    "strict_selector_monthly": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/strict_selector_monthly.csv"
+  }
+}

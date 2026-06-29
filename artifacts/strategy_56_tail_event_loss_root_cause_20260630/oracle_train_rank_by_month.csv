@@ -1,0 +1,13 @@
+month,oracle_candidate_id,oracle_action,oracle_return_pct,candidate_id,train_log_return,train_max_drawdown_pct,train_losing_months,train_months,train_rank
+2025-07,loose_hype_momentum_hold96_lev2p0,hype_momentum,21.389850478882533,loose_hype_momentum_hold96_lev2p0,0.5078476607910638,-31.684644480989853,0,1,127
+2025-08,strict_hype_reversal_hold64_lev2p0,hype_reversal,36.06374395835736,strict_hype_reversal_hold64_lev2p0,0.21988550541856822,-32.120409538183445,0,2,120
+2025-09,loose_hype_momentum_hold96_lev2p0,hype_momentum,60.62545429393511,loose_hype_momentum_hold96_lev2p0,0.5012337985829117,-50.7374570225979,1,3,132
+2025-10,loose_hype_reversal_hold16_lev2p0,hype_reversal,52.037027787219344,loose_hype_reversal_hold16_lev2p0,-0.08558329640350432,-40.40939270867043,2,4,109
+2025-11,loose_btc_momentum_hold96_lev2p0,btc_momentum,47.895943865510034,loose_btc_momentum_hold96_lev2p0,-0.2219743649198545,-35.76056369733907,4,5,85
+2025-12,loose_hype_momentum_hold96_lev2p0,hype_momentum,76.60909327810035,loose_hype_momentum_hold96_lev2p0,1.3216447667001037,-64.29304555619957,1,6,124
+2026-01,strict_hype_momentum_hold96_lev2p0,hype_momentum,178.3749860134924,strict_hype_momentum_hold96_lev2p0,0.15800009283783356,-67.1472501291459,4,7,121
+2026-02,loose_hype_reversal_hold64_lev1p0,hype_reversal,85.52421017638487,loose_hype_reversal_hold64_lev1p0,-0.013815179072979411,-47.05548611534096,5,8,87
+2026-03,loose_btc_reversal_hold96_lev1p0,btc_reversal,11.52750126696187,loose_btc_reversal_hold96_lev1p0,-0.4591584164949851,-49.76793921765167,6,9,81
+2026-04,loose_btc_momentum_hold32_lev2p0,btc_momentum,7.130478072582092,loose_btc_momentum_hold32_lev2p0,-0.2146172579105696,-48.58274564733548,6,10,76
+2026-05,strict_hype_momentum_hold64_lev1p0,hype_momentum,56.30554528260176,strict_hype_momentum_hold64_lev1p0,-0.34158088652203894,-47.95357238368641,8,11,75
+2026-06,loose_hype_reversal_hold32_lev1p0,hype_reversal,18.97964315479439,loose_hype_reversal_hold32_lev1p0,0.025444188409126267,-48.848078068555466,8,12,73

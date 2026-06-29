@@ -1,0 +1,7 @@
+name,source,status,reason,timeframe
+strat16_three_rails_reverse,arti-st/JesseTrade-strategies/Strat16,skip,limit-entry plus intrabar stop/take-profit; no explicit timeframe; proxy would be misleading,
+range_reversal,deemzie/jesse/RangeReversal,skip,"recommended 4h, but depends on custom_indicators and hard-coded ETH-like zones 1700-4200; BTC backtest is not meaningful",4h
+triple_supertrend_tf,deemzie/jesse/TripleSupertrendTF,skip,multi-timeframe limit-entry/add-on order strategy; not faithful without Jesse order engine,
+astro_strategy_rsi,financial-astrology-research/AstroStrategyRSI,skip,requires external daily astrology CSV files not present in downloaded source,
+amt_trend_continuation,nishimweprince/trading-algos/AMTTrendContinuation,skip,requires custom volume-profile indicators and partial exits; not faithful in simple OHLCV proxy,
+ysdede_helpers,ysdede/jesse_strategies helpers,skip,"downloaded files are helper/playground code, not complete Jesse strategies",

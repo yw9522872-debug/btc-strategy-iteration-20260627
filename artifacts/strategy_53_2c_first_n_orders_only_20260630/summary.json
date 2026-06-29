@@ -1,0 +1,149 @@
+{
+  "status": "strategy_53_2c_first_n_orders_only_done",
+  "strategy_id": "strategy_53_2c_first_n_orders_only_20260630",
+  "generated_at": "2026-06-29T18:31:50.772792+00:00",
+  "research_only": true,
+  "not_a_freeze": true,
+  "base": "strategy_2c_lock_cap_20260627",
+  "strict_no_future_function": true,
+  "change": "Trade only the first N monthly orders from 2C logic, then force flat for the rest of the month without a profit threshold.",
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "scan": [
+    {
+      "variant_id": "first_5_orders_then_flat",
+      "max_monthly_orders": 5,
+      "hard_pass": false,
+      "return_2025_pct": 115.93515740100564,
+      "return_2026_pct": 182.68766274729583,
+      "min_required_year_return_pct": 115.93515740100564,
+      "min_monthly_return_pct": -15.660628710328284,
+      "losing_eval_months": 4,
+      "min_monthly_orders": 6,
+      "total_return_pct": 510.422049506598,
+      "max_drawdown_pct": -24.362622397831878,
+      "exposure_pct": 14.188084112149532,
+      "turnover": 505.30000000000007,
+      "orders": 108,
+      "strong_trend_reverse_active_bars": 0,
+      "strong_trend_reverse_big_active_bars": 0,
+      "weak_trend_order_events": 57,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 0,
+      "guard_reason_counts": {
+        "first_n_flat": 44073,
+        "main": 6224,
+        "strong_conflict_small_trend": 1020,
+        "weak_new_order_small": 43
+      }
+    },
+    {
+      "variant_id": "first_10_orders_then_flat",
+      "max_monthly_orders": 10,
+      "hard_pass": false,
+      "return_2025_pct": 202.0785365086632,
+      "return_2026_pct": 261.0743188599718,
+      "min_required_year_return_pct": 202.0785365086632,
+      "min_monthly_return_pct": -7.9112232724018465,
+      "losing_eval_months": 2,
+      "min_monthly_orders": 12,
+      "total_return_pct": 990.7280181208289,
+      "max_drawdown_pct": -29.252496952297047,
+      "exposure_pct": 26.057242990654206,
+      "turnover": 752.4,
+      "orders": 216,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 93,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 1,
+      "guard_reason_counts": {
+        "first_n_flat": 37977,
+        "main": 12263,
+        "strong_conflict_small_trend": 1037,
+        "weak_new_order_small": 81,
+        "adverse_shock_cut": 1,
+        "shock_cooldown_small": 1
+      }
+    },
+    {
+      "variant_id": "first_15_orders_then_flat",
+      "max_monthly_orders": 15,
+      "hard_pass": false,
+      "return_2025_pct": 197.09633581024696,
+      "return_2026_pct": 41.46166675835716,
+      "min_required_year_return_pct": 41.46166675835716,
+      "min_monthly_return_pct": -19.22432927784946,
+      "losing_eval_months": 6,
+      "min_monthly_orders": 16,
+      "total_return_pct": 320.2774285151822,
+      "max_drawdown_pct": -49.69668314402826,
+      "exposure_pct": 33.10163551401869,
+      "turnover": 1419.1999999999998,
+      "orders": 288,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 119,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 11,
+      "guard_reason_counts": {
+        "first_n_flat": 34315,
+        "main": 15855,
+        "strong_conflict_small_trend": 1037,
+        "weak_new_order_small": 97,
+        "strong_conflict_flat": 34,
+        "adverse_shock_cut": 11,
+        "shock_cooldown_small": 11
+      }
+    },
+    {
+      "variant_id": "first_20_orders_then_flat",
+      "max_monthly_orders": 20,
+      "hard_pass": false,
+      "return_2025_pct": 124.55695291008398,
+      "return_2026_pct": 180.39562340796306,
+      "min_required_year_return_pct": 124.55695291008398,
+      "min_monthly_return_pct": -37.0062581798977,
+      "losing_eval_months": 7,
+      "min_monthly_orders": 19,
+      "total_return_pct": 529.6478680181559,
+      "max_drawdown_pct": -68.88476233475345,
+      "exposure_pct": 42.80568535825545,
+      "turnover": 2178.8,
+      "orders": 379,
+      "strong_trend_reverse_active_bars": 1,
+      "strong_trend_reverse_big_active_bars": 1,
+      "weak_trend_order_events": 170,
+      "weak_trend_big_order_events": 0,
+      "adverse_shock_cut_events": 32,
+      "guard_reason_counts": {
+        "first_n_flat": 29309,
+        "main": 20799,
+        "strong_conflict_small_trend": 1037,
+        "weak_new_order_small": 124,
+        "strong_conflict_flat": 34,
+        "adverse_shock_cut": 32,
+        "shock_cooldown_small": 25
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "FIRST_N_ONLY_HAS_RELAXED_SIGNAL_NOT_ORIGINAL_PASS",
+    "hard_pass_variants": [],
+    "relaxed_annual_100_dd50_variants": [
+      "first_5_orders_then_flat",
+      "first_10_orders_then_flat"
+    ],
+    "best_variant_id": "first_10_orders_then_flat",
+    "reason": "每月只做前N笔不能满足月月盈利原目标，但前5笔和前10笔能满足年收益都超100%、最大回撤小于50%的放宽门槛；这说明前段窗口有历史信号，但仍是事后发现，不能直接实盘。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_53_2c_first_n_orders_only_20260630/summary.json",
+    "report": "artifacts/strategy_53_2c_first_n_orders_only_20260630/report.md",
+    "scan": "artifacts/strategy_53_2c_first_n_orders_only_20260630/strategy_53_scan.csv",
+    "monthly": "artifacts/strategy_53_2c_first_n_orders_only_20260630/strategy_53_monthly.csv",
+    "yearly": "artifacts/strategy_53_2c_first_n_orders_only_20260630/strategy_53_yearly.csv"
+  }
+}

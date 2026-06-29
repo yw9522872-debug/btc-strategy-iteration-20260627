@@ -692,6 +692,123 @@ Important current results:
   - Simple temporary monthly/global drawdown stops were also probed after the formal run; none passed the relaxed gate because drawdown-safe variants lost too much return while high-return variants still exceeded the drawdown limit.
   - Decision: `TAIL_EVENT_WALKFORWARD_POLICY_FAILS_RELAXED_GATE`. Strategy 45 found a strong in-sample overfit pattern, but it is not yet a validated alpha.
 
+- `STRATEGY_47_BTC_HYPE_TAIL_EVENT_CAUSAL_RISK_OVERLAY.md`
+  - Strategy 47 adds causal per-trade risk controls to Strategy 46's strict walk-forward tail-event policy. It is still not a live strategy and not tradeable.
+  - Audit id: `strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629`.
+  - Script: `scripts/audit_strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629.py`.
+  - Output: `artifacts/strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629/summary.json`.
+  - Event detection uses closed past bars; each month trains only on earlier oracle-labeled events; risk exits use only trade-to-date PnL/drawdown. The risk grid itself is still selected on the same 2025-06 through 2026-05 sample.
+  - Scan size: 7,560 configs; relaxed-gate pass count: 99.
+  - Best config: `market_plus_time`, depth 5, min_samples_leaf 3, position_scale 0.8, trailing_stop -10%, take_profit 20%: 2025 +281.55%, 2026 YTD +226.41%, max drawdown -45.23%, 130 trades, turnover 844.8.
+  - More conservative no-time-feature pass: `market_only`, depth 6, min_samples_leaf 3, position_scale 0.65, trailing_stop -8%, take_profit 50%: 2025 +180.30%, 2026 YTD +222.40%, max drawdown -42.22%, 124 trades, turnover 650.0.
+  - Decision: `TAIL_EVENT_CAUSAL_RISK_OVERLAY_PASSES_RELAXED_GATE_IN_SAMPLE`. This is the first BTC+HYPE result after 41 that is strict walk-forward on action labels and passes the relaxed return/drawdown gate with causal risk management, but it remains in-sample parameter selection. Recommended next audit: Strategy 48 freezes Strategy 47 parameters and tests latest/unseen data or shadow-tracking protocol.
+
+- `STRATEGY_49_BTC_HYPE_FROZEN_47_LATEST_PUBLIC.md`
+  - Strategy 49 freezes Strategy 47 parameters and tests them on latest public 2026-06 BTC/HYPE data. It is not a live strategy and not tradeable.
+  - Audit id: `strategy_49_btc_hype_frozen_47_latest_public_20260629`.
+  - Script: `scripts/audit_strategy_49_btc_hype_frozen_47_latest_public_20260629.py`.
+  - Output: `artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/summary.json`.
+  - Numbering note: local uncommitted Strategy 48 public Jesse proxy-backtest files already exist, so this BTC/HYPE frozen validation uses 49 to avoid overwriting or mixing work.
+  - It freezes Strategy 47 best and market-only configs, does not rescan parameters on latest data, and fetches Binance USD-M futures public REST data through the last closed 15m bar at 2026-06-29 15:00 UTC. BTC/HYPE rows are 5,726 each; duplicates 0; missing 15m rows 0.
+  - Frozen Strategy 47 best config on 2026-06: return -14.09%, max drawdown -36.31%, 13 trades.
+  - Frozen Strategy 47 market-only config on 2026-06: return -23.44%, max drawdown -46.38%, 13 trades.
+  - Decision: `FROZEN_47_LATEST_PARTIAL_MONTH_FAILS`. Strategy 47 should not go to live/testnet. Recommended next audit, if continuing, is failure attribution: determine whether June had no after-event opportunity or whether Strategy 47 picked the wrong action/risk exits; do not tune parameters on June.
+
+- `STRATEGY_50_2C_WITHOUT_MONTHLY_LOCK.md`
+  - Strategy 50 tests the user's request to remove Strategy 2C's monthly profit lock. It is not a live strategy and not tradeable.
+  - Audit id: `strategy_50_2c_without_monthly_lock_20260629`.
+  - Script: `scripts/audit_strategy_50_2c_without_monthly_lock_20260629.py`.
+  - Output: `artifacts/strategy_50_2c_without_monthly_lock_20260629/summary.json`.
+  - It reuses Strategy 2C/1F signal and guard logic, keeps the same 0.2% round-trip cost, and tests two variants: removing the monthly halt while keeping the pre-10-trade quota throttle, and removing both.
+  - `no_lock_keep_quota`: 2025 -99.97%, 2026 -11.19%, worst month -91.98%, 13 losing months, max drawdown -99.99%.
+  - `no_lock_no_quota`: 2025 -99.98%, 2026 +131.38%, worst month -89.48%, 13 losing months, max drawdown about -100%.
+  - Decision: `MONTHLY_LOCK_IS_CRITICAL_FOR_2C`. Removing the monthly lock turns 2C into near-always-in-market exposure with far higher turnover and catastrophic drawdown. Do not use direct lock removal as an upgrade path.
+
+- `STRATEGY_51_2C_LOCK_MIN_ORDERS_SENSITIVITY.md`
+  - Strategy 51 tests the user's concern that Strategy 2C only works because it locks monthly profit after roughly 10 trades. It is not a live strategy and not tradeable.
+  - Audit id: `strategy_51_2c_lock_min_orders_sensitivity_20260629`.
+  - Script: `scripts/audit_strategy_51_2c_lock_min_orders_sensitivity_20260629.py`.
+  - Output: `artifacts/strategy_51_2c_lock_min_orders_sensitivity_20260629/summary.json`.
+  - It keeps most Strategy 2C logic unchanged, keeps the 0.2% round-trip cost, keeps the pre-10-trade quota throttle, and varies only the minimum number of monthly trades required before profit lock can halt trading: 10, 20, 30, 50, 100, and no lock.
+  - Only `lock_after_10_orders` passes: 2025 +359.10%, 2026 +260.59%, worst month +5.58%, max drawdown -29.40%.
+  - `lock_after_20_orders` already fails: 2025 -84.39%, 2026 +460.62%, worst month -87.98%, 3 losing months, max drawdown -95.46%.
+  - 30/50/100 trade thresholds and no-lock variants are near-collapses, with max drawdowns near -100%.
+  - Decision: `TEN_TRADE_MONTHLY_LOCK_IS_A_FRAGILE_PART_OF_2C`. The user's criticism is valid: 2C is not a robust raw signal; it is a historical candidate highly dependent on early monthly profit locking. Do not continue small ret_state/2C tweaks as a serious upgrade path.
+
+- `STRATEGY_52_2C_FIRST10_VS_AFTER10_ATTRIBUTION.md`
+  - Strategy 52 is an attribution audit, not a strategy and not tradeable.
+  - Audit id: `strategy_52_2c_first10_vs_after10_20260629`.
+  - Script: `scripts/audit_strategy_52_2c_first10_vs_after10_20260629.py`.
+  - Output: `artifacts/strategy_52_2c_first10_vs_after10_20260629/summary.json`.
+  - It reuses Strategy 50's no-lock/keep-quota 2C replay and splits each month into the area before 10 monthly orders and the area after 10 monthly orders.
+  - First-10-order area: 2025 +183.19%, 2026 +216.76%, 2 losing months.
+  - After-10-order area: 2025 -99.99%, 2026 -71.96%, 14 losing months, high turnover and high exposure.
+  - Decision: `POST_10_TRADES_EXPOSES_WEAK_RAW_SIGNAL`. The user's interpretation is correct: 10-trade monthly locking is not a robust edge; it hides the poor quality of the later trading area. If researching this family further, only test whether the early-month/first-10-trades concentration can be identified strictly without future data.
+
+- `STRATEGY_53_2C_FIRST_N_ORDERS_ONLY.md`
+  - Strategy 53 tests whether the first-10-trades clue can stand without the monthly profit-threshold lock. It is not a live strategy and not tradeable.
+  - Audit id: `strategy_53_2c_first_n_orders_only_20260630`.
+  - Script: `scripts/audit_strategy_53_2c_first_n_orders_only_20260630.py`.
+  - Output: `artifacts/strategy_53_2c_first_n_orders_only_20260630/summary.json`.
+  - It reuses Strategy 2C logic, ignores the monthly profit threshold, and simply trades only the first N monthly orders before forcing flat for the rest of the month. N tested: 5, 10, 15, 20.
+  - No variant passes the original monthly-profit hard target.
+  - Under the relaxed gate of 2025/2026 each above +100% and max drawdown no worse than -50%, `first_5_orders_then_flat` and `first_10_orders_then_flat` pass.
+  - `first_10_orders_then_flat`: 2025 +202.08%, 2026 +261.07%, worst month -7.91%, 2 losing months, max drawdown -29.25%.
+  - Decision: `FIRST_N_ONLY_HAS_RELAXED_SIGNAL_NOT_ORIGINAL_PASS`. The early-window clue is not just a profit-threshold artifact, but it is still post-hoc and should not be promoted. If continuing, freeze first5/first10 and validate on earlier history plus latest public data without retuning N.
+
+- `STRATEGY_54_2C_CORE_SIGNAL_FAILURE.md`
+  - Strategy 54 is a core-signal failure attribution requested after the user clarified that the problem is the strategy itself, not order count. It is not a live strategy and not tradeable.
+  - Audit id: `strategy_54_2c_core_signal_failure_20260630`.
+  - Script: `scripts/audit_strategy_54_2c_core_signal_failure_20260630.py`.
+  - Output: `artifacts/strategy_54_2c_core_signal_failure_20260630/summary.json`.
+  - It directly tests the old Strategy 2C / `ret_state 64/100` direction signal without monthly early stop, under 1x/8x, zero/normal cost, and compares the Strategy 2C guards without lock.
+  - Core signal 1x zero cost no lock: 2025 -4.90%, 2026 +100.48%, max drawdown -37.12%.
+  - Core signal 1x normal cost no lock: 2025 -48.95%, 2026 +50.61%, max drawdown -76.58%.
+  - Core signal 8x normal cost no lock: 2025 -99.54%, max drawdown about -100%.
+  - Strategy 2C guards without early lock also nearly collapse: keep-quota version 2025 -99.97%, 2026 -11.19%, max drawdown -99.99%.
+  - One-bar direction edge at 1x zero cost: 2024 +14.26%, 2025 -4.90%, 2026 +100.48%; 2025 win rate 49.53%, average edge -0.0143 bps.
+  - Decision: `CORE_RET_STATE_SIGNAL_NOT_GOOD_ENOUGH`. The user's correction is valid: the old 2C/ret_state family should not be repaired by changing lock/order-count/risk patches. Future work should switch the core signal source.
+
+- `STRATEGY_55_BTC_HYPE_TAIL_EVENT_CORE_SIGNAL.md`
+  - Strategy 55 is the first audit after switching away from old 2C/ret_state. It is not a live strategy and not tradeable.
+  - Audit id: `strategy_55_btc_hype_tail_event_core_signal_20260630`.
+  - Script: `scripts/audit_strategy_55_btc_hype_tail_event_core_signal_20260630.py`.
+  - Output: `artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/summary.json`.
+  - It uses BTC/HYPE tail-event triggers: HYPE 4h/24h large moves or HYPE-vs-BTC 4h residual z extremes. Fixed actions include HYPE/BTC momentum, reversal, and pair trades. Holds are 16/32/64/96 15m bars; leverage is 0.5/1/2. Candidate count: 144.
+  - Data covers 2025-06 through 2026-06-29 15:15 UTC using Strategy 41 BTC/HYPE panel plus Strategy 49 latest public REST klines.
+  - Static fixed-candidate pass count: 0. Best static candidate `loose_hype_reversal_hold64_lev2p0`: 2025 +34.83%, 2026 +104.15%, max drawdown -71.97%, 7 losing months.
+  - Strict prior-month selector: 2025 -11.64%, 2026 -0.41%, max drawdown -10.83%, 10 losing months.
+  - Normal monthly oracle has high returns but max drawdown -91.10%, so it fails the relaxed drawdown gate.
+  - Drawdown-capped monthly oracle passes: 2025 +1689.67%, 2026 +1047.55%, max drawdown -40.66%, 0 losing months. This is leaky and cannot be traded.
+  - Decision: `TAIL_EVENT_CORE_DRAWDOWN_CAPPED_ORACLE_ONLY_PASSES`. The new core source has event-after-action space, but the current fixed/strict selector cannot pick actions ahead of time. If continuing, Strategy 56 should focus on causal action selection after tail events, not on old 2C repairs.
+
+- `STRATEGY_56_TAIL_EVENT_LOSS_ROOT_CAUSE.md`
+  - Strategy 56 is a loss root-cause audit for Strategy 55, not a strategy and not tradeable.
+  - Audit id: `strategy_56_tail_event_loss_root_cause_20260630`.
+  - Script: `scripts/audit_strategy_56_tail_event_loss_root_cause_20260630.py`.
+  - Output: `artifacts/strategy_56_tail_event_loss_root_cause_20260630/summary.json`.
+  - It reuses Strategy 55 outputs only: no new candidates and no parameter tuning.
+  - Decision: `LOSS_ROOT_CAUSE_UNSTABLE_ACTION_SELECTION`.
+  - Root cause: event opportunities exist, but the correct post-event action switches too quickly by month. The drawdown-capped oracle uses 10 different candidates across 13 months and switches action 10 times.
+  - Oracle action distribution: HYPE momentum 6 months, HYPE reversal 4, BTC momentum 2, BTC reversal 1.
+  - Strict selector action distribution: BTC momentum 9 months, pair reversal 2, BTC reversal 1. It controls drawdown by choosing conservative BTC actions but misses HYPE event profits.
+  - Strict selector matches the exact oracle candidate in 0 months, matches oracle action in only 2 months, and misses positive oracle months 10 times.
+  - Oracle winner prior-training rank median is 98 out of 144; it is in the top 10 in 0/12 rankable months.
+  - Following the previous month's oracle winner is positive only 5/12 months; simple return sum is +22.81% versus +652.46% for current-month oracle over those same months.
+  - Next useful audit: Strategy 57 should test whether features known at event time can predict momentum vs reversal/action choice. Do not use past monthly return ranking as selector.
+
+- `STRATEGY_57_TAIL_EVENT_STATE_ACTION_PREDICTABILITY.md`
+  - Strategy 57 tests whether event-time state features can predict post-tail-event action choice without using current-month labels. It is not a strategy and not tradeable.
+  - Audit id: `strategy_57_tail_event_state_action_predictability_20260630`.
+  - Script: `scripts/audit_strategy_57_tail_event_state_action_predictability_20260630.py`.
+  - Output: `artifacts/strategy_57_tail_event_state_action_predictability_20260630/summary.json`.
+  - Data uses Strategy 41 BTC/HYPE close panel plus Strategy 49 latest public klines, covering 2025-06-01 through 2026-06-29 15:15 UTC, 37,790 15m bars, no duplicate timestamps and no non-15m gaps.
+  - Event labels are oracle labels based on future post-event returns, but walk-forward training only uses labels from months before the tested month.
+  - Event-label oracle passes the relaxed gate: 2025 +1528.72%, 2026 +659.73%, max drawdown -38.23%, 268 trades, 0 losing months. This is leaky and cannot be traded.
+  - Best full-label walk-forward policy fails: `market_only`, depth 6, min leaf 5, 2025 -24.71%, 2026 +73.97%, max drawdown -41.65%, 5 losing months.
+  - Best action-only walk-forward policy also fails: `market_only`, depth 6, min leaf 8, hold 64 bars, leverage 2.0, 2025 +27.13%, 2026 +9.63%, max drawdown -35.36%, 8 losing months.
+  - Decision: `EVENT_STATE_LABEL_ORACLE_PASSES_BUT_WALKFORWARD_FAILS`. Tail events still have post-event opportunity, but the current simple state features / decision tree cannot reliably predict future-month action choice. Do not keep tuning tree depth, leaf size, hold bars, or leverage as the next step.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -757,6 +874,16 @@ Useful source files:
 - `scripts/audit_strategy_44_btc_hype_tail_event_action_oracle_20260629.py`
 - `scripts/audit_strategy_45_btc_hype_tail_event_fitted_policy_20260629.py`
 - `scripts/audit_strategy_46_btc_hype_tail_event_walkforward_policy_20260629.py`
+- `scripts/audit_strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629.py`
+- `scripts/audit_strategy_49_btc_hype_frozen_47_latest_public_20260629.py`
+- `scripts/audit_strategy_50_2c_without_monthly_lock_20260629.py`
+- `scripts/audit_strategy_51_2c_lock_min_orders_sensitivity_20260629.py`
+- `scripts/audit_strategy_52_2c_first10_vs_after10_20260629.py`
+- `scripts/audit_strategy_53_2c_first_n_orders_only_20260630.py`
+- `scripts/audit_strategy_54_2c_core_signal_failure_20260630.py`
+- `scripts/audit_strategy_55_btc_hype_tail_event_core_signal_20260630.py`
+- `scripts/audit_strategy_56_tail_event_loss_root_cause_20260630.py`
+- `scripts/audit_strategy_57_tail_event_state_action_predictability_20260630.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

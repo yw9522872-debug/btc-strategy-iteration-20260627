@@ -1,0 +1,42 @@
+{
+  "status": "public_jesse_strategy_sources_ready",
+  "strategy_id": "public_jesse_strategy_sources_20260629",
+  "generated_at": "2026-06-29T13:20:09.906739+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Search public GitHub code for Jesse strategy examples and record sources.",
+  "queries": [
+    "from jesse.strategies import Strategy",
+    "from jesse import utils",
+    "from jesse.indicators import",
+    "def should_long def should_short jesse",
+    "def go_long def go_short jesse"
+  ],
+  "download_requested": true,
+  "result_count": 54,
+  "candidate_or_example_count": 18,
+  "counts_by_kind": {
+    "candidate_strategy": 15,
+    "framework_or_docs": 17,
+    "official_example": 3,
+    "other": 4,
+    "other_framework_strategy": 1,
+    "skip_bad_terms": 2,
+    "supporting_code": 12
+  },
+  "archived_repo_result_count": 0,
+  "decision": {
+    "verdict": "PUBLIC_JESSE_STRATEGY_SOURCES_FOUND_REVIEW_ONLY",
+    "promote_strategy": false,
+    "reason": "找到的公开 Jesse 策略只能当学习材料；必须先改成本项目统一回测口径，不能直接当策略用。"
+  },
+  "files": {
+    "summary": "artifacts/public_jesse_strategy_sources_20260629/summary.json",
+    "report": "artifacts/public_jesse_strategy_sources_20260629/report.md",
+    "sources": "artifacts/public_jesse_strategy_sources_20260629/sources.csv",
+    "downloaded": "artifacts/public_jesse_strategy_sources_20260629/downloaded"
+  }
+}

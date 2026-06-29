@@ -1,0 +1,65 @@
+{
+  "status": "strategy_56_tail_event_loss_root_cause_done",
+  "strategy_id": "strategy_56_tail_event_loss_root_cause_20260630",
+  "generated_at": "2026-06-29T19:05:47.444182+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "source": {
+    "strategy_55_dir": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630",
+    "candidate_monthly": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/candidate_monthly.csv",
+    "drawdown_capped_oracle": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/monthly_oracle_drawdown_capped.csv",
+    "strict_selector": "artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/strict_selector_monthly.csv"
+  },
+  "root_cause": {
+    "verdict": "LOSS_ROOT_CAUSE_UNSTABLE_ACTION_SELECTION",
+    "plain_chinese": "亏损根因不是事件不存在，而是事件后的正确动作每月切换太快；过去表现很难提前告诉我们该顺势还是反转。严格选择器为了控制回撤，长期偏向低杠杆BTC动作，结果错过HYPE大机会，收益被磨成小亏。",
+    "oracle_action_switches": 10,
+    "oracle_unique_candidates": 10,
+    "oracle_months": 13,
+    "strict_same_candidate_months": 0,
+    "strict_same_action_months": 2,
+    "strict_missed_positive_oracle_months": 10,
+    "oracle_train_rank_median": 98.0,
+    "oracle_train_rank_top10_months": 0,
+    "oracle_train_rank_months": 12,
+    "follow_previous_oracle_positive_months": 5,
+    "follow_previous_oracle_months": 12,
+    "follow_previous_oracle_return_sum_pct_approx": 22.813859347008083,
+    "current_oracle_return_sum_pct_approx": 652.463477628822,
+    "strict_action_counts": {
+      "btc_momentum": 9,
+      "pair_reversal": 2,
+      "btc_reversal": 1
+    },
+    "oracle_action_counts": {
+      "hype_momentum": 6,
+      "hype_reversal": 4,
+      "btc_momentum": 2,
+      "btc_reversal": 1
+    }
+  },
+  "oracle_action_counts": {
+    "hype_momentum": 6,
+    "hype_reversal": 4,
+    "btc_momentum": 2,
+    "btc_reversal": 1
+  },
+  "strict_action_counts": {
+    "btc_momentum": 9,
+    "pair_reversal": 2,
+    "btc_reversal": 1
+  },
+  "oracle_unique_candidate_count": 10,
+  "oracle_month_count": 13,
+  "strict_unique_candidate_count": 6,
+  "strict_month_count": 12,
+  "files": {
+    "summary": "artifacts/strategy_56_tail_event_loss_root_cause_20260630/summary.json",
+    "report": "artifacts/strategy_56_tail_event_loss_root_cause_20260630/report.md",
+    "oracle_vs_strict_by_month": "artifacts/strategy_56_tail_event_loss_root_cause_20260630/oracle_vs_strict_by_month.csv",
+    "oracle_train_rank_by_month": "artifacts/strategy_56_tail_event_loss_root_cause_20260630/oracle_train_rank_by_month.csv",
+    "follow_previous_oracle_by_month": "artifacts/strategy_56_tail_event_loss_root_cause_20260630/follow_previous_oracle_by_month.csv",
+    "action_summary": "artifacts/strategy_56_tail_event_loss_root_cause_20260630/action_summary.csv",
+    "oracle_candidate_persistence": "artifacts/strategy_56_tail_event_loss_root_cause_20260630/oracle_candidate_persistence.csv"
+  }
+}

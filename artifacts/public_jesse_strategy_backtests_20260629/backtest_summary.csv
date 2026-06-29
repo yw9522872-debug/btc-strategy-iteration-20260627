@@ -1,0 +1,10 @@
+strategy,source,timeframe,timeframe_basis,total_return_pct,max_drawdown_pct,trade_count,turnover,return_2025_pct,return_2026_ytd_pct,monthly_loss_count_2025_2026,min_monthly_trades_2025_2026
+bitmania_tradeiq_cci_ce,Justant-source/Bit-Mania/tradeiq_cci_ce/4h,4h,source path contains 4h,116.70001073506265,-34.02288150263014,253,253.0,-2.320906128082856,7.607264949925718,8,0
+dcupmusic_always_long_demo,dcupmusic/strategies/backtest_demo,1h,source route sets timeframe='1h',925.9927576929332,-77.24232825946648,1,1.0,-6.350368630737446,-15.92887423779975,9,0
+brainctl_sma_sample,TSchonleber/brainctl/sample_strategy,15m,no explicit timeframe; project default 15m,-30.44413149338855,-86.6798599694958,1183,1183.0,-21.84103138389124,-20.701403997777025,10,4
+bitmania_trendtype,Justant-source/Bit-Mania/trendtype/4h,4h,source path contains 4h,-30.57419240021655,-74.41721734835225,1408,1728.0,-33.93685057838286,-12.75187839305495,11,11
+jesse_example_macd_ema,jesse-ai/example-strategies/MACD_EMA,1h,docstring says Timeframe: 1h,201.88562953568297,-77.69537780357633,1610,1610.0,-41.90521574732065,-11.212834102144164,15,16
+devon_macd_ema,Devon-ODell/quant/macd-ema_v1,1h,same Jesse MACD_EMA source family says 1h,201.88562953568297,-77.69537780357633,1610,1610.0,-41.90521574732065,-11.212834102144164,15,16
+devon_donchian,Devon-ODell/quant/donchian_v1,15m,no explicit timeframe; project default 15m,-95.89915080649719,-96.62555978020339,3821,3821.0,-42.30983487772485,-36.024903857699066,16,31
+jesse_example_turtle_rules,jesse-ai/example-strategies/TurtleRules,15m,no explicit timeframe; project default 15m,-99.99999993270765,-99.99999993945951,18385,20020.0,-95.65354698438301,-74.5887193766036,17,219
+ben_walker_turtle_rules,ben-walker/jesse-trade/TurtleRules,15m,no explicit timeframe; project default 15m,-99.99999993270765,-99.99999993945951,18385,20020.0,-95.65354698438301,-74.5887193766036,17,219

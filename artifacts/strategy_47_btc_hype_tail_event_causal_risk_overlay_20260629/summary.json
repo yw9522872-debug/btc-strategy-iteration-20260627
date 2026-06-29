@@ -1,0 +1,98 @@
+{
+  "status": "strategy_47_btc_hype_tail_event_causal_risk_overlay_ready",
+  "strategy_id": "strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629",
+  "generated_at": "2026-06-29T12:58:30.641088+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Add causal per-trade risk controls to Strategy 46 strict walk-forward tail-event policy.",
+  "leakage": {
+    "event_detection_uses_closed_past_bars": true,
+    "current_month_labels_used_for_current_month": false,
+    "risk_controls_use_only_trade_to_date_pnl": true,
+    "risk_grid_selected_on_same_2025_06_2026_05_sample": true,
+    "tradable_strategy": false
+  },
+  "gate": {
+    "target_years": [
+      "2025",
+      "2026"
+    ],
+    "required_return_pct": 100.0,
+    "max_drawdown_limit_pct": -50.0
+  },
+  "event_config": {
+    "ret16_abs_thr": 0.04,
+    "ret96_abs_thr": 0.1,
+    "resid_z16_abs_thr": 2.0,
+    "min_gap": 16,
+    "event_count": 4187,
+    "training_rows_total": 161
+  },
+  "scan": {
+    "config_count": 7560,
+    "hard_pass_relaxed_count": 99
+  },
+  "best_policy": {
+    "feature_set": "market_plus_time",
+    "max_depth": 5,
+    "min_samples_leaf": 3,
+    "position_scale": 0.8,
+    "stop_loss": null,
+    "trailing_stop": -0.1,
+    "take_profit": 0.2,
+    "return_2025_pct": 281.5489664586355,
+    "return_2026_ytd_pct": 226.4087638259729,
+    "min_target_year_return_pct": 226.4087638259729,
+    "max_drawdown_pct": -45.23338769946377,
+    "trade_count": 130,
+    "turnover": 844.8000000000001,
+    "hard_pass_relaxed": true
+  },
+  "safer_passing_policy": {
+    "feature_set": "market_plus_time",
+    "max_depth": 5,
+    "min_samples_leaf": 3,
+    "position_scale": 0.65,
+    "stop_loss": null,
+    "trailing_stop": -0.08,
+    "take_profit": 0.2,
+    "return_2025_pct": 108.05339891938294,
+    "return_2026_ytd_pct": 205.21229279546995,
+    "min_target_year_return_pct": 108.05339891938294,
+    "max_drawdown_pct": -41.547335478606605,
+    "trade_count": 130,
+    "turnover": 686.4,
+    "hard_pass_relaxed": true
+  },
+  "best_market_only_passing_policy": {
+    "feature_set": "market_only",
+    "max_depth": 6,
+    "min_samples_leaf": 3,
+    "position_scale": 0.65,
+    "stop_loss": null,
+    "trailing_stop": -0.08,
+    "take_profit": 0.5,
+    "return_2025_pct": 180.30310715605938,
+    "return_2026_ytd_pct": 222.40445360818214,
+    "min_target_year_return_pct": 180.30310715605938,
+    "max_drawdown_pct": -42.21915625917762,
+    "trade_count": 124,
+    "turnover": 650.0,
+    "hard_pass_relaxed": true
+  },
+  "decision": {
+    "verdict": "TAIL_EVENT_CAUSAL_RISK_OVERLAY_PASSES_RELAXED_GATE_IN_SAMPLE",
+    "promote_strategy": false,
+    "reason": "严格走步动作加因果逐笔风控后，同段历史能过放宽门槛；但风控参数仍是在这段历史上挑出来的，不能直接实盘。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629/summary.json",
+    "report": "artifacts/strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629/report.md",
+    "risk_overlay_scan": "artifacts/strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629/risk_overlay_scan.csv",
+    "best_policy_monthly": "artifacts/strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629/best_policy_monthly.csv",
+    "best_policy_trades": "artifacts/strategy_47_btc_hype_tail_event_causal_risk_overlay_20260629/best_policy_trades.csv"
+  }
+}

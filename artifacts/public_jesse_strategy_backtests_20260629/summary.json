@@ -1,0 +1,49 @@
+{
+  "status": "public_jesse_strategy_backtests_ready",
+  "strategy_id": "public_jesse_strategy_backtests_20260629",
+  "generated_at": "2026-06-29T13:28:23.684028+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "data": {
+    "symbol": "BTCUSDT",
+    "source": "artifacts/strategy_21_volume_upper_bound_20260627/btc_15m_2020_2026_05_public_volume_klines.csv",
+    "base_timeframe": "15m",
+    "start": "2020-01-01 00:00:00+00:00",
+    "end": "2026-05-31 23:45:00+00:00",
+    "resampled_timeframes": [
+      "15m",
+      "1h",
+      "30m",
+      "4h"
+    ]
+  },
+  "cost_model": {
+    "round_trip_cost_pct": 0.2,
+    "cost_per_side": 0.001
+  },
+  "execution_model": {
+    "proxy_backtest": true,
+    "uses_closed_bars_only": true,
+    "enters_next_bar": true,
+    "not_exact_jesse_engine": true,
+    "position_notional": "1x target-position proxy"
+  },
+  "tested_count": 9,
+  "skipped_count": 6,
+  "decision": {
+    "verdict": "PUBLIC_JESSE_STRATEGY_PROXY_BACKTEST_DONE",
+    "promote_strategy": false,
+    "reason": "这些是公开 Jesse 策略的本地代理回测；周期尽量按源码/路径识别，结果只能用于筛想法，不能直接升级策略。"
+  },
+  "files": {
+    "summary": "artifacts/public_jesse_strategy_backtests_20260629/summary.json",
+    "report": "artifacts/public_jesse_strategy_backtests_20260629/report.md",
+    "backtest_summary": "artifacts/public_jesse_strategy_backtests_20260629/backtest_summary.csv",
+    "monthly": "artifacts/public_jesse_strategy_backtests_20260629/monthly.csv",
+    "yearly": "artifacts/public_jesse_strategy_backtests_20260629/yearly.csv",
+    "skipped": "artifacts/public_jesse_strategy_backtests_20260629/skipped.csv"
+  }
+}

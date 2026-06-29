@@ -1,0 +1,97 @@
+{
+  "status": "strategy_49_btc_hype_frozen_47_latest_public_ready",
+  "strategy_id": "strategy_49_btc_hype_frozen_47_latest_public_20260629",
+  "generated_at": "2026-06-29T15:21:14.412061+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Freeze Strategy 47 parameters and test them on the latest public 2026-06 BTC/HYPE data without rescanning parameters.",
+  "why_strategy_49": "Local uncommitted Strategy 48 public Jesse files already exist; BTC/HYPE frozen validation uses the next unused number.",
+  "data": {
+    "source": "Binance USD-M futures public REST",
+    "symbols": [
+      "BTCUSDT",
+      "HYPEUSDT"
+    ],
+    "fetch_start": "2026-05-01 00:00:00+00:00",
+    "last_closed_15m_bar": "2026-06-29 15:00:00+00:00",
+    "eval_month": "2026-06",
+    "quality": {
+      "BTCUSDT": {
+        "rows": 5726,
+        "duplicates": 0,
+        "missing_15m_rows": 0
+      },
+      "HYPEUSDT": {
+        "rows": 5726,
+        "duplicates": 0,
+        "missing_15m_rows": 0
+      }
+    }
+  },
+  "leakage": {
+    "event_detection_uses_closed_past_bars": true,
+    "current_month_labels_used_for_current_month": false,
+    "parameters_frozen_from_strategy_47": true,
+    "parameters_rescanned_on_latest_data": false,
+    "tradable_strategy": false
+  },
+  "policies": [
+    {
+      "name": "strategy_47_best",
+      "feature_set": "market_plus_time",
+      "max_depth": 5,
+      "min_samples_leaf": 3,
+      "position_scale": 0.8,
+      "stop_loss": null,
+      "trailing_stop": -0.1,
+      "take_profit": 0.2,
+      "return_pct": -14.08748711743778,
+      "max_drawdown_pct": -36.307665743477436,
+      "trade_count": 13,
+      "turnover": 83.2
+    },
+    {
+      "name": "strategy_47_market_only",
+      "feature_set": "market_only",
+      "max_depth": 6,
+      "min_samples_leaf": 3,
+      "position_scale": 0.65,
+      "stop_loss": null,
+      "trailing_stop": -0.08,
+      "take_profit": 0.5,
+      "return_pct": -23.44271601859639,
+      "max_drawdown_pct": -46.38075485029623,
+      "trade_count": 13,
+      "turnover": 67.60000000000001
+    }
+  ],
+  "best_policy": {
+    "name": "strategy_47_best",
+    "feature_set": "market_plus_time",
+    "max_depth": 5,
+    "min_samples_leaf": 3,
+    "position_scale": 0.8,
+    "stop_loss": null,
+    "trailing_stop": -0.1,
+    "take_profit": 0.2,
+    "return_pct": -14.08748711743778,
+    "max_drawdown_pct": -36.307665743477436,
+    "trade_count": 13,
+    "turnover": 83.2
+  },
+  "decision": {
+    "verdict": "FROZEN_47_LATEST_PARTIAL_MONTH_FAILS",
+    "promote_strategy": false,
+    "reason": "冻结47号参数在最新未调参数据上没有通过正收益/回撤 sanity check。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/summary.json",
+    "report": "artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/report.md",
+    "policy_summary": "artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/frozen_policy_latest_summary.csv",
+    "monthly": "artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/frozen_policy_latest_monthly.csv",
+    "trades": "artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/frozen_policy_latest_trades.csv"
+  }
+}

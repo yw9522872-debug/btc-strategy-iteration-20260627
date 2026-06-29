@@ -1,0 +1,104 @@
+{
+  "status": "strategy_57_tail_event_state_action_predictability_done",
+  "strategy_id": "strategy_57_tail_event_state_action_predictability_20260630",
+  "generated_at": "2026-06-29T19:15:39.611654+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Test whether event-time state features can predict post-tail-event action choice without using current-month labels.",
+  "data": {
+    "sources": [
+      "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/btc_hype_close_panel_15m_2020_2026_05.csv.gz",
+      "artifacts/strategy_49_btc_hype_frozen_47_latest_public_20260629/latest_klines.csv.gz"
+    ],
+    "rows": 37790,
+    "start_timestamp": "2025-06-01T00:00:00+00:00",
+    "end_timestamp": "2026-06-29T15:15:00+00:00",
+    "duplicate_timestamp_rows": 0,
+    "non_15m_gap_rows": 0
+  },
+  "event_threshold": {
+    "hype_ret16_abs": 0.04,
+    "hype_ret96_abs": 0.1,
+    "resid_z_abs": 2.0
+  },
+  "label_leakage_note": "Oracle labels use future returns, but walk-forward training uses only labels from months before the tested month.",
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "label_summary": {
+    "event_label_rows": 268,
+    "non_cash_rows": 268,
+    "unique_labels": 25,
+    "action_counts": {
+      "btc_reversal": 119,
+      "btc_momentum": 117,
+      "hype_momentum": 16,
+      "hype_reversal": 16
+    }
+  },
+  "oracle_event_action": {
+    "return_2025_pct": 1528.722575694276,
+    "return_2026_pct": 659.7327269841735,
+    "min_target_year_return_pct": 659.7327269841735,
+    "max_drawdown_pct": -38.226833279389716,
+    "losing_months": 0,
+    "min_monthly_return_pct": 6.7440850836775645,
+    "trade_count": 268,
+    "turnover": 1072.0,
+    "hard_pass_relaxed": true
+  },
+  "best_walkforward_policy": {
+    "feature_set": "market_only",
+    "max_depth": 6,
+    "min_samples_leaf": 5,
+    "trained_months": 12,
+    "return_2025_pct": -24.710483969816455,
+    "return_2026_pct": 73.97174154350851,
+    "min_target_year_return_pct": -24.710483969816455,
+    "max_drawdown_pct": -41.65415892393468,
+    "losing_months": 5,
+    "min_monthly_return_pct": -18.81132277215626,
+    "trade_count": 248,
+    "turnover": 988.0,
+    "hard_pass_relaxed": false
+  },
+  "best_action_only_policy": {
+    "feature_set": "market_only",
+    "max_depth": 6,
+    "min_samples_leaf": 8,
+    "hold_bars": 64,
+    "leverage": 2.0,
+    "trained_months": 12,
+    "return_2025_pct": 27.125892807961428,
+    "return_2026_pct": 9.628380650363312,
+    "min_target_year_return_pct": 9.628380650363312,
+    "max_drawdown_pct": -35.3585083313185,
+    "losing_months": 8,
+    "min_monthly_return_pct": -18.474484598812,
+    "trade_count": 267,
+    "turnover": 1048.0,
+    "hard_pass_relaxed": false
+  },
+  "decision": {
+    "verdict": "EVENT_STATE_LABEL_ORACLE_PASSES_BUT_WALKFORWARD_FAILS",
+    "promote_strategy": false,
+    "reason": "事件标签oracle有空间，但当前简单状态特征/决策树无论预测完整标签还是粗动作，都不能稳定预测未来月份动作。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/summary.json",
+    "report": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/report.md",
+    "oracle_event_labels": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/oracle_event_labels.csv",
+    "oracle_event_action_monthly": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/oracle_event_action_monthly.csv",
+    "walkforward_policy_scan": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/walkforward_policy_scan.csv",
+    "walkforward_action_only_scan": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/walkforward_action_only_scan.csv",
+    "best_walkforward_monthly": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/best_walkforward_monthly.csv",
+    "best_walkforward_trades": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/best_walkforward_trades.csv",
+    "best_action_only_monthly": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/best_action_only_monthly.csv",
+    "best_action_only_trades": "artifacts/strategy_57_tail_event_state_action_predictability_20260630/best_action_only_trades.csv"
+  }
+}
