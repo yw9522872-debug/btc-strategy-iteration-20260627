@@ -1,0 +1,125 @@
+{
+  "status": "strategy_34_multisymbol_failure_root_cause_ready",
+  "strategy_id": "strategy_34_multisymbol_failure_root_cause_20260629",
+  "generated_at": "2026-06-28T17:49:35.789026+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "does_not_overwrite_existing_strategies": true,
+  "source_strategy_id": "strategy_33_multisymbol_free_futures_strict_selector_20260629",
+  "purpose": "Diagnose why Strategy 33's multi-symbol strict selector fails despite a strong leaky monthly oracle.",
+  "source_best_selector_id": "all_multisymbol",
+  "evaluation": {
+    "train_start_month": "2020-01",
+    "eval_start_month": "2023-01",
+    "eval_end_exclusive": "2026-06",
+    "required_min_monthly_orders": 10,
+    "required_2025_2026_ytd_return_pct": 100.0
+  },
+  "headline": {
+    "eval_months": 41,
+    "strict_nonpassing_months": 33,
+    "months_with_order10_positive_candidate": 41,
+    "months_with_no_train_hard_ok_candidates": 41,
+    "oracle_hard_rank_median": 222.0,
+    "oracle_hard_rank_top10_months": 0,
+    "previous_oracle_follow_2025_pct": -99.99832596129417,
+    "previous_oracle_follow_2026_ytd_pct": -96.75079012020439,
+    "plain_chinese": "每个月几乎都有能赚钱的候选，但这些候选在月初之前通常排不靠前，上月赢家下月也不能稳定延续。"
+  },
+  "strict_selector_summary": {
+    "return_2023_pct": 17.716143990946165,
+    "return_2024_pct": -21.17118110015185,
+    "return_2025_pct": -46.854498287762226,
+    "return_2026_ytd_pct": -5.635796641849344,
+    "total_return_pct": -53.463380067729815,
+    "losing_or_flat_months": 21,
+    "hard_nonpassing_months": 33,
+    "min_monthly_return_pct": -21.88514324386728,
+    "min_monthly_orders": 1,
+    "orders": 1176,
+    "turnover": 1179.0,
+    "cost_log": 1.179,
+    "worst_month_drawdown_pct": -69.49259267228072
+  },
+  "oracle_order10_summary": {
+    "return_2023_pct": 5474067.323343798,
+    "return_2024_pct": 148266201.79221553,
+    "return_2025_pct": 17665719.090884987,
+    "return_2026_ytd_pct": 4414.400915247049,
+    "total_return_pct": 6.472833367869371e+19,
+    "losing_or_flat_months": 0,
+    "hard_nonpassing_months": 0,
+    "min_monthly_return_pct": 25.642113970043635,
+    "min_monthly_orders": 14,
+    "orders": 4312,
+    "turnover": 19136.0,
+    "cost_log": 19.136,
+    "worst_month_drawdown_pct": -100.0
+  },
+  "previous_oracle_follow_summary": {
+    "return_2023_pct": -52.855923285979635,
+    "return_2024_pct": -99.99950213791237,
+    "return_2025_pct": -99.99832596129417,
+    "return_2026_ytd_pct": -96.75079012020439,
+    "total_return_pct": -99.99999999987233,
+    "losing_or_flat_months": 35,
+    "hard_nonpassing_months": 36,
+    "min_monthly_return_pct": -95.65844528299306,
+    "min_monthly_orders": 0,
+    "orders": 4664,
+    "turnover": 20444.0,
+    "cost_log": 20.444,
+    "worst_month_drawdown_pct": -100.0
+  },
+  "root_cause_counts": {
+    "FEES_TURNED_GROSS_WIN_TO_NET_LOSS": 3,
+    "STRICT_MONTH_OK_BUT_BEHIND_ORACLE": 8,
+    "TOO_FEW_TRADES": 12,
+    "WRONG_CANDIDATE_AND_TOO_FEW_TRADES": 1,
+    "WRONG_CANDIDATE_MARKET_LOSS": 17
+  },
+  "nonpassing_root_cause_counts": {
+    "FEES_TURNED_GROSS_WIN_TO_NET_LOSS": 3,
+    "TOO_FEW_TRADES": 12,
+    "WRONG_CANDIDATE_AND_TOO_FEW_TRADES": 1,
+    "WRONG_CANDIDATE_MARKET_LOSS": 17
+  },
+  "selection_gap": {
+    "months": 41,
+    "selected_equals_oracle_months": 0,
+    "same_symbol_as_oracle_months": 0,
+    "median_oracle_hard_rank_before_month": 222.0,
+    "oracle_top10_hard_rank_months": 0,
+    "oracle_top50_hard_rank_months": 1,
+    "oracle_unique_candidates": 32,
+    "oracle_unique_symbols": 7,
+    "oracle_unique_rules": 3
+  },
+  "fee_vs_market_loss": {
+    "selected_net_losing_months": 21,
+    "fee_killed_months": 3,
+    "market_direction_loss_months": 18,
+    "too_few_trade_months": 13
+  },
+  "decision": {
+    "verdict": "ROOT_CAUSE_UNSTABLE_HINDSIGHT_SELECTION",
+    "promote_strategy": false,
+    "reason": "失败主因不是没有赚钱片段，而是赚钱片段换得太快，过去表现很难提前选中当月赢家。",
+    "next_step": "不要先加交易规则；若继续，只能另起新编号测试真正不同的选择方法，并先做上限/泄漏审计。"
+  },
+  "hashes": {
+    "script_sha256": "6dc704bb2f7f8dd2b1e586edf8d7ffcc728253c3ad68756bebaf58c90b34192f",
+    "source_summary_sha256": "a67dd0b92c2906e6de1ab91b623124ec470a2a19fb1e9bd0e86fbe62155d1053",
+    "source_candidate_monthly_sha256": "97f6fdc6087a1f13466f26bb7d8268ddc905e055cd380a6bc4b4937f77dad88d"
+  },
+  "files": {
+    "summary": "artifacts/strategy_34_multisymbol_failure_root_cause_20260629/summary.json",
+    "report": "artifacts/strategy_34_multisymbol_failure_root_cause_20260629/report.md",
+    "month_root_cause": "artifacts/strategy_34_multisymbol_failure_root_cause_20260629/month_root_cause.csv",
+    "failure_months": "artifacts/strategy_34_multisymbol_failure_root_cause_20260629/failure_months.csv",
+    "opportunity_by_month": "artifacts/strategy_34_multisymbol_failure_root_cause_20260629/opportunity_by_month.csv",
+    "oracle_training_ranks": "artifacts/strategy_34_multisymbol_failure_root_cause_20260629/oracle_training_ranks.csv",
+    "previous_oracle_follow_monthly": "artifacts/strategy_34_multisymbol_failure_root_cause_20260629/previous_oracle_follow_monthly.csv"
+  }
+}

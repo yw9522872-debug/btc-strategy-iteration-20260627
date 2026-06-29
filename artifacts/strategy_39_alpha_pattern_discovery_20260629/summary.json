@@ -1,0 +1,225 @@
+{
+  "status": "strategy_39_alpha_pattern_discovery_ready",
+  "strategy_id": "strategy_39_alpha_pattern_discovery_20260629",
+  "generated_at": "2026-06-29T10:19:21.373297+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Explain Strategy 38 hindsight winners and test whether the visible pattern transfers to simple no-future rules.",
+  "method": {
+    "new_market_data_downloaded": false,
+    "new_trade_rules_added": false,
+    "source": "Strategy 38 winners plus Strategy 33 candidate monthly table and close panel.",
+    "warning": "The discovered pattern is selected after seeing history. Rule tests are no-future, but this meta-choice is still research."
+  },
+  "pattern": {
+    "winner_months_with_symbol": 40,
+    "winner_count_by_symbol_rule": [
+      {
+        "symbol": "AVAXUSDT",
+        "rule": "symbol_momentum",
+        "months": 6
+      },
+      {
+        "symbol": "SOLUSDT",
+        "rule": "symbol_momentum",
+        "months": 5
+      },
+      {
+        "symbol": "AVAXUSDT",
+        "rule": "symbol_reversal",
+        "months": 4
+      },
+      {
+        "symbol": "LINKUSDT",
+        "rule": "symbol_reversal",
+        "months": 4
+      },
+      {
+        "symbol": "ADAUSDT",
+        "rule": "symbol_momentum",
+        "months": 3
+      },
+      {
+        "symbol": "SOLUSDT",
+        "rule": "symbol_reversal",
+        "months": 3
+      },
+      {
+        "symbol": "DOGEUSDT",
+        "rule": "symbol_momentum",
+        "months": 3
+      },
+      {
+        "symbol": "XRPUSDT",
+        "rule": "symbol_momentum",
+        "months": 3
+      },
+      {
+        "symbol": "LINKUSDT",
+        "rule": "symbol_momentum",
+        "months": 2
+      },
+      {
+        "symbol": "ETHUSDT",
+        "rule": "symbol_momentum",
+        "months": 2
+      },
+      {
+        "symbol": "ETHUSDT",
+        "rule": "symbol_reversal",
+        "months": 2
+      },
+      {
+        "symbol": "XRPUSDT",
+        "rule": "symbol_reversal",
+        "months": 2
+      },
+      {
+        "symbol": "ADAUSDT",
+        "rule": "symbol_reversal",
+        "months": 1
+      }
+    ],
+    "winner_count_by_lookback": {
+      "96.0": 8,
+      "384.0": 25,
+      "1536.0": 7
+    },
+    "winner_count_by_threshold_bps": {
+      "20.0": 19,
+      "50.0": 11,
+      "100.0": 10
+    },
+    "winner_count_by_leverage": {
+      "4.0": 40
+    },
+    "prior_rank_stats": {
+      "prev1_abs_rank": {
+        "median": 4.0,
+        "top3_pct": 45.0,
+        "top5_pct": 72.5
+      },
+      "prev1_vol_rank": {
+        "median": 3.5,
+        "top3_pct": 50.0,
+        "top5_pct": 72.5
+      },
+      "prev2_abs_rank": {
+        "median": 3.0,
+        "top3_pct": 52.5,
+        "top5_pct": 77.5
+      },
+      "prev2_vol_rank": {
+        "median": 3.0,
+        "top3_pct": 52.5,
+        "top5_pct": 72.5
+      },
+      "prev3_abs_rank": {
+        "median": 4.0,
+        "top3_pct": 47.5,
+        "top5_pct": 70.0
+      },
+      "prev3_vol_rank": {
+        "median": 4.0,
+        "top3_pct": 45.0,
+        "top5_pct": 85.0
+      }
+    },
+    "best_simple_rule_tests": [
+      {
+        "rule_test": "prev_abs_top2_reversal",
+        "return_2023_pct": 100.2224429843,
+        "return_2024_pct": -40.5028670404,
+        "return_2025_pct": 0.0,
+        "return_2026_ytd_pct": 18.0111577596,
+        "traded_months": 3,
+        "losing_traded_months": 1,
+        "orders": 358,
+        "min_traded_return_pct": -40.5028670404
+      },
+      {
+        "rule_test": "prev_vol_top2_reversal",
+        "return_2023_pct": -34.1448781468,
+        "return_2024_pct": 0.0,
+        "return_2025_pct": -19.7951488535,
+        "return_2026_ytd_pct": -45.3867692392,
+        "traded_months": 3,
+        "losing_traded_months": 3,
+        "orders": 327,
+        "min_traded_return_pct": -45.3867692392
+      },
+      {
+        "rule_test": "max3_abs_top2_reversal",
+        "return_2023_pct": 0.0,
+        "return_2024_pct": 0.0,
+        "return_2025_pct": -19.7951488535,
+        "return_2026_ytd_pct": -51.3006047191,
+        "traded_months": 2,
+        "losing_traded_months": 2,
+        "orders": 154,
+        "min_traded_return_pct": -51.3006047191
+      },
+      {
+        "rule_test": "max3_vol_top2_reversal",
+        "return_2023_pct": -23.7604073963,
+        "return_2024_pct": 0.0,
+        "return_2025_pct": -19.7951488535,
+        "return_2026_ytd_pct": -51.3006047191,
+        "traded_months": 5,
+        "losing_traded_months": 4,
+        "orders": 548,
+        "min_traded_return_pct": -51.3006047191
+      },
+      {
+        "rule_test": "max3_vol_top2_reversal_strict",
+        "return_2023_pct": -23.7604073963,
+        "return_2024_pct": 0.0,
+        "return_2025_pct": -19.7951488535,
+        "return_2026_ytd_pct": -51.3006047191,
+        "traded_months": 5,
+        "losing_traded_months": 4,
+        "orders": 548,
+        "min_traded_return_pct": -51.3006047191
+      },
+      {
+        "rule_test": "prev_vol_top2_momentum",
+        "return_2023_pct": -2.3499711659,
+        "return_2024_pct": -89.1843137998,
+        "return_2025_pct": -23.0652635394,
+        "return_2026_ytd_pct": -57.6808342422,
+        "traded_months": 24,
+        "losing_traded_months": 14,
+        "orders": 2457,
+        "min_traded_return_pct": -76.886526939
+      },
+      {
+        "rule_test": "prev_vol_top2_both",
+        "return_2023_pct": -22.8154483086,
+        "return_2024_pct": -89.1843137998,
+        "return_2025_pct": -38.2946091418,
+        "return_2026_ytd_pct": -76.8881363486,
+        "traded_months": 26,
+        "losing_traded_months": 16,
+        "orders": 2702,
+        "min_traded_return_pct": -76.886526939
+      }
+    ]
+  },
+  "decision": {
+    "verdict": "ALPHA_PATTERN_FOUND_BUT_SIMPLE_SELECTOR_STILL_FAILS",
+    "promote_strategy": false,
+    "alpha_pattern": "历史赢家集中在多币种山寨币、4倍、单币动量/反转，尤其是近期波动或涨跌幅靠前的币。",
+    "why_not_tradeable_yet": "把这个规律改成月初不看未来的简单选择器后，2025/2026不能同时盈利。",
+    "next_step": "若继续，应只围绕这个规律找提前识别信号，例如 funding/premium/成交流/持仓量，而不是继续扩普通K线小规则。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_39_alpha_pattern_discovery_20260629/summary.json",
+    "report": "artifacts/strategy_39_alpha_pattern_discovery_20260629/report.md",
+    "winner_predictive_features": "artifacts/strategy_39_alpha_pattern_discovery_20260629/winner_predictive_features.csv",
+    "simple_rule_tests": "artifacts/strategy_39_alpha_pattern_discovery_20260629/simple_rule_tests.csv"
+  }
+}

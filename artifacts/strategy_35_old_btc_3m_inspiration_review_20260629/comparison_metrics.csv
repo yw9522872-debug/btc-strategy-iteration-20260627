@@ -1,0 +1,6 @@
+﻿case,selection,pass,net_2025_pct,net_2026_pct,positive_months,months,note
+old_project_sample_in_2025_2026,uses_2025_2026_labels,True,145.67358973791096,104.08899655658887,18.0,18.0,"Accounting replay passes, but selection is sample-in."
+old_project_same_rules_2024_stress,fixed_after_sample_in,False,,,2.0,12.0,2024 net -211.74%.
+old_project_pre2025_locked_forward,rules_locked_before_2025,False,-0.21457319019963475,-0.17216893917506876,4.0,18.0,Best locked row still fails.
+current_strategy_33_best_strict_selector,monthly_walk_forward,False,-46.85449828776225,-5.635796641849334,,,Multisymbol 15m strict selector fails.
+current_strategy_34_follow_previous_oracle,previous_month_oracle,False,-99.99832596129417,-96.75079012020439,,,Shows hindsight winners do not persist.

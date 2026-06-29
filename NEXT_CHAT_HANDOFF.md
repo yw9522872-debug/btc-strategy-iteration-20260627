@@ -16,8 +16,24 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 3. GPT_PRO_REVIEW_BRIEF.md
 4. STRATEGY_31_MULTISYMBOL_FREE_FUTURES_UPPER_BOUND.md
 5. STRATEGY_32_BTC_3M_2025_TODAY_UPPER_BOUND.md
-6. artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json
-7. artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json
+6. STRATEGY_33_MULTISYMBOL_FREE_FUTURES_STRICT_SELECTOR.md
+7. STRATEGY_34_MULTISYMBOL_FAILURE_ROOT_CAUSE.md
+8. STRATEGY_35_OLD_BTC_3M_INSPIRATION_REVIEW.md
+9. STRATEGY_36_MULTISYMBOL_ENSEMBLE_SELECTOR.md
+10. STRATEGY_37_BTC_3M_MULTITIMEFRAME_EVENT_POOL.md
+11. STRATEGY_38_FORCED_OVERFIT_ALPHA_MINING.md
+12. STRATEGY_39_ALPHA_PATTERN_DISCOVERY.md
+13. STRATEGY_40_MULTISYMBOL_FUNDING_ALPHA_SELECTOR.md
+14. artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json
+15. artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json
+16. artifacts/strategy_33_multisymbol_free_futures_strict_selector_20260629/summary.json
+17. artifacts/strategy_34_multisymbol_failure_root_cause_20260629/summary.json
+18. artifacts/strategy_35_old_btc_3m_inspiration_review_20260629/summary.json
+19. artifacts/strategy_36_multisymbol_ensemble_selector_20260629/summary.json
+20. artifacts/strategy_37_btc_3m_multitimeframe_event_pool_20260629/summary.json
+21. artifacts/strategy_38_forced_overfit_alpha_mining_20260629/summary.json
+22. artifacts/strategy_39_alpha_pattern_discovery_20260629/summary.json
+23. artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
@@ -31,9 +47,10 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 不下实盘，不读取密钥，不启动 supervisor，不改真实仓位。
 
 0号策略已经永久保存，不能覆盖。
-1F、1G、2C、4号、10号到32号都不能覆盖，后续必须另起新编号、新目录。
+1F、1G、2C、4号、10号到40号都不能覆盖，后续必须另起新编号、新目录。
 
 当前关键结论：
+2C 是当前旧候选里历史表现最好的一个：2025 +359.10%、2026 +260.59%，但仍是研究候选，不是实盘保证；0号是永久固化基准，不是收益最高者。
 14号已经判定旧 ret_state 64/100 家族为 STOP_FAMILY。
 22号说明简单免费K线小规则和严格选择器双重卡住。
 23号资金费率看答案上限很好，但24号严格选择器失败，不能升级。
@@ -41,9 +58,20 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 30号 spot-perp aggTrades 样本上限失败，不要下载全量约90GB继续做。
 31号多币种免费期货样本上限有信号，但只是四个月看答案样本，不能交易。
 32号 BTC 单币 3m 从2025到2026-06-27上限失败，不要继续扩 BTC 3m 小规则。
+33号多币种完整历史严格选择器失败：看答案 oracle 能过，但严格逐月选择器不能提前选中正确候选。
+34号拆解33号失败根因：每个月都有看答案赚钱候选，但赢家换得太快，月初训练排序找不到；跟随上月赢家也大亏。
+35号按用户要求复盘旧项目 `C:\Users\WHR\Documents\BTC多因子研究_20260626`：旧 BTC 3m 样本内线有收益，但2024压力和pre-2025锁参都失败；只能借框架，不能借旧参数。
+36号先用33号已有候选测试“多规则组合”近路，180组严格组合配置通过数为0，最好2025也只有+0.06%、2026 YTD为-22.93%。
+37号按35号建议另起 BTC 3m 多周期事件池审计，数据质量通过，但静态硬通过0；每月10单看答案 oracle 仍差 2024-04 和 2025-10 两个月；严格选择器最好 2025 -6.49%、2026 YTD -7.45%，不能升级。
+38号按用户要求强行过拟合挖 Alpha 线索：合并33号和37号后，看答案结果月月正、2025 +17665719.09%、2026 YTD +4414.40%，但41/41个月赢家都来自33号，主要是多币种单币4倍动量/反转；月初训练排序找不到赢家，跟随上月赢家也大亏，所以只能当线索，不能升级策略。
+39号按用户要求从38号里挖规律：规律明确，赢家集中在近期高波动/高涨跌幅山寨币、4倍、单币动量/反转，384根15m窗口最多；上月涨跌幅绝对值排前5占72.5%，上月波动率排前5占72.5%。但简单月初不看未来选择器不能让2025和2026同时盈利，说明只是找到历史赢家形状，还没找到可交易选择器。
+40号按39号建议测试 funding 提前识别信号：下载 Binance 免费 fundingRate REST 历史，覆盖 ETH/SOL/DOGE/XRP/ADA/AVAX/LINK 从2022-12到2026-05，每币3834行。Funding 有弱解释力，赢家上月 funding 为正比例82.5%、绝对值排前3比例50.0%；最好不看未来选择器 2025 +203.32%、2026 YTD +18.01%，但2024 -90.19%，不能升级。
 
 下一步建议：
-另起33号，做多币种完整历史严格选择器。优先用 Binance USD-M futures 免费15m K线，先覆盖 BTC、ETH、SOL、BNB、DOGE、XRP、ADA、AVAX、LINK；HYPE历史太短，只能当附加观察，不要当主训练币。必须严格不看未来，每个月只能用之前数据选候选。
+不要继续手工扩多币种免费K线小规则，也不要照搬旧 BTC 3m 的7条规则，不要继续调33号组合参数，不要小修37号 BTC 3m 多周期事件池，不要把38号看答案线当策略，也不要继续扩 funding-only 小规则。若继续，另起41号测试 premium 或成交流这类更细的提前识别信号；否则更适合把目标改成影子跟踪/低年化验证。
+
+环境状态：
+刚执行过 `git gc --prune=now` 清理，`.git` loose objects 已从约 11.76GiB 降到几乎为0，pack约148.90MiB；没有 `.git/index.lock`。33-40号文件仍是本地未提交状态。
 
 请用中文、通俗的话和我沟通。
 ```
@@ -54,6 +82,8 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
 - 当前最新策略结果提交：`0500e23 Add strategy 32 BTC 3m upper bound audit`
 - 当前最新标签：`strategy-32-btc-3m-2025-today-upper-bound-20260628`
+- 33号、34号、35号、36号、37号、38号、39号、40号本地结果已生成：`strategy_33_multisymbol_free_futures_strict_selector_20260629`、`strategy_34_multisymbol_failure_root_cause_20260629`、`strategy_35_old_btc_3m_inspiration_review_20260629`、`strategy_36_multisymbol_ensemble_selector_20260629`、`strategy_37_btc_3m_multitimeframe_event_pool_20260629`、`strategy_38_forced_overfit_alpha_mining_20260629`、`strategy_39_alpha_pattern_discovery_20260629`、`strategy_40_multisymbol_funding_alpha_selector_20260629`。当前尚未提交、尚未推送、尚未打标签。
+- Git 清理状态：已执行 `git gc --prune=now`；`.git` loose objects 几乎为0，pack约 `148.90 MiB`，当前没有 `.git/index.lock`。
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
 - 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号、29号、30号、31号、32号及交接说明已提交并推送到 GitHub
 - 持仓量/多空比历史数据源审查文件：`DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`。它不是策略，无策略标签。
@@ -138,29 +168,45 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 36. `STRATEGY_30_SPOT_PERP_AGGTRADE_SAMPLE_UPPER_BOUND.md`
 37. `STRATEGY_31_MULTISYMBOL_FREE_FUTURES_UPPER_BOUND.md`
 38. `STRATEGY_32_BTC_3M_2025_TODAY_UPPER_BOUND.md`
-39. `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
-40. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
-41. `CURRENT_STRATEGY_FREEZE.md`
-42. `GPT_PRO_REVIEW_BRIEF.md`
-43. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
-44. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
-45. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
-46. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
-47. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
-48. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
-49. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
-50. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
-51. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
-52. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
-53. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
-54. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
-55. `artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json`
-56. `artifacts/strategy_27_target_feasibility_audit_20260627/summary.json`
-57. `artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json`
-58. `artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json`
-59. `artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/summary.json`
-60. `artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json`
-61. `artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json`
+39. `STRATEGY_33_MULTISYMBOL_FREE_FUTURES_STRICT_SELECTOR.md`
+40. `STRATEGY_34_MULTISYMBOL_FAILURE_ROOT_CAUSE.md`
+41. `STRATEGY_35_OLD_BTC_3M_INSPIRATION_REVIEW.md`
+42. `STRATEGY_36_MULTISYMBOL_ENSEMBLE_SELECTOR.md`
+43. `STRATEGY_37_BTC_3M_MULTITIMEFRAME_EVENT_POOL.md`
+44. `STRATEGY_38_FORCED_OVERFIT_ALPHA_MINING.md`
+45. `STRATEGY_39_ALPHA_PATTERN_DISCOVERY.md`
+46. `STRATEGY_40_MULTISYMBOL_FUNDING_ALPHA_SELECTOR.md`
+47. `DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`
+48. `RESEARCH_DECISION_STOP_SIMPLE_RULES_AFTER_22.md`
+49. `CURRENT_STRATEGY_FREEZE.md`
+50. `GPT_PRO_REVIEW_BRIEF.md`
+51. `artifacts/strategy_freeze_monthly_profit_lock_20260627/freeze.json`
+52. `artifacts/strategy_15_unified_data_baseline_20260627/summary.json`
+53. `artifacts/strategy_16_new_family_probe_20260627/summary.json`
+54. `artifacts/strategy_17_simple_family_upper_bound_20260627/summary.json`
+55. `artifacts/strategy_18_upper_bound_failure_review_20260627/summary.json`
+56. `artifacts/strategy_19_calendar_seasonality_probe_20260627/summary.json`
+57. `artifacts/strategy_20_ohlc_structure_upper_bound_20260627/summary.json`
+58. `artifacts/strategy_21_volume_upper_bound_20260627/summary.json`
+59. `artifacts/strategy_22_hard_target_bottleneck_20260627/summary.json`
+60. `artifacts/strategy_23_funding_rate_upper_bound_20260627/summary.json`
+61. `artifacts/strategy_24_funding_rate_strict_selector_20260627/summary.json`
+62. `artifacts/strategy_25_open_interest_upper_bound_feasibility_20260627/summary.json`
+63. `artifacts/strategy_26_intrabar_1m_upper_bound_20260627/summary.json`
+64. `artifacts/strategy_27_target_feasibility_audit_20260627/summary.json`
+65. `artifacts/strategy_28_relaxed_no_monthly_profit_audit_20260628/summary.json`
+66. `artifacts/strategy_29_free_raw_trade_coverage_audit_20260628/summary.json`
+67. `artifacts/strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628/summary.json`
+68. `artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json`
+69. `artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json`
+70. `artifacts/strategy_33_multisymbol_free_futures_strict_selector_20260629/summary.json`
+71. `artifacts/strategy_34_multisymbol_failure_root_cause_20260629/summary.json`
+72. `artifacts/strategy_35_old_btc_3m_inspiration_review_20260629/summary.json`
+73. `artifacts/strategy_36_multisymbol_ensemble_selector_20260629/summary.json`
+74. `artifacts/strategy_37_btc_3m_multitimeframe_event_pool_20260629/summary.json`
+75. `artifacts/strategy_38_forced_overfit_alpha_mining_20260629/summary.json`
+76. `artifacts/strategy_39_alpha_pattern_discovery_20260629/summary.json`
+77. `artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/summary.json`
 
 ## 当前固化策略
 
@@ -708,9 +754,9 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 
 0号策略不要覆盖。下一轮如果继续做，只能另起新编号、新目录，例如：
 
-- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16-22号说明免费K线小规则和严格选择器卡住；23-24号说明资金费率看答案强但严格选择失败；25号说明 Binance 免费持仓量历史不够；26-28号继续确认 BTC 单币旧路线救不回；29号确认免费 raw trade 数据覆盖完整；30号 spot-perp `aggTrades` 样本上限失败；31号多币种样本上限有信号；32号 BTC 单币 3m 上限失败。
+- 当前最新研究链：14号判定 `ret_state 64/100` 家族 `STOP_FAMILY`；15号确认 futures 统一K线底座可用；16-22号说明免费K线小规则和严格选择器卡住；23-24号说明资金费率看答案强但严格选择失败；25号说明 Binance 免费持仓量历史不够；26-28号继续确认 BTC 单币旧路线救不回；29号确认免费 raw trade 数据覆盖完整；30号 spot-perp `aggTrades` 样本上限失败；31号多币种样本上限有信号；32号 BTC 单币 3m 上限失败；33号多币种完整历史严格选择器失败；34号确认33号根因是赢家不稳定、过去表现选不中；35号复盘旧 BTC 3m 项目，结论是可借框架但不能借旧参数；36号测试33号候选多规则组合近路，仍失败。
 - 下一轮不要继续修 `ret_state 64/100`，不要继续扩均线/Donchian/RSI/布林带/ATR突破，不要升级日历季节性，不要继续扩 OHLC/成交量/taker/1分钟内部结构小规则，不要继续 spot-perp `aggTrades`，也不要继续单币 BTC 3m。
-- 如果继续研究，下一步应另起33号，做多币种完整历史严格选择器。先用免费 Binance USD-M futures 15m K线；HYPE 历史太短，只做附加观察，不做主训练币。
+- 如果继续研究，不要继续手工扩多币种免费K线小规则；若测试新选择方法，必须另起新编号并先做上限/泄漏审计，否则应换真正不同的新数据源，或先把目标改成更现实的影子跟踪/低年化验证。
 - 当前历史硬目标很可能过严，但不是唯一问题：22号显示原始硬目标下连看答案 oracle 都差 `2` 个月；27号显示放宽后看答案能过，但严格逐月选择器仍 `0/49`；28号显示拿掉“月月盈利”后，旧 ret_state 家族严格选择器仍在 2025/2026 亏损。
 - 每次新结果都写清楚手续费、未来函数检查、月度收益、交易次数、最大回撤。
 
@@ -898,10 +944,34 @@ DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md 不是策略，只审查
 31号：strategy_31_multisymbol_free_futures_sample_upper_bound_20260628，不是策略，不能交易，只拿四个关键样本月测试多币种免费 USD-M futures 15m K线有没有比 BTC 单币更多机会。样本月是 2023-07、2024-06、2025-08、2026-05；币种为 BTC、ETH、SOL、BNB、HYPE、DOGE、XRP、ADA、AVAX、LINK。HYPE只覆盖2个样本月，DOGE覆盖3个，其余主要币覆盖4个。816个候选包括跨币种强弱轮动、单币动量/反转；18个静态候选四个样本月都为正。每月10单 oracle 四个样本月全正，最差月 +244.10%，最少月交易18，但这是看答案且收益极端，不能交易。当前判断：MULTISYMBOL_FREE_FUTURES_SAMPLE_UPPER_BOUND_HAS_SIGNAL。下一步如果继续，应另起32号做完整历史覆盖和严格逐月选择器，不要直接升级31号。
 
 当前新增 32号 BTC 3m 2025到最新公开数据上限测试：
-32号：strategy_32_btc_3m_2025_today_upper_bound_20260628，不是策略，不能交易，只测用户要求的 BTCUSDT 3m，从 2025-01 到当前公开可取数据。Binance USD-M futures 3m K线实际拿到 2025-01-01 00:00 UTC 到 2026-06-27 23:57 UTC，共260640根；重复、断档、补齐均为0；2026-06-28日包运行时未公开。348个 BTC 单币3m候选里，静态每月全正数量0。要求每月10单的月度看答案 oracle：2025 +51.33%，2026 YTD +227.11%，但仍有11个不盈利月份，最差月 -3.67%。当前判断：BTC_3M_2025_TODAY_UPPER_BOUND_FAILS。不要继续单币 BTC 3m 小规则；如果继续，应回到31号方向，做多币种完整历史严格选择器。
+32号：strategy_32_btc_3m_2025_today_upper_bound_20260628，不是策略，不能交易，只测用户要求的 BTCUSDT 3m，从 2025-01 到当前公开可取数据。Binance USD-M futures 3m K线实际拿到 2025-01-01 00:00 UTC 到 2026-06-27 23:57 UTC，共260640根；重复、断档、补齐均为0；2026-06-28日包运行时未公开。348个 BTC 单币3m候选里，静态每月全正数量0。要求每月10单的月度看答案 oracle：2025 +51.33%，2026 YTD +227.11%，但仍有11个不盈利月份，最差月 -3.67%。当前判断：BTC_3M_2025_TODAY_UPPER_BOUND_FAILS。不要继续单币 BTC 3m 小规则；31号方向后来已由33号完整历史严格选择器检查，仍然失败。
+
+当前新增 33号多币种完整历史严格选择器：
+33号：strategy_33_multisymbol_free_futures_strict_selector_20260629，不是策略，不能交易，只把31号多币种样本上限扩到完整历史并做严格逐月选择器。Binance USD-M futures 15m 月包覆盖 BTC/ETH/SOL/BNB/DOGE/XRP/ADA/AVAX/LINK，2020-01-01 00:00 UTC 到 2026-05-31 23:45 UTC，共224928根主时间轴，重复/断档均为0；HYPE历史太短，不参与主选择。744个候选静态硬通过数量0。每月10单看答案 oracle 能过，2025 +17665719.09%、2026 YTD +4414.40%、不盈利月0、最少月交易14，但这是未来函数，不能交易。最好严格选择器 all_multisymbol：2023 +17.72%、2024 -21.17%、2025 -46.85%、2026 YTD -5.64%，不盈利月份21，最少月交易1。当前判断：MULTISYMBOL_ORACLE_HAS_PIECES_BUT_STRICT_SELECTOR_FAILS。31号样本信号扩到完整历史后仍然只能看答案选中，不能升级候选；不要继续手工扩这批多币种免费K线小规则。
+
+当前新增 34号多币种失败根因审计：
+34号：strategy_34_multisymbol_failure_root_cause_20260629，不是策略，不能交易，只复用33号结果拆失败根因，不新增交易规则、不重新下载数据。41个评估月里，每个月都有“每月10单且正收益”的看答案候选，但严格选择器有33个不达标月份；训练期没有硬通过候选的月份为41；当月oracle赢家在月初训练排序里的中位名次为222，排进前10的月份为0；跟随上月oracle赢家在2025为-99.9983%、2026 YTD为-96.7508%。失败拆分：严格选择器净亏损月份21，其中手续费把毛盈利打成净亏3个月，行情方向本身亏18个月，交易次数不足10次13个月。当前判断：ROOT_CAUSE_UNSTABLE_HINDSIGHT_SELECTION。拆根因能看清问题，但不能直接把这批规则修成可靠盈利策略；不要先加交易规则，若继续只能另起新编号测试真正不同的选择方法，并先做上限/泄漏审计。
+
+当前新增 35号旧 BTC 3m 项目灵感复盘：
+35号：strategy_35_old_btc_3m_inspiration_review_20260629，不是策略，不能交易，只按用户要求查看 `C:\Users\WHR\Documents\BTC多因子研究_20260626` 寻找灵感。旧项目保存的 BTC 3m 样本内组合为2025 +145.67%、2026 YTD +104.09%、18个月全正、最少月交易340，标签收益和独立3m价格重放差异0 bps；但同一组规则压到2024为-211.74%、正收益月份2/12，pre-2025锁参通过行数0，pre-2025 ML路由通过行数0。当前判断：OLD_BTC_3M_GIVES_FRAMEWORK_NOT_DEPLOYABLE_RULES。可以借多周期特征、funding/premium可用时间、事件池、资金约束和逐K盯市框架；不能照搬旧7条规则、阈值、10x毛暴露或样本内选择结果。
+
+当前新增 36号多币种候选组合选择器审计：
+36号：strategy_36_multisymbol_ensemble_selector_20260629，不是策略，不能交易，只借旧项目“多规则组合”思路做便宜检查；不下载新数据、不新增交易规则，只复用33号候选月度结果。每个月只用该月以前的数据选 top-k 候选等权组合，测试180组配置。严格通过配置数0；最好配置 top_k=50、lookback=24、min_pos_rate=0.45、score=pos_mean，2023 -14.30%、2024 -26.26%、2025 +0.06%、2026 YTD -22.93%，仍有24个不盈利月份，最小月交易546。当前判断：ENSEMBLE_SELECTOR_ON_33_CANDIDATES_FAILS。组合33号已有候选不能直接解决问题；不要继续调33号组合参数。
+
+当前新增 37号 BTC 3m 多周期事件池审计：
+37号：strategy_37_btc_3m_multitimeframe_event_pool_20260629，不是策略，不能交易，只借旧项目“多周期事件池”框架，不照搬旧7条规则、旧阈值或10x毛暴露。Binance USD-M futures BTCUSDT 3m月包覆盖2020-01到2026-05，共1124640根3分钟K线，重复/断档/缺失月份均为0。496个事件候选静态硬通过0；每月10单看答案oracle为2025 +503.35%、2026 YTD +157.89%，但仍有2024-04和2025-10两个不盈利月份；严格选择器最好range_events为2023 -2.17%、2024 -8.69%、2025 -6.49%、2026 YTD -7.45%，不盈利月份27，最少月交易2。当前判断：BTC_3M_MULTITIMEFRAME_EVENT_POOL_FAILS。不要继续小修这批BTC 3m多周期事件。
+
+当前新增 38号强行过拟合 Alpha 挖掘审计：
+38号：strategy_38_forced_overfit_alpha_mining_20260629，不是策略，不能交易，是按用户要求故意“看答案”挖线索。它不下载新数据、不新增交易规则，只复用33号和37号候选月度结果；每个月强行挑当月收益最高且至少10单的候选。合并看答案结果硬通过：2023 +5474067.32%、2024 +148266201.79%、2025 +17665719.09%、2026 YTD +4414.40%，不盈利月份0，最差月+25.64%，最少月交易14。但41/41个月赢家都来自33号，主要是多币种single_symbol的4倍动量/反转，常见 AVAX/SOL/LINK/XRP/DOGE/ADA。当月赢家在月初训练排序中位名次231，进前10月份0，跟随上月赢家在2025和2026都接近归零。当前判断：FORCED_OVERFIT_ALPHA_CLUES_NOT_YET_TRADEABLE。38号只说明历史赢家画像，不是可交易策略；若继续，另起39号研究无未来数据提前识别这些多币种赢家结构。
+
+当前新增 39号 Alpha 规律挖掘：
+39号：strategy_39_alpha_pattern_discovery_20260629，不是策略，不能交易，只把38号答案拆成规律并做简单不看未来搬运测试。发现的规律很清楚：赢家集中在近期活跃的山寨币，全部有符号赢家都是4倍，主要是single_symbol单币动量/反转，384根15m窗口最多；常见 AVAX、SOL、LINK、XRP、DOGE、ADA、ETH。上月涨跌幅绝对值排前5占72.5%，上月波动率排前5占72.5%。但把这个规律做成月初简单选择器后失败，最好 prev_abs_top2_reversal 为2023 +100.22%、2024 -40.50%、2025 0.00%、2026 YTD +18.01%，不能同时让2025和2026盈利。当前判断：ALPHA_PATTERN_FOUND_BUT_SIMPLE_SELECTOR_STILL_FAILS。下一步若继续，不要继续扩普通K线规则，应围绕这个规律找能提前识别“热币会延续还是反转”的新信号。
+
+当前新增 40号多币种 Funding 提前识别审计：
+40号：strategy_40_multisymbol_funding_alpha_selector_20260629，不是策略，不能交易，只按39号规律测试 funding 能不能提前识别。它下载 Binance 免费 USD-M futures fundingRate REST 历史，币种为 ETH/SOL/DOGE/XRP/ADA/AVAX/LINK，范围2022-12到2026-05；每币3834行、42个月、重复时间戳0、非8小时间隔0。赢家 funding 画像：40个有funding数据的赢家月里，上月funding绝对值排名中位数3.5，排前3比例50.0%，上月funding为正比例82.5%；动量赢家上月funding为正79.17%，反转赢家为正87.50%。最好不看未来测试 hot_abs_funding_abs_both：2023 +6662.64%、2024 -90.19%、2025 +203.32%、2026 YTD +18.01%，交易月份17，亏损交易月份6，最差交易月-76.35%。当前判断：FUNDING_SIGNAL_WEAK_NOT_TRADEABLE。Funding有一点拥挤度信息，但还不能达标；不要继续扩funding-only小规则。
 
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
-这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，优先做33号多币种完整历史严格选择器；不要继续免费K线小规则、单币 BTC 3m 小规则、旧 ret_state 64/100 家族、资金费率严格选择器或免费 aggTrades lead-lag 路线。
+这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，不要继续免费K线小规则、单币 BTC 3m 小规则、旧 ret_state 64/100 家族、资金费率严格选择器、多币种免费K线小规则、免费 aggTrades lead-lag 路线，也不要照搬旧 BTC 3m 样本内规则、继续调33号组合参数、小修37号事件池、把38号看答案线当策略或继续扩funding-only小规则；若测试新选择方法，必须另起新编号并先做上限/泄漏审计。40号后更合理的方向是另起41号，测试 premium 或成交流这类更细的提前识别信号，否则应换真正不同的新数据源，或者把目标改成更现实的影子跟踪/低年化验证。
 
 请用中文、通俗的话和我沟通。
 ```

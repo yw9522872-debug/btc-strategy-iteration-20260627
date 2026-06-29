@@ -531,6 +531,98 @@ Important current results:
   - Result: 0 static candidates are positive in every month. The order>=10 monthly oracle has 2025 +51.33%, 2026 YTD +227.11%, but 11 non-positive months and worst month -3.67%.
   - Decision: `BTC_3M_2025_TODAY_UPPER_BOUND_FAILS`. Do not continue single-BTC 3m micro-rule expansion; if continuing, return to the Strategy 31 multi-symbol full-history strict-selector route.
 
+- `STRATEGY_33_MULTISYMBOL_FREE_FUTURES_STRICT_SELECTOR.md`
+  - Strategy 33 is the full-history multi-symbol strict monthly selector after Strategy 31's sample upper-bound signal, not a strategy and not tradeable.
+  - Audit id: `strategy_33_multisymbol_free_futures_strict_selector_20260629`.
+  - Script: `scripts/audit_strategy_33_multisymbol_free_futures_strict_selector_20260629.py`.
+  - Output: `artifacts/strategy_33_multisymbol_free_futures_strict_selector_20260629/summary.json`.
+  - Data: Binance USD-M futures 15m monthly klines for BTCUSDT, ETHUSDT, SOLUSDT, BNBUSDT, DOGEUSDT, XRPUSDT, ADAUSDT, AVAXUSDT, and LINKUSDT from 2020-01-01 00:00 UTC through 2026-05-31 23:45 UTC. Main timestamp rows 224,928; duplicate timestamps 0; non-15m gaps 0. HYPEUSDT is excluded from candidate selection because its history is too short.
+  - Candidate grid: 744 cross-sectional and single-symbol momentum/reversal candidates, leverage 1x/2x/4x, 0.2% round-trip cost.
+  - Static hindsight hard-pass count: 0.
+  - Monthly oracle with monthly orders >= 10 passes the original 2025/2026 YTD, every-month-positive, order-floor target, but it is leaky and not tradeable.
+  - Best strict selector is `all_multisymbol`: 2023 +17.72%, 2024 -21.17%, 2025 -46.85%, 2026 YTD -5.64%, 21 non-positive months, minimum monthly orders 1.
+  - Decision: `MULTISYMBOL_ORACLE_HAS_PIECES_BUT_STRICT_SELECTOR_FAILS`. Strategy 31's sample signal remains a hindsight-selection problem on full history; do not promote it or keep hand-expanding the same free multi-symbol kline micro-rules.
+
+- `STRATEGY_34_MULTISYMBOL_FAILURE_ROOT_CAUSE.md`
+  - Strategy 34 is a root-cause audit for Strategy 33, not a strategy and not tradeable.
+  - Audit id: `strategy_34_multisymbol_failure_root_cause_20260629`.
+  - Script: `scripts/audit_strategy_34_multisymbol_failure_root_cause_20260629.py`.
+  - Output: `artifacts/strategy_34_multisymbol_failure_root_cause_20260629/summary.json`.
+  - No new trading rules and no new downloads. It reuses Strategy 33's candidate monthly table, strict selector output, selected params, and leaky oracle output.
+  - Key finding: all 41 evaluated months have at least one order>=10 positive-return candidate in hindsight, but the strict selector has 33 hard-nonpassing months.
+  - Training hard-pass candidates are absent in every evaluated month: `months_with_no_train_hard_ok_candidates = 41`.
+  - The hindsight monthly oracle winner is not findable by the past-performance selector: median hard-guard rank before the month is 222, top-10 months 0, top-50 months 1.
+  - Following the previous month's oracle winner also fails badly: 2025 -99.9983%, 2026 YTD -96.7508%.
+  - Loss split for the strict selector: 21 net losing months; only 3 are gross-win fee-killed months, while 18 are market-direction losses; 13 months have fewer than 10 trades.
+  - Decision: `ROOT_CAUSE_UNSTABLE_HINDSIGHT_SELECTION`. The failure is not a small fee/turnover patch problem; the winning candidate changes too fast to select from prior performance. Do not add more trade-rule patches to this same family.
+
+- `STRATEGY_35_OLD_BTC_3M_INSPIRATION_REVIEW.md`
+  - Strategy 35 is a review of the separate local project `C:\Users\WHR\Documents\BTC多因子研究_20260626`, not a strategy and not tradeable.
+  - Audit id: `strategy_35_old_btc_3m_inspiration_review_20260629`.
+  - Script: `scripts/audit_strategy_35_old_btc_3m_inspiration_review_20260629.py`.
+  - Output: `artifacts/strategy_35_old_btc_3m_inspiration_review_20260629/summary.json`.
+  - The old project has a saved BTC 3m sample-in line: 2025 +145.67%, 2026 YTD +104.09%, 18/18 positive months, minimum monthly trades 340, and 0 bps label-vs-independent-price replay mismatch.
+  - The same 7-rule line fails 2024 stress badly: -211.74%, only 2/12 positive months. Pre-2025 locked rules have 0 pass rows, and the pre-2025 ML router also has 0 pass rows.
+  - Decision: `OLD_BTC_3M_GIVES_FRAMEWORK_NOT_DEPLOYABLE_RULES`. Borrow only the research framework: multi-timeframe features, funding/premium availability checks, event pools, capital-aware replay, and MTM validation. Do not copy the old rules, thresholds, 10x gross exposure, or sample-in selection.
+
+- `STRATEGY_36_MULTISYMBOL_ENSEMBLE_SELECTOR.md`
+  - Strategy 36 is a cheap strict ensemble-selector audit over Strategy 33's existing monthly candidate table, not a strategy and not tradeable.
+  - Audit id: `strategy_36_multisymbol_ensemble_selector_20260629`.
+  - Script: `scripts/audit_strategy_36_multisymbol_ensemble_selector_20260629.py`.
+  - Output: `artifacts/strategy_36_multisymbol_ensemble_selector_20260629/summary.json`.
+  - No new market data and no new trade rules. For each month, it selects top-k candidates using only prior-month candidate returns, then equal-weights the selected candidates at the monthly return level.
+  - Config grid: 180 strict configs. Strict pass count: 0.
+  - Best config: top_k 50, lookback 24, min_pos_rate 0.45, score pos_mean. Returns: 2023 -14.30%, 2024 -26.26%, 2025 +0.06%, 2026 YTD -22.93%, with 24 non-positive months and minimum monthly orders 546.
+  - Decision: `ENSEMBLE_SELECTOR_ON_33_CANDIDATES_FAILS`. The simple ensemble shortcut does not rescue Strategy 33's candidate pool. Do not keep tuning Strategy 33 combinations; if pursuing the old BTC 3m inspiration, build a genuinely new 3m/multi-timeframe event-pool audit with strict walk-forward selection.
+
+- `STRATEGY_37_BTC_3M_MULTITIMEFRAME_EVENT_POOL.md`
+  - Strategy 37 is a BTCUSDT 3m multi-timeframe event-pool audit, not a strategy and not tradeable.
+  - Audit id: `strategy_37_btc_3m_multitimeframe_event_pool_20260629`.
+  - Script: `scripts/audit_strategy_37_btc_3m_multitimeframe_event_pool_20260629.py`.
+  - Output: `artifacts/strategy_37_btc_3m_multitimeframe_event_pool_20260629/summary.json`.
+  - Data: Binance USD-M futures BTCUSDT 3m monthly klines from 2020-01-01 00:00 UTC through 2026-05-31 23:57 UTC; 1,124,640 rows, duplicate timestamps 0, non-3m gaps 0, missing months 0.
+  - Candidate grid: 496 event candidates using 3m trigger windows, longer 3m windows as 15m/1h/4h-style context, event holds, trend/range/volume families, leverage 1x/2x/4x, 0.2% round-trip cost.
+  - Static hard-pass count: 0.
+  - Best order>=10 monthly oracle: 2025 +503.35%, 2026 YTD +157.89%, but it still has 2 non-positive months: 2024-04 and 2025-10. This means the leaky upper bound itself misses the original every-month-positive target.
+  - Best strict selector is `range_events`: 2023 -2.17%, 2024 -8.69%, 2025 -6.49%, 2026 YTD -7.45%, 27 non-positive months, minimum monthly orders 2.
+  - The cheap monthly combo approximation also fails: best 2025 -9.44%, 2026 YTD 0.00%, 34 non-positive months.
+  - Decision: `BTC_3M_MULTITIMEFRAME_EVENT_POOL_FAILS`. Do not keep patching this BTC 3m event pool; without genuinely different data, a more realistic shadow-tracking / lower-return validation target is more appropriate.
+
+- `STRATEGY_38_FORCED_OVERFIT_ALPHA_MINING.md`
+  - Strategy 38 is a deliberately leaky forced-overfit alpha-mining audit, not a strategy and not tradeable.
+  - Audit id: `strategy_38_forced_overfit_alpha_mining_20260629`.
+  - Script: `scripts/audit_strategy_38_forced_overfit_alpha_mining_20260629.py`.
+  - Output: `artifacts/strategy_38_forced_overfit_alpha_mining_20260629/summary.json`.
+  - No new market data and no new trade rules. It reuses Strategy 33 and Strategy 37 candidate monthly tables.
+  - Method: for each evaluated month, choose the same-month best candidate among candidates with at least 10 orders. This sees the answer and is only for clue mining.
+  - Combined leaky oracle hard-passes the original 2025/2026 YTD, every-month-positive, order-floor target: 2025 +17,665,719.09%, 2026 YTD +4,414.40%, 0 non-positive months, worst month +25.64%, minimum monthly orders 14.
+  - Source split: Strategy 33 alone hard-passes with the same result; Strategy 37 alone fails because 2024-04 and 2025-10 are non-positive.
+  - Winner pattern: 41/41 combined winners come from Strategy 33, mostly `single_symbol` 4x momentum/reversal structures. Frequent symbols include AVAX, SOL, LINK, XRP, DOGE, and ADA.
+  - Non-leaky selection diagnostics are poor: the same-month oracle winner has median prior-training hard-guard rank 231, top-10 months 0, top-50 months 1, and following the previous month's winner loses badly in 2025 and 2026 YTD.
+  - Decision: `FORCED_OVERFIT_ALPHA_CLUES_NOT_YET_TRADEABLE`. Keep the winner structures as research clues only; do not promote the leaky line. A next audit should test an independent no-future selector for these multi-symbol structures.
+
+- `STRATEGY_39_ALPHA_PATTERN_DISCOVERY.md`
+  - Strategy 39 is an alpha-pattern discovery audit, not a strategy and not tradeable.
+  - Audit id: `strategy_39_alpha_pattern_discovery_20260629`.
+  - Script: `scripts/audit_strategy_39_alpha_pattern_discovery_20260629.py`.
+  - Output: `artifacts/strategy_39_alpha_pattern_discovery_20260629/summary.json`.
+  - No new market data and no new trade rules. It explains Strategy 38 winners using Strategy 33 winners, candidate monthly rows, and the multi-symbol close panel.
+  - Discovered pattern: hindsight winners are concentrated in multi-symbol altcoins, 4x, `single_symbol`, momentum/reversal. The 384-bar 15m lookback is most common. Frequent symbols are AVAX, SOL, LINK, XRP, DOGE, ADA, and ETH.
+  - Predictive clue: winner symbols are usually recently active. Prior-month absolute-return top-5 hit rate is 72.5%; prior-month volatility top-5 hit rate is 72.5%.
+  - Simple no-future transfer tests fail: month-start rules using previous high-volatility/high-absolute-return symbols cannot make 2025 and 2026 YTD both profitable. Best simple test `prev_abs_top2_reversal` has 2023 +100.22%, 2024 -40.50%, 2025 0.00%, 2026 YTD +18.01%.
+  - Decision: `ALPHA_PATTERN_FOUND_BUT_SIMPLE_SELECTOR_STILL_FAILS`. The alpha shape is identified, but free-kline simple selectors do not trade it. If continuing, seek earlier identification signals such as funding, premium, order-flow, open interest, or long/short ratios.
+
+- `STRATEGY_40_MULTISYMBOL_FUNDING_ALPHA_SELECTOR.md`
+  - Strategy 40 is a multi-symbol funding-rate early-identification audit, not a strategy and not tradeable.
+  - Audit id: `strategy_40_multisymbol_funding_alpha_selector_20260629`.
+  - Script: `scripts/audit_strategy_40_multisymbol_funding_alpha_selector_20260629.py`.
+  - Output: `artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/summary.json`.
+  - It downloads only Binance public USD-M futures fundingRate REST history for Strategy 39's frequent winner symbols: ETH, SOL, DOGE, XRP, ADA, AVAX, and LINK.
+  - Data range: 2022-12 through 2026-05. Each symbol has 3,834 rows over 42 months, duplicate timestamps 0, invalid 8h interval rows 0.
+  - Winner funding clue: 40 Strategy 38 winner months have prior-month funding data; prior-month funding absolute-rank median is 3.5, top-3 hit rate is 50.0%, and prior-month funding is positive in 82.5% of winner months.
+  - Best no-future selector test is `hot_abs_funding_abs_both`: 2023 +6,662.64%, 2024 -90.19%, 2025 +203.32%, 2026 YTD +18.01%, 17 traded months, 6 losing traded months, worst traded month -76.35%.
+  - Decision: `FUNDING_SIGNAL_WEAK_NOT_TRADEABLE`. Funding adds a weak crowding clue and improves the Strategy 39 pattern, but it still does not meet the original target. Do not keep expanding funding-only micro-rules; test premium or order-flow as the next independent early signal.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -582,6 +674,14 @@ Useful source files:
 - `scripts/audit_strategy_30_spot_perp_aggtrade_sample_upper_bound_20260628.py`
 - `scripts/audit_strategy_31_multisymbol_free_futures_upper_bound_20260628.py`
 - `scripts/audit_strategy_32_btc_3m_2025_today_upper_bound_20260628.py`
+- `scripts/audit_strategy_33_multisymbol_free_futures_strict_selector_20260629.py`
+- `scripts/audit_strategy_34_multisymbol_failure_root_cause_20260629.py`
+- `scripts/audit_strategy_35_old_btc_3m_inspiration_review_20260629.py`
+- `scripts/audit_strategy_36_multisymbol_ensemble_selector_20260629.py`
+- `scripts/audit_strategy_37_btc_3m_multitimeframe_event_pool_20260629.py`
+- `scripts/audit_strategy_38_forced_overfit_alpha_mining_20260629.py`
+- `scripts/audit_strategy_39_alpha_pattern_discovery_20260629.py`
+- `scripts/audit_strategy_40_multisymbol_funding_alpha_selector_20260629.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

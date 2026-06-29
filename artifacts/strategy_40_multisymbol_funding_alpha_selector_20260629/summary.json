@@ -1,0 +1,231 @@
+{
+  "status": "strategy_40_multisymbol_funding_alpha_selector_ready",
+  "strategy_id": "strategy_40_multisymbol_funding_alpha_selector_20260629",
+  "generated_at": "2026-06-29T10:40:47.830404+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Test whether funding-rate history can identify Strategy 39 hot-altcoin momentum/reversal winners before the month.",
+  "method": {
+    "new_market_data_downloaded": true,
+    "downloaded_dataset": "Binance public USD-M futures fundingRate REST history for Strategy 39 frequent winner symbols",
+    "premium_or_trade_downloads_skipped": "Funding is tiny and already directly tied to crowding. Premium/order-flow downloads are left for later only if funding helps.",
+    "selection_timing": "Each evaluated month uses only prior-month funding and prior-month price/volatility features."
+  },
+  "funding_quality": [
+    {
+      "symbol": "ADAUSDT",
+      "rows": 3834,
+      "months": 42,
+      "first_month": "2022-12",
+      "last_month": "2026-05",
+      "duplicate_timestamp_rows": 0,
+      "invalid_interval_rows": 0
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "rows": 3834,
+      "months": 42,
+      "first_month": "2022-12",
+      "last_month": "2026-05",
+      "duplicate_timestamp_rows": 0,
+      "invalid_interval_rows": 0
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "rows": 3834,
+      "months": 42,
+      "first_month": "2022-12",
+      "last_month": "2026-05",
+      "duplicate_timestamp_rows": 0,
+      "invalid_interval_rows": 0
+    },
+    {
+      "symbol": "ETHUSDT",
+      "rows": 3834,
+      "months": 42,
+      "first_month": "2022-12",
+      "last_month": "2026-05",
+      "duplicate_timestamp_rows": 0,
+      "invalid_interval_rows": 0
+    },
+    {
+      "symbol": "LINKUSDT",
+      "rows": 3834,
+      "months": 42,
+      "first_month": "2022-12",
+      "last_month": "2026-05",
+      "duplicate_timestamp_rows": 0,
+      "invalid_interval_rows": 0
+    },
+    {
+      "symbol": "SOLUSDT",
+      "rows": 3834,
+      "months": 42,
+      "first_month": "2022-12",
+      "last_month": "2026-05",
+      "duplicate_timestamp_rows": 0,
+      "invalid_interval_rows": 0
+    },
+    {
+      "symbol": "XRPUSDT",
+      "rows": 3834,
+      "months": 42,
+      "first_month": "2022-12",
+      "last_month": "2026-05",
+      "duplicate_timestamp_rows": 0,
+      "invalid_interval_rows": 0
+    }
+  ],
+  "winner_funding_pattern": {
+    "winner_rows_with_funding": 40,
+    "prev_funding_abs_rank_median": 3.5,
+    "prev_funding_abs_rank_top3_pct": 50.0,
+    "prev_funding_mean_positive_pct": 82.5,
+    "by_rule": [
+      {
+        "rule": "symbol_momentum",
+        "rows": 24,
+        "mean_prev_funding_bps": 0.2285436869559652,
+        "positive_pct": 79.16666666666666,
+        "abs_rank_median": 4.0
+      },
+      {
+        "rule": "symbol_reversal",
+        "rows": 16,
+        "mean_prev_funding_bps": 0.6972173712083091,
+        "positive_pct": 87.5,
+        "abs_rank_median": 3.0
+      }
+    ]
+  },
+  "best_selector_test": {
+    "selector_test": "hot_abs_funding_abs_both",
+    "return_2023_pct": 6662.63821597107,
+    "return_2024_pct": -90.19499949645048,
+    "return_2025_pct": 203.3213467900578,
+    "return_2026_ytd_pct": 18.01115775962363,
+    "traded_months": 17,
+    "losing_traded_months": 6,
+    "orders": 1752,
+    "min_traded_return_pct": -76.35329397614206
+  },
+  "selector_tests_top10": [
+    {
+      "selector_test": "hot_abs_funding_abs_both",
+      "return_2023_pct": 6662.63821597107,
+      "return_2024_pct": -90.19499949645048,
+      "return_2025_pct": 203.3213467900578,
+      "return_2026_ytd_pct": 18.01115775962363,
+      "traded_months": 17,
+      "losing_traded_months": 6,
+      "orders": 1752,
+      "min_traded_return_pct": -76.35329397614206
+    },
+    {
+      "selector_test": "hot_abs_negative_funding_momentum",
+      "return_2023_pct": 1004.0699162687947,
+      "return_2024_pct": 0.0,
+      "return_2025_pct": 120.61458774592938,
+      "return_2026_ytd_pct": 0.0,
+      "traded_months": 5,
+      "losing_traded_months": 1,
+      "orders": 495,
+      "min_traded_return_pct": -9.817162573811311
+    },
+    {
+      "selector_test": "hot_vol_funding_abs_both",
+      "return_2023_pct": 1589.258141860801,
+      "return_2024_pct": -81.88017173762957,
+      "return_2025_pct": 31.39507908554757,
+      "return_2026_ytd_pct": -45.38676923915608,
+      "traded_months": 23,
+      "losing_traded_months": 12,
+      "orders": 2341,
+      "min_traded_return_pct": -76.35329397614206
+    },
+    {
+      "selector_test": "hot_abs_funding_abs_reversal",
+      "return_2023_pct": 100.22244298428843,
+      "return_2024_pct": 0.0,
+      "return_2025_pct": 0.0,
+      "return_2026_ytd_pct": 18.01115775962363,
+      "traded_months": 2,
+      "losing_traded_months": 0,
+      "orders": 207,
+      "min_traded_return_pct": 18.01115775962363
+    },
+    {
+      "selector_test": "hot_abs_funding_abs_reversal_strict",
+      "return_2023_pct": 100.22244298428843,
+      "return_2024_pct": 0.0,
+      "return_2025_pct": 0.0,
+      "return_2026_ytd_pct": 18.01115775962363,
+      "traded_months": 2,
+      "losing_traded_months": 0,
+      "orders": 207,
+      "min_traded_return_pct": 18.01115775962363
+    },
+    {
+      "selector_test": "hot_vol_funding_abs_reversal",
+      "return_2023_pct": -34.14487814678991,
+      "return_2024_pct": 0.0,
+      "return_2025_pct": 0.0,
+      "return_2026_ytd_pct": -45.38676923915608,
+      "traded_months": 2,
+      "losing_traded_months": 2,
+      "orders": 243,
+      "min_traded_return_pct": -45.38676923915608
+    },
+    {
+      "selector_test": "funding_abs_top2_reversal",
+      "return_2023_pct": -34.14487814678991,
+      "return_2024_pct": -74.25993655712661,
+      "return_2025_pct": 0.0,
+      "return_2026_ytd_pct": -45.38676923915608,
+      "traded_months": 3,
+      "losing_traded_months": 3,
+      "orders": 376,
+      "min_traded_return_pct": -74.25993655712661
+    },
+    {
+      "selector_test": "hot_abs_positive_funding_reversal",
+      "return_2023_pct": 100.22244298428843,
+      "return_2024_pct": -40.50286704040026,
+      "return_2025_pct": -30.869661904127287,
+      "return_2026_ytd_pct": 18.01115775962363,
+      "traded_months": 4,
+      "losing_traded_months": 2,
+      "orders": 453,
+      "min_traded_return_pct": -40.50286704040026
+    },
+    {
+      "selector_test": "funding_abs_top2_momentum",
+      "return_2023_pct": 2465.112772285393,
+      "return_2024_pct": -99.32155252394267,
+      "return_2025_pct": -79.84199507993222,
+      "return_2026_ytd_pct": -3.2057037402647315,
+      "traded_months": 24,
+      "losing_traded_months": 14,
+      "orders": 2610,
+      "min_traded_return_pct": -87.91301565623708
+    }
+  ],
+  "decision": {
+    "verdict": "FUNDING_SIGNAL_WEAK_NOT_TRADEABLE",
+    "promote_strategy": false,
+    "reason": "Funding gives an extra crowding clue, but the simple no-future selector still does not meet the original target.",
+    "next_step": "Do not expand funding-only rules. If continuing, test premium/order-flow as the next independent early signal."
+  },
+  "files": {
+    "summary": "artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/summary.json",
+    "report": "artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/report.md",
+    "funding_raw": "artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/multisymbol_funding_rate_2022_12_2026_05.csv",
+    "funding_monthly_features": "artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/funding_monthly_features.csv",
+    "winner_funding_diagnostics": "artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/winner_funding_diagnostics.csv",
+    "selector_tests": "artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/selector_tests.csv"
+  }
+}

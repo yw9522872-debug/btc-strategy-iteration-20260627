@@ -1,0 +1,235 @@
+{
+  "status": "strategy_35_old_btc_3m_inspiration_review_ready",
+  "strategy_id": "strategy_35_old_btc_3m_inspiration_review_20260629",
+  "generated_at": "2026-06-28T18:25:40.997756+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "does_not_overwrite_existing_strategies": true,
+  "source_project": "C:\\Users\\WHR\\Documents\\BTC多因子研究_20260626",
+  "purpose": "复盘旧 BTC 3m 多因子项目，提炼能借鉴的框架，避免把样本内高收益误当成可交易结论。",
+  "old_project_in_sample_success": {
+    "window": "2025-2026 sample-in",
+    "selection_warning": "Uses 2025-2026 in-sample base rules and labels. This is not out-of-sample proof.",
+    "candidate_rules": 260,
+    "candidate_pool_rows": 260,
+    "candidate_pool_unique_features": 118,
+    "candidate_pool_horizons": [
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "candidate_pool_sides": {
+      "1": 174,
+      "-1": 86
+    },
+    "exact_pass_rows": 2022,
+    "best_combo_id": 616,
+    "best_candidate_ids": "0,61,114,124,182,188,228",
+    "best_rule_count": 7,
+    "best_gross_cap": 10.0,
+    "best_weight_per_lot": 0.0625,
+    "trade_count": 14240,
+    "net_2025_bps": 14567.358973791095,
+    "net_2026_bps": 10408.899655658886,
+    "min_month_net_bps": 255.75604499347187,
+    "min_month_trades": 340,
+    "positive_months": 18,
+    "selected_features": [
+      "tf4h_donchian_pos_8",
+      "premium_close_bps_z_3",
+      "tf4h_ret_bps_5",
+      "tf4h_donchian_pos_32",
+      "tf1h_donchian_pos_3",
+      "premium_close_chg_1",
+      "tf1h_quote_volume_z_128"
+    ]
+  },
+  "old_project_accounting_validation": {
+    "label_price_diff_max_bps": 0.0,
+    "task_mtm_max_drawdown_bps": -8500.573948119276,
+    "task_max_gross_exposure": 10.0,
+    "task_max_abs_net_exposure": 10.0,
+    "stress_2024_net_bps": -21173.80826693541,
+    "stress_2024_positive_months": 2,
+    "stress_2024_months": 12,
+    "stress_2024_mtm_max_drawdown_bps": -26614.658186048924
+  },
+  "old_project_no_future_checks": {
+    "feature_rows": 1107680,
+    "feature_count": 455,
+    "feature_causality_violations": 0,
+    "label_rows": 1107552,
+    "label_count": 72,
+    "entry_policy": "next 3m bar open after decision_time",
+    "entry_time_lte_decision_time_violations": 0,
+    "dropped_tail_rows_for_future_horizon": 128
+  },
+  "old_project_out_of_sample_failure": {
+    "pre2025_locked_pass_rows": 0,
+    "best_pre2025_locked": {
+      "test_net_2025_bps": -21.457319019963474,
+      "test_net_2026_bps": -17.216893917506876,
+      "test_min_year_bps": -21.457319019963474,
+      "test_min_month_bps": -18.54314783700168,
+      "test_min_month_trades": 0,
+      "test_positive_months": 4,
+      "test_months": 18,
+      "test_hard_pass": false
+    },
+    "pre2025_ml_router_pass_rows": 0,
+    "best_pre2025_ml_router": {
+      "config_id": "logistic_top50_p0",
+      "gross_cap": 1.0,
+      "net_2025_bps": -500.5042482698854,
+      "net_2026_bps": -604.4851770470456,
+      "min_year_bps": -604.4851770470456,
+      "min_month_bps": -200.265328964244,
+      "min_month_trades": 6628,
+      "positive_months": 1,
+      "months": 18,
+      "hard_pass": false
+    }
+  },
+  "current_project_context": {
+    "strategy_33": {
+      "candidate_count": 744,
+      "static_hard_pass_original_target_count": 0,
+      "oracle_order10_passes": true,
+      "best_selector": {
+        "selector_id": "all_multisymbol",
+        "family_filter": "all",
+        "selection_mode": "hard_guard",
+        "selected_candidate_count": 2,
+        "hard_pass_original_2025_2026_ytd": false,
+        "hard_pass_complete_years": false,
+        "non_positive_months": [
+          "2023-02",
+          "2023-04",
+          "2023-05",
+          "2023-09",
+          "2023-11",
+          "2023-12",
+          "2024-01",
+          "2024-03",
+          "2024-07",
+          "2024-08",
+          "2024-12",
+          "2025-03",
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-12",
+          "2026-02",
+          "2026-03"
+        ],
+        "total_eval_return_pct": -53.463380067729815,
+        "return_2023_pct": 17.716143990946165,
+        "return_2024_pct": -21.17118110015185,
+        "return_2025_pct": -46.85449828776225,
+        "return_2026_ytd_pct": -5.635796641849334,
+        "min_complete_year_return_pct": -46.85449828776225,
+        "min_target_year_return_pct": -46.85449828776225,
+        "losing_eval_months": 21,
+        "min_monthly_return_pct": -21.885143243867276,
+        "min_monthly_orders": 1,
+        "orders": 1176,
+        "turnover": 1179.0,
+        "cost_log": 1.179,
+        "worst_selected_month_drawdown_pct": -69.49259267228072
+      },
+      "decision": {
+        "verdict": "MULTISYMBOL_ORACLE_HAS_PIECES_BUT_STRICT_SELECTOR_FAILS",
+        "promote_strategy": false,
+        "reason": "看答案的月度oracle能过，但严格逐月选择器不能提前选中正确候选。",
+        "next_step": "不要升级为策略；除非换真正新的选择方法或新数据，否则不要继续堆同类小规则。"
+      }
+    },
+    "strategy_34": {
+      "headline": {
+        "eval_months": 41,
+        "strict_nonpassing_months": 33,
+        "months_with_order10_positive_candidate": 41,
+        "months_with_no_train_hard_ok_candidates": 41,
+        "oracle_hard_rank_median": 222.0,
+        "oracle_hard_rank_top10_months": 0,
+        "previous_oracle_follow_2025_pct": -99.99832596129417,
+        "previous_oracle_follow_2026_ytd_pct": -96.75079012020439,
+        "plain_chinese": "每个月几乎都有能赚钱的候选，但这些候选在月初之前通常排不靠前，上月赢家下月也不能稳定延续。"
+      },
+      "selection_gap": {
+        "months": 41,
+        "selected_equals_oracle_months": 0,
+        "same_symbol_as_oracle_months": 0,
+        "median_oracle_hard_rank_before_month": 222.0,
+        "oracle_top10_hard_rank_months": 0,
+        "oracle_top50_hard_rank_months": 1,
+        "oracle_unique_candidates": 32,
+        "oracle_unique_symbols": 7,
+        "oracle_unique_rules": 3
+      },
+      "strict_selector_summary": {
+        "return_2023_pct": 17.716143990946165,
+        "return_2024_pct": -21.17118110015185,
+        "return_2025_pct": -46.854498287762226,
+        "return_2026_ytd_pct": -5.635796641849344,
+        "total_return_pct": -53.463380067729815,
+        "losing_or_flat_months": 21,
+        "hard_nonpassing_months": 33,
+        "min_monthly_return_pct": -21.88514324386728,
+        "min_monthly_orders": 1,
+        "orders": 1176,
+        "turnover": 1179.0,
+        "cost_log": 1.179,
+        "worst_month_drawdown_pct": -69.49259267228072
+      },
+      "previous_oracle_follow_summary": {
+        "return_2023_pct": -52.855923285979635,
+        "return_2024_pct": -99.99950213791237,
+        "return_2025_pct": -99.99832596129417,
+        "return_2026_ytd_pct": -96.75079012020439,
+        "total_return_pct": -99.99999999987233,
+        "losing_or_flat_months": 35,
+        "hard_nonpassing_months": 36,
+        "min_monthly_return_pct": -95.65844528299306,
+        "min_monthly_orders": 0,
+        "orders": 4664,
+        "turnover": 20444.0,
+        "cost_log": 20.444,
+        "worst_month_drawdown_pct": -100.0
+      },
+      "decision": {
+        "verdict": "ROOT_CAUSE_UNSTABLE_HINDSIGHT_SELECTION",
+        "promote_strategy": false,
+        "reason": "失败主因不是没有赚钱片段，而是赚钱片段换得太快，过去表现很难提前选中当月赢家。",
+        "next_step": "不要先加交易规则；若继续，只能另起新编号测试真正不同的选择方法，并先做上限/泄漏审计。"
+      }
+    }
+  },
+  "inspiration": {
+    "worth_borrowing": [
+      "用多周期 3m/15m/1h/4h 特征和 funding/premium 可用时间约束，而不是只扫单一 BTC 3m 小规则。",
+      "把许多弱事件组成事件池，再用资金占用、最大暴露和逐 K 盯市来重放。",
+      "先证明选择器能提前选规则，再谈收益；看答案 oracle 只能说明市场里有碎片机会。"
+    ],
+    "do_not_borrow": [
+      "不要照搬旧项目 7 条规则、阈值和 10x 毛暴露。",
+      "不要把 2025-2026 样本内 beam search 结果说成样本外策略。",
+      "不要因为旧项目有高收益表格，就跳过 2024 压力、pre-2025 锁参和 walk-forward 检查。"
+    ]
+  },
+  "decision": {
+    "verdict": "OLD_BTC_3M_GIVES_FRAMEWORK_NOT_DEPLOYABLE_RULES",
+    "promote_strategy": false,
+    "reason": "旧项目证明更丰富的事件池和资金重放能拼出样本内高收益，但 2024 压力和 pre-2025 锁参都失败，不能直接交易。",
+    "next_step": "36号已先用33号候选做便宜组合检查且失败；若继续，另起37号做真正新的3m/多周期事件池严格走步选择器上限审计，只借框架，不借旧参数。"
+  }
+}
