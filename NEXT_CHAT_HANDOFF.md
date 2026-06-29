@@ -14,37 +14,31 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 1. AGENTS.md
 2. NEXT_CHAT_HANDOFF.md
 3. GPT_PRO_REVIEW_BRIEF.md
-4. STRATEGY_31_MULTISYMBOL_FREE_FUTURES_UPPER_BOUND.md
-5. STRATEGY_32_BTC_3M_2025_TODAY_UPPER_BOUND.md
-6. STRATEGY_33_MULTISYMBOL_FREE_FUTURES_STRICT_SELECTOR.md
-7. STRATEGY_34_MULTISYMBOL_FAILURE_ROOT_CAUSE.md
-8. STRATEGY_35_OLD_BTC_3M_INSPIRATION_REVIEW.md
-9. STRATEGY_36_MULTISYMBOL_ENSEMBLE_SELECTOR.md
-10. STRATEGY_37_BTC_3M_MULTITIMEFRAME_EVENT_POOL.md
-11. STRATEGY_38_FORCED_OVERFIT_ALPHA_MINING.md
-12. STRATEGY_39_ALPHA_PATTERN_DISCOVERY.md
-13. STRATEGY_40_MULTISYMBOL_FUNDING_ALPHA_SELECTOR.md
-14. STRATEGY_41_BTC_HYPE_RELAXED_DRAWDOWN.md
-15. STRATEGY_42_BTC_HYPE_STATE_PREDICTABILITY.md
-16. STRATEGY_43_BTC_HYPE_TAIL_EVENT_ATTRIBUTION.md
-17. artifacts/strategy_31_multisymbol_free_futures_sample_upper_bound_20260628/summary.json
-18. artifacts/strategy_32_btc_3m_2025_today_upper_bound_20260628/summary.json
-19. artifacts/strategy_33_multisymbol_free_futures_strict_selector_20260629/summary.json
-20. artifacts/strategy_34_multisymbol_failure_root_cause_20260629/summary.json
-21. artifacts/strategy_35_old_btc_3m_inspiration_review_20260629/summary.json
-22. artifacts/strategy_36_multisymbol_ensemble_selector_20260629/summary.json
-23. artifacts/strategy_37_btc_3m_multitimeframe_event_pool_20260629/summary.json
-24. artifacts/strategy_38_forced_overfit_alpha_mining_20260629/summary.json
-25. artifacts/strategy_39_alpha_pattern_discovery_20260629/summary.json
-26. artifacts/strategy_40_multisymbol_funding_alpha_selector_20260629/summary.json
-27. artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/summary.json
-28. artifacts/strategy_42_btc_hype_state_predictability_20260629/summary.json
-29. artifacts/strategy_43_btc_hype_tail_event_attribution_20260629/summary.json
+4. STRATEGY_44_BTC_HYPE_TAIL_EVENT_ACTION_ORACLE.md
+5. STRATEGY_45_BTC_HYPE_TAIL_EVENT_FITTED_POLICY.md
+6. STRATEGY_46_BTC_HYPE_TAIL_EVENT_WALKFORWARD_POLICY.md
+7. STRATEGY_47_BTC_HYPE_TAIL_EVENT_CAUSAL_RISK_OVERLAY.md
+8. STRATEGY_49_BTC_HYPE_FROZEN_47_LATEST_PUBLIC.md
+9. STRATEGY_50_2C_WITHOUT_MONTHLY_LOCK.md
+10. STRATEGY_51_2C_LOCK_MIN_ORDERS_SENSITIVITY.md
+11. STRATEGY_52_2C_FIRST10_VS_AFTER10_ATTRIBUTION.md
+12. STRATEGY_53_2C_FIRST_N_ORDERS_ONLY.md
+13. STRATEGY_54_2C_CORE_SIGNAL_FAILURE.md
+14. STRATEGY_55_BTC_HYPE_TAIL_EVENT_CORE_SIGNAL.md
+15. STRATEGY_56_TAIL_EVENT_LOSS_ROOT_CAUSE.md
+16. STRATEGY_57_TAIL_EVENT_STATE_ACTION_PREDICTABILITY.md
+17. STRATEGY_58_TAIL_EVENT_MICRO_SIGNAL.md
+18. STRATEGY_59_TAIL_EVENT_FAILURE_ATTRIBUTION.md
+19. artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/summary.json
+20. artifacts/strategy_56_tail_event_loss_root_cause_20260630/summary.json
+21. artifacts/strategy_57_tail_event_state_action_predictability_20260630/summary.json
+22. artifacts/strategy_58_tail_event_micro_signal_20260630/summary.json
+23. artifacts/strategy_59_tail_event_failure_attribution_20260630/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
 当前最新策略结果提交：
-330d787 Add strategy 33-40 research audits
+bf6668b Add strategy 59 tail event failure attribution
 
 当前最新标签：
 strategy-32-btc-3m-2025-today-upper-bound-20260628
@@ -53,34 +47,27 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 不下实盘，不读取密钥，不启动 supervisor，不改真实仓位。
 
 0号策略已经永久保存，不能覆盖。
-1F、1G、2C、4号、10号到43号都不能覆盖，后续必须另起新编号、新目录。
+1F、1G、2C、4号、10号到59号都不能覆盖，后续必须另起新编号、新目录。
 
 当前关键结论：
 2C 是当前旧候选里历史表现最好的一个：2025 +359.10%、2026 +260.59%，但仍是研究候选，不是实盘保证；0号是永久固化基准，不是收益最高者。
-14号已经判定旧 ret_state 64/100 家族为 STOP_FAMILY。
-22号说明简单免费K线小规则和严格选择器双重卡住。
-23号资金费率看答案上限很好，但24号严格选择器失败，不能升级。
-25号说明 Binance 免费持仓量/多空比历史不够多年回测。
-30号 spot-perp aggTrades 样本上限失败，不要下载全量约90GB继续做。
-31号多币种免费期货样本上限有信号，但只是四个月看答案样本，不能交易。
-32号 BTC 单币 3m 从2025到2026-06-27上限失败，不要继续扩 BTC 3m 小规则。
-33号多币种完整历史严格选择器失败：看答案 oracle 能过，但严格逐月选择器不能提前选中正确候选。
-34号拆解33号失败根因：每个月都有看答案赚钱候选，但赢家换得太快，月初训练排序找不到；跟随上月赢家也大亏。
-35号按用户要求复盘旧项目 `C:\Users\WHR\Documents\BTC多因子研究_20260626`：旧 BTC 3m 样本内线有收益，但2024压力和pre-2025锁参都失败；只能借框架，不能借旧参数。
-36号先用33号已有候选测试“多规则组合”近路，180组严格组合配置通过数为0，最好2025也只有+0.06%、2026 YTD为-22.93%。
-37号按35号建议另起 BTC 3m 多周期事件池审计，数据质量通过，但静态硬通过0；每月10单看答案 oracle 仍差 2024-04 和 2025-10 两个月；严格选择器最好 2025 -6.49%、2026 YTD -7.45%，不能升级。
-38号按用户要求强行过拟合挖 Alpha 线索：合并33号和37号后，看答案结果月月正、2025 +17665719.09%、2026 YTD +4414.40%，但41/41个月赢家都来自33号，主要是多币种单币4倍动量/反转；月初训练排序找不到赢家，跟随上月赢家也大亏，所以只能当线索，不能升级策略。
-39号按用户要求从38号里挖规律：规律明确，赢家集中在近期高波动/高涨跌幅山寨币、4倍、单币动量/反转，384根15m窗口最多；上月涨跌幅绝对值排前5占72.5%，上月波动率排前5占72.5%。但简单月初不看未来选择器不能让2025和2026同时盈利，说明只是找到历史赢家形状，还没找到可交易选择器。
-40号按39号建议测试 funding 提前识别信号：下载 Binance 免费 fundingRate REST 历史，覆盖 ETH/SOL/DOGE/XRP/ADA/AVAX/LINK 从2022-12到2026-05，每币3834行。Funding 有弱解释力，赢家上月 funding 为正比例82.5%、绝对值排前3比例50.0%；最好不看未来选择器 2025 +203.32%、2026 YTD +18.01%，但2024 -90.19%，不能升级。
-41号按用户要求缩到 BTC+HYPE 并放宽门槛：去掉月月盈利和每月交易次数，只要求2025/2026 YTD都超过100%、最大回撤不超过50%。静态固定参数通过数0；回撤限制版看答案 oracle 2025 +4176.22%、2026 YTD +100.67%、最大回撤 -49.98%，但这是看答案；严格不看未来选择器 2025 -16.27%、2026 YTD -35.55%，不能升级。
-42号按 GPT Pro 建议做 BTC+HYPE 状态可预测性审计：只用 Binance 免费 REST 小数据 klines/fundingRate/premiumIndexKlines/markPriceKlines，不下载大 aggTrades。月初状态 top20 只包含41号安全oracle赢家 33.33%；top20回撤过滤看答案上限 2025 +191.46%、2026 YTD +36.17%、最大回撤 -47.88%；严格top1为2025 +29.45%、2026 YTD -32.95%、最大回撤 -99.999%。结论：月初状态打分近路失败，不能升级。
-43号按 GPT Pro 第二轮建议做 BTC+HYPE 尾部事件归因：复用41号回撤限制版oracle逐K收益和42号BTC/HYPE 15m数据。极端事件原始K线占比6.20%，前后各48小时事件窗口占比79.05%；正收益log里90.44%落在事件窗口，窗口内净log +4.7580，窗口外净log -0.3059。结论：41号oracle利润确实和尾部事件相伴，但窗口很宽，只是线索，不能升级。
+14号已经判定旧 ret_state 64/100 家族为 STOP_FAMILY，不要继续围绕旧2C/ret_state调锁利、调笔数、调小保护。
+33-40号多币种免费K线、funding、强行过拟合挖规律都说明：看答案有空间，但严格选择器提前选不中，不能升级。
+41-43号把目标缩到 BTC+HYPE，发现历史利润集中在尾部事件附近，但仍只是线索。
+44号事件后 action oracle 能过放宽门槛，但动作选择看未来，不能交易。
+45号把44号未来标签强拟合，样本内能过，但属于强过拟合，不能交易。
+46号严格走步动作策略收益够但回撤 -84.48%，失败。
+47号加同段选择的因果风控能过，但参数仍在同段历史挑出；49号冻结47号到最新2026-06公开数据立即失败，不能实盘/testnet。
+50-54号确认旧2C问题不是开仓笔数，而是核心 ret_state 信号本身不够好；不要再修旧2C。
+55-57号换到 BTC/HYPE 尾部事件核心信号：看答案空间存在，但严格动作选择仍失败。
+58号加入 funding/premium、BTC/HYPE谁先动、确认K、成交量/taker 压力后，严格扫1620个配置仍0通过；最好收益配置2025 +144.16%、2026 +151.71%，但最大回撤 -65.31%；低回撤近似配置最大回撤 -47.83%，但2025只有 +88.56%。
+59号拆58号失败根因：主回撤不是少数一两笔造成，而是从2025-11-18到2026-01-29横跨39笔交易、20笔亏损；最差3笔只占窗口亏损39.50%，全样本最差3笔只占总负交易亏损16.60%。最差5笔都是 HYPE 顺势/反转方向判断反了。
 
 下一步建议：
-不要继续手工扩多币种免费K线小规则，也不要照搬旧 BTC 3m 的7条规则，不要继续调33号组合参数，不要小修37号 BTC 3m 多周期事件池，不要把38号或41号看答案线当策略，也不要继续扩 funding-only 小规则。42号已经证明“月初状态打分缩小候选池”这条近路不够。43号说明剩余线索只在尾部事件附近。若继续，另起44号只做事件发生后的 action oracle 上限；如果事件后上限不够，就停止 BTC+HYPE 主线，改成影子跟踪/低年化验证。
+另起60号，只做极简因果风控上限测试：只能用交易已经发生的亏损/回撤来减仓或停手，检查能否把58号最好收益配置的 -65.31% 回撤压到 -50% 内，同时保留2025/2026都超过100%。如果60号也失败，应停止 BTC/HYPE 尾部事件动作选择路线，转向影子跟踪/低年化验证或等待真正新数据源。
 
 环境状态：
-刚执行过 `git gc --prune=now` 清理，`.git` loose objects 已从约 11.76GiB 降到几乎为0，pack约148.90MiB；没有 `.git/index.lock`。33-40号已提交到本地提交 `330d787`；41-43号是当前本地新结果，尚未提交、尚未推送、尚未打标签。
+当前工作区干净。最新策略结果提交是 `bf6668b Add strategy 59 tail event failure attribution`；本交接文件已更新并提交。还没有推送到 GitHub。当前最新标签仍是 `strategy-32-btc-3m-2025-today-upper-bound-20260628`。
 
 请用中文、通俗的话和我沟通。
 ```
@@ -89,10 +76,10 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
-- 当前最新策略结果提交：`0500e23 Add strategy 32 BTC 3m upper bound audit`
+- 当前最新策略结果提交：`bf6668b Add strategy 59 tail event failure attribution`
 - 当前最新标签：`strategy-32-btc-3m-2025-today-upper-bound-20260628`
-- 33号、34号、35号、36号、37号、38号、39号、40号已提交到本地提交 `330d787 Add strategy 33-40 research audits`。41号、42号、43号本地结果已生成：`strategy_41_btc_hype_relaxed_drawdown_20260629`、`strategy_42_btc_hype_state_predictability_20260629`、`strategy_43_btc_hype_tail_event_attribution_20260629`。41-43号当前尚未提交、尚未推送、尚未打标签。
-- Git 清理状态：已执行 `git gc --prune=now`；`.git` loose objects 几乎为0，pack约 `148.90 MiB`，当前没有 `.git/index.lock`。
+- 33号到59号研究结果已提交到本地 `master`，最新策略结果提交为 `bf6668b Add strategy 59 tail event failure attribution`；本交接文件已更新并提交。当前尚未推送、尚未打新标签。
+- Git 清理状态：此前已执行 `git gc --prune=now`；`.git` loose objects 几乎为0，pack约 `148.90 MiB`，当前没有 `.git/index.lock`。
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
 - 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号、29号、30号、31号、32号及交接说明已提交并推送到 GitHub
 - 持仓量/多空比历史数据源审查文件：`DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md`。它不是策略，无策略标签。
