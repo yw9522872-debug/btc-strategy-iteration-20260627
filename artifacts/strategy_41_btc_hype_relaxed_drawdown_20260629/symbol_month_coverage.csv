@@ -1,0 +1,155 @@
+symbol,month,url,ok,rows,http_status,error
+BTCUSDT,2020-01,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2020-02,strategy_33_cached_panel,True,2784,,
+BTCUSDT,2020-03,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2020-04,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2020-05,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2020-06,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2020-07,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2020-08,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2020-09,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2020-10,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2020-11,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2020-12,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2021-01,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2021-02,strategy_33_cached_panel,True,2688,,
+BTCUSDT,2021-03,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2021-04,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2021-05,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2021-06,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2021-07,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2021-08,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2021-09,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2021-10,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2021-11,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2021-12,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2022-01,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2022-02,strategy_33_cached_panel,True,2688,,
+BTCUSDT,2022-03,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2022-04,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2022-05,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2022-06,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2022-07,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2022-08,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2022-09,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2022-10,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2022-11,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2022-12,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2023-01,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2023-02,strategy_33_cached_panel,True,2688,,
+BTCUSDT,2023-03,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2023-04,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2023-05,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2023-06,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2023-07,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2023-08,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2023-09,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2023-10,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2023-11,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2023-12,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2024-01,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2024-02,strategy_33_cached_panel,True,2784,,
+BTCUSDT,2024-03,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2024-04,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2024-05,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2024-06,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2024-07,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2024-08,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2024-09,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2024-10,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2024-11,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2024-12,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2025-01,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2025-02,strategy_33_cached_panel,True,2688,,
+BTCUSDT,2025-03,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2025-04,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2025-05,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2025-06,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2025-07,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2025-08,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2025-09,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2025-10,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2025-11,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2025-12,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2026-01,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2026-02,strategy_33_cached_panel,True,2688,,
+BTCUSDT,2026-03,strategy_33_cached_panel,True,2976,,
+BTCUSDT,2026-04,strategy_33_cached_panel,True,2880,,
+BTCUSDT,2026-05,strategy_33_cached_panel,True,2976,,
+HYPEUSDT,2020-01,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-01.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-02,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-02.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-03,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-03.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-04,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-04.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-05.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-06,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-06.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-07,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-07.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-08,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-08.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-09,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-09.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-10,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-10.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-11,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-11.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2020-12,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2020-12.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-01,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-01.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-02,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-02.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-03,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-03.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-04,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-04.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-05.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-06,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-06.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-07,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-07.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-08,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-08.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-09,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-09.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-10,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-10.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-11,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-11.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2021-12,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2021-12.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-01,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-01.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-02,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-02.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-03,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-03.zip,False,0,,"URLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)'))"
+HYPEUSDT,2022-04,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-04.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-05.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-06,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-06.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-07,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-07.zip,False,0,,"URLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)'))"
+HYPEUSDT,2022-08,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-08.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-09,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-09.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-10,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-10.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-11,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-11.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2022-12,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2022-12.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-01,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-01.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-02,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-02.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-03,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-03.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-04,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-04.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-05.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-06,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-06.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-07,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-07.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-08,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-08.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-09,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-09.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-10,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-10.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-11,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-11.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2023-12,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2023-12.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-01,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-01.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-02,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-02.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-03,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-03.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-04,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-04.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-05.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-06,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-06.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-07,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-07.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-08,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-08.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-09,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-09.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-10,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-10.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-11,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-11.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2024-12,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2024-12.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2025-01,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-01.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2025-02,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-02.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2025-03,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-03.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2025-04,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-04.zip,False,0,404.0,HTTP Error 404: Not Found
+HYPEUSDT,2025-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-05.zip,False,0,,"URLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)'))"
+HYPEUSDT,2025-06,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-06.zip,True,2880,200.0,
+HYPEUSDT,2025-07,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-07.zip,True,2976,200.0,
+HYPEUSDT,2025-08,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-08.zip,True,2976,200.0,
+HYPEUSDT,2025-09,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-09.zip,True,2880,200.0,
+HYPEUSDT,2025-10,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-10.zip,True,2976,200.0,
+HYPEUSDT,2025-11,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-11.zip,True,2880,200.0,
+HYPEUSDT,2025-12,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2025-12.zip,True,2976,200.0,
+HYPEUSDT,2026-01,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2026-01.zip,True,2976,200.0,
+HYPEUSDT,2026-02,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2026-02.zip,True,2688,200.0,
+HYPEUSDT,2026-03,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2026-03.zip,True,2976,200.0,
+HYPEUSDT,2026-04,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2026-04.zip,True,2880,200.0,
+HYPEUSDT,2026-05,https://data.binance.vision/data/futures/um/monthly/klines/HYPEUSDT/15m/HYPEUSDT-15m-2026-05.zip,True,2976,200.0,

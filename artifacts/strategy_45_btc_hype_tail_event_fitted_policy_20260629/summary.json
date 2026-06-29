@@ -1,0 +1,63 @@
+{
+  "status": "strategy_45_btc_hype_tail_event_fitted_policy_ready",
+  "strategy_id": "strategy_45_btc_hype_tail_event_fitted_policy_20260629",
+  "generated_at": "2026-06-29T12:25:17.215280+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Strongly fit a fixed tail-event policy from Strategy 44 oracle labels, then inspect whether the fitted policy can pass the relaxed BTC/HYPE gate in sample.",
+  "leakage": {
+    "event_detection_uses_closed_past_bars": true,
+    "policy_fit_uses_same_period_future_oracle_labels": true,
+    "best_policy_uses_event_index_memory": false,
+    "tradable_strategy": false
+  },
+  "gate": {
+    "target_years": [
+      "2025",
+      "2026"
+    ],
+    "required_return_pct": 100.0,
+    "max_drawdown_limit_pct": -50.0
+  },
+  "event_config": {
+    "ret16_abs_thr": 0.04,
+    "ret96_abs_thr": 0.1,
+    "resid_z16_abs_thr": 2.0,
+    "min_gap": 16,
+    "event_count": 4187,
+    "training_rows": 161,
+    "non_cash_training_rows": 161
+  },
+  "best_policy": {
+    "policy": "decision_tree",
+    "feature_set": "market_only",
+    "max_depth": -1,
+    "train_accuracy": 1.0,
+    "tree_depth": 16,
+    "leaf_count": 100,
+    "return_2025_pct": 2349453758140.499,
+    "return_2026_ytd_pct": 3774017741.589709,
+    "min_target_year_return_pct": 3774017741.589709,
+    "max_drawdown_pct": -31.94397256122524,
+    "trade_count": 161,
+    "turnover": 1330.0,
+    "hard_pass_relaxed": true
+  },
+  "decision": {
+    "verdict": "TAIL_EVENT_FITTED_POLICY_PASSES_IN_SAMPLE_RELAXED_GATE",
+    "promote_strategy": false,
+    "reason": "强过拟合策略在同一段历史里通过放宽门槛，但训练标签来自44号未来oracle，不能当实盘策略。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/summary.json",
+    "report": "artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/report.md",
+    "policy_scan": "artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/policy_scan.csv",
+    "best_policy_monthly": "artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/best_policy_monthly.csv",
+    "best_policy_trades": "artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/best_policy_trades.csv",
+    "oracle_training_rows": "artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/oracle_training_rows.csv",
+    "best_tree": "artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/best_tree.txt"
+  }
+}

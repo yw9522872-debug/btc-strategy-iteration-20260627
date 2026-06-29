@@ -1,0 +1,58 @@
+{
+  "status": "strategy_46_btc_hype_tail_event_walkforward_policy_ready",
+  "strategy_id": "strategy_46_btc_hype_tail_event_walkforward_policy_20260629",
+  "generated_at": "2026-06-29T12:30:59.218841+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Strict walk-forward validation of Strategy 45 tail-event fitted policy: each month trains only on earlier oracle-labeled tail events, then tests the current month.",
+  "leakage": {
+    "event_detection_uses_closed_past_bars": true,
+    "current_month_labels_used_for_current_month": false,
+    "oracle_labels_used_only_after_their_month_has_passed": true,
+    "tradable_strategy": false
+  },
+  "gate": {
+    "target_years": [
+      "2025",
+      "2026"
+    ],
+    "required_return_pct": 100.0,
+    "max_drawdown_limit_pct": -50.0
+  },
+  "event_config": {
+    "ret16_abs_thr": 0.04,
+    "ret96_abs_thr": 0.1,
+    "resid_z16_abs_thr": 2.0,
+    "min_gap": 16,
+    "event_count": 4187,
+    "training_rows_total": 161
+  },
+  "best_policy": {
+    "feature_set": "market_plus_time",
+    "max_depth": 5,
+    "min_samples_leaf": 3,
+    "trained_months": 10,
+    "return_2025_pct": 230.12720488765166,
+    "return_2026_ytd_pct": 865.8087713730171,
+    "min_target_year_return_pct": 230.12720488765166,
+    "max_drawdown_pct": -84.4841965414109,
+    "trade_count": 130,
+    "turnover": 1052.0,
+    "hard_pass_relaxed": false
+  },
+  "decision": {
+    "verdict": "TAIL_EVENT_WALKFORWARD_POLICY_FAILS_RELAXED_GATE",
+    "promote_strategy": false,
+    "reason": "45号强过拟合规律用过去事件训练后，不能稳定预测未来月份；45号暂时更像记忆历史，而不是已验证alpha。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_46_btc_hype_tail_event_walkforward_policy_20260629/summary.json",
+    "report": "artifacts/strategy_46_btc_hype_tail_event_walkforward_policy_20260629/report.md",
+    "walkforward_scan": "artifacts/strategy_46_btc_hype_tail_event_walkforward_policy_20260629/walkforward_scan.csv",
+    "best_walkforward_monthly": "artifacts/strategy_46_btc_hype_tail_event_walkforward_policy_20260629/best_walkforward_monthly.csv",
+    "best_walkforward_trades": "artifacts/strategy_46_btc_hype_tail_event_walkforward_policy_20260629/best_walkforward_trades.csv"
+  }
+}

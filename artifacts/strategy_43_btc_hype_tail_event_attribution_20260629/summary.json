@@ -1,0 +1,156 @@
+{
+  "status": "strategy_43_btc_hype_tail_event_attribution_ready",
+  "strategy_id": "strategy_43_btc_hype_tail_event_attribution_20260629",
+  "generated_at": "2026-06-29T11:51:22.582365+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Check whether Strategy 41 drawdown-capped oracle PnL is concentrated around pre-defined BTC/HYPE tail-event windows.",
+  "event_definition": {
+    "hype_ret16_abs_gte": 0.05,
+    "hype_ret96_abs_gte": 0.12,
+    "hype_minus_btc_resid_z16_abs_gte": 2.5,
+    "window_hours_each_side": 48
+  },
+  "return_2025_pct": 4176.220694032065,
+  "return_2026_ytd_pct": 100.6688425115628,
+  "event_window_bar_share": 0.7905251141552512,
+  "tail_event_bar_share": 0.06204337899543379,
+  "net_log_inside_event_window": 4.758047125778868,
+  "net_log_outside_event_window": -0.30590661501723493,
+  "positive_log_inside_event_window_share": 0.904430728790584,
+  "monthly": [
+    {
+      "month": "2025-06",
+      "log_return": 1.0800286692952237,
+      "return_pct": 194.47639741630823,
+      "event_window_bar_share": 0.9739583333333334,
+      "net_log_inside_event_window": 1.2116104175170719,
+      "net_log_outside_event_window": -0.13158174822184832,
+      "positive_log_inside_share": 0.9862377612195345,
+      "candidate_id": "single_symbol_symbol_reversal_lev4p0_symbolHYPEUSDT_lookback1536_threshold_bps400"
+    },
+    {
+      "month": "2025-07",
+      "log_return": 0.3761992216301613,
+      "return_pct": 45.6737318447892,
+      "event_window_bar_share": 0.48588709677419356,
+      "net_log_inside_event_window": 0.4763962918710204,
+      "net_log_outside_event_window": -0.1001970702408591,
+      "positive_log_inside_share": 0.49039909112920255,
+      "candidate_id": "single_symbol_symbol_reversal_lev2p0_symbolHYPEUSDT_lookback192_threshold_bps50"
+    },
+    {
+      "month": "2025-08",
+      "log_return": 0.35727944775682496,
+      "return_pct": 42.94352665247829,
+      "event_window_bar_share": 0.9038978494623656,
+      "net_log_inside_event_window": 0.3844058785555998,
+      "net_log_outside_event_window": -0.027126430798774817,
+      "positive_log_inside_share": 0.9643551888198206,
+      "candidate_id": "single_symbol_symbol_reversal_lev4p0_symbolHYPEUSDT_lookback1536_threshold_bps400"
+    },
+    {
+      "month": "2025-09",
+      "log_return": 0.7191274518112756,
+      "return_pct": 105.2641400501114,
+      "event_window_bar_share": 0.671875,
+      "net_log_inside_event_window": 0.7285511814558194,
+      "net_log_outside_event_window": -0.009423729644543822,
+      "positive_log_inside_share": 1.0,
+      "candidate_id": "single_symbol_symbol_reversal_lev4p0_symbolHYPEUSDT_lookback1536_threshold_bps400"
+    },
+    {
+      "month": "2025-10",
+      "log_return": 0.8410787438639928,
+      "return_pct": 131.88670916934143,
+      "event_window_bar_share": 0.8541666666666666,
+      "net_log_inside_event_window": 0.8410787438639928,
+      "net_log_outside_event_window": 0.0,
+      "positive_log_inside_share": 1.0,
+      "candidate_id": "single_symbol_symbol_reversal_lev4p0_symbolHYPEUSDT_lookback1536_threshold_bps0"
+    },
+    {
+      "month": "2025-11",
+      "log_return": 0.2777091349297957,
+      "return_pct": 32.01021697514346,
+      "event_window_bar_share": 0.9413194444444445,
+      "net_log_inside_event_window": 0.27770913492979576,
+      "net_log_outside_event_window": 0.0,
+      "positive_log_inside_share": 1.0,
+      "candidate_id": "pair_long_weak_short_strong_lev4p0_lookback1536_threshold_bps0"
+    },
+    {
+      "month": "2025-12",
+      "log_return": 0.10423202779964548,
+      "return_pct": 10.98579429386568,
+      "event_window_bar_share": 0.876008064516129,
+      "net_log_inside_event_window": 0.1225746954859972,
+      "net_log_outside_event_window": -0.018342667686351722,
+      "positive_log_inside_share": 0.8669920103552725,
+      "candidate_id": "single_symbol_symbol_momentum_lev1p0_symbolHYPEUSDT_lookback768_threshold_bps100"
+    },
+    {
+      "month": "2026-01",
+      "log_return": 0.17626306605009093,
+      "return_pct": 19.27517898849458,
+      "event_window_bar_share": 0.7926747311827957,
+      "net_log_inside_event_window": 0.17626306605009096,
+      "net_log_outside_event_window": 0.0,
+      "positive_log_inside_share": 1.0,
+      "candidate_id": "pair_long_strong_short_weak_lev1p0_lookback1536_threshold_bps0"
+    },
+    {
+      "month": "2026-02",
+      "log_return": 0.05111138051903097,
+      "return_pct": 5.24401080808472,
+      "event_window_bar_share": 0.7470238095238095,
+      "net_log_inside_event_window": 0.049070967409776844,
+      "net_log_outside_event_window": 0.0020404131092541904,
+      "positive_log_inside_share": 0.9927275203731811,
+      "candidate_id": "single_symbol_symbol_reversal_lev1p0_symbolHYPEUSDT_lookback16_threshold_bps400"
+    },
+    {
+      "month": "2026-03",
+      "log_return": 0.10599775541149785,
+      "return_pct": 11.181938092673116,
+      "event_window_bar_share": 0.7825940860215054,
+      "net_log_inside_event_window": 0.0881043110121621,
+      "net_log_outside_event_window": 0.017893444399335712,
+      "positive_log_inside_share": 0.7617921732742795,
+      "candidate_id": "single_symbol_symbol_reversal_lev1p0_symbolHYPEUSDT_lookback1536_threshold_bps400"
+    },
+    {
+      "month": "2026-04",
+      "log_return": 0.06466382020505944,
+      "return_pct": 6.680032737892727,
+      "event_window_bar_share": 0.5784722222222223,
+      "net_log_inside_event_window": 0.10260953360653713,
+      "net_log_outside_event_window": -0.03794571340147766,
+      "positive_log_inside_share": 0.69635586334618,
+      "candidate_id": "single_symbol_symbol_reversal_lev1p0_symbolHYPEUSDT_lookback1536_threshold_bps100"
+    },
+    {
+      "month": "2026-05",
+      "log_return": 0.2984497914890329,
+      "return_pct": 34.776786608028274,
+      "event_window_bar_share": 0.8743279569892473,
+      "net_log_inside_event_window": 0.2996729040210024,
+      "net_log_outside_event_window": -0.0012231125319694702,
+      "positive_log_inside_share": 1.0,
+      "candidate_id": "pair_long_strong_short_weak_lev1p0_lookback1536_threshold_bps50"
+    }
+  ],
+  "decision": {
+    "verdict": "TAIL_EVENTS_DOMINATE_ORACLE_PNL",
+    "promote_strategy": false
+  },
+  "files": {
+    "summary": "artifacts/strategy_43_btc_hype_tail_event_attribution_20260629/summary.json",
+    "report": "artifacts/strategy_43_btc_hype_tail_event_attribution_20260629/report.md",
+    "oracle_bar_pnl_with_tail_events": "artifacts/strategy_43_btc_hype_tail_event_attribution_20260629/oracle_bar_pnl_with_tail_events.csv",
+    "monthly_tail_event_attribution": "artifacts/strategy_43_btc_hype_tail_event_attribution_20260629/monthly_tail_event_attribution.csv"
+  }
+}

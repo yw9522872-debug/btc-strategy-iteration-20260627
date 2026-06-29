@@ -1,0 +1,145 @@
+|--- shock_sign <= 0.00
+|   |--- fund672 <= 0.03
+|   |   |--- ret96_HYPEUSDT <= 0.01
+|   |   |   |--- premium96 <= -0.00
+|   |   |   |   |--- ret16_BTCUSDT <= 0.00
+|   |   |   |   |   |--- fund672 <= -0.01
+|   |   |   |   |   |   |--- class: pair_rv_reversal|4|-2|64
+|   |   |   |   |   |--- fund672 >  -0.01
+|   |   |   |   |   |   |--- resid_z16 <= -1.79
+|   |   |   |   |   |   |   |--- class: hype_reversal|4|0|64
+|   |   |   |   |   |   |--- resid_z16 >  -1.79
+|   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |--- ret16_BTCUSDT >  0.00
+|   |   |   |   |   |--- fund672 <= 0.00
+|   |   |   |   |   |   |--- class: btc_momentum|0|4|96
+|   |   |   |   |   |--- fund672 >  0.00
+|   |   |   |   |   |   |--- class: hype_momentum|-4|0|32
+|   |   |   |--- premium96 >  -0.00
+|   |   |   |   |--- ret96_HYPEUSDT <= -0.10
+|   |   |   |   |   |--- class: hype_reversal|4|0|96
+|   |   |   |   |--- ret96_HYPEUSDT >  -0.10
+|   |   |   |   |   |--- ret16_HYPEUSDT <= -0.04
+|   |   |   |   |   |   |--- resid_z16 <= -1.46
+|   |   |   |   |   |   |   |--- truncated branch of depth 7
+|   |   |   |   |   |   |--- resid_z16 >  -1.46
+|   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |--- ret16_HYPEUSDT >  -0.04
+|   |   |   |   |   |   |--- ret384_BTCUSDT <= 0.01
+|   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |   |--- ret384_BTCUSDT >  0.01
+|   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |--- ret96_HYPEUSDT >  0.01
+|   |   |   |--- class: btc_reversal|0|4|192
+|   |--- fund672 >  0.03
+|   |   |--- ret384_HYPEUSDT <= -0.10
+|   |   |   |--- premium96 <= -0.00
+|   |   |   |   |--- class: hype_momentum|-4|0|192
+|   |   |   |--- premium96 >  -0.00
+|   |   |   |   |--- premium96 <= -0.00
+|   |   |   |   |   |--- class: hype_momentum|-4|0|64
+|   |   |   |   |--- premium96 >  -0.00
+|   |   |   |   |   |--- ret384_BTCUSDT <= -0.05
+|   |   |   |   |   |   |--- ret16_BTCUSDT <= -0.01
+|   |   |   |   |   |   |   |--- class: hype_reversal|4|0|192
+|   |   |   |   |   |   |--- ret16_BTCUSDT >  -0.01
+|   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |--- ret384_BTCUSDT >  -0.05
+|   |   |   |   |   |   |--- ret96_BTCUSDT <= -0.01
+|   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |--- ret96_BTCUSDT >  -0.01
+|   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |--- ret384_HYPEUSDT >  -0.10
+|   |   |   |--- ret16_HYPEUSDT <= -0.05
+|   |   |   |   |--- ret384_BTCUSDT <= -0.02
+|   |   |   |   |   |--- class: hype_momentum|-4|0|64
+|   |   |   |   |--- ret384_BTCUSDT >  -0.02
+|   |   |   |   |   |--- class: hype_momentum|-4|0|96
+|   |   |   |--- ret16_HYPEUSDT >  -0.05
+|   |   |   |   |--- ret384_BTCUSDT <= -0.07
+|   |   |   |   |   |--- class: pair_rv_reversal|4|-2|64
+|   |   |   |   |--- ret384_BTCUSDT >  -0.07
+|   |   |   |   |   |--- ret384_HYPEUSDT <= 0.11
+|   |   |   |   |   |   |--- resid_z16 <= -2.53
+|   |   |   |   |   |   |   |--- class: hype_reversal|4|0|192
+|   |   |   |   |   |   |--- resid_z16 >  -2.53
+|   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |--- ret384_HYPEUSDT >  0.11
+|   |   |   |   |   |   |--- class: hype_reversal|4|0|64
+|--- shock_sign >  0.00
+|   |--- ret16_HYPEUSDT <= 0.04
+|   |   |--- ret384_HYPEUSDT <= -0.08
+|   |   |   |--- class: hype_momentum|4|0|192
+|   |   |--- ret384_HYPEUSDT >  -0.08
+|   |   |   |--- ret96_BTCUSDT <= 0.03
+|   |   |   |   |--- ret96_HYPEUSDT <= 0.06
+|   |   |   |   |   |--- ret96_BTCUSDT <= 0.00
+|   |   |   |   |   |   |--- ret384_HYPEUSDT <= 0.07
+|   |   |   |   |   |   |   |--- truncated branch of depth 10
+|   |   |   |   |   |   |--- ret384_HYPEUSDT >  0.07
+|   |   |   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |   |--- ret96_BTCUSDT >  0.00
+|   |   |   |   |   |   |--- ret16_BTCUSDT <= 0.00
+|   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |--- ret16_BTCUSDT >  0.00
+|   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |--- ret96_HYPEUSDT >  0.06
+|   |   |   |   |   |--- ret16_HYPEUSDT <= 0.00
+|   |   |   |   |   |   |--- ret16_HYPEUSDT <= -0.01
+|   |   |   |   |   |   |   |--- class: btc_momentum|0|-4|192
+|   |   |   |   |   |   |--- ret16_HYPEUSDT >  -0.01
+|   |   |   |   |   |   |   |--- class: hype_reversal|-4|0|96
+|   |   |   |   |   |--- ret16_HYPEUSDT >  0.00
+|   |   |   |   |   |   |--- ret384_BTCUSDT <= 0.02
+|   |   |   |   |   |   |   |--- class: hype_reversal|-4|0|192
+|   |   |   |   |   |   |--- ret384_BTCUSDT >  0.02
+|   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |--- ret96_BTCUSDT >  0.03
+|   |   |   |   |--- premium96 <= -0.00
+|   |   |   |   |   |--- resid_z16 <= -0.98
+|   |   |   |   |   |   |--- class: pair_rv_reversal|4|-2|192
+|   |   |   |   |   |--- resid_z16 >  -0.98
+|   |   |   |   |   |   |--- class: btc_momentum|0|4|16
+|   |   |   |   |--- premium96 >  -0.00
+|   |   |   |   |   |--- fund672 <= 0.02
+|   |   |   |   |   |   |--- ret384_HYPEUSDT <= -0.04
+|   |   |   |   |   |   |   |--- class: hype_reversal|-4|0|32
+|   |   |   |   |   |   |--- ret384_HYPEUSDT >  -0.04
+|   |   |   |   |   |   |   |--- class: hype_momentum|4|0|192
+|   |   |   |   |   |--- fund672 >  0.02
+|   |   |   |   |   |   |--- ret16_HYPEUSDT <= 0.00
+|   |   |   |   |   |   |   |--- class: btc_reversal|0|-4|96
+|   |   |   |   |   |   |--- ret16_HYPEUSDT >  0.00
+|   |   |   |   |   |   |   |--- class: hype_reversal|-4|0|32
+|   |--- ret16_HYPEUSDT >  0.04
+|   |   |--- resid_z16 <= 1.94
+|   |   |   |--- ret384_BTCUSDT <= 0.04
+|   |   |   |   |--- ret96_HYPEUSDT <= 0.06
+|   |   |   |   |   |--- class: hype_reversal|-4|0|192
+|   |   |   |   |--- ret96_HYPEUSDT >  0.06
+|   |   |   |   |   |--- class: hype_reversal|-4|0|64
+|   |   |   |--- ret384_BTCUSDT >  0.04
+|   |   |   |   |--- resid_z16 <= 0.98
+|   |   |   |   |   |--- class: hype_momentum|4|0|96
+|   |   |   |   |--- resid_z16 >  0.98
+|   |   |   |   |   |--- class: hype_momentum|4|0|192
+|   |   |--- resid_z16 >  1.94
+|   |   |   |--- ret96_HYPEUSDT <= 0.06
+|   |   |   |   |--- ret16_HYPEUSDT <= 0.06
+|   |   |   |   |   |--- resid_z16 <= 2.10
+|   |   |   |   |   |   |--- class: hype_momentum|4|0|64
+|   |   |   |   |   |--- resid_z16 >  2.10
+|   |   |   |   |   |   |--- class: hype_momentum|4|0|96
+|   |   |   |   |--- ret16_HYPEUSDT >  0.06
+|   |   |   |   |   |--- class: hype_reversal|-4|0|64
+|   |   |   |--- ret96_HYPEUSDT >  0.06
+|   |   |   |   |--- ret96_BTCUSDT <= 0.00
+|   |   |   |   |   |--- class: hype_reversal|-4|0|192
+|   |   |   |   |--- ret96_BTCUSDT >  0.00
+|   |   |   |   |   |--- ret16_BTCUSDT <= -0.01
+|   |   |   |   |   |   |--- class: hype_reversal|-4|0|16
+|   |   |   |   |   |--- ret16_BTCUSDT >  -0.01
+|   |   |   |   |   |   |--- ret16_BTCUSDT <= -0.00
+|   |   |   |   |   |   |   |--- class: hype_reversal|-4|0|32
+|   |   |   |   |   |   |--- ret16_BTCUSDT >  -0.00
+|   |   |   |   |   |   |   |--- truncated branch of depth 3

@@ -1,0 +1,84 @@
+{
+  "status": "strategy_42_btc_hype_state_predictability_ready",
+  "strategy_id": "strategy_42_btc_hype_state_predictability_20260629",
+  "generated_at": "2026-06-29T11:35:26.838815+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "source": "GPT Pro suggested 42-1 predictability audit after strategy 41.",
+  "gate": {
+    "target_years": [
+      "2025",
+      "2026"
+    ],
+    "required_return_pct": 100.0,
+    "max_drawdown_limit_pct": -50.0
+  },
+  "data": {
+    "symbols": [
+      "BTCUSDT",
+      "HYPEUSDT"
+    ],
+    "months": [
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05"
+    ],
+    "rest_endpoints": [
+      "klines",
+      "fundingRate",
+      "premiumIndexKlines",
+      "markPriceKlines"
+    ]
+  },
+  "retention": {
+    "k10_contains_winner_rate": 0.16666666666666666,
+    "k20_contains_winner_rate": 0.3333333333333333,
+    "k50_contains_winner_rate": 0.3333333333333333
+  },
+  "k20_shortlist_oracle": {
+    "return_2025_pct": 254.71800127887101,
+    "return_2026_ytd_pct": 129.72705086079458,
+    "max_drawdown_pct": -99.99916331373562,
+    "orders": 392,
+    "selected_candidate_count": 10
+  },
+  "k20_drawdown_capped_shortlist_oracle": {
+    "return_2025_pct": 191.4582818319627,
+    "return_2026_ytd_pct": 36.170909968608925,
+    "max_drawdown_pct": -47.88190724873223,
+    "orders": 311,
+    "selected_candidate_count": 9
+  },
+  "strict_top1_selector": {
+    "return_2025_pct": 29.454969713810254,
+    "return_2026_ytd_pct": -32.95185876995718,
+    "max_drawdown_pct": -99.99939954299774,
+    "orders": 312,
+    "selected_candidate_count": 8
+  },
+  "decision": {
+    "verdict": "BTC_HYPE_STATE_FEATURES_FAIL_FIRST_PASS",
+    "promote_strategy": false
+  },
+  "files": {
+    "summary": "artifacts/strategy_42_btc_hype_state_predictability_20260629/summary.json",
+    "report": "artifacts/strategy_42_btc_hype_state_predictability_20260629/report.md",
+    "features": "artifacts/strategy_42_btc_hype_state_predictability_20260629/month_symbol_features.csv",
+    "candidate_scores": "artifacts/strategy_42_btc_hype_state_predictability_20260629/candidate_scores.csv",
+    "topk_oracle_monthly": "artifacts/strategy_42_btc_hype_state_predictability_20260629/topk_oracle_monthly.csv",
+    "strict_top1_monthly": "artifacts/strategy_42_btc_hype_state_predictability_20260629/strict_top1_monthly.csv",
+    "retention_by_month": "artifacts/strategy_42_btc_hype_state_predictability_20260629/retention_by_month.csv"
+  }
+}

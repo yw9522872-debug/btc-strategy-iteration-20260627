@@ -1,0 +1,52 @@
+{
+  "status": "strategy_44_btc_hype_tail_event_action_oracle_ready",
+  "strategy_id": "strategy_44_btc_hype_tail_event_action_oracle_20260629",
+  "generated_at": "2026-06-29T12:02:44.631192+00:00",
+  "research_only": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Tail-event-after-action oracle upper bound for BTC/HYPE after Strategy 43 showed oracle PnL concentrates around tail events.",
+  "leakage": {
+    "event_detection_uses_closed_past_bars": true,
+    "action_oracle_uses_future_after_event": true,
+    "tradable_strategy": false
+  },
+  "gate": {
+    "target_years": [
+      "2025",
+      "2026"
+    ],
+    "required_return_pct": 100.0,
+    "max_drawdown_limit_pct": -50.0
+  },
+  "config_count": 36,
+  "best_config": {
+    "ret16_abs_thr": 0.04,
+    "ret96_abs_thr": 0.1,
+    "resid_z16_abs_thr": 2.0,
+    "min_gap": 16,
+    "max_trade_dd": -0.3,
+    "return_2025_pct": 2349453758140.499,
+    "return_2026_ytd_pct": 3774017741.589709,
+    "min_target_year_return_pct": 3774017741.589709,
+    "max_drawdown_pct": -31.94397256122524,
+    "event_count": 4187,
+    "trade_count": 161,
+    "turnover": 1330.0,
+    "hard_pass_relaxed": true
+  },
+  "decision": {
+    "verdict": "TAIL_EVENT_ACTION_ORACLE_PASSES_RELAXED_GATE",
+    "promote_strategy": false,
+    "reason": "事件发生后看答案选择动作能通过放宽门槛，但这仍然使用未来收益选择动作，不能交易。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_44_btc_hype_tail_event_action_oracle_20260629/summary.json",
+    "report": "artifacts/strategy_44_btc_hype_tail_event_action_oracle_20260629/report.md",
+    "config_scan": "artifacts/strategy_44_btc_hype_tail_event_action_oracle_20260629/config_scan.csv",
+    "best_oracle_trades": "artifacts/strategy_44_btc_hype_tail_event_action_oracle_20260629/best_oracle_trades.csv",
+    "best_oracle_monthly": "artifacts/strategy_44_btc_hype_tail_event_action_oracle_20260629/best_oracle_monthly.csv"
+  }
+}

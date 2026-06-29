@@ -1,0 +1,146 @@
+{
+  "status": "strategy_41_btc_hype_relaxed_drawdown_ready",
+  "strategy_id": "strategy_41_btc_hype_relaxed_drawdown_20260629",
+  "generated_at": "2026-06-29T11:02:54.864244+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "does_not_overwrite_existing_strategies": true,
+  "purpose": "BTC+HYPE only, with monthly-profit and monthly-order gates removed; keep only max drawdown <= 50% and target-year return > 100%.",
+  "data": {
+    "from_cache": true,
+    "rows": 224928,
+    "start_timestamp": "2020-01-01T00:00:00+00:00",
+    "end_timestamp": "2026-05-31T23:45:00+00:00",
+    "duplicate_timestamp_rows": 0,
+    "non_15m_gap_rows": 0,
+    "symbols": [
+      {
+        "symbol": "BTCUSDT",
+        "valid_rows": 224928,
+        "first_timestamp": "2020-01-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "ok_months": 77
+      },
+      {
+        "symbol": "HYPEUSDT",
+        "valid_rows": 35040,
+        "first_timestamp": "2025-06-01T00:00:00+00:00",
+        "last_timestamp": "2026-05-31T23:45:00+00:00",
+        "ok_months": 12
+      }
+    ]
+  },
+  "symbols": [
+    "BTCUSDT",
+    "HYPEUSDT"
+  ],
+  "relaxed_gate": {
+    "target_years": [
+      "2025",
+      "2026"
+    ],
+    "required_each_target_year_return_pct": 100.0,
+    "max_drawdown_limit_pct": -50.0,
+    "monthly_profit_gate_removed": true,
+    "monthly_order_gate_removed": true
+  },
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "timing": {
+    "signals_use_closed_15m_bar_t": true,
+    "position_participates_from_bar_t_plus_1": true,
+    "monthly_oracle_is_leaky": true,
+    "strict_selector_uses_only_months_before_eval_month": true
+  },
+  "candidate_count": 1008,
+  "static_relaxed_pass_count": 0,
+  "static_complete_year_pass_count": 0,
+  "best_static_candidate": {
+    "candidate_id": "pair_long_weak_short_strong_lev1p0_lookback16_threshold_bps400",
+    "family": "pair",
+    "rule": "long_weak_short_strong",
+    "leverage": 1.0,
+    "lookback": 16,
+    "threshold_bps": 400,
+    "hard_pass_target_years_relaxed": false,
+    "hard_pass_complete_years_relaxed": false,
+    "return_2023_pct": 0.0,
+    "return_2024_pct": 0.0,
+    "return_2025_pct": -3.07872672105185,
+    "return_2026_ytd_pct": -28.9558974720852,
+    "min_target_year_return_pct": -28.9558974720852,
+    "max_drawdown_pct": -35.900031361044896,
+    "orders": 1480,
+    "turnover": 742.0,
+    "selected_month_count": 41,
+    "selected_candidate_count": 1,
+    "symbol": null
+  },
+  "monthly_oracle": {
+    "hard_pass_target_years_relaxed": false,
+    "hard_pass_complete_years_relaxed": false,
+    "return_2023_pct": 11129.542699799918,
+    "return_2024_pct": 16007.964683036886,
+    "return_2025_pct": 68281.50278510369,
+    "return_2026_ytd_pct": 17247.142087402437,
+    "min_target_year_return_pct": 17247.142087402437,
+    "max_drawdown_pct": -100.0,
+    "orders": 2000,
+    "turnover": 9808.0,
+    "selected_month_count": 41,
+    "selected_candidate_count": 32
+  },
+  "monthly_oracle_drawdown_capped": {
+    "hard_pass_target_years_relaxed": true,
+    "hard_pass_complete_years_relaxed": false,
+    "return_2023_pct": 22.85040598488004,
+    "return_2024_pct": 6.345542159017881,
+    "return_2025_pct": 4176.220694032065,
+    "return_2026_ytd_pct": 100.6688425115628,
+    "min_target_year_return_pct": 100.6688425115628,
+    "max_drawdown_pct": -49.983284935975156,
+    "orders": 783,
+    "turnover": 1950.0,
+    "selected_month_count": 41,
+    "selected_candidate_count": 13
+  },
+  "strict_selector": {
+    "hard_pass_target_years_relaxed": false,
+    "hard_pass_complete_years_relaxed": false,
+    "return_2023_pct": 0.0,
+    "return_2024_pct": 0.0,
+    "return_2025_pct": -16.266910096358778,
+    "return_2026_ytd_pct": -35.548600570637355,
+    "min_target_year_return_pct": -35.548600570637355,
+    "max_drawdown_pct": -40.03944476523138,
+    "orders": 1112,
+    "turnover": 589.0,
+    "selected_month_count": 41,
+    "selected_candidate_count": 3
+  },
+  "decision": {
+    "verdict": "BTC_HYPE_DRAWDOWN_CAPPED_ORACLE_ONLY_PASSES",
+    "promote_strategy": false,
+    "reason": "看答案并强制回撤不破50%时可以拼过目标年份，但严格选择器没过，不能交易。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/summary.json",
+    "report": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/report.md",
+    "panel": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/btc_hype_close_panel_15m_2020_2026_05.csv.gz",
+    "coverage": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/symbol_month_coverage.csv",
+    "candidate_scan": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/candidate_scan.csv",
+    "candidate_monthly": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/candidate_monthly.csv",
+    "oracle_monthly": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/oracle_monthly.csv",
+    "oracle_summary": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/oracle_summary.csv",
+    "oracle_drawdown_capped_monthly": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/oracle_drawdown_capped_monthly.csv",
+    "oracle_drawdown_capped_summary": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/oracle_drawdown_capped_summary.csv",
+    "strict_selector_monthly": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/strict_selector_monthly.csv",
+    "strict_selector_summary": "artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/strict_selector_summary.csv"
+  }
+}

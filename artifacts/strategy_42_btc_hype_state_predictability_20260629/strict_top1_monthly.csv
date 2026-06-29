@@ -1,0 +1,13 @@
+candidate_id,family,rule,leverage,month,log_return,turnover,orders,max_drawdown_pct,return_pct,symbol,lookback,threshold_bps
+single_symbol_symbol_reversal_lev4p0_symbolBTCUSDT_lookback1536_threshold_bps400,single_symbol,symbol_reversal,4.0,2025-06,0.0552274519815442,40.0,10,-99.9991529044933,5.6780954263705885,BTCUSDT,1536,400
+single_symbol_symbol_reversal_lev4p0_symbolHYPEUSDT_lookback1536_threshold_bps400,single_symbol,symbol_reversal,4.0,2025-07,0.0376694502977494,84.0,21,-38.748970319352885,3.838793731999957,HYPEUSDT,1536,400
+single_symbol_symbol_reversal_lev4p0_symbolBTCUSDT_lookback1536_threshold_bps400,single_symbol,symbol_reversal,4.0,2025-08,-0.1251612760508088,28.0,7,-99.99919605346165,-11.764541155446484,BTCUSDT,1536,400
+pair_long_weak_short_strong_lev1p0_lookback768_threshold_bps200,pair,long_weak_short_strong,1.0,2025-09,-0.1332294307516458,64.0,128,-28.726141164723582,-12.473574346554171,,768,200
+single_symbol_symbol_reversal_lev4p0_symbolHYPEUSDT_lookback1536_threshold_bps400,single_symbol,symbol_reversal,4.0,2025-10,0.7427194532801753,24.0,6,-44.83650562109861,110.1643070402627,HYPEUSDT,1536,400
+single_symbol_symbol_reversal_lev4p0_symbolBTCUSDT_lookback1536_threshold_bps400,single_symbol,symbol_reversal,4.0,2025-11,-0.2100458424380882,60.0,15,-99.99939954299774,-18.9452912336204,BTCUSDT,1536,400
+single_symbol_symbol_reversal_lev2p0_symbolHYPEUSDT_lookback1536_threshold_bps0,single_symbol,symbol_reversal,2.0,2025-12,-0.1090168958551906,4.0,2,-54.96696834355848,-10.32847334010496,HYPEUSDT,1536,0
+pair_long_weak_short_strong_lev1p0_lookback1536_threshold_bps200,pair,long_weak_short_strong,1.0,2026-01,-0.1845357100589256,22.0,44,-21.09953008505485,-16.850975319647333,,1536,200
+single_symbol_symbol_reversal_lev1p0_symbolHYPEUSDT_lookback1536_threshold_bps100,single_symbol,symbol_reversal,1.0,2026-02,-0.0946111938986298,35.0,35,-49.067979744122646,-9.02734270424802,HYPEUSDT,1536,100
+pair_long_weak_short_strong_lev1p0_lookback1536_threshold_bps20,pair,long_weak_short_strong,1.0,2026-03,0.0069666784380287,2.0,4,-24.824227453798475,0.6991002194713714,,1536,20
+single_symbol_symbol_reversal_lev1p0_symbolHYPEUSDT_lookback1536_threshold_bps400,single_symbol,symbol_reversal,1.0,2026-04,0.0356938993964358,15.0,15,-35.34105088675835,3.633857407174146,HYPEUSDT,1536,400
+single_symbol_symbol_reversal_lev4p0_symbolBTCUSDT_lookback1536_threshold_bps400,single_symbol,symbol_reversal,4.0,2026-05,-0.163272972668591,100.0,25,-99.9993531281527,-15.064069510895074,BTCUSDT,1536,400

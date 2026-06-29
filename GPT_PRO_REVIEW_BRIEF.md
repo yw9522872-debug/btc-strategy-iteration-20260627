@@ -623,6 +623,75 @@ Important current results:
   - Best no-future selector test is `hot_abs_funding_abs_both`: 2023 +6,662.64%, 2024 -90.19%, 2025 +203.32%, 2026 YTD +18.01%, 17 traded months, 6 losing traded months, worst traded month -76.35%.
   - Decision: `FUNDING_SIGNAL_WEAK_NOT_TRADEABLE`. Funding adds a weak crowding clue and improves the Strategy 39 pattern, but it still does not meet the original target. Do not keep expanding funding-only micro-rules; test premium or order-flow as the next independent early signal.
 
+- `STRATEGY_41_BTC_HYPE_RELAXED_DRAWDOWN.md`
+  - Strategy 41 is a BTC+HYPE relaxed-gate audit, not a strategy and not tradeable.
+  - Audit id: `strategy_41_btc_hype_relaxed_drawdown_20260629`.
+  - Script: `scripts/audit_strategy_41_btc_hype_relaxed_drawdown_20260629.py`.
+  - Output: `artifacts/strategy_41_btc_hype_relaxed_drawdown_20260629/summary.json`.
+  - Relaxed gate: only BTCUSDT and HYPEUSDT; remove monthly-profit and monthly-order gates; require 2025 and 2026 YTD each >100%; require max drawdown no worse than -50%.
+  - Data: BTC 15m has 224,928 rows from 2020-01-01 through 2026-05-31; HYPE 15m has 35,040 rows from 2025-06-01 through 2026-05-31. Duplicate timestamps 0, non-15m gaps 0.
+  - Candidate grid: 1,008 BTC/HYPE pair and single-symbol momentum/reversal candidates with 0.2% round-trip cost. Static fixed-parameter relaxed pass count: 0.
+  - Plain monthly oracle has huge returns but max drawdown -100%, so it fails the drawdown gate.
+  - Drawdown-capped monthly oracle passes the 2025/2026 relaxed gate: 2025 +4,176.22%, 2026 YTD +100.67%, max drawdown -49.98%. This is leaky because it chooses the same-month winner after seeing the month.
+  - Strict no-future selector fails: 2025 -16.27%, 2026 YTD -35.55%, max drawdown -40.04%.
+  - Decision: `BTC_HYPE_DRAWDOWN_CAPPED_ORACLE_ONLY_PASSES`. Historical BTC+HYPE pieces can be overfit into the relaxed target, but there is still no tradeable no-future selector.
+
+- `STRATEGY_42_BTC_HYPE_STATE_PREDICTABILITY.md`
+  - Strategy 42 is a BTC+HYPE state-predictability audit after GPT Pro review, not a strategy and not tradeable.
+  - Audit id: `strategy_42_btc_hype_state_predictability_20260629`.
+  - Script: `scripts/audit_strategy_42_btc_hype_state_predictability_20260629.py`.
+  - Output: `artifacts/strategy_42_btc_hype_state_predictability_20260629/summary.json`.
+  - It uses small Binance public REST data only: `klines`, `fundingRate`, `premiumIndexKlines`, `markPriceKlines`. No full `aggTrades` download.
+  - Months: 2025-06 through 2026-05.
+  - Purpose: check whether month-start visible state can rank Strategy 41's BTC+HYPE candidates well enough to keep the drawdown-capped oracle winner in a small shortlist.
+  - K20 contains the Strategy 41 safe oracle winner in only 33.33% of months. K10 retention is 16.67%; K50 retention is also 33.33%.
+  - K20 ordinary oracle upper bound: 2025 +254.72%, 2026 YTD +129.73%, but max drawdown -99.999%, so it fails the relaxed drawdown gate.
+  - K20 drawdown-capped oracle upper bound: 2025 +191.46%, 2026 YTD +36.17%, max drawdown -47.88%, so 2026 still fails.
+  - Strict top1 state score: 2025 +29.45%, 2026 YTD -32.95%, max drawdown -99.999%.
+  - Decision: `BTC_HYPE_STATE_FEATURES_FAIL_FIRST_PASS`. The cheap month-start state-ranking shortcut fails. If continuing, test dynamic intramonth state gating; do not promote this audit.
+
+- `STRATEGY_43_BTC_HYPE_TAIL_EVENT_ATTRIBUTION.md`
+  - Strategy 43 is a BTC+HYPE tail-event attribution audit, not a strategy and not tradeable.
+  - Audit id: `strategy_43_btc_hype_tail_event_attribution_20260629`.
+  - Script: `scripts/audit_strategy_43_btc_hype_tail_event_attribution_20260629.py`.
+  - Output: `artifacts/strategy_43_btc_hype_tail_event_attribution_20260629/summary.json`.
+  - It replays Strategy 41's drawdown-capped oracle bar PnL and checks whether profits concentrate around predefined BTC/HYPE tail-event windows using Strategy 42's BTC/HYPE 15m data.
+  - Tail event definition: HYPE 4h absolute return >=5%, or HYPE 24h absolute return >=12%, or abs(HYPE-minus-BTC 4h residual z) >=2.5. Event window is +/-48h.
+  - Results: raw tail-event bars are 6.20% of bars; +/-48h event windows cover 79.05% of bars; 90.44% of positive log PnL falls inside event windows; net log PnL inside windows is +4.7580 and outside windows is -0.3059.
+  - Decision: `TAIL_EVENTS_DOMINATE_ORACLE_PNL`. Strategy 41's oracle profits are tied to tail-event regimes, but the event window is broad, so this is only an attribution clue. If continuing, run a separate event-after-action oracle before any strict policy.
+
+- `STRATEGY_44_BTC_HYPE_TAIL_EVENT_ACTION_ORACLE.md`
+  - Strategy 44 is a BTC+HYPE tail-event-after-action oracle, not a strategy and not tradeable.
+  - Audit id: `strategy_44_btc_hype_tail_event_action_oracle_20260629`.
+  - Script: `scripts/audit_strategy_44_btc_hype_tail_event_action_oracle_20260629.py`.
+  - Output: `artifacts/strategy_44_btc_hype_tail_event_action_oracle_20260629/summary.json`.
+  - Event detection uses only closed past bars; action selection uses future returns after the event.
+  - Best event thresholds: abs(HYPE 4h return) >=4%, or abs(HYPE 24h return) >=10%, or abs(HYPE-minus-BTC 4h residual z) >=2.0; min_gap 16; max per-trade drawdown filter -30%.
+  - Best action oracle passes the relaxed BTC/HYPE gate: 2025 +2,349,453,758,140.50%, 2026 YTD +3,774,017,741.59%, max drawdown -31.94%, 161 trades, turnover 1,330.0.
+  - Action mix: HYPE reversal 63, HYPE momentum 62, BTC momentum 14, pair relative-value reversal 12, BTC reversal 10.
+  - Decision: `TAIL_EVENT_ACTION_ORACLE_PASSES_RELAXED_GATE`. Historical tail events have enough after-event action opportunity, but this is still a future oracle.
+
+- `STRATEGY_45_BTC_HYPE_TAIL_EVENT_FITTED_POLICY.md`
+  - Strategy 45 is a forced-overfit fitted tail-event policy, not a live strategy and not tradeable.
+  - Audit id: `strategy_45_btc_hype_tail_event_fitted_policy_20260629`.
+  - Script: `scripts/audit_strategy_45_btc_hype_tail_event_fitted_policy_20260629.py`.
+  - Output: `artifacts/strategy_45_btc_hype_tail_event_fitted_policy_20260629/summary.json`.
+  - It fits decision trees on Strategy 44 oracle labels and evaluates on the same 2025-06 through 2026-05 period.
+  - Best policy is a `market_only` decision tree, depth 16, 100 leaves, train accuracy 100%; it exactly matches the 161 Strategy 44 oracle event trades.
+  - In-sample result: 2025 +2,349,453,758,140.50%, 2026 YTD +3,774,017,741.59%, max drawdown -31.94%, 161 trades, turnover 1,330.0.
+  - Most important market-only features include HYPE/BTC residual z, HYPE/BTC 4-day trend, HYPE/BTC 24h returns, HYPE 4h shock, premium, and funding.
+  - Decision: `TAIL_EVENT_FITTED_POLICY_PASSES_IN_SAMPLE_RELAXED_GATE`. This proves a historical overfit can pass, but the labels come from same-period future oracle. Next useful audit is Strategy 46: strict walk-forward tree training using only prior tail events, then testing the next month.
+
+- `STRATEGY_46_BTC_HYPE_TAIL_EVENT_WALKFORWARD_POLICY.md`
+  - Strategy 46 is a strict walk-forward validation of Strategy 45, not a live strategy and not tradeable.
+  - Audit id: `strategy_46_btc_hype_tail_event_walkforward_policy_20260629`.
+  - Script: `scripts/audit_strategy_46_btc_hype_tail_event_walkforward_policy_20260629.py`.
+  - Output: `artifacts/strategy_46_btc_hype_tail_event_walkforward_policy_20260629/summary.json`.
+  - Each month trains only on earlier Strategy 44 oracle-labeled tail events, then tests the current month. Current-month labels are not used for current-month training.
+  - Best strict walk-forward policy is `market_plus_time`, depth 5, min_samples_leaf 3: 2025 +230.13%, 2026 YTD +865.81%, but max drawdown -84.48%, 130 trades, turnover 1,052.0.
+  - Simple temporary monthly/global drawdown stops were also probed after the formal run; none passed the relaxed gate because drawdown-safe variants lost too much return while high-return variants still exceeded the drawdown limit.
+  - Decision: `TAIL_EVENT_WALKFORWARD_POLICY_FAILS_RELAXED_GATE`. Strategy 45 found a strong in-sample overfit pattern, but it is not yet a validated alpha.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -682,6 +751,12 @@ Useful source files:
 - `scripts/audit_strategy_38_forced_overfit_alpha_mining_20260629.py`
 - `scripts/audit_strategy_39_alpha_pattern_discovery_20260629.py`
 - `scripts/audit_strategy_40_multisymbol_funding_alpha_selector_20260629.py`
+- `scripts/audit_strategy_41_btc_hype_relaxed_drawdown_20260629.py`
+- `scripts/audit_strategy_42_btc_hype_state_predictability_20260629.py`
+- `scripts/audit_strategy_43_btc_hype_tail_event_attribution_20260629.py`
+- `scripts/audit_strategy_44_btc_hype_tail_event_action_oracle_20260629.py`
+- `scripts/audit_strategy_45_btc_hype_tail_event_fitted_policy_20260629.py`
+- `scripts/audit_strategy_46_btc_hype_tail_event_walkforward_policy_20260629.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 
