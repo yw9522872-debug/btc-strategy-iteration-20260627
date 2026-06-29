@@ -835,6 +835,18 @@ Important current results:
   - Low-drawdown near miss: max drawdown -47.83%, but 2025 return is only +88.56%, so it fails the +100% annual threshold.
   - Decision: `DRAWDOWN_SPREAD_ACROSS_MANY_EVENTS`. Deleting the worst few trades or minor stop-loss patching is unlikely to rescue Strategy 58. If continuing, only test a minimal causal risk overlay using already-realized trade PnL/drawdown; if that fails, stop the BTC/HYPE tail-event action-selection branch.
 
+- `STRATEGY_60_TAIL_EVENT_SIMPLE_CAUSAL_RISK_OVERLAY.md`
+  - Strategy 60 tests the final minimal causal risk-overlay upper bound for Strategy 58's best-return policy. It is not a strategy and not tradeable.
+  - Audit id: `strategy_60_tail_event_simple_causal_risk_overlay_20260630`.
+  - Script: `scripts/audit_strategy_60_tail_event_simple_causal_risk_overlay_20260630.py`.
+  - Output: `artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/summary.json`.
+  - It reuses Strategy 58's exact walk-forward bar returns, does not retrain the action model, and does not add entry rules.
+  - Risk controls only use already-realized prior-bar monthly loss, monthly drawdown, and account drawdown to reduce exposure or halt. This is an optimistic upper bound because it scales Strategy 58 bar returns directly rather than re-simulating real order execution costs.
+  - Baseline replay exactly matches Strategy 58: 2025 +144.16%, 2026 +151.71%, max drawdown -65.31%.
+  - Scan count: 628 simple configs. Hard-pass relaxed count: 0.
+  - Best drawdown-capped result: month loss trigger -20%, account drawdown trigger -25%, triggered scale 0.5; 2025 +167.25%, 2026 +52.75%, max drawdown -49.66%.
+  - Decision: `SIMPLE_CAUSAL_RISK_OVERLAY_UPPER_BOUND_FAILS_RELAXED_GATE`. Even the optimistic simple causal risk overlay cannot keep both 2025/2026 above +100% while holding max drawdown within -50%. Stop small patching of the BTC/HYPE tail-event action-selection branch; move to shadow/low-return validation, truly new data, or a lower target.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -912,6 +924,7 @@ Useful source files:
 - `scripts/audit_strategy_57_tail_event_state_action_predictability_20260630.py`
 - `scripts/audit_strategy_58_tail_event_micro_signal_20260630.py`
 - `scripts/audit_strategy_59_tail_event_failure_attribution_20260630.py`
+- `scripts/audit_strategy_60_tail_event_simple_causal_risk_overlay_20260630.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

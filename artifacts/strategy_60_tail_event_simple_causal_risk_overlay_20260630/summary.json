@@ -1,0 +1,173 @@
+{
+  "status": "strategy_60_tail_event_simple_causal_risk_overlay_done",
+  "strategy_id": "strategy_60_tail_event_simple_causal_risk_overlay_20260630",
+  "generated_at": "2026-06-29T20:21:52.429244+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Run an optimistic upper-bound test: can simple causal loss/drawdown scaling rescue Strategy 58 best-return policy?",
+  "source_strategy": "strategy_58_tail_event_micro_signal_20260630",
+  "data": {
+    "sources": [
+      "artifacts/strategy_42_btc_hype_state_predictability_20260629/btc_hype_15m_klines_rest_2025_05_2026_05.csv.gz",
+      "artifacts/strategy_42_btc_hype_state_predictability_20260629/btc_hype_funding_rate_2025_05_2026_05.csv",
+      "artifacts/strategy_42_btc_hype_state_predictability_20260629/btc_hype_premiumIndexKlines_15m_2025_05_2026_05.csv.gz"
+    ],
+    "rows": 35168,
+    "start_timestamp": "2025-05-30T16:00:00+00:00",
+    "end_timestamp": "2026-05-31T23:45:00+00:00",
+    "duplicate_timestamp_rows": 0,
+    "non_15m_gap_rows": 0,
+    "latest_2026_06_note": "Strategy 49 latest klines only contain close, so this audit stops at 2026-05 to keep volume/taker features complete."
+  },
+  "leakage": {
+    "uses_strategy_58_walkforward_bar_returns": true,
+    "retrained_action_model": false,
+    "current_month_labels_used": false,
+    "risk_controls_use_only_prior_bar_realized_pnl_and_drawdown": true,
+    "risk_grid_selected_on_same_2025_06_2026_05_sample": true,
+    "optimistic_upper_bound": true,
+    "tradable_strategy": false
+  },
+  "gate": {
+    "required_return_pct_each_target_year": 100.0,
+    "max_drawdown_limit_pct": -50.0,
+    "target_years": [
+      "2025",
+      "2026"
+    ]
+  },
+  "source_policy": {
+    "confirm_bars": 2,
+    "feature_set": "market_only",
+    "max_depth": 4,
+    "min_samples_leaf": 3,
+    "hold_bars": 96,
+    "leverage": 2.0,
+    "trained_months": 11,
+    "return_2025_pct": 144.160634511369,
+    "return_2026_pct": 151.70664554063333,
+    "min_target_year_return_pct": 144.160634511369,
+    "max_drawdown_pct": -65.30592707935568,
+    "losing_months": 4,
+    "min_monthly_return_pct": -24.722805211334908,
+    "trade_count": 173,
+    "turnover": 682.0,
+    "hard_pass_relaxed": false
+  },
+  "baseline_replay": {
+    "return_2025_pct": 144.160634511369,
+    "return_2026_pct": 151.70664554063333,
+    "min_target_year_return_pct": 144.160634511369,
+    "max_drawdown_pct": -65.30592707935568,
+    "losing_months": 4,
+    "min_monthly_return_pct": -24.722805211334908,
+    "planned_trade_count": 173,
+    "skipped_trade_count": 0,
+    "risk_scaled_bar_count": 0,
+    "turnover": 682.0,
+    "hard_pass_relaxed": false
+  },
+  "scan": {
+    "config_count": 628,
+    "hard_pass_relaxed_count": 0,
+    "month_loss_triggers": [
+      null,
+      -0.1,
+      -0.15,
+      -0.2,
+      -0.25,
+      -0.3,
+      -0.35
+    ],
+    "month_dd_triggers": [
+      null,
+      -0.15,
+      -0.2,
+      -0.25,
+      -0.3,
+      -0.35
+    ],
+    "account_dd_triggers": [
+      null,
+      -0.25,
+      -0.35,
+      -0.45,
+      -0.55
+    ],
+    "triggered_scales": [
+      0.0,
+      0.25,
+      0.5
+    ]
+  },
+  "best_policy": {
+    "month_loss_trigger": -0.2,
+    "month_dd_trigger": null,
+    "account_dd_trigger": -0.25,
+    "triggered_scale": 0.5,
+    "return_2025_pct": 167.25007743255853,
+    "return_2026_pct": 52.74989146747415,
+    "min_target_year_return_pct": 52.74989146747415,
+    "max_drawdown_pct": -49.656558038650765,
+    "losing_months": 4,
+    "min_monthly_return_pct": -22.30561053428125,
+    "planned_trade_count": 173,
+    "skipped_trade_count": 0,
+    "risk_scaled_bar_count": 23211,
+    "turnover": 436.0,
+    "hard_pass_relaxed": false
+  },
+  "best_drawdown_capped_policy": {
+    "month_loss_trigger": -0.2,
+    "month_dd_trigger": null,
+    "account_dd_trigger": -0.25,
+    "triggered_scale": 0.5,
+    "return_2025_pct": 167.25007743255853,
+    "return_2026_pct": 52.74989146747415,
+    "min_target_year_return_pct": 52.74989146747415,
+    "max_drawdown_pct": -49.656558038650765,
+    "losing_months": 4,
+    "min_monthly_return_pct": -22.30561053428125,
+    "planned_trade_count": 173,
+    "skipped_trade_count": 0,
+    "risk_scaled_bar_count": 23211,
+    "turnover": 436.0,
+    "hard_pass_relaxed": false
+  },
+  "best_return_policy": {
+    "month_loss_trigger": null,
+    "month_dd_trigger": null,
+    "account_dd_trigger": null,
+    "triggered_scale": 1.0,
+    "return_2025_pct": 144.160634511369,
+    "return_2026_pct": 151.70664554063333,
+    "min_target_year_return_pct": 144.160634511369,
+    "max_drawdown_pct": -65.30592707935568,
+    "losing_months": 4,
+    "min_monthly_return_pct": -24.722805211334908,
+    "planned_trade_count": 173,
+    "skipped_trade_count": 0,
+    "risk_scaled_bar_count": 0,
+    "turnover": 682.0,
+    "hard_pass_relaxed": false
+  },
+  "decision": {
+    "verdict": "SIMPLE_CAUSAL_RISK_OVERLAY_UPPER_BOUND_FAILS_RELAXED_GATE",
+    "promote_strategy": false,
+    "reason": "回撤能压到 -49.66%，但最低目标年收益只有 52.75%，达不到100%。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/summary.json",
+    "report": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/report.md",
+    "risk_overlay_scan": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/risk_overlay_scan.csv",
+    "source_58_policy_monthly": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/source_58_policy_monthly.csv",
+    "baseline_replay_monthly": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/baseline_replay_monthly.csv",
+    "best_overlay_monthly": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/best_overlay_monthly.csv",
+    "best_overlay_bar": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/best_overlay_bar.csv",
+    "best_overlay_trades": "artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/best_overlay_trades.csv"
+  }
+}
