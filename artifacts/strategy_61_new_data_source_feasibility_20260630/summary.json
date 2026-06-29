@@ -1,0 +1,136 @@
+{
+  "status": "strategy_61_new_data_source_feasibility_done",
+  "strategy_id": "strategy_61_new_data_source_feasibility_20260630",
+  "generated_at": "2026-06-29T21:13:05.0912141Z",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_a_backtest": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Decide whether a genuinely new data source is worth pursuing after Strategies 16-60 failed strict no-future backtests or upper-bound gates.",
+  "decision": {
+    "verdict": "ONLY_TARDIS_SAMPLE_THEN_UPPER_BOUND",
+    "buy_large_data_package_now": false,
+    "run_shadow_tracking_now": false,
+    "reason": "Strict historical backtests are not good enough, so shadow tracking has little value now. If continuing, first request a minimal auditable Tardis.dev sample; do not buy a large package before sample quality and leaky upper-bound tests pass.",
+    "promote_strategy": false
+  },
+  "context": {
+    "strategy_60_result": "SIMPLE_CAUSAL_RISK_OVERLAY_UPPER_BOUND_FAILS_RELAXED_GATE",
+    "free_data_routes_checked": [
+      "Binance 15m/3m/1m klines",
+      "Binance fundingRate",
+      "Binance spot-perp aggTrades sample",
+      "Binance multi-symbol futures klines",
+      "BTC/HYPE public REST klines/funding/premium"
+    ],
+    "stopped_routes": [
+      "old ret_state / 2C tuning",
+      "free kline small-rule expansion",
+      "funding-only selector",
+      "spot-perp aggTrades lead-lag",
+      "BTC/HYPE tail-event action-selection small patches"
+    ]
+  },
+  "data_source_findings": {
+    "binance_official_rest": {
+      "usable_for_multi_year_open_interest_long_short_backtest": false,
+      "open_interest_history_limit": "recent only / about 1 month",
+      "long_short_ratio_history_limit": "recent only / about 30 days",
+      "decision": "Do not force a multi-year backtest from incomplete official REST history."
+    },
+    "tardis_dev": {
+      "priority": 1,
+      "recommended": true,
+      "exchange": "binance-futures",
+      "required_symbol": "BTCUSDT",
+      "relevant_channels": [
+        "openInterest",
+        "derivative_ticker with open_interest",
+        "globalLongShortAccountRatio",
+        "topLongShortAccountRatio",
+        "topLongShortPositionRatio",
+        "optional takerlongshortRatio"
+      ],
+      "coverage_notes": {
+        "exchange_history_available_since": "2019-11-17",
+        "open_interest_available_since": "2020-05-12",
+        "derivative_ticker_open_interest_available_since": "2020-05-13",
+        "long_short_ratios_available_since": "2020-10-28",
+        "taker_long_short_ratio_available_since": "2021-12-01"
+      },
+      "decision": "Only request minimal sample/export first."
+    },
+    "coinglass": {
+      "priority": 2,
+      "recommended": false,
+      "role": "backup only",
+      "requirement": "Must confirm full Binance BTCUSDT futures export from 2020-10-28 to 2026-05-31 before use."
+    },
+    "amberdata": {
+      "priority": 3,
+      "recommended": false,
+      "role": "institutional backup only",
+      "requirement": "Must provide sample, clear field definitions, timestamp rules, and usable export before use."
+    }
+  },
+  "minimal_sample_request": {
+    "preferred_vendor": "Tardis.dev",
+    "exchange": "binance-futures",
+    "symbol": "BTCUSDT",
+    "sample_months": [
+      "2023-07",
+      "2024-06",
+      "2025-08",
+      "2026-05"
+    ],
+    "required_full_history_if_sample_passes": {
+      "open_interest": "2020-05-13 to 2026-05-31",
+      "long_short_ratios": "2020-10-28 to 2026-05-31"
+    },
+    "must_have_before_purchase": [
+      "CSV or equivalent auditable files",
+      "clear timestamps, preferably exchange timestamp and local receive timestamp",
+      "full historical coverage rather than recent-only data",
+      "no API key stored in this project",
+      "permission to store data locally for research backtests"
+    ]
+  },
+  "next_steps_if_data_is_obtained": [
+    {
+      "strategy_number": 62,
+      "task": "Data quality audit: coverage, duplicates, gaps, missing fields, and alignment to the 15m futures baseline."
+    },
+    {
+      "strategy_number": 63,
+      "task": "Leaky upper-bound test: intentionally look at answers first to see whether the new data source has enough historical room."
+    },
+    {
+      "strategy_number": 64,
+      "task": "Only if Strategy 63 passes, run strict no-future walk-forward selector."
+    }
+  ],
+  "stop_rules": [
+    "If the sample fails quality checks, do not buy full data.",
+    "If the leaky upper-bound test fails, stop before building strict selectors.",
+    "Do not use partial recent-only open interest or long-short data for a 2023-2026 historical claim.",
+    "Do not treat this feasibility audit as a tradeable strategy."
+  ],
+  "sources": [
+    "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Open-Interest-Statistics",
+    "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Long-Short-Ratio",
+    "https://docs.tardis.dev/historical-data-details/binance-futures",
+    "https://api.tardis.dev/v1/exchanges/binance-futures",
+    "https://www.coinglass.com/pricing",
+    "https://docs.coinglass.com/reference/oi-ohlc-histroy",
+    "https://docs.coinglass.com/reference/global-longshort-account-ratio",
+    "https://www.amberdata.io/market-data",
+    "https://docs.amberdata.io/data-dictionary/market/open-interest"
+  ],
+  "files": {
+    "report": "STRATEGY_61_NEW_DATA_SOURCE_FEASIBILITY.md",
+    "summary": "artifacts/strategy_61_new_data_source_feasibility_20260630/summary.json"
+  }
+}

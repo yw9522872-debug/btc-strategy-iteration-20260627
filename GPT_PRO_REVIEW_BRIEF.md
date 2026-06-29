@@ -847,6 +847,18 @@ Important current results:
   - Best drawdown-capped result: month loss trigger -20%, account drawdown trigger -25%, triggered scale 0.5; 2025 +167.25%, 2026 +52.75%, max drawdown -49.66%.
   - Decision: `SIMPLE_CAUSAL_RISK_OVERLAY_UPPER_BOUND_FAILS_RELAXED_GATE`. Even the optimistic simple causal risk overlay cannot keep both 2025/2026 above +100% while holding max drawdown within -50%. Stop small patching of the BTC/HYPE tail-event action-selection branch; move to shadow/low-return validation, truly new data, or a lower target.
 
+- `STRATEGY_61_NEW_DATA_SOURCE_FEASIBILITY.md`
+  - Strategy 61 is not a strategy and not a backtest. It is a feasibility decision after Strategy 60 failed and after the user noted that shadow tracking has little value when strict backtests are not good.
+  - Audit id: `strategy_61_new_data_source_feasibility_20260630`.
+  - Output: `artifacts/strategy_61_new_data_source_feasibility_20260630/summary.json`.
+  - Decision: `ONLY_TARDIS_SAMPLE_THEN_UPPER_BOUND`.
+  - Do not buy a large data package now and do not start shadow tracking now.
+  - If continuing, request only a minimal auditable sample/export from Tardis.dev first: `binance-futures`, `BTCUSDT`, open interest, derivative ticker open interest, global/top account and position long-short ratios, optional taker long-short ratio.
+  - Minimal sample months: 2023-07, 2024-06, 2025-08, 2026-05.
+  - Full-history requirement if the sample passes: open interest from 2020-05-13 to 2026-05-31, long-short ratios from 2020-10-28 to 2026-05-31.
+  - Binance official REST is not enough for multi-year OI/long-short backtests because open-interest statistics and long/short ratio history are recent-only. CoinGlass and Amberdata are backups only if they confirm full export, timestamps, fields, and local research storage.
+  - Next work only if data is obtained: Strategy 62 data quality audit, Strategy 63 leaky upper-bound test, and only if 63 passes Strategy 64 strict no-future walk-forward selector.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -934,3 +946,4 @@ What advice is needed:
 2. Prefer concrete algorithm changes over general trading risk advice.
 3. If proposing ML, specify exact walk-forward training windows, label availability, threshold calibration, and leakage checks.
 4. If the hard requirements look infeasible, suggest upper-bound tests that can prove where the bottleneck is.
+5. Do not suggest shadow tracking as the next main step unless a strict historical backtest is first at least basically acceptable.
