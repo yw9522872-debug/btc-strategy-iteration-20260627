@@ -809,6 +809,19 @@ Important current results:
   - Best action-only walk-forward policy also fails: `market_only`, depth 6, min leaf 8, hold 64 bars, leverage 2.0, 2025 +27.13%, 2026 +9.63%, max drawdown -35.36%, 8 losing months.
   - Decision: `EVENT_STATE_LABEL_ORACLE_PASSES_BUT_WALKFORWARD_FAILS`. Tail events still have post-event opportunity, but the current simple state features / decision tree cannot reliably predict future-month action choice. Do not keep tuning tree depth, leaf size, hold bars, or leverage as the next step.
 
+- `STRATEGY_58_TAIL_EVENT_MICRO_SIGNAL.md`
+  - Strategy 58 tests more event-local causal information: funding/premium changes, BTC/HYPE lead-lag, 1/2/4 closed 15m confirmation bars, volume, and taker pressure. It is not a strategy and not tradeable.
+  - Audit id: `strategy_58_tail_event_micro_signal_20260630`.
+  - Script: `scripts/audit_strategy_58_tail_event_micro_signal_20260630.py`.
+  - Output: `artifacts/strategy_58_tail_event_micro_signal_20260630/summary.json`.
+  - Main audit stops at 2026-05 because Strategy 49 latest 2026-06 klines only contain close and do not contain volume/taker fields. It uses Strategy 42 complete public REST klines/funding/premium, 35,168 15m rows, no duplicates and no non-15m gaps.
+  - Confirmation bars are causal: if confirm_bars is 1/2/4, the policy waits for those 15m candles to close and only enters afterward.
+  - Best confirmation-delay oracle still passes: confirm 0, 2025 +72,596,889.40%, 2026 +2,176,924.83%, max drawdown -31.21%, 247 trades, 0 losing months. This is leaky.
+  - Strict scan tested 1,620 walk-forward action policies; pass count is 0.
+  - Best strict policy by target-year return: confirm 2, `market_only`, depth 4, min leaf 3, hold 96, leverage 2.0, 2025 +144.16%, 2026 +151.71%, but max drawdown -65.31%, so it fails the relaxed drawdown gate.
+  - Best low-drawdown near miss: confirm 1, `event_micro_plus_time`, depth 3, min leaf 3, hold 96, leverage 2.0, 2025 +88.56%, 2026 +368.95%, max drawdown -47.83%; drawdown is acceptable but 2025 return is below +100%.
+  - Decision: `EVENT_MICRO_ORACLE_PASSES_BUT_WALKFORWARD_FAILS`. Micro/event-local data helps, but still does not simultaneously satisfy return and drawdown. Do not keep tuning tree depth, leaf size, hold, leverage, or confirmation bars; the next useful audit is failure-month/event attribution for the near-miss configs.
+
 - `artifacts/strategy_1_walkforward_20260627/summary.json`
   - Experimental attempt to select `ret_state` window/threshold plus lock/quota/leverage using only prior months.
   - This failed: 2025 return -22.09%, 2026 return 126.55%, two losing evaluated months.
@@ -884,6 +897,7 @@ Useful source files:
 - `scripts/audit_strategy_55_btc_hype_tail_event_core_signal_20260630.py`
 - `scripts/audit_strategy_56_tail_event_loss_root_cause_20260630.py`
 - `scripts/audit_strategy_57_tail_event_state_action_predictability_20260630.py`
+- `scripts/audit_strategy_58_tail_event_micro_signal_20260630.py`
 - `scripts/plot_strategy_trade_charts_20260627.py`
 - `src/btc_ml_trader/backtest.py`
 

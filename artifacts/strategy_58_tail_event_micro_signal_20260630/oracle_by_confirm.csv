@@ -1,0 +1,5 @@
+confirm_bars,event_label_rows,action_counts,return_2025_pct,return_2026_pct,min_target_year_return_pct,max_drawdown_pct,losing_months,min_monthly_return_pct,trade_count,turnover,hard_pass_relaxed
+0,247,"{'hype_reversal': 115, 'hype_momentum': 102, 'btc_momentum': 16, 'btc_reversal': 14}",72596889.40055102,2176924.830144856,2176924.830144856,-31.207217244131648,0,64.80415102753092,247,986.0,True
+2,246,"{'hype_reversal': 115, 'hype_momentum': 103, 'btc_momentum': 20, 'btc_reversal': 8}",45467851.813983485,1543938.7211365756,1543938.7211365756,-31.20721724413166,0,64.1289510730575,246,982.0,True
+1,250,"{'hype_reversal': 117, 'hype_momentum': 105, 'btc_momentum': 18, 'btc_reversal': 10}",65440612.62082158,1398192.701402419,1398192.701402419,-31.20721724413167,0,53.66007661440264,250,998.0,True
+4,240,"{'hype_reversal': 107, 'hype_momentum': 101, 'btc_momentum': 21, 'btc_reversal': 11}",32736216.71826624,922982.6653784646,922982.6653784646,-31.20721724413166,0,75.3689981570506,240,958.0,True

@@ -1,0 +1,92 @@
+{
+  "status": "strategy_58_tail_event_micro_signal_done",
+  "strategy_id": "strategy_58_tail_event_micro_signal_20260630",
+  "generated_at": "2026-06-29T19:39:44.942634+00:00",
+  "research_only": true,
+  "not_a_strategy": true,
+  "not_live_trading": true,
+  "orders_generated": false,
+  "orders_submitted": false,
+  "secret_access": false,
+  "purpose": "Test event-close funding/premium, lead-lag, first-bar confirmation, volume, and taker pressure for causal post-tail-event action selection.",
+  "data": {
+    "sources": [
+      "artifacts/strategy_42_btc_hype_state_predictability_20260629/btc_hype_15m_klines_rest_2025_05_2026_05.csv.gz",
+      "artifacts/strategy_42_btc_hype_state_predictability_20260629/btc_hype_funding_rate_2025_05_2026_05.csv",
+      "artifacts/strategy_42_btc_hype_state_predictability_20260629/btc_hype_premiumIndexKlines_15m_2025_05_2026_05.csv.gz"
+    ],
+    "rows": 35168,
+    "start_timestamp": "2025-05-30T16:00:00+00:00",
+    "end_timestamp": "2026-05-31T23:45:00+00:00",
+    "duplicate_timestamp_rows": 0,
+    "non_15m_gap_rows": 0,
+    "latest_2026_06_note": "Strategy 49 latest klines only contain close, so this audit stops at 2026-05 to keep volume/taker features complete."
+  },
+  "event_threshold": {
+    "hype_ret16_abs": 0.04,
+    "hype_ret96_abs": 0.1,
+    "resid_z_abs": 2.0
+  },
+  "confirm_bars_tested": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "label_leakage_note": "Oracle labels use future post-decision returns, but walk-forward training uses only labels from months before the tested month. Confirmation bars delay entry and are known before decision.",
+  "cost_model": {
+    "cost_per_side": 0.001,
+    "round_trip_open_close": 0.002
+  },
+  "best_oracle_by_confirm": {
+    "confirm_bars": 0,
+    "event_label_rows": 247,
+    "action_counts": {
+      "hype_reversal": 115,
+      "hype_momentum": 102,
+      "btc_momentum": 16,
+      "btc_reversal": 14
+    },
+    "return_2025_pct": 72596889.40055102,
+    "return_2026_pct": 2176924.830144856,
+    "min_target_year_return_pct": 2176924.830144856,
+    "max_drawdown_pct": -31.207217244131648,
+    "losing_months": 0,
+    "min_monthly_return_pct": 64.80415102753092,
+    "trade_count": 247,
+    "turnover": 986.0,
+    "hard_pass_relaxed": true
+  },
+  "best_walkforward_action_policy": {
+    "confirm_bars": 2,
+    "feature_set": "market_only",
+    "max_depth": 4,
+    "min_samples_leaf": 3,
+    "hold_bars": 96,
+    "leverage": 2.0,
+    "trained_months": 11,
+    "return_2025_pct": 144.160634511369,
+    "return_2026_pct": 151.70664554063333,
+    "min_target_year_return_pct": 144.160634511369,
+    "max_drawdown_pct": -65.30592707935568,
+    "losing_months": 4,
+    "min_monthly_return_pct": -24.722805211334908,
+    "trade_count": 173,
+    "turnover": 682.0,
+    "hard_pass_relaxed": false
+  },
+  "decision": {
+    "verdict": "EVENT_MICRO_ORACLE_PASSES_BUT_WALKFORWARD_FAILS",
+    "promote_strategy": false,
+    "reason": "确认K、funding、premium、lead-lag、成交量/taker 的看答案空间存在，但严格走步动作选择仍失败。"
+  },
+  "files": {
+    "summary": "artifacts/strategy_58_tail_event_micro_signal_20260630/summary.json",
+    "report": "artifacts/strategy_58_tail_event_micro_signal_20260630/report.md",
+    "oracle_event_labels": "artifacts/strategy_58_tail_event_micro_signal_20260630/oracle_event_labels.csv",
+    "oracle_by_confirm": "artifacts/strategy_58_tail_event_micro_signal_20260630/oracle_by_confirm.csv",
+    "action_policy_scan": "artifacts/strategy_58_tail_event_micro_signal_20260630/action_policy_scan.csv",
+    "best_action_policy_monthly": "artifacts/strategy_58_tail_event_micro_signal_20260630/best_action_policy_monthly.csv",
+    "best_action_policy_trades": "artifacts/strategy_58_tail_event_micro_signal_20260630/best_action_policy_trades.csv"
+  }
+}
