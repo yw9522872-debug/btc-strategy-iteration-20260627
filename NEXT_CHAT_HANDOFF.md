@@ -30,17 +30,19 @@ GitHub：https://github.com/yw9522872-debug/btc-strategy-iteration-20260627
 17. STRATEGY_58_TAIL_EVENT_MICRO_SIGNAL.md
 18. STRATEGY_59_TAIL_EVENT_FAILURE_ATTRIBUTION.md
 19. STRATEGY_60_TAIL_EVENT_SIMPLE_CAUSAL_RISK_OVERLAY.md
-20. artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/summary.json
-21. artifacts/strategy_56_tail_event_loss_root_cause_20260630/summary.json
-22. artifacts/strategy_57_tail_event_state_action_predictability_20260630/summary.json
-23. artifacts/strategy_58_tail_event_micro_signal_20260630/summary.json
-24. artifacts/strategy_59_tail_event_failure_attribution_20260630/summary.json
-25. artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/summary.json
+20. STRATEGY_61_NEW_DATA_SOURCE_FEASIBILITY.md
+21. artifacts/strategy_55_btc_hype_tail_event_core_signal_20260630/summary.json
+22. artifacts/strategy_56_tail_event_loss_root_cause_20260630/summary.json
+23. artifacts/strategy_57_tail_event_state_action_predictability_20260630/summary.json
+24. artifacts/strategy_58_tail_event_micro_signal_20260630/summary.json
+25. artifacts/strategy_59_tail_event_failure_attribution_20260630/summary.json
+26. artifacts/strategy_60_tail_event_simple_causal_risk_overlay_20260630/summary.json
+27. artifacts/strategy_61_new_data_source_feasibility_20260630/summary.json
 
 重要：不要和其他 Codex 线程、其他浏览器 GPT Pro 页面、其他仓库混淆。
 
 当前最新策略结果提交：
-b5ac8cf Add strategy 60 causal risk overlay audit
+f5051cd Add strategy 61 new data source feasibility audit
 
 当前最新标签：
 strategy-32-btc-3m-2025-today-upper-bound-20260628
@@ -49,7 +51,7 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 不下实盘，不读取密钥，不启动 supervisor，不改真实仓位。
 
 0号策略已经永久保存，不能覆盖。
-1F、1G、2C、4号、10号到60号都不能覆盖，后续必须另起新编号、新目录。
+1F、1G、2C、4号、10号到61号都不能覆盖，后续必须另起新编号、新目录。
 
 当前关键结论：
 2C 是当前旧候选里历史表现最好的一个：2025 +359.10%、2026 +260.59%，但仍是研究候选，不是实盘保证；0号是永久固化基准，不是收益最高者。
@@ -65,12 +67,13 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 58号加入 funding/premium、BTC/HYPE谁先动、确认K、成交量/taker 压力后，严格扫1620个配置仍0通过；最好收益配置2025 +144.16%、2026 +151.71%，但最大回撤 -65.31%；低回撤近似配置最大回撤 -47.83%，但2025只有 +88.56%。
 59号拆58号失败根因：主回撤不是少数一两笔造成，而是从2025-11-18到2026-01-29横跨39笔交易、20笔亏损；最差3笔只占窗口亏损39.50%，全样本最差3笔只占总负交易亏损16.60%。最差5笔都是 HYPE 顺势/反转方向判断反了。
 60号做极简因果风控上限测试，复用58号逐K收益，不重新训练、不新增入场，只用已经发生后的月内亏损、月内回撤、账户回撤来减仓或停手。628个配置0通过；回撤合格里收益最高为2025 +167.25%、2026 +52.75%、最大回撤 -49.66%。结论：这条 BTC/HYPE 尾部事件动作选择路线靠小风控也救不回。
+61号不是策略也不是回测，只判断新数据源是否值得继续。结论：回测都做不好时，影子跟踪意义不大；不要马上买大数据包。如果继续，只优先找 Tardis.dev 要 BTCUSDT Binance futures 的持仓量/多空比最小样本，样本过质量检查后才考虑完整CSV。
 
 下一步建议：
-停止 BTC/HYPE 尾部事件动作选择路线的小修小补，不要继续调58号树深/叶子/确认K/持仓/杠杆，也不要再加小止损小停手。后续只能转向影子跟踪/低年化验证、等待真正不同的新数据源，或先把目标降到更现实。
+停止 BTC/HYPE 尾部事件动作选择路线的小修小补，也不做影子跟踪。若用户愿意继续研究，先找 Tardis.dev 要最小样本；拿到样本后另起62号做数据质量审计，再做63号看答案上限测试。63号上限不过就停止，不做严格策略。
 
 环境状态：
-当前工作区干净。最新策略结果提交是 `b5ac8cf Add strategy 60 causal risk overlay audit`；本交接文件已更新并提交。还没有推送到 GitHub。当前最新标签仍是 `strategy-32-btc-3m-2025-today-upper-bound-20260628`。
+当前工作区干净。最新策略结果提交是 `f5051cd Add strategy 61 new data source feasibility audit`；本交接文件已更新并提交，并已推送到 GitHub。当前最新标签仍是 `strategy-32-btc-3m-2025-today-upper-bound-20260628`。
 
 请用中文、通俗的话和我沟通。
 ```
@@ -79,9 +82,9 @@ strategy-32-btc-3m-2025-today-upper-bound-20260628
 
 - 本地路径：`C:\Users\WHR\Documents\策略迭代`
 - GitHub：`https://github.com/yw9522872-debug/btc-strategy-iteration-20260627`
-- 当前最新策略结果提交：`b5ac8cf Add strategy 60 causal risk overlay audit`
+- 当前最新策略结果提交：`f5051cd Add strategy 61 new data source feasibility audit`
 - 当前最新标签：`strategy-32-btc-3m-2025-today-upper-bound-20260628`
-- 33号到60号研究结果已提交到本地 `master`，最新策略结果提交为 `b5ac8cf Add strategy 60 causal risk overlay audit`；本交接文件已更新并提交。当前尚未推送、尚未打新标签。
+- 33号到61号研究结果已提交并推送到 GitHub `master`，最新策略结果提交为 `f5051cd Add strategy 61 new data source feasibility audit`；当前尚未打新标签。
 - Git 清理状态：此前已执行 `git gc --prune=now`；`.git` loose objects 几乎为0，pack约 `148.90 MiB`，当前没有 `.git/index.lock`。
 - 15-19 保存提交：`ff67b92 Add strategy 15-19 research probes`
 - 15号、16号、17号、18号、19号、20号、21号、22号、23号、24号、25号、26号、27号、28号、29号、30号、31号、32号及交接说明已提交并推送到 GitHub
@@ -1026,8 +1029,11 @@ DATA_SOURCE_OPEN_INTEREST_LONG_SHORT_REVIEW_20260627.md 不是策略，只审查
 当前新增 60号尾部事件极简因果风控上限测试：
 60号：strategy_60_tail_event_simple_causal_risk_overlay_20260630，不是策略，不能交易，只复用58号最好收益配置的逐K收益，不重新训练动作模型、不新增入场规则。风控只看上一根K线已经发生后的月内亏损、月内回撤、账户回撤；这是偏乐观上限，因为直接缩放58号逐K收益，没有重新撮合真实开平仓成本。基线复放完全对齐58号：2025 +144.16%、2026 +151.71%、最大回撤 -65.31%。扫描628个配置，通过数0；回撤合格里收益最高配置为月内亏损触发-20%、账户回撤触发-25%、触发后仓位0.5，2025 +167.25%、2026 +52.75%、最大回撤 -49.66%。当前判断：SIMPLE_CAUSAL_RISK_OVERLAY_UPPER_BOUND_FAILS_RELAXED_GATE。回撤能压住时收益不够，收益够时回撤太深。
 
+当前新增 61号新数据源可行性审计：
+61号：strategy_61_new_data_source_feasibility_20260630，不是策略，不是回测，不能交易，只判断旧路线失败后是否值得继续找新数据源。当前判断：ONLY_TARDIS_SAMPLE_THEN_UPPER_BOUND。用户判断“回测都做不好，影子也没太大意义”成立，所以不建议现在做影子跟踪，也不要马上买大数据包。若继续，只优先找 Tardis.dev 要最小样本或最小导出：binance-futures、BTCUSDT、open interest、derivative_ticker open_interest、globalLongShortAccountRatio、topLongShortAccountRatio、topLongShortPositionRatio，可选 takerlongshortRatio。样本月份为2023-07、2024-06、2025-08、2026-05。Binance 官方 REST 的持仓量和多空比历史不够多年回测；CoinGlass 和 Amberdata 只做备选，必须先确认完整历史导出、时间戳和字段口径。拿到样本后才另起62号做数据质量审计；样本过关再考虑完整 CSV；完整数据拿到后先做63号看答案上限，63号不过就停止，只有63号通过才做64号严格不看未来选择器。
+
 后续如果继续开发，不能覆盖 0号策略，必须另起新编号、新文件夹。
-这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，不要继续免费K线小规则、单币 BTC 3m 小规则、旧 ret_state 64/100 家族、资金费率严格选择器、多币种免费K线小规则、免费 aggTrades lead-lag 路线，也不要照搬旧 BTC 3m 样本内规则、继续调33号组合参数、小修37号事件池、把38号、41号、44号、45号看答案/强过拟合线或47号同段挑参数线当实盘策略，也不要围绕旧2C/ret_state家族继续调锁利、调笔数、调小保护。60号已经确认极简因果风控上限也失败；停止 BTC/HYPE 尾部事件动作选择路线的小修小补。后续应转向影子跟踪/低年化验证、真正不同的新数据源，或先降低目标。
+这里只做研究和回测，不下实盘，不读取密钥，不启动 supervisor。下一步如果继续，不要继续免费K线小规则、单币 BTC 3m 小规则、旧 ret_state 64/100 家族、资金费率严格选择器、多币种免费K线小规则、免费 aggTrades lead-lag 路线，也不要照搬旧 BTC 3m 样本内规则、继续调33号组合参数、小修37号事件池、把38号、41号、44号、45号看答案/强过拟合线或47号同段挑参数线当实盘策略，也不要围绕旧2C/ret_state家族继续调锁利、调笔数、调小保护。60号已经确认极简因果风控上限也失败；停止 BTC/HYPE 尾部事件动作选择路线的小修小补。61号确认当前也不适合影子跟踪或直接买大数据包；若继续，只做 Tardis.dev 最小样本、62号质量审计、63号看答案上限这一条最窄路线。
 
 请用中文、通俗的话和我沟通。
 ```
